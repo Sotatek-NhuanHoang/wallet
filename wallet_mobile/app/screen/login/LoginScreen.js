@@ -10,7 +10,6 @@ import {
     Alert,
     PixelRatio
 } from 'react-native';
-import SplashScreen from 'react-native-splash-screen';
 import BaseScreen from '../BaseScreen';
 import I18n from '../../res/i18n/i18n';
 import { CommonStyles, CommonSize, CommonColors } from '../../utils/CommonStyles';
@@ -26,8 +25,6 @@ export default class LoginScreen extends BaseScreen {
         this.state = {
             email: 'bitkoex@bitkoex.com',
             password: '123123',
-            styleForEmail: '',
-            styleForPassword: '',
             errEmail: {
                 isShow: false,
                 message: ''
@@ -46,23 +43,7 @@ export default class LoginScreen extends BaseScreen {
     }
 
     _focusNextField(id) {
-        this.input[id].focus();
-    }
-
-    _onFocus(inputName) {
-        if (inputName === 'Email') {
-            this.setState({ styleForEmail: styles.textInputFocused });
-        } else {
-            this.setState({ styleForPassword: styles.textInputFocused });
-        }
-    }
-
-    _onBlur(inputName) {
-        if (inputName === 'Email') {
-            this.setState({ styleForEmail: styles.textInputUnfocused });
-        } else {
-            this.setState({ styleForPassword: styles.textInputUnfocused });
-        }
+        this.inputs[id].focus();
     }
 
     _checkEmail(email) {
@@ -74,6 +55,11 @@ export default class LoginScreen extends BaseScreen {
         console.log(this.state.email, this.state.password);
 
     }
+
+    _onPressSignUp() {
+        this.navigate('SignUpScreen', {})
+    }
+
     render() {
         return (
             <KeyboardAwareScrollView
@@ -100,20 +86,18 @@ export default class LoginScreen extends BaseScreen {
                         </Text>
 
                         <TextInput
+                            style={styles.input}
                             value={this.state.email}
                             keyboardType='email-address'
-                            placeholder={I18n.t('login.id')}
+                            placeholderTextColor='gray'
+                            placeholder={'enter id'}
                             blurOnSubmit={false}
-                            placeholderTextColor='white'
                             underlineColorAndroid='transparent'
-                            autoCapitalize='characters'
-                            onBlur={() => this._onBlur('Email')}
-                            onFocus={() => this._onFocus('Email')}
-                            style={[styles.input, this.state.styleForEmail]}
                             onSubmitEditing={() => this.focusNextField('two')}
                             returnKeyType={"next"}
+                            onChangeText={(text) => this.setState({ email: text })}
                             ref={input => this.inputs['one'] = input}
-                            onChangeText={(text) => this.setState({ email: text })} />
+                        />
                     </View>
                     <View style={styles.line} />
 
@@ -126,13 +110,11 @@ export default class LoginScreen extends BaseScreen {
                         </Text>
 
                         <TextInput
-                            onBlur={() => this._onBlur('Password')}
-                            onFocus={() => this._onFocus('Password')}
-                            style={[styles.input, this.state.styleForPassword]}
+                            style={styles.input}
                             value={this.state.password}
                             secureTextEntry={true}
-                            placeholderTextColor='white'
-                            placeholder={I18n.t('login.password')}
+                            placeholderTextColor='gray'
+                            placeholder={'enter password'}
                             underlineColorAndroid='transparent'
                             onChangeText={(text) => this.setState({ password: text })}
                             ref={input => this.inputs['two'] = input} />
@@ -147,14 +129,16 @@ export default class LoginScreen extends BaseScreen {
                     <TouchableOpacity
                         onPress={this._onPressLogin.bind(this)}
                         style={styles.buttonLogin} >
-                        <Text
-                            style={styles.buttonText}>{I18n.t('login.login').toUpperCase()}</Text>
+                        <Text style={styles.buttonText}>
+                            {I18n.t('login.login').toUpperCase()}
+                        </Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={this._onPressLogin.bind(this)}
+                        onPress={this._onPressSignUp.bind(this)}
                         style={styles.buttonSignup} >
-                        <Text
-                            style={styles.buttonText}>{I18n.t('login.sign_up').toUpperCase()}</Text>
+                        <Text style={styles.buttonText}>
+                            {I18n.t('login.sign_up').toUpperCase()}
+                        </Text>
                     </TouchableOpacity>
                 </View>
 
@@ -204,16 +188,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 0,
     },
-    textInputUnfocused: {
-        borderColor: CommonColors.screenBgColor,
-    },
-    textInputFocused: {
-        borderColor: CommonColors.screenBgColor,
-    },
     input: {
         height: PixelRatio.getPixelSizeForLayoutSize(20),
         flex: 1,
-        textAlign: 'left',
+        textAlign: 'right',
         color: 'white',
         fontSize: 15 * PixelRatio.getFontScale(),
         borderWidth: 1,
@@ -235,9 +213,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 5,
         marginRight: PixelRatio.getPixelSizeForLayoutSize(3),
-        backgroundColor: CommonColors.bgColorLogin,
+        backgroundColor: CommonColors.bgLoginColor,
         borderWidth: 1,
-        borderColor: CommonColors.bgColorLogin,
+        borderColor: CommonColors.bgLoginColor,
 
     },
     buttonSignup: {
@@ -246,9 +224,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 5,
         marginLeft: PixelRatio.getPixelSizeForLayoutSize(3),
-        backgroundColor: CommonColors.bgColorSignup,
+        backgroundColor: CommonColors.bgSignUpColor,
         borderWidth: 1,
-        borderColor: CommonColors.bgColorSignup,
+        borderColor: CommonColors.bgSignUpColor,
     },
     seperator: {
         alignSelf: 'stretch',

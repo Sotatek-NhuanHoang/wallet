@@ -7,7 +7,11 @@ export default{
         id:'id',
         password:'password',
         login:'login',
-        sign_up:'sign up'
+        sign_up:'sign up',
+        confirm_password:'confirm\\npassword',
+        country:'country',
+        phone:'phone #',
+        code:'get code'
     }
 
 };

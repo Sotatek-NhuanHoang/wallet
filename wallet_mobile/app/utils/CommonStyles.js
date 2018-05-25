@@ -2,8 +2,8 @@ import { PixelRatio, StyleSheet } from 'react-native';
 
 class CommonColors {
     static screenBgColor = 'darkgray';
-    static bgColorLogin = '#43d8e0';
-    static bgColorSignup = '#42f459';
+    static bgLoginColor = '#43d8e0';
+    static bgSignUpColor = '#42f459';
 
 };
 
