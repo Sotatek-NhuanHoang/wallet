@@ -8,6 +8,7 @@ import {
     Image,
     TouchableOpacity,
     Alert,
+    Button,
     PixelRatio,
     Modal
 } from 'react-native';
@@ -15,6 +16,8 @@ import BaseScreen from '../BaseScreen';
 import I18n from '../../res/i18n/i18n';
 import { CommonStyles, CommonSize, CommonColors } from '../../utils/CommonStyles';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import ActionSheet from 'react-native-actionsheet';
+import { Dropdown } from 'react-native-material-dropdown';
 
 export default class SignUpScreen extends BaseScreen {
     static navigationOptions = {
@@ -41,12 +44,14 @@ export default class SignUpScreen extends BaseScreen {
             errMessage: {
                 isShow: false,
                 message: ''
-            }
+            },
+
 
         };
         this.focusNextField = this._focusNextField.bind(this);
         this.inputs = {};
     }
+
 
     _checkEmail(email) {
         let reg = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -65,16 +70,29 @@ export default class SignUpScreen extends BaseScreen {
         this.navigate('LoginScreen', {});
     }
 
-    _onGetCode() {
-
+    _onGetCode = () => {
+       
     }
 
+    
     render() {
+        let listCountry = [
+            {
+                value: 'Korea',
+            },
+            {
+                value: 'USA',
+            },
+            {
+                value: 'Japan',
+            },
+            {
+                value: 'Vietnam',
+            },];
         return (
             <KeyboardAwareScrollView
                 style={styles.scrollView}
-                contentContainerStyle={styles.screen}
-            >
+                contentContainerStyle={styles.screen}>
                 <View style={{ flex: 1 }} />
 
                 <View style={styles.containerLogo}>
@@ -140,7 +158,7 @@ export default class SignUpScreen extends BaseScreen {
 
                         <TextInput
                             style={styles.input}
-                            value={this.state.password}
+                            value={this.state.confirmPassword}
                             secureTextEntry={true}
                             placeholderTextColor='gray'
                             placeholder={'enter password again'}
@@ -148,7 +166,7 @@ export default class SignUpScreen extends BaseScreen {
                             returnKeyType={"next"}
                             blurOnSubmit={false}
                             onSubmitEditing={() => this.focusNextField('four')}
-                            onChangeText={(text) => this.setState({ password: text })}
+                            onChangeText={(text) => this.setState({ confirmPassword: text })}
                             ref={input => this.inputs['three'] = input} />
                     </View>
                     <View style={styles.line} />
@@ -157,19 +175,13 @@ export default class SignUpScreen extends BaseScreen {
                         <Text style={styles.titleInput}>
                             {I18n.t('login.country').toUpperCase()}
                         </Text>
-
-                        <TextInput
-                            style={styles.input}
-                            value={this.state.password}
-                            secureTextEntry={true}
-                            placeholderTextColor='gray'
-                            placeholder={'enter country'}
-                            underlineColorAndroid='transparent'
-                            returnKeyType={"next"}
-                            blurOnSubmit={false}
-                            onSubmitEditing={() => this.focusNextField('five')}
-                            onChangeText={(text) => this.setState({ password: text })}
-                            ref={input => this.inputs['four'] = input} />
+                        <View style={styles.dropdown}>
+                            <Dropdown
+                                style={styles.dropdownText}
+                                data={listCountry}
+                                value={listCountry[0].value}
+                            />
+                        </View>
                     </View>
                     <View style={styles.line} />
 
@@ -180,22 +192,22 @@ export default class SignUpScreen extends BaseScreen {
 
                         <TextInput
                             style={styles.input}
-                            value={this.state.password}
-                            secureTextEntry={true}
+                            value={this.state.phone}
+                            secureTextEntry={false}
                             placeholderTextColor='gray'
                             placeholder={'enter phone number'}
                             underlineColorAndroid='transparent'
                             returnKeyType={"next"}
                             blurOnSubmit={false}
-                            onSubmitEditing={() => this.focusNextField('six')}
-                            onChangeText={(text) => this.setState({ password: text })}
-                            ref={input => this.inputs['five'] = input} />
+                            onSubmitEditing={() => this.focusNextField('five')}
+                            onChangeText={(text) => this.setState({ phone: text })}
+                            ref={input => this.inputs['four'] = input} />
                     </View>
                     <View style={styles.line} />
 
                     <View style={styles.inputRow}>
                         <TouchableOpacity
-                            onPress={this._onGetCode.bind(this)}
+                            onPress={this._onGetCode}
                             style={styles.buttonGetCode} >
                             <Text style={styles.buttonGetCodeText}>
                                 {I18n.t('login.code').toUpperCase()}
@@ -204,15 +216,12 @@ export default class SignUpScreen extends BaseScreen {
 
                         <TextInput
                             style={styles.input}
-                            value={this.state.password}
-                            secureTextEntry={true}
+                            value={this.state.code}
+                            secureTextEntry={false}
                             placeholderTextColor='gray'
                             placeholder={'enter code'}
                             underlineColorAndroid='transparent'
-                            returnKeyType={"next"}
-                            blurOnSubmit={false}
-                            onSubmitEditing={() => this.focusNextField('six')}
-                            onChangeText={(text) => this.setState({ password: text })}
+                            onChangeText={(text) => this.setState({ code: text })}
                             ref={input => this.inputs['five'] = input} />
                     </View>
                     <View style={styles.line} />
@@ -248,6 +257,7 @@ const styles = StyleSheet.create({
     scrollView: {
     },
     screen: {
+        flex: 1,
         ...CommonStyles.screen,
         alignItems: 'center',
         paddingLeft: CommonSize.contentPadding15px,
@@ -309,14 +319,14 @@ const styles = StyleSheet.create({
 
     },
     buttonGetCode: {
-        width:PixelRatio.getPixelSizeForLayoutSize(40),
+        width: PixelRatio.getPixelSizeForLayoutSize(30),
         height: PixelRatio.getPixelSizeForLayoutSize(14),
         justifyContent: 'center',
         borderRadius: 5,
         marginRight: PixelRatio.getPixelSizeForLayoutSize(3),
-        backgroundColor: 'gray',
+        backgroundColor: '#f99b20',
         borderWidth: 1,
-        borderColor: 'gray',
+        borderColor: '#f99b20',
 
     },
     buttonGetCodeText: {
@@ -355,10 +365,25 @@ const styles = StyleSheet.create({
         backgroundColor: CommonColors.screenBgColor,
 
     },
+    dropdown: {
+        justifyContent: 'flex-end',
+        flex: 1,
+        height: PixelRatio.getPixelSizeForLayoutSize(20),
+    },
+    dropdownText: {
+        textAlign: 'right',
+        alignSelf: 'center',
+        color: 'white',
+    },
     line: {
         width: '100%',
         borderBottomColor: 'white',
         borderBottomWidth: 1,
+    },
+    seperatorInput: {
+        alignSelf: 'stretch',
+        marginTop: PixelRatio.getPixelSizeForLayoutSize(7),
+        marginBottom: PixelRatio.getPixelSizeForLayoutSize(2),
     },
 
 });

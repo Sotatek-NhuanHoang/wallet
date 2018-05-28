@@ -1,100 +1,57 @@
-wallet_mobile/package-lock.json
-package-lock.json
-# Java class files
-android/*.class
-
-# generated files
-android/bin/
-android/gen/
-
-# Local configuration file (sdk path, etc)
-android/local.properties
-
-# Windows thumbnail db
-android/Thumbs.db
-
-# OSX files
-android/.DS_Store
-
-# Eclipse project files
-android/.classpath
-android/.project
-
-# Android Studio
-android/*.iml
-android/.idea
-#.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
-android/.gradle
-android/build/
-
-#NDK
-android/obj/
-
+# OSX
+#
+.DS_Store
+.env
 # Xcode
 #
-# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+project.xcworkspace
 
-ios/**/xcshareddata/
-
-## Build generated
-ios/build/
-ios/DerivedData/
-
-## Various settings
-ios/*.pbxuser
-ios/!default.pbxuser
-ios/*.mode1v3
-ios/!default.mode1v3
-ios/*.mode2v3
-ios/!default.mode2v3
-ios/*.perspectivev3
-ios/!default.perspectivev3
-ios/xcuserdata/
-
-## Other
-ios/*.moved-aside
-ios/*.xcuserstate
-
-## Obj-C/Swift specific
-ios/*.hmap
-ios/*.ipa
-ios/*.dSYM.zip
-ios/*.dSYM
-
-## Playgrounds
-ios/timeline.xctimeline
-ios/playground.xcworkspace
-
-# Swift Package Manager
+# Android/IntelliJ
 #
-# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
-# Packages/
-ios/.build/
+build/
+.idea
+.gradle
+local.properties
+*.iml
 
-# CocoaPods
+# node.js
 #
-# We recommend against adding the Pods directory to your .gitignore. However
-# you should judge for yourself, the pros and cons are mentioned at:
-# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
-#
-ios/Pods/
-ios/Podfile.lock
+node_modules/
+npm-debug.log
+yarn-error.log
 
-# Carthage
-#
-# Add this line if you want to avoid checking in source code from Carthage dependencies.
-# Carthage/Checkouts
-
-ios/Carthage/Build
+# BUCK
+buck-out/
+\.buckd/
+*.keystore
 
 # fastlane
 #
 # It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
 # screenshots whenever they are needed.
 # For more information about the recommended setup visit:
-# https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
+# https://docs.fastlane.tools/best-practices/source-control/
 
-ios/fastlane/report.xml
-ios/fastlane/Preview.html
-ios/fastlane/screenshots
-ios/fastlane/test_output
+*/fastlane/report.xml
+*/fastlane/Preview.html
+*/fastlane/screenshots
+
+# Bundle artifact
+*.jsbundle
+package-lock.json

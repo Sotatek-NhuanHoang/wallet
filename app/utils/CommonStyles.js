@@ -4,6 +4,7 @@ class CommonColors {
     static screenBgColor = 'darkgray';
     static bgLoginColor = '#43d8e0';
     static bgSignUpColor = '#42f459';
+    static bgAlertColor = '#262523';
 
 };
 
