@@ -10,7 +10,8 @@ import {
     Alert,
     Button,
     PixelRatio,
-    Modal
+    Modal,
+    Dimensions
 } from 'react-native';
 import BaseScreen from '../BaseScreen';
 import I18n from '../../res/i18n/i18n';
@@ -27,6 +28,8 @@ export default class SignUpScreen extends BaseScreen {
     constructor(props) {
         super(props);
         this.state = {
+            showModal: false,
+            alertVisibility: false,
             email: '',
             password: '',
             confirmPassword: '',
@@ -70,11 +73,68 @@ export default class SignUpScreen extends BaseScreen {
         this.navigate('LoginScreen', {});
     }
 
-    _onGetCode = () => {
-       
+    _onGetCode() {
+        this.setState({ showModal: true });
+        this._showAlert(true)
     }
 
-    
+    _showAlert(visible) {
+        this.setState({ alertVisibility: visible });
+    }
+
+    renderModal() {
+        if (this.state.showModal) {
+            return (
+                <View style={{
+                    flex: 1,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginTop: (Platform.OS == 'ios') ? 20 : 0
+                }}>
+                    <Modal
+                        animationType={"fade"}
+                        transparent={true}
+                        visible={this.state.alertVisibility}
+                        onRequestClose={() => {
+                            this._showAlert(!this.state.alertVisibility)
+                        }}>
+                        <View style={{
+                            flex: 1,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                        }} >
+                            <View style={styles.modalContent}>
+                                <View style={styles.noticeContainer}>
+                                    <Text style={styles.noticeText}>{I18n.t('alert.notice').toUpperCase()}</Text>
+
+                                </View>
+                                <View style={{ marginTop: PixelRatio.getPixelSizeForLayoutSize(5), }}>
+                                    <Text style={styles.modalText}>{I18n.t('alert.notice_msg')}</Text>
+
+                                </View>
+                                <View style={{ flex: 2 }} />
+
+                                <View>
+                                    <TouchableOpacity
+                                        style={styles.modalButton}
+                                        onPress={() => {
+                                            this.setState({ showModal: false })
+                                            this._showAlert(false);
+                                        }}>
+                                        <Text style={styles.buttonText}>{I18n.t('alert.ok').toUpperCase()}</Text>
+                                    </TouchableOpacity>
+                                </View>
+                                <View style={{ flex: 1 }} />
+                            </View>
+                        </View>
+                    </Modal>
+                </View>
+            )
+        }
+        return (<View style={{ flex: 1 }}></View>);
+
+    }
+
     render() {
         let listCountry = [
             {
@@ -93,10 +153,9 @@ export default class SignUpScreen extends BaseScreen {
             <KeyboardAwareScrollView
                 style={styles.scrollView}
                 contentContainerStyle={styles.screen}>
-                <View style={{ flex: 1 }} />
 
+                {this.renderModal()}
                 <View style={styles.containerLogo}>
-
                     <Image
                         style={styles.imageView}
                         source={{ uri: 'https://olm.vn/images/avt/avt3/avt666223_256by256.jpg' }}
@@ -207,7 +266,7 @@ export default class SignUpScreen extends BaseScreen {
 
                     <View style={styles.inputRow}>
                         <TouchableOpacity
-                            onPress={this._onGetCode}
+                            onPress={this._onGetCode.bind(this)}
                             style={styles.buttonGetCode} >
                             <Text style={styles.buttonGetCodeText}>
                                 {I18n.t('login.code').toUpperCase()}
@@ -253,6 +312,8 @@ export default class SignUpScreen extends BaseScreen {
     }
 
 }
+const width = Dimensions.get('window').width;
+
 const styles = StyleSheet.create({
     scrollView: {
     },
@@ -341,8 +402,8 @@ const styles = StyleSheet.create({
         fontSize: 15 * PixelRatio.getFontScale(),
         fontWeight: '300',
         textAlign: 'center',
-
     },
+
     buttonSignup: {
         flex: 1,
         height: PixelRatio.getPixelSizeForLayoutSize(20),
@@ -385,5 +446,48 @@ const styles = StyleSheet.create({
         marginTop: PixelRatio.getPixelSizeForLayoutSize(7),
         marginBottom: PixelRatio.getPixelSizeForLayoutSize(2),
     },
+    modalButton: {
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'gray',
+        borderColor: 'gray',
+        borderWidth: 1,
+        height: PixelRatio.getPixelSizeForLayoutSize(15),
+        width: PixelRatio.getPixelSizeForLayoutSize(70)
+
+    },
+
+    modalContent: {
+        backgroundColor: '#2b2a2a',
+        borderWidth: 1,
+        borderRadius: 2,
+        borderColor: '#2b2a2a',
+        width: 2 * (width / 3),
+        height: width / 2 + 30,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    modalText: {
+        fontSize: 15 * PixelRatio.getFontScale(),
+        color: 'white',
+        textAlign:'center'
+    },
+    noticeText: {
+        color: 'white',
+        fontSize: 15 * PixelRatio.getFontScale(),
+        fontWeight: '300',
+        textAlign: 'center',
+    },
+    noticeContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#474545',
+        borderColor: '#474545',
+        borderWidth: 1,
+        height: PixelRatio.getPixelSizeForLayoutSize(15),
+        width: '100%',
+        alignSelf: 'stretch'
+    }
 
 });
