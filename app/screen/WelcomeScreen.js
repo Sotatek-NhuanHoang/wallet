@@ -9,7 +9,7 @@ import {
     Alert,
     PixelRatio
 } from 'react-native';
-import SplashScreen from 'react-native-splash-screen';
+import {SplashScreen} from 'react-native-splash-screen';
 import LoginScreen from './login/LoginScreen';
 import BaseScreen from './BaseScreen';
 export default class WelcomeScreen extends BaseScreen {
@@ -19,7 +19,7 @@ export default class WelcomeScreen extends BaseScreen {
 
     componentDidMount() {
         setTimeout(() => {
-            SplashScreen.hide();
+          //  SplashScreen.hide();//error
             this.navigate('LoginScreen');
         }, 1000);
     }
