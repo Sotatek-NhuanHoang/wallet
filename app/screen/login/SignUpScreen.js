@@ -249,6 +249,7 @@ export default class SignUpScreen extends BaseScreen {
                                     </Text>
                                     <View style={styles.dropdown}>
                                         <Dropdown
+                                            fontSize={Platform.OS == 'ios' ? 14 : 16}
                                             style={styles.dropdownText}
                                             data={listCountry}
                                             value={listCountry[0].value}
@@ -386,6 +387,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginTop: 0,
+        height: PixelRatio.getPixelSizeForLayoutSize(20),
     },
     buttonLogin: {
         flex: 1,
