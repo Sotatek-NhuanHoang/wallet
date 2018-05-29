@@ -4,55 +4,72 @@ import {
   View,
   Text,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  StatusBar
 } from 'react-native'
-import I18n from '../../res/i18n/i18n';
-// const MenuIcon = required('../../assets/common/ic_menu.png');
+const MenuIcon = require('../../../assets/common/ic_menu.png');
 
 export default class Header extends Component {
   render() {
     return (
-      <View
-        style = { styles.container }>
-        <Image
-          style = { styles.image }
-          source = { MenuIcon }/>
-        <Text
-          style = { styles.title }>
-          { I18n.t('common.wallet').toUpperCase() }
-        </Text>
-        <TouchableOpacity
-          style = { styles.leftButton }>
+      <View style = { styles.container } >
+        <StatusBar barStyle = 'light-content'/>
+        <View style = { styles.innerContainer }>
           <Image
-            source={{ uri: 'https://olm.vn/images/avt/avt3/avt666223_256by256.jpg' }}/>
-        </TouchableOpacity>
+            style = {{
+              resizeMode: 'contain',
+              marginleft: 8
+            }}
+            source = { MenuIcon }/>
+          <Text
+            style = { styles.title }>
+            { this.props.title }
+          </Text>
+          <TouchableOpacity
+            style = { styles.rightButton }
+            onPress = { this.props.onOpenMenu }>
+            <Image
+              style = {{
+                flex: 1,
+                resizeMode: 'contain'
+              }}
+              source = { MenuIcon }/>
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row'
+  innerContainer: {
+    paddingTop: 20,
+    width: '100%',
+    height: 44,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
 
-  image: {
-    width: null,
-    height: null,
-    flex: 1,
-    resizeMode: 'contain',
-    alighSelf: 'flex-start'
+  container: {
+    flexDirection: 'column',
+    height: 64,
+    backgroundColor: 'black',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   title: {
     textAlign: 'center',
     color: 'white',
-    fontSize: 17
+    fontSize: 17,
+    alignSelf: 'center'
   },
 
-  leftButton: {
-    flex:  1,
-    alighSelf: 'flex-end'
+  rightButton: {
+    height: '100%',
+    marginEnd: 8,
+    alignItems: 'center',
+    aspectRatio: 1
   }
 });
