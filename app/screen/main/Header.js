@@ -7,7 +7,7 @@ import {
   TouchableOpacity
 } from 'react-native'
 import I18n from '../../res/i18n/i18n';
-const MenuIcon = required('../../assets/common/ic_menu.png');
+// const MenuIcon = required('../../assets/common/ic_menu.png');
 
 export default class Header extends Component {
   render() {
@@ -19,12 +19,12 @@ export default class Header extends Component {
           source = { MenuIcon }/>
         <Text
           style = { styles.title }>
-          { I18n.t('wallet').toUpperCase() }
+          { I18n.t('common.wallet').toUpperCase() }
         </Text>
         <TouchableOpacity
           style = { styles.leftButton }>
           <Image
-            source = { MenuIcon }/>
+            source={{ uri: 'https://olm.vn/images/avt/avt3/avt666223_256by256.jpg' }}/>
         </TouchableOpacity>
       </View>
     )

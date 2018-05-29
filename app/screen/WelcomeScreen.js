@@ -10,7 +10,7 @@ import {
     PixelRatio
 } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
-import LoginScreen from './login/LoginScreen';
+import MainScreen from './main/MainScreen';
 import BaseScreen from './BaseScreen';
 export default class WelcomeScreen extends BaseScreen {
     static navigationOptions = {
@@ -20,7 +20,7 @@ export default class WelcomeScreen extends BaseScreen {
     componentDidMount() {
         setTimeout(() => {
             SplashScreen.hide();
-            this.navigate('LoginScreen');
+            this.navigate('MainScreen');
         }, 1000);
     }
     render() {
