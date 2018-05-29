@@ -11,7 +11,10 @@ import {
     Button,
     PixelRatio,
     Modal,
-    Dimensions
+    Dimensions,
+    KeyboardAvoidingView,
+    SafeAreaView,
+    StatusBar
 } from 'react-native';
 import BaseScreen from '../BaseScreen';
 import I18n from '../../res/i18n/i18n';
@@ -150,163 +153,167 @@ export default class SignUpScreen extends BaseScreen {
                 value: 'Vietnam',
             },];
         return (
-            <KeyboardAwareScrollView
-                style={styles.scrollView}
-                contentContainerStyle={styles.screen}>
-
-                {this.renderModal()}
-                <View style={styles.containerLogo}>
-                    <Image
-                        style={styles.imageView}
-                        source={{ uri: 'https://olm.vn/images/avt/avt3/avt666223_256by256.jpg' }}
-                    />
-                    <Text style={styles.appName}>{`WWW \n coin wallet`}</Text>
-                </View>
-                <View style={{ flex: 1 }} />
-                <Text style={styles.title}>
-                    {I18n.t('login.sign_up').toUpperCase()}
-                </Text>
-
-                <View style={styles.containerInput}>
-
-                    <View style={styles.inputRow}>
-                        <Text style={styles.titleInput}>
-                            {I18n.t('login.id').toUpperCase()}
-                        </Text>
-
-                        <TextInput
-                            style={styles.input}
-                            value={this.state.email}
-                            keyboardType='email-address'
-                            placeholderTextColor='gray'
-                            placeholder={'enter id'}
-                            blurOnSubmit={false}
-                            underlineColorAndroid='transparent'
-                            onSubmitEditing={() => this.focusNextField('two')}
-                            returnKeyType={"next"}
-                            onChangeText={(text) => this.setState({ email: text })}
-                            ref={input => this.inputs['one'] = input}
+            <SafeAreaView style={styles.screen}>
+                <StatusBar barStyle='light-content' />
+                <KeyboardAvoidingView
+                    behavior={'padding'}
+                    keyboardVerticalOffset={Platform.select({ ios: 0, android: 25 })}
+                    style={{ flex: 1, }}>
+                    {this.renderModal()}
+                    <View style={styles.containerLogo}>
+                        <Image
+                            style={styles.imageView}
+                            source={{ uri: 'https://olm.vn/images/avt/avt3/avt666223_256by256.jpg' }}
                         />
+                        <Text style={styles.appName}>{`WWW \n coin wallet`}</Text>
                     </View>
-                    <View style={styles.line} />
+                    <View style={{ flex: 1 }} />
+                    <Text style={styles.title}>
+                        {I18n.t('login.sign_up').toUpperCase()}
+                    </Text>
 
-                    <View style={styles.inputRow}>
-                        <Text style={styles.titleInput}>
-                            {I18n.t('login.password').toUpperCase()}
-                        </Text>
+                    <View style={styles.containerInput}>
 
-                        <TextInput
-                            style={styles.input}
-                            value={this.state.password}
-                            secureTextEntry={true}
-                            placeholderTextColor='gray'
-                            placeholder={'enter password'}
-                            underlineColorAndroid='transparent'
-                            returnKeyType={"next"}
-                            blurOnSubmit={false}
-                            onSubmitEditing={() => this.focusNextField('three')}
-                            onChangeText={(text) => this.setState({ password: text })}
-                            ref={input => this.inputs['two'] = input} />
-                    </View>
-                    <View style={styles.line} />
+                        <View style={styles.inputRow}>
+                            <Text style={styles.titleInput}>
+                                {I18n.t('login.id').toUpperCase()}
+                            </Text>
 
-                    <View style={styles.inputRow}>
-                        <Text style={styles.titleInput}>
-                            {`CONFIRM\nPASSWORD`}
-                        </Text>
-
-                        <TextInput
-                            style={styles.input}
-                            value={this.state.confirmPassword}
-                            secureTextEntry={true}
-                            placeholderTextColor='gray'
-                            placeholder={'enter password again'}
-                            underlineColorAndroid='transparent'
-                            returnKeyType={"next"}
-                            blurOnSubmit={false}
-                            onSubmitEditing={() => this.focusNextField('four')}
-                            onChangeText={(text) => this.setState({ confirmPassword: text })}
-                            ref={input => this.inputs['three'] = input} />
-                    </View>
-                    <View style={styles.line} />
-
-                    <View style={styles.inputRow}>
-                        <Text style={styles.titleInput}>
-                            {I18n.t('login.country').toUpperCase()}
-                        </Text>
-                        <View style={styles.dropdown}>
-                            <Dropdown
-                                style={styles.dropdownText}
-                                data={listCountry}
-                                value={listCountry[0].value}
+                            <TextInput
+                                style={styles.input}
+                                value={this.state.email}
+                                keyboardType='email-address'
+                                placeholderTextColor='gray'
+                                placeholder={'enter id'}
+                                blurOnSubmit={false}
+                                underlineColorAndroid='transparent'
+                                onSubmitEditing={() => this.focusNextField('two')}
+                                returnKeyType={"next"}
+                                onChangeText={(text) => this.setState({ email: text })}
+                                ref={input => this.inputs['one'] = input}
                             />
                         </View>
+                        <View style={styles.line} />
+
+                        <View style={styles.inputRow}>
+                            <Text style={styles.titleInput}>
+                                {I18n.t('login.password').toUpperCase()}
+                            </Text>
+
+                            <TextInput
+                                style={styles.input}
+                                value={this.state.password}
+                                secureTextEntry={true}
+                                placeholderTextColor='gray'
+                                placeholder={'enter password'}
+                                underlineColorAndroid='transparent'
+                                returnKeyType={"next"}
+                                blurOnSubmit={false}
+                                onSubmitEditing={() => this.focusNextField('three')}
+                                onChangeText={(text) => this.setState({ password: text })}
+                                ref={input => this.inputs['two'] = input} />
+                        </View>
+                        <View style={styles.line} />
+
+                        <View style={styles.inputRow}>
+                            <Text style={styles.titleInput}>
+                                {`CONFIRM\nPASSWORD`}
+                            </Text>
+
+                            <TextInput
+                                style={styles.input}
+                                value={this.state.confirmPassword}
+                                secureTextEntry={true}
+                                placeholderTextColor='gray'
+                                placeholder={'enter password again'}
+                                underlineColorAndroid='transparent'
+                                returnKeyType={"next"}
+                                blurOnSubmit={false}
+                                onSubmitEditing={() => this.focusNextField('four')}
+                                onChangeText={(text) => this.setState({ confirmPassword: text })}
+                                ref={input => this.inputs['three'] = input} />
+                        </View>
+                        <View style={styles.line} />
+
+                        <View style={styles.inputRow}>
+                            <Text style={styles.titleInput}>
+                                {I18n.t('login.country').toUpperCase()}
+                            </Text>
+                            <View style={styles.dropdown}>
+                                <Dropdown
+                                    style={styles.dropdownText}
+                                    data={listCountry}
+                                    value={listCountry[0].value}
+                                />
+                            </View>
+                        </View>
+                        <View style={styles.line} />
+
+                        <View style={styles.inputRow}>
+                            <Text style={styles.titleInput}>
+                                {I18n.t('login.phone').toUpperCase()}
+                            </Text>
+
+                            <TextInput
+                                style={styles.input}
+                                value={this.state.phone}
+                                secureTextEntry={false}
+                                placeholderTextColor='gray'
+                                placeholder={'enter phone number'}
+                                underlineColorAndroid='transparent'
+                                returnKeyType={"next"}
+                                blurOnSubmit={false}
+                                onSubmitEditing={() => this.focusNextField('five')}
+                                onChangeText={(text) => this.setState({ phone: text })}
+                                ref={input => this.inputs['four'] = input} />
+                        </View>
+                        <View style={styles.line} />
+
+                        <View style={styles.inputRow}>
+                            <TouchableOpacity
+                                onPress={this._onGetCode.bind(this)}
+                                style={styles.buttonGetCode} >
+                                <Text style={styles.buttonGetCodeText}>
+                                    {I18n.t('login.code').toUpperCase()}
+                                </Text>
+                            </TouchableOpacity>
+
+                            <TextInput
+                                style={styles.input}
+                                value={this.state.code}
+                                secureTextEntry={false}
+                                placeholderTextColor='gray'
+                                placeholder={'enter code'}
+                                underlineColorAndroid='transparent'
+                                onChangeText={(text) => this.setState({ code: text })}
+                                ref={input => this.inputs['five'] = input} />
+                        </View>
+                        <View style={styles.line} />
                     </View>
-                    <View style={styles.line} />
 
-                    <View style={styles.inputRow}>
-                        <Text style={styles.titleInput}>
-                            {I18n.t('login.phone').toUpperCase()}
-                        </Text>
+                    <View style={{ flex: 1 }} />
 
-                        <TextInput
-                            style={styles.input}
-                            value={this.state.phone}
-                            secureTextEntry={false}
-                            placeholderTextColor='gray'
-                            placeholder={'enter phone number'}
-                            underlineColorAndroid='transparent'
-                            returnKeyType={"next"}
-                            blurOnSubmit={false}
-                            onSubmitEditing={() => this.focusNextField('five')}
-                            onChangeText={(text) => this.setState({ phone: text })}
-                            ref={input => this.inputs['four'] = input} />
-                    </View>
-                    <View style={styles.line} />
-
-                    <View style={styles.inputRow}>
+                    <View style={styles.containerButton}>
                         <TouchableOpacity
-                            onPress={this._onGetCode.bind(this)}
-                            style={styles.buttonGetCode} >
-                            <Text style={styles.buttonGetCodeText}>
-                                {I18n.t('login.code').toUpperCase()}
+                            onPress={() => { this._goBackLogin() }}
+                            style={styles.buttonLogin} >
+                            <Text style={styles.buttonText}>
+                                {I18n.t('login.login').toUpperCase()}
                             </Text>
                         </TouchableOpacity>
-
-                        <TextInput
-                            style={styles.input}
-                            value={this.state.code}
-                            secureTextEntry={false}
-                            placeholderTextColor='gray'
-                            placeholder={'enter code'}
-                            underlineColorAndroid='transparent'
-                            onChangeText={(text) => this.setState({ code: text })}
-                            ref={input => this.inputs['five'] = input} />
+                        <TouchableOpacity
+                            onPress={this._onPressSignUp.bind(this)}
+                            style={styles.buttonSignup} >
+                            <Text style={styles.buttonText}>
+                                {I18n.t('login.sign_up').toUpperCase()}
+                            </Text>
+                        </TouchableOpacity>
                     </View>
-                    <View style={styles.line} />
-                </View>
 
-                <View style={{ flex: 1 }} />
+                    <View style={{ flex: 1 }} />
+                </KeyboardAvoidingView>
+            </SafeAreaView>
 
-                <View style={styles.containerButton}>
-                    <TouchableOpacity
-                        onPress={() => { this._goBackLogin() }}
-                        style={styles.buttonLogin} >
-                        <Text style={styles.buttonText}>
-                            {I18n.t('login.login').toUpperCase()}
-                        </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={this._onPressSignUp.bind(this)}
-                        style={styles.buttonSignup} >
-                        <Text style={styles.buttonText}>
-                            {I18n.t('login.sign_up').toUpperCase()}
-                        </Text>
-                    </TouchableOpacity>
-                </View>
-
-                <View style={{ flex: 1 }} />
-            </KeyboardAwareScrollView>
         );
 
     }
@@ -320,13 +327,12 @@ const styles = StyleSheet.create({
     screen: {
         flex: 1,
         ...CommonStyles.screen,
-        alignItems: 'center',
         paddingLeft: CommonSize.contentPadding15px,
         paddingRight: CommonSize.contentPadding15px
     },
     containerLogo: {
         flexDirection: 'row',
-        justifyContent: 'flex-end',
+        justifyContent: 'center',
         alignItems: 'center',
     },
     containerInput: {
@@ -472,7 +478,7 @@ const styles = StyleSheet.create({
     modalText: {
         fontSize: 15 * PixelRatio.getFontScale(),
         color: 'white',
-        textAlign:'center'
+        textAlign: 'center'
     },
     noticeText: {
         color: 'white',
