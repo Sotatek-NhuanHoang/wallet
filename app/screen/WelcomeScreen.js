@@ -20,7 +20,7 @@ export default class WelcomeScreen extends BaseScreen {
     componentDidMount() {
         setTimeout(() => {
             SplashScreen.hide();
-            this.navigate('Login');
+            this.navigate('LoginScreen');
         }, 1000);
     }
     render() {

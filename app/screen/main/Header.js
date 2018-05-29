@@ -14,27 +14,29 @@ export default class Header extends Component {
     return (
       <View style = { styles.container } >
         <StatusBar barStyle = 'light-content'/>
-        <View style = { styles.innerContainer }>
-          <Image
-            style = {{
-              resizeMode: 'contain',
-              marginleft: 8
-            }}
-            source = { MenuIcon }/>
+        <View>
           <Text
             style = { styles.title }>
             { this.props.title }
           </Text>
-          <TouchableOpacity
-            style = { styles.rightButton }
-            onPress = { this.props.onOpenMenu }>
+          <View style = { styles.innerContainer }>
             <Image
               style = {{
-                flex: 1,
-                resizeMode: 'contain'
+                resizeMode: 'contain',
+                marginleft: 8
               }}
               source = { MenuIcon }/>
-          </TouchableOpacity>
+            <TouchableOpacity
+              style = { styles.rightButton }
+              onPress = { this.props.onOpenMenu }>
+              <Image
+                style = {{
+                  flex: 1,
+                  resizeMode: 'contain'
+                }}
+                source = { MenuIcon }/>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     )
