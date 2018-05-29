@@ -1,0 +1,29 @@
+{
+  "name": "wallet_mobile",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "react": "16.3.1",
+    "react-native": "0.55.4",
+    "react-native-actionsheet": "^2.4.2",
+    "react-native-i18n": "^2.0.12",
+    "react-native-keyboard-aware-scroll-view": "^0.5.0",
+    "react-native-material-dropdown": "^0.11.1",
+    "react-native-splash-screen": "^3.0.6",
+    "react-native-vector-icons": "^4.6.0",
+    "react-navigation": "^2.0.1"
+  },
+  "devDependencies": {
+    "babel-jest": "22.4.4",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "22.4.4",
+    "react-test-renderer": "16.3.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
