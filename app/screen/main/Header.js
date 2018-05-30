@@ -5,38 +5,32 @@ import {
   Text,
   Image,
   TouchableOpacity,
-  StatusBar
+  StatusBar,
+  Platform
 } from 'react-native'
+import { getStatusBarHeight } from '../../utils/Utils';
 const MenuIcon = require('../../../assets/common/ic_menu.png');
 
-export default class Header extends Component {
+class Header extends Component {
   render() {
     return (
-      <View style = { styles.container } >
+      <View style = { styles.outerContainer } >
         <StatusBar barStyle = 'light-content'/>
-        <View>
+        <View style = { styles.innerContainer }>
+          <Image
+            style = { styles.leftImage }
+            source = { MenuIcon }/>
           <Text
             style = { styles.title }>
             { this.props.title }
           </Text>
-          <View style = { styles.innerContainer }>
+          <TouchableOpacity
+            style = { styles.rightButton }
+            onPress = { this.props.onOpenMenu }>
             <Image
-              style = {{
-                resizeMode: 'contain',
-                marginleft: 8
-              }}
+              style = { styles.rightButtonImage }
               source = { MenuIcon }/>
-            <TouchableOpacity
-              style = { styles.rightButton }
-              onPress = { this.props.onOpenMenu }>
-              <Image
-                style = {{
-                  flex: 1,
-                  resizeMode: 'contain'
-                }}
-                source = { MenuIcon }/>
-            </TouchableOpacity>
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
     )
@@ -45,20 +39,23 @@ export default class Header extends Component {
 
 const styles = StyleSheet.create({
   innerContainer: {
-    paddingTop: 20,
-    width: '100%',
-    height: 44,
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
+    height: 44,
+    width: '100%',
+    ...Platform.select({
+      ios: {
+        paddingTop: getStatusBarHeight(),
+      },
+    })
   },
 
-  container: {
-    flexDirection: 'column',
-    height: 64,
+  outerContainer: {
     backgroundColor: 'black',
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: '100%',
+    height: 44 + Platform.OS === 'ios' ? getStatusBarHeight() : 0
   },
 
   title: {
@@ -68,10 +65,22 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
 
+  leftImage: {
+    resizeMode: 'contain',
+    marginLeft: 8
+  },
+
   rightButton: {
     height: '100%',
     marginEnd: 8,
     alignItems: 'center',
-    aspectRatio: 1
+    aspectRatio: 1,
+  },
+
+  rightButtonImage: {
+    flex: 1,
+    resizeMode: 'contain'
   }
 });
+
+export default Header;
