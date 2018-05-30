@@ -26,42 +26,41 @@ const titles = [
   I18n.t('common.history').toUpperCase()
 ]
 
-const AppTabNavigator = TabNavigator(
-  {
-    Wallet: {
-      screen: WalletScreen,
-      navigationOptions: {
-        tabBarLabel: titles[0]
-      }
-    },
-    Deposit: {
-      screen: DepositScreen,
-      navigationOptions: {
-        tabBarLabel: titles[1]
-      }
-    },
-    Send: {
-      screen: SendScreen,
-      navigationOptions: {
-        tabBarLabel: titles[2]
-      }
-    },
-    History: {
-      screen: HistoryScreen,
-      navigationOptions: {
-        tabBarLabel: titles[3]
-      }
+const TabRouteConfig = {
+  Wallet: {
+    screen: WalletScreen,
+    navigationOptions: {
+      tabBarLabel: titles[0]
     }
   },
+  Deposit: {
+    screen: DepositScreen,
+    navigationOptions: {
+      tabBarLabel: titles[1]
+    }
+  },
+  Send: {
+    screen: SendScreen,
+    navigationOptions: {
+      tabBarLabel: titles[2]
+    }
+  },
+  History: {
+    screen: HistoryScreen,
+    navigationOptions: {
+      tabBarLabel: titles[3]
+    }
+  }
+}
 
+const AppTabNavigator = TabNavigator(
+  TabRouteConfig,
   {
-    navigationOptions: ({ navigation }) => ({}),
     tabBarComponent: TabBarBottom,
     tabBarPosition: 'bottom',
     tabBarOptions: {
       showIcon: false,
-      upperCaseLabel: true,
-      activeTintColor: 'black',
+      activeTintColor: 'yellow',
       inactiveTintColor: 'gray',
     },
     animationEnabled: false,

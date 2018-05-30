@@ -8,7 +8,7 @@ import {
   StatusBar,
   Platform
 } from 'react-native'
-import { getStatusBarHeight } from '../../utils/Utils';
+import { getStatusBarHeight } from '../../utils/StatusBarUtils';
 const MenuIcon = require('../../../assets/common/ic_menu.png');
 
 class Header extends Component {
@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     height: 44,
-    width: '100%',
     ...Platform.select({
       ios: {
         paddingTop: getStatusBarHeight(),
@@ -54,12 +53,10 @@ const styles = StyleSheet.create({
 
   outerContainer: {
     backgroundColor: 'black',
-    width: '100%',
-    height: 44 + Platform.OS === 'ios' ? getStatusBarHeight() : 0
+    height: 44 + (Platform.OS === 'ios' ? getStatusBarHeight() : 0)
   },
 
   title: {
-    textAlign: 'center',
     color: 'white',
     fontSize: 17,
     alignSelf: 'center'
@@ -72,7 +69,6 @@ const styles = StyleSheet.create({
 
   rightButton: {
     height: '100%',
-    marginEnd: 8,
     alignItems: 'center',
     aspectRatio: 1,
   },
