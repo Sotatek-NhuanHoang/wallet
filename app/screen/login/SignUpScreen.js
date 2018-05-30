@@ -12,7 +12,6 @@ import {
     PixelRatio,
     Modal,
     Dimensions,
-    KeyboardAvoidingView,
     SafeAreaView,
     StatusBar,
     Keyboard,
@@ -21,9 +20,9 @@ import {
 import BaseScreen from '../BaseScreen';
 import I18n from '../../res/i18n/i18n';
 import { CommonStyles, CommonSize, CommonColors } from '../../utils/CommonStyles';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ActionSheet from 'react-native-actionsheet';
-import { Dropdown } from 'react-native-material-dropdown';
+//import { Dropdown } from 'react-native-material-dropdown';
+import KeyboardAvoidingView from '../../utils/KeyboardAvoidingView';
 
 export default class SignUpScreen extends BaseScreen {
     static navigationOptions = {
@@ -35,8 +34,8 @@ export default class SignUpScreen extends BaseScreen {
         this.state = {
             showModal: false,
             alertVisibility: false,
-            email: '',
-            password: '',
+            email: 'bitkoex@bitkoex.com',
+            password: '123123',
             confirmPassword: '',
             country: '',
             phone: '',
@@ -140,20 +139,17 @@ export default class SignUpScreen extends BaseScreen {
 
     }
 
+    _showActionSheet = () => {
+        this.ActionSheet.show()
+    }
     render() {
-        let listCountry = [
-            {
-                value: 'Korea',
-            },
-            {
-                value: 'USA',
-            },
-            {
-                value: 'Japan',
-            },
-            {
-                value: 'Vietnam',
-            },];
+        const listCountry = [
+            'Cancel',
+            'Korea',
+            'USA',
+            'Japan',
+            'Vietname'
+        ];
         return (
             <SafeAreaView style={styles.screen}>
                 <StatusBar barStyle='light-content' />
@@ -248,12 +244,30 @@ export default class SignUpScreen extends BaseScreen {
                                         {I18n.t('login.country').toUpperCase()}
                                     </Text>
                                     <View style={styles.dropdown}>
-                                        <Dropdown
-                                            fontSize={Platform.OS == 'ios' ? 14 : 16}
-                                            style={styles.dropdownText}
-                                            data={listCountry}
-                                            value={listCountry[0].value}
+
+                                        <ActionSheet
+                                            ref={o => this.ActionSheet = o}
+                                            //title={'Country?'}
+                                            options={listCountry}
+                                            cancelButtonIndex={0}
+                                            destructiveButtonIndex={4}
+                                            onPress={(index) => {
+                                                if (index != 0)
+                                                    this.setState({ country: listCountry[index] })
+                                            }}
                                         />
+                                        <TouchableOpacity
+                                            onPress={this._showActionSheet}
+                                            style={styles.buttonDropArrow}>
+                                            <Text style={styles.countryText}>
+                                                {this.state.country}
+                                            </Text>
+                                            <Image
+                                                style={styles.downArrow}
+                                                source={require('../../res/images/down-arrow.png')}
+                                            />
+                                        </TouchableOpacity>
+
                                     </View>
                                 </View>
                                 <View style={styles.line} />
@@ -371,6 +385,18 @@ const styles = StyleSheet.create({
         height: 100,
         resizeMode: 'contain',
     },
+    downArrow: {
+        width: 10,
+        height: 16,
+        resizeMode: 'contain'
+    },
+    buttonDropArrow: {
+        flex: 1,
+        flexDirection:'row',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        marginEnd: PixelRatio.getPixelSizeForLayoutSize(1)
+    },
     title: {
         flex: 1,
         color: 'white',
@@ -382,6 +408,13 @@ const styles = StyleSheet.create({
         flex: 1,
         color: 'white',
         fontWeight: 'bold',
+    },
+    countryText: {
+        flex: 1,
+        color: 'white',
+        textAlign: 'right',
+        alignItems: 'center',
+        marginEnd: PixelRatio.getPixelSizeForLayoutSize(5)
     },
     inputRow: {
         flexDirection: 'row',
@@ -450,6 +483,7 @@ const styles = StyleSheet.create({
     dropdown: {
         justifyContent: 'flex-end',
         flex: 1,
+        flexDirection: 'row',
         height: PixelRatio.getPixelSizeForLayoutSize(20),
     },
     dropdownText: {
