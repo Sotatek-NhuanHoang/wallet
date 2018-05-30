@@ -10,6 +10,7 @@ import {
 } from 'react-native'
 import { getStatusBarHeight } from '../../utils/StatusBarUtils';
 const MenuIcon = require('../../../assets/common/ic_menu.png');
+const LogoIcon = require('../../../assets/common/ic_logo.png');
 
 class Header extends Component {
   render() {
@@ -19,11 +20,13 @@ class Header extends Component {
         <View style = { styles.innerContainer }>
           <Image
             style = { styles.leftImage }
-            source = { MenuIcon }/>
-          <Text
-            style = { styles.title }>
-            { this.props.title }
-          </Text>
+            source = { LogoIcon }/>
+          <View style = { styles.titleContainer }>
+            <Text
+              style = { styles.title }>
+              { this.props.title }
+            </Text>
+          </View>
           <TouchableOpacity
             style = { styles.rightButton }
             onPress = { this.props.onOpenMenu }>
@@ -62,9 +65,23 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
 
+  titleContainer: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    justifyContent: 'center',
+    alignItems: 'center',
+    ...Platform.select({
+      ios: {
+        paddingTop: getStatusBarHeight(),
+      },
+    })
+  },
+
   leftImage: {
     resizeMode: 'contain',
-    marginLeft: 8
+    marginLeft: 8,
+    height: '100%'
   },
 
   rightButton: {
