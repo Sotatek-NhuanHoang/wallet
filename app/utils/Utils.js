@@ -1,4 +1,4 @@
-import Numeral from '../libs/numeral';
+import Numeral from './numeral';
 import Consts from './Consts';
 import { isNil } from 'lodash';
 
