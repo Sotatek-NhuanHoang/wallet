@@ -5,32 +5,36 @@
  */
 
 import { StackNavigator } from 'react-navigation';
-import { YellowBox } from 'react-native';
-import Screens from './app/screen/Screens';
-/*
-import WelcomeScreen from './app/screen/WelcomeScreen';
-import LoginScreen from './app/screen/login/LoginScreen';
-import React, {Component} from 'react';
+import { YellowBox, BackHandler, Animated, Easing } from 'react-native';
 
-class Main extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { currentScreen: 'WelcomeScreen' };
-    console.log('Start doing 1s')
-    setTimeout(() => {
-      console.log('Done 1s');
-      this.setState({currentScreen:'LoginScreen'});
-    }, 1000);
-  }
-  render() {
-    const { currentScreen } = this.state;
-    let mainScreen = currentScreen === 'WelcomeScreen' ? <WelcomeScreen /> : <LoginScreen />
-    return mainScreen;
+console.disableYellowBox = true;
+
+import Screens from './app/screen/Screens';
+
+
+const transitionConfig = () => {
+  return {
+    transitionSpec: {
+      duration: 750,
+      easing: Easing.out(Easing.poly(4)),
+      timing: Animated.timing,
+      useNativeDriver: true,
+    },
+    screenInterpolator: sceneProps => {      
+      const { layout, position, scene } = sceneProps
+
+      const thisSceneIndex = scene.index
+      
+      const opacity = position.interpolate({
+        inputRange: [thisSceneIndex - 1, thisSceneIndex],
+        outputRange: [0, 1],
+      })
+      
+      return { opacity };
+    },
   }
 }
-export default App = Main;
-*/
-export default App = StackNavigator(Screens, {headerMode:'screen'});
 
-
-
+export default App = StackNavigator(Screens, { headerMode: 'screen', navigationOptions: {
+  gesturesEnabled: false,
+}, transitionConfig });

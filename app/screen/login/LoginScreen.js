@@ -12,12 +12,13 @@ import {
     SafeAreaView,
     StatusBar,
     Keyboard,
+    KeyboardAvoidingView,
     TouchableWithoutFeedback
 } from 'react-native';
 import BaseScreen from '../BaseScreen';
 import I18n from '../../res/i18n/i18n';
 import { CommonStyles, CommonSize, CommonColors } from '../../utils/CommonStyles';
-import KeyboardAvoidingView from '../../utils/KeyboardAvoidingView';
+//import KeyboardAvoidingView from '../../utils/KeyboardAvoidingView';
 
 export default class LoginScreen extends BaseScreen {
     static navigationOptions = {

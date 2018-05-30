@@ -1,14 +1,19 @@
 import WelcomeScreen from './WelcomeScreen';
 import LoginScreen from './login/LoginScreen';
 import SignUpScreen from './login/SignUpScreen';
+import MainScreen from './main/MainScreen';
+
 export default {
-    WelcomeScreen: { 
+    WelcomeScreen: {
         screen: WelcomeScreen
     },
-    LoginScreen: { 
-        screen: LoginScreen 
+    LoginScreen: {
+        screen: LoginScreen
     },
-    SignUpScreen:{
+    SignUpScreen: {
         screen: SignUpScreen
+    },
+    MainScreen: {
+        screen: MainScreen
     }
 };

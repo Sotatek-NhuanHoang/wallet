@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import {SplashScreen} from 'react-native-splash-screen';
 import LoginScreen from './login/LoginScreen';
+import MainScreen from './main/MainScreen';
 import BaseScreen from './BaseScreen';
 export default class WelcomeScreen extends BaseScreen {
     static navigationOptions = {
@@ -21,6 +22,7 @@ export default class WelcomeScreen extends BaseScreen {
         setTimeout(() => {
           //  SplashScreen.hide();//error
             this.navigate('LoginScreen');
+
         }, 1000);
     }
     render() {

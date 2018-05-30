@@ -15,14 +15,15 @@ import {
     SafeAreaView,
     StatusBar,
     Keyboard,
+    KeyboardAvoidingView,
     TouchableWithoutFeedback
 } from 'react-native';
 import BaseScreen from '../BaseScreen';
 import I18n from '../../res/i18n/i18n';
 import { CommonStyles, CommonSize, CommonColors } from '../../utils/CommonStyles';
 import ActionSheet from 'react-native-actionsheet';
-//import { Dropdown } from 'react-native-material-dropdown';
-import KeyboardAvoidingView from '../../utils/KeyboardAvoidingView';
+import Icon from 'react-native-vector-icons';
+//import KeyboardAvoidingView from '../../utils/KeyboardAvoidingView';
 
 export default class SignUpScreen extends BaseScreen {
     static navigationOptions = {
@@ -93,7 +94,6 @@ export default class SignUpScreen extends BaseScreen {
                     flex: 1,
                     alignItems: 'center',
                     justifyContent: 'center',
-                    marginTop: (Platform.OS == 'ios') ? 20 : 0
                 }}>
                     <Modal
                         animationType={"fade"}
@@ -162,8 +162,10 @@ export default class SignUpScreen extends BaseScreen {
                         onPress={Keyboard.dismiss}
                         accessible={false}>
                         <View style={{ flex: 1, }}>
+                            <View style={{flex:1}}/>
+                            
+                            {this.renderModal}
 
-                            {this.renderModal()}
                             <View style={styles.containerLogo}>
                                 <Image
                                     style={styles.imageView}
@@ -264,7 +266,7 @@ export default class SignUpScreen extends BaseScreen {
                                             </Text>
                                             <Image
                                                 style={styles.downArrow}
-                                                source={require('../../res/images/down-arrow.png')}
+                                                source={require('../../../assets/common/ic_down_arrow.png')}
                                             />
                                         </TouchableOpacity>
 
@@ -336,7 +338,9 @@ export default class SignUpScreen extends BaseScreen {
                             </View>
 
                             <View style={{ flex: 1 }} />
+                            {this.renderModal()}
                         </View>
+                       
                     </TouchableWithoutFeedback>
                 </KeyboardAvoidingView>
             </SafeAreaView>
@@ -392,7 +396,7 @@ const styles = StyleSheet.create({
     },
     buttonDropArrow: {
         flex: 1,
-        flexDirection:'row',
+        flexDirection: 'row',
         justifyContent: 'flex-end',
         alignItems: 'center',
         marginEnd: PixelRatio.getPixelSizeForLayoutSize(1)

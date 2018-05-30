@@ -17,6 +17,11 @@ export default{
         notice:'notice',
         ok:'ok',
         notice_msg:'A verification code has been sent to your email. Please check your email and enter your verification code.'
+    },
+    common: {
+        wallet: 'wallet',
+        deposit: 'deposit',
+        send: 'send',
+        history: 'history'
     }
-
 };
