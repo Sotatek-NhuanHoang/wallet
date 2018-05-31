@@ -47,16 +47,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     height: 44,
-    ...Platform.select({
-      ios: {
-        paddingTop: getStatusBarHeight(),
-      },
-    })
+    paddingTop: getStatusBarHeight(),
+   
   },
 
   outerContainer: {
     backgroundColor: 'black',
-    height: 44 + (Platform.OS === 'ios' ? getStatusBarHeight() : 0)
+    height: 44 + getStatusBarHeight()
   },
 
   title: {
@@ -71,11 +68,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     justifyContent: 'center',
     alignItems: 'center',
-    ...Platform.select({
-      ios: {
-        paddingTop: getStatusBarHeight(),
-      },
-    })
+    paddingTop: getStatusBarHeight(),
+   
   },
 
   leftImage: {
