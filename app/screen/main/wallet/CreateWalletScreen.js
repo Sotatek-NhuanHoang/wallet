@@ -11,9 +11,6 @@ import {
 import HTMLView from 'react-native-htmlview';
 import I18n from '../../../res/i18n/i18n';
 import BaseScreen from '../../BaseScreen';
-import { CommonStyles } from '../../../utils/CommonStyles';
-
-const Background = require('../../../../assets/common/background.png');
 
 class CreateWalletScreen extends BaseScreen {
   static navigationOptions = {
@@ -150,13 +147,11 @@ const htmlStyles = StyleSheet.create({
 });
 
 const styles = StyleSheet.create({
-  background: CommonStyles.background,
-
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#2D2D2D'
+    backgroundColor: 'transparent'
   },
 
   email: {

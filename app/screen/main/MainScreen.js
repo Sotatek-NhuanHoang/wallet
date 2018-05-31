@@ -4,7 +4,8 @@ import {
   View,
   Text,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  ImageBackground
 } from 'react-native'
 import I18n from '../../res/i18n/i18n';
 import BaseScreen from '../BaseScreen';
@@ -18,6 +19,9 @@ import DepositScreen from './deposit/DepositScreen';
 import SendScreen from './send/SendScreen';
 import HistoryScreen from './history/HistoryScreen';
 import Header from './Header';
+import { CommonStyles } from '../../utils/CommonStyles';
+
+const Background = require('../../../assets/common/background.png');
 
 const titles = [
   I18n.t('common.wallet').toUpperCase(),
@@ -62,6 +66,9 @@ const AppTabNavigator = TabNavigator(
       showIcon: false,
       activeTintColor: 'yellow',
       inactiveTintColor: 'gray',
+      style: {
+        backgroundColor: 'black'
+      }
     },
     animationEnabled: false,
     swipeEnabled: false,
@@ -84,6 +91,9 @@ class MainScreen extends BaseScreen {
   render() {
     return (
       <View style = { styles.container }>
+        <ImageBackground
+          style = { styles.background }
+          source = { Background }/>
         <Header title = { this.state.headerTitle } onOpenMenu = { this._openMenu.bind(this) }/>
         <AppTabNavigator onNavigationStateChange = { this._onTabChange.bind(this) }/>
       </View>
@@ -105,6 +115,8 @@ class MainScreen extends BaseScreen {
 }
 
 const styles = StyleSheet.create({
+  background: CommonStyles.background,
+
   container: {
     flex: 1,
     flexDirection: 'column'

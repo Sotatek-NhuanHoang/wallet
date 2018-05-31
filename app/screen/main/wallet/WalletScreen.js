@@ -12,9 +12,13 @@ export default StackNavigator({
     screen: CreateWalletScreen
   }
 }, {
+  headerMode: 'none',
   initialRouteName: 'Start',
   navigationOptions: {
     gesturesEnabled: false,
   },
-  transitionConfig: Transitions.opacityTransition
+  transitionConfig: Transitions.opacityTransition,
+  cardStyle: {
+    backgroundColor: 'transparent'
+  }
 });
