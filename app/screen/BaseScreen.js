@@ -4,7 +4,8 @@ import { NavigationActions } from 'react-navigation';
 
 export default class BaseScreen extends React.Component {
   static navigationOptions = {
-    headerLeft: (<View />)
+    headerLeft: (<View />),
+    header: null
   };
 
   navigate(screen, params) {
