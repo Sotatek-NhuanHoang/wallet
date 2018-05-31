@@ -9,13 +9,16 @@ import {
   Image,
   TouchableOpacity,
   Alert,
-  PixelRatio
+  PixelRatio,
+  ImageBackground
 } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import LoginScreen from './login/LoginScreen';
 import MainScreen from './main/MainScreen';
 import BaseScreen from './BaseScreen';
+import { CommonStyles } from '../utils/CommonStyles';
 
+const Background = require('../../assets/common/background.png');
 const Logo = require('../../assets/common/logo.png');
 
 export default class WelcomeScreen extends BaseScreen {
@@ -33,6 +36,9 @@ export default class WelcomeScreen extends BaseScreen {
   render() {
     return (
       <View style = { styles.rootView }>
+        <ImageBackground
+          style = { styles.background }
+          source = { Background }/>
         <View style = { styles.container }>
           <Image
             style = { styles.imageView }
@@ -49,6 +55,8 @@ export default class WelcomeScreen extends BaseScreen {
   }
 }
 const styles = StyleSheet.create({
+  background: CommonStyles.background,
+
   container: {
     flex: 1,
     justifyContent: 'center',
