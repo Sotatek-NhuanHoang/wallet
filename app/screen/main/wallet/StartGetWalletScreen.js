@@ -3,12 +3,20 @@ import {
   View,
   Text,
   StyleSheet,
+  ImageView,
   TouchableOpacity
 } from 'react-native'
 import I18n from '../../../res/i18n/i18n';
 import BaseScreen from '../../BaseScreen';
+import { CommonStyles } from '../../../utils/CommonStyles';
+
+const Background = require('../../../../assets/common/background.png');
 
 class StartGetWalletScreen extends BaseScreen {
+  static navigationOptions = {
+    header: null
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -19,6 +27,9 @@ class StartGetWalletScreen extends BaseScreen {
   render() {
     return (
       <View style = { styles.container }>
+        {/* <ImageView
+          style = { styles.background }
+          source = { Background }/> */}
         <Text style = { styles.email }>
           { this.state.userEmail }
         </Text>
@@ -37,11 +48,13 @@ class StartGetWalletScreen extends BaseScreen {
   }
 
   _onGetStarted() {
-    this.navigate('CreateWallet');
+    this.replace('CreateWallet');
   }
 }
 
 const styles = StyleSheet.create({
+  background: CommonStyles.background,
+
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -61,16 +74,16 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    marginTop: 15,
+    marginTop: 30,
     backgroundColor: '#0065B8',
-    borderRadius: 10,
+    borderRadius: 5,
     height: 40,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingStart: 20,
-    paddingEnd: 20,
     paddingTop: 5,
-    paddingBottom: 5
+    paddingBottom: 5,
+    paddingStart: 60,
+    paddingEnd: 60
   },
 
   buttonTitle: {

@@ -12,7 +12,6 @@ export default StackNavigator({
     screen: CreateWalletScreen
   }
 }, {
-  headerMode: 'none',
   initialRouteName: 'Start',
   navigationOptions: {
     gesturesEnabled: false,
