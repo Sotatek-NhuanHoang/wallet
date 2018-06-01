@@ -27,7 +27,13 @@ export default {
     ok: 'ok',
     edit: 'edit',
     back: 'back',
-    make_account: 'Make account'
+    make_account: 'Make account',
+    submit: 'submit',
+    cancel: 'cancel'
+  },
+  menu: {
+    export_private_key: 'Export private key',
+    logout: 'Logout'
   },
   start: {
     no_account: 'no account',
@@ -43,5 +49,8 @@ export default {
     For your security you need to set a secret code.
     You must enter your secret code when you send your tokens. The code is not stored anywhere. And Once you leave this page, you will not be able to recover or change it forever. So you have to copy the code and keep it somewhere else safe.
     `
+  },
+  export_private_key: {
+    input_description: 'Input the secret code to export your private key.'
   }
 };

@@ -12,7 +12,7 @@ import Transitions from './app/utils/Transitions';
 console.disableYellowBox = true;
 
 export default App = StackNavigator(Screens, {
-  headerMode: 'screen',
+  headerMode: 'none',
   navigationOptions: {
     gesturesEnabled: false,
   },

@@ -14,7 +14,6 @@ import {
 } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import LoginScreen from './login/LoginScreen';
-import MainScreen from './main/MainScreen';
 import BaseScreen from './BaseScreen';
 import { CommonStyles } from '../utils/CommonStyles';
 
@@ -22,14 +21,10 @@ const Background = require('../../assets/common/background.png');
 const Logo = require('../../assets/common/logo.png');
 
 export default class WelcomeScreen extends BaseScreen {
-  static navigationOptions = {
-    header: null,
-  };
-
   componentDidMount() {
     setTimeout(() => {
       SplashScreen.hide();
-      this.replace('MainScreen');
+      this.replace('LoginScreen');
     }, 1000);
   }
   
@@ -45,7 +40,7 @@ export default class WelcomeScreen extends BaseScreen {
             source = { Logo }/>
           <Text
             style = { styles.welcome } >
-            <Text style = {{ fontSize: 44 }}>{ 'WWW' }</Text>
+            <Text style = {{ fontSize: 44, fontWeight: 'bold' }}>{ 'WWW' }</Text>
             <Text>{'\n'}</Text>
             <Text style = {{ fontSize: 24 }}>{ 'coin wallet' }</Text>
           </Text>
@@ -65,7 +60,6 @@ const styles = StyleSheet.create({
   welcome: {
     marginTop: 15,
     textAlign: 'center',
-    fontWeight: 'bold',
     color: 'white',
   },
   imageView: {
@@ -74,7 +68,6 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   rootView: {
-    flex: 1,
-    backgroundColor: 'darkgray',
+    flex: 1
   },
 });
