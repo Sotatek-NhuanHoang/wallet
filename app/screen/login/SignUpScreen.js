@@ -213,7 +213,7 @@ export default class SignUpScreen extends BaseScreen {
                 />
               </View>
               <View style={styles.line} />
-
+              <View style={styles.seperatorInput} />
               <View style={styles.inputRow}>
                 <Text style={styles.titleInput}>
                   {I18n.t('login.password').toUpperCase()}
@@ -233,7 +233,7 @@ export default class SignUpScreen extends BaseScreen {
                   ref={input => this.inputs.two = input} />
               </View>
               <View style={styles.line} />
-
+              <View style={styles.seperatorInput} />
               <View style={styles.inputRow}>
                 <Text style={styles.titleInput}>
                   {I18n.t('sign_up.confirm_password').toUpperCase()}
@@ -253,7 +253,7 @@ export default class SignUpScreen extends BaseScreen {
                   ref={input => this.inputs.three = input} />
               </View>
               <View style={styles.line} />
-
+              <View style={styles.seperatorInput} />
               <View style={styles.inputRow}>
                 <Text style={styles.titleInput}>
                   {I18n.t('sign_up.country').toUpperCase()}
@@ -264,7 +264,6 @@ export default class SignUpScreen extends BaseScreen {
                     ref={ref => this._actionSheet = ref}
                     options={actionSheetOptions}
                     cancelButtonIndex={0}
-                    destructiveButtonIndex={4}
                     onPress={(index) => {
                       if (index != 0)
                         this.setState({ country: actionSheetOptions[index] })
@@ -286,7 +285,7 @@ export default class SignUpScreen extends BaseScreen {
               </View>
 
               <View style={styles.line} />
-
+              <View style={styles.seperatorInput} />
               <View style={styles.inputRow}>
                 <Text style={styles.titleInput}>
                   {I18n.t('sign_up.phone').toUpperCase()}
@@ -307,7 +306,7 @@ export default class SignUpScreen extends BaseScreen {
                   ref={input => this.inputs.four = input} />
               </View>
               <View style={styles.line} />
-
+              <View style={styles.seperatorInput} />
               <View style={styles.inputRow}>
                 <TouchableOpacity
                   onPress={this._onGetCode.bind(this)}
@@ -380,8 +379,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: (Platform.OS == 'ios') ? 20 : 0,
-    marginStart: 20,
-    marginEnd: 20
+    marginStart: 30,
+    marginEnd: 30
   },
   containerButton: {
     justifyContent: 'center',
@@ -444,11 +443,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'gray',
   },
   buttonGetCode: {
-    height: 40,
+    flex: 1,
+    height: 30,
     justifyContent: 'center',
     borderRadius: 5,
-    marginRight: 3,
     backgroundColor: '#f99b20',
+    marginEnd: 5,
     paddingStart: 5,
     paddingEnd: 5,
     alignSelf: 'flex-start'
@@ -500,7 +500,7 @@ const styles = StyleSheet.create({
   },
   seperatorInput: {
     alignSelf: 'stretch',
-    marginTop: 7,
+    marginTop: 2,
     marginBottom: 2,
   },
   modalButton: {
@@ -508,17 +508,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'gray',
-    borderColor: 'gray',
-    borderWidth: 1,
     height: 15,
     width: '60%'
   },
 
   modalContent: {
     backgroundColor: '#2b2a2a',
-    borderWidth: 1,
     borderRadius: 2,
-    borderColor: '#2b2a2a',
     width: 2 * (width / 3),
     height: width / 2 + 30,
     alignItems: 'center',
@@ -539,8 +535,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#474545',
-    borderColor: '#474545',
-    borderWidth: 1,
     height: 30,
     width: '100%',
     alignSelf: 'stretch'
