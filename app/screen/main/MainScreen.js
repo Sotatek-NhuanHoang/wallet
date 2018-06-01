@@ -186,6 +186,7 @@ class MainScreen extends BaseScreen {
   }
 
   _onLogout() {
+    this.replace('LoginScreen');
     // this._menu.hide();
   }
 
