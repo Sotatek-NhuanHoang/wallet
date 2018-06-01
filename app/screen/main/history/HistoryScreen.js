@@ -19,7 +19,7 @@ const fakeData = [
     timeEnd: '13:16',
     status: 'in',
     txid: '0xFc62AA3452de3...',
-    amount: '0.001 EHT'
+    amount: '0.001 ETH'
   },
   {
     timeStart: '04:16',
@@ -33,7 +33,7 @@ const fakeData = [
     timeEnd: '13:16',
     status: 'in',
     txid: '0xFc62AA3452de3...',
-    amount: '0.001 EHT'
+    amount: '0.001 ETH'
   },
   {
     timeStart: '04:16',

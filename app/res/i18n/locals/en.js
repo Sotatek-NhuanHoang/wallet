@@ -6,10 +6,17 @@ export default {
   },
   login: {
     id: 'id',
-    password: 'password',
-    login: 'login',
-    sign_up: 'sign up',
-    confirm_password: 'confirm\\npassword',
+    password: 'password'
+  },
+  sign_up: {
+    placeholder: {
+      enter_id: 'enter id',
+      enter_password: 'enter password',
+      enter_password_again: 'enter password again',
+      enter_phone_number: 'enter phone number',
+      enter_code: 'enter code'
+    },
+    confirm_password: 'confirm password',
     country: 'country',
     phone: 'phone #',
     code: 'get code'
@@ -29,7 +36,10 @@ export default {
     back: 'back',
     make_account: 'Make account',
     submit: 'submit',
-    cancel: 'cancel'
+    cancel: 'cancel',
+
+    login: 'login',
+    sign_up: 'sign up',
   },
   menu: {
     export_private_key: 'Export private key',
@@ -54,13 +64,13 @@ export default {
     input_description: 'Input the secret code to export your private key.'
   },
   send: {
-      coin: 'coin',
-      address: 'address',
-      amount: 'amount'
+    coin: 'coin',
+    address: 'address',
+    amount: 'amount'
   },
   history:{
-      time:'time',
-      txid: 'txid',
-      amount: 'amount'
+    time:'time',
+    txid: 'txid',
+    amount: 'amount'
   }
 };

@@ -23,7 +23,6 @@ import HistoryScreen from './history/HistoryScreen';
 import { CommonStyles } from '../../utils/CommonStyles';
 const MenuIcon = require('../../../assets/common/ic_menu.png');
 const LogoIcon = require('../../../assets/common/ic_logo.png');
-// import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 import Header from './Header';
 
 const Background = require('../../../assets/common/background.png');

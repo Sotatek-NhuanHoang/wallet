@@ -24,9 +24,11 @@ import I18n from '../../res/i18n/i18n';
 import { CommonStyles, CommonSize, CommonColors } from '../../utils/CommonStyles';
 import ActionSheet from 'react-native-actionsheet';
 import Icon from 'react-native-vector-icons';
+import _ from 'lodash';
 
 const Background = require('../../../assets/common/background.png');
 const Logo = require('../../../assets/common/logo.png');
+const DownArrowIcon = require('../../../assets/common/ic_down_arrow.png');
 
 export default class SignUpScreen extends BaseScreen {
   static navigationOptions = {
@@ -99,7 +101,7 @@ export default class SignUpScreen extends BaseScreen {
           justifyContent: 'center',
         }}>
           <Modal
-            animationType={"fade"}
+            animationType = "fade"
             transparent={true}
             visible={this.state.alertVisibility}
             onRequestClose={() => {
@@ -115,7 +117,7 @@ export default class SignUpScreen extends BaseScreen {
                   <Text style={styles.noticeText}>{I18n.t('alert.notice').toUpperCase()}</Text>
 
                 </View>
-                <View style={{ marginTop: PixelRatio.getPixelSizeForLayoutSize(5), }}>
+                <View style={{ marginTop: 5 }}>
                   <Text style={styles.modalText}>{I18n.t('alert.notice_msg')}</Text>
 
                 </View>
@@ -128,7 +130,7 @@ export default class SignUpScreen extends BaseScreen {
                       this.setState({ showModal: false })
                       this._showAlert(false);
                     }}>
-                    <Text style={styles.buttonText}>{I18n.t('alert.ok').toUpperCase()}</Text>
+                    <Text style={styles.buttonText}>{I18n.t('common.ok').toUpperCase()}</Text>
                   </TouchableOpacity>
                 </View>
                 <View style={{ flex: 1 }} />
@@ -143,212 +145,217 @@ export default class SignUpScreen extends BaseScreen {
   }
 
   _showActionSheet = () => {
-    this.ActionSheet.show()
+    this._actionSheet.show()
   }
   render() {
-    const listCountry = [
-      'Cancel',
+    const actionSheetOptions = [
+      _.capitalize(I18n.t('common.cancel')),
       'Korea',
       'USA',
       'Japan',
-      'Vietname'
+      'Vietnam',
     ];
     return (
-      <View style={styles.screen}>
+      <KeyboardAvoidingView
+        behavior='position'
+        keyboardVerticalOffset={Platform.select({ ios: 0, android: 25 })}
+        style={ styles.screen }>
         <StatusBar barStyle='light-content' />
         <ImageBackground
           style = { styles.background }
           source = { Background }/>
-        <KeyboardAvoidingView
-          behavior={'padding'}
-          keyboardVerticalOffset={Platform.select({ ios: 0, android: 25 })}
-          style={{ flex: 1 }}>
-          <TouchableWithoutFeedback
-            style={{ flex: 1 }}
-            onPress={Keyboard.dismiss}
-            accessible={false}>
-            <View style={{ flex: 1, }}>
-              <View style={{ flex: 1 }} />
 
-              {this.renderModal()}
+        <TouchableWithoutFeedback
+          style={{ flex: 1 }}
+          onPress={Keyboard.dismiss}
+          accessible={false}>
+          <View style={{ flex: 1, }}>
+            <View style={{ flex: 1 }} />
 
-              <View style={styles.containerLogo}>
-                <Image
-                  style={styles.imageView}
-                  source={ Logo }
-                />
-                <Text style={styles.appName}>{`WWW \n coin wallet`}</Text>
-              </View>
-              <View style={{ flex: 1 }} />
-              <Text style={styles.title}>
-                {I18n.t('login.sign_up').toUpperCase()}
+            {this.renderModal()}
+
+            <View style={styles.containerLogo}>
+              <Image
+                style={styles.imageView}
+                source={ Logo }
+              />
+              <Text
+                style = { styles.welcome } >
+                <Text style = {{ fontSize: 44, fontWeight: 'bold' }}>{ 'WWW' }</Text>
+                <Text>{'\n'}</Text>
+                <Text style = {{ fontSize: 24 }}>{ 'coin wallet' }</Text>
               </Text>
-              <View style={{ flex: 1 }} />
-              <View style={styles.containerInput}>
-
-                <View style={styles.inputRow}>
-                  <Text style={styles.titleInput}>
-                    {I18n.t('login.id').toUpperCase()}
-                  </Text>
-
-                  <TextInput
-                    style={styles.input}
-                    value={this.state.email}
-                    keyboardType='email-address'
-                    placeholderTextColor='gray'
-                    placeholder={'enter id'}
-                    blurOnSubmit={false}
-                    underlineColorAndroid='transparent'
-                    onSubmitEditing={() => this.focusNextField('two')}
-                    returnKeyType={"next"}
-                    onChangeText={(text) => this.setState({ email: text })}
-                    ref={input => this.inputs['one'] = input}
-                  />
-                </View>
-                <View style={styles.line} />
-
-                <View style={styles.inputRow}>
-                  <Text style={styles.titleInput}>
-                    {I18n.t('login.password').toUpperCase()}
-                  </Text>
-
-                  <TextInput
-                    style={styles.input}
-                    value={this.state.password}
-                    secureTextEntry={true}
-                    placeholderTextColor='gray'
-                    placeholder={'enter password'}
-                    underlineColorAndroid='transparent'
-                    returnKeyType={"next"}
-                    blurOnSubmit={false}
-                    onSubmitEditing={() => this.focusNextField('three')}
-                    onChangeText={(text) => this.setState({ password: text })}
-                    ref={input => this.inputs['two'] = input} />
-                </View>
-                <View style={styles.line} />
-
-                <View style={styles.inputRow}>
-                  <Text style={styles.titleInput}>
-                    {`CONFIRM\nPASSWORD`}
-                  </Text>
-
-                  <TextInput
-                    style={styles.input}
-                    value={this.state.confirmPassword}
-                    secureTextEntry={true}
-                    placeholderTextColor='gray'
-                    placeholder={'enter password again'}
-                    underlineColorAndroid='transparent'
-                    returnKeyType={"next"}
-                    blurOnSubmit={false}
-                    onSubmitEditing={() => this.focusNextField('four')}
-                    onChangeText={(text) => this.setState({ confirmPassword: text })}
-                    ref={input => this.inputs['three'] = input} />
-                </View>
-                <View style={styles.line} />
-
-                <View style={styles.inputRow}>
-                  <Text style={styles.titleInput}>
-                    {I18n.t('login.country').toUpperCase()}
-                  </Text>
-                  <View style={styles.dropdown}>
-
-                    <ActionSheet
-                      ref={o => this.ActionSheet = o}
-                      //title={'Country?'}
-                      options={listCountry}
-                      cancelButtonIndex={0}
-                      destructiveButtonIndex={4}
-                      onPress={(index) => {
-                        if (index != 0)
-                          this.setState({ country: listCountry[index] })
-                      }}
-                    />
-                    <TouchableOpacity
-                      onPress={this._showActionSheet}
-                      style={styles.buttonDropArrow}>
-                      <Text style={styles.countryText}>
-                        {this.state.country}
-                      </Text>
-                      <Image
-                        style={styles.downArrow}
-                        source={require('../../../assets/common/ic_down_arrow.png')}
-                      />
-                    </TouchableOpacity>
-
-                  </View>
-                </View>
-                <View style={styles.line} />
-
-                <View style={styles.inputRow}>
-                  <Text style={styles.titleInput}>
-                    {I18n.t('login.phone').toUpperCase()}
-                  </Text>
-
-                  <TextInput
-                    style={styles.input}
-                    value={this.state.phone}
-                    secureTextEntry={false}
-                    placeholderTextColor='gray'
-                    placeholder={'enter phone number'}
-                    underlineColorAndroid='transparent'
-                    returnKeyType={"next"}
-                    keyboardType='numeric'
-                    blurOnSubmit={false}
-                    onSubmitEditing={() => this.focusNextField('five')}
-                    onChangeText={(text) => this.setState({ phone: text })}
-                    ref={input => this.inputs['four'] = input} />
-                </View>
-                <View style={styles.line} />
-
-                <View style={styles.inputRow}>
-                  <TouchableOpacity
-                    onPress={this._onGetCode.bind(this)}
-                    style={styles.buttonGetCode} >
-                    <Text style={styles.buttonGetCodeText}>
-                      {I18n.t('login.code').toUpperCase()}
-                    </Text>
-                  </TouchableOpacity>
-
-                  <TextInput
-                    style={styles.input}
-                    value={this.state.code}
-                    secureTextEntry={false}
-                    placeholderTextColor='gray'
-                    placeholder={'enter code'}
-                    keyboardType='numeric'
-                    underlineColorAndroid='transparent'
-                    onChangeText={(text) => this.setState({ code: text })}
-                    ref={input => this.inputs['five'] = input} />
-                </View>
-                <View style={styles.line} />
-              </View>
-
-              <View style={{ flex: 1 }} />
-
-              <View style={styles.containerButton}>
-                <TouchableOpacity
-                  onPress={() => { this._goBackLogin() }}
-                  style={styles.buttonLogin} >
-                  <Text style={styles.buttonText}>
-                    {I18n.t('login.login').toUpperCase()}
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={this._onPressSignUp.bind(this)}
-                  style={styles.buttonSignup} >
-                  <Text style={styles.buttonText}>
-                    {I18n.t('login.sign_up').toUpperCase()}
-                  </Text>
-                </TouchableOpacity>
-              </View>
-
-              <View style={{ flex: 1 }} />
-              {this.renderModal()}
             </View>
-          </TouchableWithoutFeedback>
-        </KeyboardAvoidingView>
-      </View>
+            <View style={{ flex: 1 }} />
+            <Text style={styles.title}>
+              {I18n.t('common.sign_up').toUpperCase()}
+            </Text>
+            <View style={{ flex: 1 }} />
+            <View style={styles.containerInput}>
+
+              <View style={styles.inputRow}>
+                <Text style={styles.titleInput}>
+                  {I18n.t('login.id').toUpperCase()}
+                </Text>
+
+                <TextInput
+                  style={styles.input}
+                  value={this.state.email}
+                  keyboardType='email-address'
+                  placeholderTextColor='gray'
+                  placeholder={I18n.t('sign_up.placeholder.enter_id')}
+                  blurOnSubmit={false}
+                  underlineColorAndroid='transparent'
+                  onSubmitEditing={() => this.focusNextField('two')}
+                  returnKeyType={"next"}
+                  onChangeText={(text) => this.setState({ email: text })}
+                  ref={input => this.inputs.one = input}
+                />
+              </View>
+              <View style={styles.line} />
+
+              <View style={styles.inputRow}>
+                <Text style={styles.titleInput}>
+                  {I18n.t('login.password').toUpperCase()}
+                </Text>
+
+                <TextInput
+                  style={styles.input}
+                  value={this.state.password}
+                  secureTextEntry={true}
+                  placeholderTextColor='gray'
+                  placeholder={I18n.t('sign_up.placeholder.enter_password')}
+                  underlineColorAndroid='transparent'
+                  returnKeyType={"next"}
+                  blurOnSubmit={false}
+                  onSubmitEditing={() => this.focusNextField('three')}
+                  onChangeText={(text) => this.setState({ password: text })}
+                  ref={input => this.inputs.two = input} />
+              </View>
+              <View style={styles.line} />
+
+              <View style={styles.inputRow}>
+                <Text style={styles.titleInput}>
+                  {I18n.t('sign_up.confirm_password').toUpperCase()}
+                </Text>
+
+                <TextInput
+                  style={styles.input}
+                  value={this.state.confirmPassword}
+                  secureTextEntry={true}
+                  placeholderTextColor='gray'
+                  placeholder={I18n.t('sign_up.placeholder.enter_password_again')}
+                  underlineColorAndroid='transparent'
+                  returnKeyType={"next"}
+                  blurOnSubmit={false}
+                  onSubmitEditing={() => this.focusNextField('four')}
+                  onChangeText={(text) => this.setState({ confirmPassword: text })}
+                  ref={input => this.inputs.three = input} />
+              </View>
+              <View style={styles.line} />
+
+              <View style={styles.inputRow}>
+                <Text style={styles.titleInput}>
+                  {I18n.t('sign_up.country').toUpperCase()}
+                </Text>
+
+                <View style={styles.dropdown}>
+                  <ActionSheet
+                    ref={ref => this._actionSheet = ref}
+                    options={actionSheetOptions}
+                    cancelButtonIndex={0}
+                    destructiveButtonIndex={4}
+                    onPress={(index) => {
+                      if (index != 0)
+                        this.setState({ country: actionSheetOptions[index] })
+                    }}
+                  />
+
+                  <TouchableOpacity
+                    onPress={this._showActionSheet.bind(this)}
+                    style={styles.buttonDropArrow}>
+                    <Text style={styles.countryText}>
+                      {this.state.country}
+                    </Text>
+                    <Image
+                      style={styles.downArrow}
+                      source={ DownArrowIcon }
+                    />
+                  </TouchableOpacity>
+                </View>
+              </View>
+
+              <View style={styles.line} />
+
+              <View style={styles.inputRow}>
+                <Text style={styles.titleInput}>
+                  {I18n.t('sign_up.phone').toUpperCase()}
+                </Text>
+
+                <TextInput
+                  style={styles.input}
+                  value={this.state.phone}
+                  secureTextEntry={false}
+                  placeholderTextColor='gray'
+                  placeholder={I18n.t('sign_up.placeholder.enter_phone_number')}
+                  underlineColorAndroid='transparent'
+                  returnKeyType={"next"}
+                  keyboardType='numeric'
+                  blurOnSubmit={false}
+                  onSubmitEditing={() => this.focusNextField('five')}
+                  onChangeText={(text) => this.setState({ phone: text })}
+                  ref={input => this.inputs.four = input} />
+              </View>
+              <View style={styles.line} />
+
+              <View style={styles.inputRow}>
+                <TouchableOpacity
+                  onPress={this._onGetCode.bind(this)}
+                  style={styles.buttonGetCode} >
+                  <Text style={styles.buttonGetCodeText}>
+                    {I18n.t('sign_up.code').toUpperCase()}
+                  </Text>
+                </TouchableOpacity>
+
+                <TextInput
+                  style={styles.input}
+                  value={this.state.code}
+                  secureTextEntry={false}
+                  placeholderTextColor='gray'
+                  placeholder={I18n.t('sign_up.placeholder.enter_code')}
+                  keyboardType='numeric'
+                  underlineColorAndroid='transparent'
+                  onChangeText={(text) => this.setState({ code: text })}
+                  ref={input => this.inputs.five = input} />
+              </View>
+              <View style={styles.line} />
+            </View>
+
+            <View style={{ flex: 1 }} />
+
+            <View style={styles.containerButton}>
+              <TouchableOpacity
+                onPress={this._goBackLogin.bind(this)}
+                style={styles.buttonLogin} >
+                <Text style={styles.buttonText}>
+                  {I18n.t('common.login').toUpperCase()}
+                </Text>
+              </TouchableOpacity>
+              <View style = {{ width: 10 }} />
+              <TouchableOpacity
+                onPress={this._onPressSignUp.bind(this)}
+                style={styles.buttonSignup} >
+                <Text style={styles.buttonText}>
+                  {I18n.t('common.sign_up').toUpperCase()}
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={{ flex: 1 }} />
+            {this.renderModal()}
+          </View>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
     );
 
   }
@@ -361,32 +368,32 @@ const styles = StyleSheet.create({
 
   scrollView: {
   },
-  screen: {
-    ...CommonStyles.screen,
-    paddingLeft: 15,
-    paddingRight: 15
-  },
+  screen: CommonStyles.screen,
+
   containerLogo: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
   containerInput: {
-    alignSelf: 'stretch',
+    alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: (Platform.OS == 'ios') ? 20 : 0
+    marginTop: (Platform.OS == 'ios') ? 20 : 0,
+    marginStart: 20,
+    marginEnd: 20
   },
   containerButton: {
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     flexDirection: 'row',
-    alignSelf: 'stretch',
+    alignSelf: 'center',
     alignItems: 'center',
+    marginStart: 30,
+    marginEnd: 30
   },
-  appName: {
+  welcome: {
+    marginStart: 10,
     textAlign: 'center',
-    fontSize: 20 * PixelRatio.getFontScale(),
-    fontWeight: 'bold',
     color: 'white',
   },
   imageView: {
@@ -404,17 +411,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    marginEnd: PixelRatio.getPixelSizeForLayoutSize(1)
+    marginEnd: 1
   },
   title: {
-    flex: 1,
     color: 'white',
     fontWeight: 'bold',
     alignSelf: 'stretch',
     textAlign: 'center',
   },
   titleInput: {
-    flex: 1,
+    width: '40%',
     color: 'white',
     fontWeight: 'bold',
   },
@@ -423,77 +429,64 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'right',
     alignItems: 'center',
-    marginEnd: PixelRatio.getPixelSizeForLayoutSize(5)
+    marginEnd: 5
   },
   inputRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 0,
-    height: PixelRatio.getPixelSizeForLayoutSize(20),
+    height: 40,
   },
   buttonLogin: {
     flex: 1,
-    height: PixelRatio.getPixelSizeForLayoutSize(20),
+    height: 40,
     justifyContent: 'center',
     borderRadius: 5,
-    marginRight: PixelRatio.getPixelSizeForLayoutSize(3),
     backgroundColor: 'gray',
-    borderWidth: 1,
-    borderColor: 'gray',
-
   },
   buttonGetCode: {
-    width: PixelRatio.getPixelSizeForLayoutSize(30),
-    height: PixelRatio.getPixelSizeForLayoutSize(14),
+    height: 40,
     justifyContent: 'center',
     borderRadius: 5,
-    marginRight: PixelRatio.getPixelSizeForLayoutSize(3),
+    marginRight: 3,
     backgroundColor: '#f99b20',
-    borderWidth: 1,
-    borderColor: '#f99b20',
-
+    paddingStart: 5,
+    paddingEnd: 5,
+    alignSelf: 'flex-start'
   },
   buttonGetCodeText: {
     color: 'white',
-    fontSize: 11 * PixelRatio.getFontScale(),
+    fontSize: 11,
     fontWeight: '300',
     textAlign: 'center',
-
   },
   buttonText: {
     color: 'white',
-    fontSize: 15 * PixelRatio.getFontScale(),
+    fontSize: 14,
     fontWeight: '300',
     textAlign: 'center',
   },
 
   buttonSignup: {
     flex: 1,
-    height: PixelRatio.getPixelSizeForLayoutSize(20),
+    height: 40,
     justifyContent: 'center',
     borderRadius: 5,
-    marginLeft: PixelRatio.getPixelSizeForLayoutSize(3),
-    backgroundColor: CommonColors.bgSignUpColor,
-    borderWidth: 1,
-    borderColor: CommonColors.bgSignUpColor,
+    backgroundColor: CommonColors.bgSignUpColor
   },
   input: {
-    height: PixelRatio.getPixelSizeForLayoutSize(20),
-    flex: 1,
+    height: 30,
+    width: '60%',
     textAlign: 'right',
     color: 'white',
-    fontSize: 15 * PixelRatio.getFontScale(),
-    borderWidth: 1,
-    paddingLeft: PixelRatio.getPixelSizeForLayoutSize(6),
-    borderColor: CommonColors.screenBgColor,
-    backgroundColor: CommonColors.screenBgColor,
-
+    fontSize: 14,
+    paddingLeft: 10,
+    backgroundColor: 'transparent'
   },
   dropdown: {
     justifyContent: 'flex-end',
     flex: 1,
     flexDirection: 'row',
-    height: PixelRatio.getPixelSizeForLayoutSize(20),
+    height: 20,
   },
   dropdownText: {
     textAlign: 'right',
@@ -507,8 +500,8 @@ const styles = StyleSheet.create({
   },
   seperatorInput: {
     alignSelf: 'stretch',
-    marginTop: PixelRatio.getPixelSizeForLayoutSize(7),
-    marginBottom: PixelRatio.getPixelSizeForLayoutSize(2),
+    marginTop: 7,
+    marginBottom: 2,
   },
   modalButton: {
     borderRadius: 5,
@@ -517,9 +510,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'gray',
     borderColor: 'gray',
     borderWidth: 1,
-    height: PixelRatio.getPixelSizeForLayoutSize(15),
-    width: PixelRatio.getPixelSizeForLayoutSize(70)
-
+    height: 15,
+    width: '60%'
   },
 
   modalContent: {
@@ -533,13 +525,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   modalText: {
-    fontSize: 15 * PixelRatio.getFontScale(),
+    fontSize: 15,
     color: 'white',
     textAlign: 'center'
   },
   noticeText: {
     color: 'white',
-    fontSize: 15 * PixelRatio.getFontScale(),
+    fontSize: 14,
     fontWeight: '300',
     textAlign: 'center',
   },
@@ -549,9 +541,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#474545',
     borderColor: '#474545',
     borderWidth: 1,
-    height: PixelRatio.getPixelSizeForLayoutSize(15),
+    height: 30,
     width: '100%',
     alignSelf: 'stretch'
   }
-
 });

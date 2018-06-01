@@ -69,105 +69,103 @@ export default class LoginScreen extends BaseScreen {
 
   render() {
     return (
-      <View style={styles.screen}>
+      <KeyboardAvoidingView
+        behavior = 'position'
+        keyboardVerticalOffset={Platform.select({ ios: 0, android: 25 })}
+        style={ styles.screen }>
+        <ImageBackground
+          style = { styles.background }
+          source = { Background }/>
         <StatusBar barStyle='light-content' />
+        <TouchableWithoutFeedback
+          style={{ position: 'absolute', width: '100%', height: '100%' }}
+          onPress={ Keyboard.dismiss }
+          accessible={false}>
+          <View style={{ flex: 1, }}>
+            <View style={{ flex: 1 }} />
 
-        <KeyboardAvoidingView
-          behavior={'position'}
-          keyboardVerticalOffset={Platform.select({ ios: 0, android: 25 })}
-          style={{ flex: 1, }}>
-          <ImageBackground
-            style = { styles.background }
-            source = { Background }/>
-
-          <TouchableWithoutFeedback
-            style={{ flex: 1, }}
-            onPress={ Keyboard.dismiss }
-            accessible={false}>
-            <View style={{ flex: 1, }}>
-              <View style={{ flex: 1 }} />
-
-              <View style={styles.containerLogo}>
-                <Image
-                  style={styles.imageView}
-                  source={ Logo }
-                />
-                <Text style={styles.welcome}>{`WWW \n coin wallet`}</Text>
-              </View>
-
-              <View style={{ flex: 1 }} />
-
-              <View style={styles.containerInput}>
-                <View style={styles.inputRow}>
-                  <Text style={styles.titleInput}>
-                    {I18n.t('login.id').toUpperCase()}
-                  </Text>
-
-                  <TextInput
-                    style={styles.input}
-                    value={this.state.email}
-                    keyboardType='email-address'
-                    placeholderTextColor='gray'
-                    placeholder={'enter id'}
-                    blurOnSubmit={false}
-                    underlineColorAndroid='transparent'
-                    onSubmitEditing={() => this.focusNextField('two')}
-                    returnKeyType={"next"}
-                    autoCorrect={false}
-                    onChangeText={(text) => this.setState({ email: text })}
-                    ref={input => this.inputs['one'] = input}
-                  />
-                </View>
-                <View style={styles.line} />
-
-
-                <View style={styles.seperatorInput} />
-
-                <View style={styles.inputRow}>
-                  <Text style={styles.titleInput}>
-                    {I18n.t('login.password').toUpperCase()}
-                  </Text>
-
-                  <TextInput
-                    style={styles.input}
-                    value={this.state.password}
-                    autoCorrect={false}
-                    secureTextEntry={true}
-                    placeholderTextColor='gray'
-                    placeholder={'enter password'}
-                    underlineColorAndroid='transparent'
-                    onChangeText={(text) => this.setState({ password: text })}
-                    ref={input => this.inputs['two'] = input} />
-                </View>
-                <View style={styles.line} />
-
-              </View>
-
-              <View style={{ flex: 1 }} />
-
-              <View style={styles.containerButton}>
-                <TouchableOpacity
-                  onPress={this._onPressLogin.bind(this)}
-                  style={styles.buttonLogin} >
-                  <Text style={styles.buttonText}>
-                    {I18n.t('login.login').toUpperCase()}
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={this._onPressSignUp.bind(this)}
-                  style={styles.buttonSignup} >
-                  <Text style={styles.buttonText}>
-                    {I18n.t('login.sign_up').toUpperCase()}
-                  </Text>
-                </TouchableOpacity>
-              </View>
-
-              <View style={{ flex: 1 }} />
+            <View style={styles.containerLogo}>
+              <Image
+                style={styles.imageView}
+                source={ Logo }/>
+              <Text
+                style = { styles.welcome } >
+                <Text style = {{ fontSize: 44, fontWeight: 'bold' }}>{ 'WWW' }</Text>
+                <Text>{'\n'}</Text>
+                <Text style = {{ fontSize: 24 }}>{ 'coin wallet' }</Text>
+              </Text>
             </View>
-          </TouchableWithoutFeedback>
 
-        </KeyboardAvoidingView>
-      </View>
+            <View style={{ flex: 1 }} />
+
+            <View style={styles.containerInput}>
+              <View style={styles.inputRow}>
+                <Text style={styles.titleInput}>
+                  {I18n.t('login.id').toUpperCase()}
+                </Text>
+
+                <TextInput
+                  style={styles.input}
+                  value={this.state.email}
+                  keyboardType='email-address'
+                  placeholderTextColor='gray'
+                  placeholder={'enter id'}
+                  blurOnSubmit={false}
+                  underlineColorAndroid='transparent'
+                  onSubmitEditing={() => this.focusNextField('two')}
+                  returnKeyType={"next"}
+                  autoCorrect={false}
+                  onChangeText = {email => this.setState({ email })}
+                  ref={input => this.inputs.one = input}
+                />
+              </View>
+              <View style={styles.line} />
+              <View style={styles.seperatorInput} />
+              <View style={styles.inputRow}>
+                <Text style={styles.titleInput}>
+                  {I18n.t('login.password').toUpperCase()}
+                </Text>
+
+                <TextInput
+                  style={styles.input}
+                  value={this.state.password}
+                  autoCorrect={false}
+                  secureTextEntry={true}
+                  placeholderTextColor='gray'
+                  placeholder={'enter password'}
+                  underlineColorAndroid='transparent'
+                  onChangeText = {password => this.setState({ password })}
+                  ref={input => this.inputs.two = input} />
+              </View>
+              <View style={styles.line} />
+
+            </View>
+
+            <View style={{ flex: 1 }} />
+
+            <View style={styles.containerButton}>
+              <TouchableOpacity
+                onPress={this._onPressLogin.bind(this)}
+                style={styles.buttonLogin} >
+                <Text style={styles.buttonText}>
+                  {I18n.t('common.login').toUpperCase()}
+                </Text>
+              </TouchableOpacity>
+              <View style = {{ width: 10 }} />
+              <TouchableOpacity
+                onPress={this._onPressSignUp.bind(this)}
+                style={styles.buttonSignup} >
+                <Text style={styles.buttonText}>
+                  {I18n.t('common.sign_up').toUpperCase()}
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={{ flex: 1 }} />
+          </View>
+        </TouchableWithoutFeedback>
+
+      </KeyboardAvoidingView>
     );
   }
 }
@@ -177,30 +175,29 @@ const styles = StyleSheet.create({
 
   scrollView: {
   },
-  screen: {
-    ...CommonStyles.screen,
-    paddingLeft: 15,
-    paddingRight: 15,
-  },
+  screen: CommonStyles.screen,
   containerInput: {
-    alignSelf: 'stretch',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginStart: 50,
+    marginEnd: 50
+  },
+  containerButton: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignSelf: 'center',
+    alignItems: 'center',
+    marginStart: 50,
+    marginEnd: 50
+  },
+  containerLogo: {
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  containerButton: {
-    justifyContent: 'flex-start',
-    flexDirection: 'row',
-    alignSelf: 'stretch',
-    alignItems: 'center',
-  },
-  containerLogo: {
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
   welcome: {
+    marginStart: 10,
     textAlign: 'center',
-    fontSize: 30 * PixelRatio.getFontScale(),
-    fontWeight: 'bold',
     color: 'white',
   },
   imageView: {
@@ -211,57 +208,46 @@ const styles = StyleSheet.create({
   inputRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 0,
   },
   input: {
-    height: PixelRatio.getPixelSizeForLayoutSize(20),
-    flex: 1,
+    height: 40,
     textAlign: 'right',
     color: 'white',
-    fontSize: 15 * PixelRatio.getFontScale(),
-    borderWidth: 1,
-    paddingLeft: PixelRatio.getPixelSizeForLayoutSize(6),
-    borderColor: CommonColors.screenBgColor,
-    backgroundColor: CommonColors.screenBgColor,
-
+    fontSize: 14,
+    paddingLeft: 10,
+    backgroundColor: 'transparent',
+    width: '60%'
   },
   buttonText: {
     color: 'white',
-    fontSize: 15 * PixelRatio.getFontScale(),
-    fontWeight: '300',
-    textAlign: 'center',
-
+    fontSize: 14,
+    textAlign: 'center'
   },
+
   buttonLogin: {
     flex: 1,
-    height: PixelRatio.getPixelSizeForLayoutSize(20),
+    height: 40,
     justifyContent: 'center',
     borderRadius: 5,
-    marginRight: PixelRatio.getPixelSizeForLayoutSize(3),
     backgroundColor: CommonColors.bgLoginColor,
-    borderWidth: 1,
-    borderColor: CommonColors.bgLoginColor,
-
   },
+
   buttonSignup: {
     flex: 1,
-    height: PixelRatio.getPixelSizeForLayoutSize(20),
+    height: 40,
     justifyContent: 'center',
     borderRadius: 5,
-    marginLeft: PixelRatio.getPixelSizeForLayoutSize(3),
     backgroundColor: CommonColors.bgSignUpColor,
-    borderWidth: 1,
-    borderColor: CommonColors.bgSignUpColor,
   },
   seperator: {
     alignSelf: 'stretch',
-    marginTop: PixelRatio.getPixelSizeForLayoutSize(15),
-    marginBottom: PixelRatio.getPixelSizeForLayoutSize(7),
+    marginTop: 15,
+    marginBottom: 7,
   },
   seperatorInput: {
     alignSelf: 'stretch',
-    marginTop: PixelRatio.getPixelSizeForLayoutSize(2),
-    marginBottom: PixelRatio.getPixelSizeForLayoutSize(2),
+    marginTop: 2,
+    marginBottom: 2,
   },
   line: {
     width: '100%',
@@ -269,7 +255,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   titleInput: {
-    flex: 1,
+    width: '40%',
     color: 'white',
     fontWeight: 'bold',
   },

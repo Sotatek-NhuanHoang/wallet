@@ -5,19 +5,19 @@ import MainScreen from './main/MainScreen';
 import HistoryScreen from './main/history/HistoryScreen';
 
 export default {
-    WelcomeScreen: {
-        screen: WelcomeScreen
-    },
-    LoginScreen: {
-        screen: LoginScreen
-    },
-    SignUpScreen: {
-        screen: SignUpScreen
-    },
-    MainScreen: {
-        screen: MainScreen
-    },
-    HistoryScreen: {
-        screen: HistoryScreen
-    }
+  WelcomeScreen: {
+    screen: WelcomeScreen
+  },
+  LoginScreen: {
+    screen: LoginScreen
+  },
+  SignUpScreen: {
+    screen: SignUpScreen
+  },
+  MainScreen: {
+    screen: MainScreen
+  },
+  HistoryScreen: {
+    screen: HistoryScreen
+  }
 };
