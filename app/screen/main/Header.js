@@ -7,10 +7,12 @@ import {
   TouchableOpacity,
   StatusBar,
   Platform
-} from 'react-native'
+} from 'react-native';
 import { getStatusBarHeight } from '../../utils/StatusBarUtils';
+import I18n from '../../res/i18n/i18n';
 const MenuIcon = require('../../../assets/common/ic_menu.png');
 const LogoIcon = require('../../../assets/common/ic_logo.png');
+import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 
 class Header extends Component {
   render() {
@@ -18,25 +20,71 @@ class Header extends Component {
       <View style = { styles.outerContainer } >
         <StatusBar barStyle = 'light-content'/>
         <View style = { styles.innerContainer }>
-          <Image
-            style = { styles.leftImage }
-            source = { LogoIcon }/>
+          <View style = { styles.logoContainer }>
+            <Image
+              style = { styles.leftImage }
+              source = { LogoIcon }/>
+            <Text
+              style = { styles.logoTitle }>
+              { I18n.t('welcome.brand') }
+            </Text>
+          </View>
           <View style = { styles.titleContainer }>
             <Text
               style = { styles.title }>
               { this.props.title }
             </Text>
           </View>
-          <TouchableOpacity
-            style = { styles.rightButton }
-            onPress = { this.props.onOpenMenu }>
-            <Image
-              style = { styles.rightButtonImage }
-              source = { MenuIcon }/>
-          </TouchableOpacity>
+          <Menu
+            ref = { ref => this._menu = ref }
+            button = { this._renderRightButton() }
+            style = { styles.menu }>
+            <MenuItem
+              textStyle = { styles.menuItemText }>
+              { this.props.userEmail }
+            </MenuItem>
+            <MenuItem
+              textStyle = { styles.menuItemText }
+              underlayColor = '#404040'
+              onPress={ this._onExportPrivateKey.bind(this) }>
+              { I18n.t('menu.export_private_key') }
+            </MenuItem>
+            <MenuItem
+              textStyle = { styles.menuItemText }
+              underlayColor = '#404040'
+              onPress={ this._onLogout.bind(this) }>
+              { I18n.t('menu.logout') }
+            </MenuItem>
+          </Menu>
         </View>
       </View>
     )
+  }
+
+  _renderRightButton() {
+    return (
+      <TouchableOpacity
+        style = { styles.rightButton }
+        onPress = { this._onOpenMenu.bind(this) }>
+        <Image
+          style = { styles.rightButtonImage }
+          source = { MenuIcon }/>
+      </TouchableOpacity>
+    )
+  }
+
+  _onOpenMenu() {
+    this._menu.show()
+  }
+
+  _onExportPrivateKey() {
+    this.props.onExportPrivateKey();
+    this._menu.hide();
+  }
+
+  _onLogout() {
+    this.props.onLogout();
+    this._menu.hide();
   }
 }
 
@@ -47,13 +95,25 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     height: 44,
-    paddingTop: getStatusBarHeight(),
-   
+    paddingTop: getStatusBarHeight()
   },
 
   outerContainer: {
     backgroundColor: 'black',
     height: 44 + getStatusBarHeight()
+  },
+
+  logoContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%'
+  },
+
+  logoTitle: {
+    marginLeft: 5,
+    color: 'white',
+    fontSize: 14
   },
 
   title: {
@@ -68,8 +128,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: getStatusBarHeight(),
-   
+    paddingTop: getStatusBarHeight()
   },
 
   leftImage: {
@@ -87,6 +146,17 @@ const styles = StyleSheet.create({
   rightButtonImage: {
     flex: 1,
     resizeMode: 'contain'
+  },
+
+  menu: {
+    flex: 1,
+    width: 200,
+    backgroundColor: '#595959'
+  },
+
+  menuItemText: {
+    color: 'white',
+    fontSize: 14
   }
 });
 

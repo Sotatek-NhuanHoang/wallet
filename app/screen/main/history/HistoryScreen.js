@@ -80,7 +80,6 @@ class HistoryScreen extends BaseScreen {
     };
   }
 
-
   _onPressItem(item) {
 
   }
