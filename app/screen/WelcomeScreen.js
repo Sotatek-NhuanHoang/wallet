@@ -23,7 +23,7 @@ const Logo = require('../../assets/common/logo.png');
 export default class WelcomeScreen extends BaseScreen {
   componentDidMount() {
     setTimeout(() => {
-      SplashScreen.hide();
+      // SplashScreen.hide();
       this.replace('LoginScreen');
     }, 1000);
   }
