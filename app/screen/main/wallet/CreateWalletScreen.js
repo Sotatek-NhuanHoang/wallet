@@ -168,9 +168,7 @@ const styles = StyleSheet.create({
   },
 
   description: {
-    marginTop: 30,
-    fontSize: 14,
-    color: 'white'
+    marginTop: 30
   },
 
   buttonOk: {

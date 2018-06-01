@@ -20,6 +20,9 @@ export default {
         })
         
         return { opacity };
+      },
+      containerStyle: {
+        backgroundColor: 'transparent',
       }
     }
   } 

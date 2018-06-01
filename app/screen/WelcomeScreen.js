@@ -45,7 +45,7 @@ export default class WelcomeScreen extends BaseScreen {
             source = { Logo }/>
           <Text
             style = { styles.welcome } >
-            <Text style = {{ fontSize: 44 }}>{ 'WWW' }</Text>
+            <Text style = {{ fontSize: 44, fontWeight: 'bold' }}>{ 'WWW' }</Text>
             <Text>{'\n'}</Text>
             <Text style = {{ fontSize: 24 }}>{ 'coin wallet' }</Text>
           </Text>
@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
   welcome: {
     marginTop: 15,
     textAlign: 'center',
-    fontWeight: 'bold',
     color: 'white',
   },
   imageView: {

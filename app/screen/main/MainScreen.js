@@ -64,10 +64,15 @@ const AppTabNavigator = TabNavigator(
     tabBarPosition: 'bottom',
     tabBarOptions: {
       showIcon: false,
-      activeTintColor: 'yellow',
-      inactiveTintColor: 'gray',
+      showLabel: true,
+      activeTintColor: '#FFC000',
+      inactiveTintColor: '#D9D9D9',
       style: {
-        backgroundColor: 'black'
+        backgroundColor: 'black',
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        bottom: 0,
       }
     },
     animationEnabled: false,
