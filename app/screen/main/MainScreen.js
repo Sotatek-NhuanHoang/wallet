@@ -92,7 +92,7 @@ class MainScreen extends BaseScreen {
           userEmail = { this.state.userEmail }
           onExportPrivateKey = { this._onExportPrivateKey.bind(this) }
           onLogout = { this._onLogout.bind(this) }/>
-        <AppTabNavigator/>
+        <AppTabNavigator onNavigationStateChange = { this._onTabChange.bind(this) }/>
       </View>
     );
   }
@@ -128,6 +128,15 @@ class MainScreen extends BaseScreen {
         backBehavior: 'none'
       }
     )
+  }
+
+  _onTabChange(prevState, currentState, action) {
+    let headerTitle = '';
+    if (currentState.index < titles.length) {
+      headerTitle = titles[currentState.index];
+    }
+
+    this.setState({ headerTitle });
   }
 
   // _renderHeaderLeft() {
