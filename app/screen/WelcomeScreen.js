@@ -14,7 +14,6 @@ import {
 } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import LoginScreen from './login/LoginScreen';
-import MainScreen from './main/MainScreen';
 import BaseScreen from './BaseScreen';
 import { CommonStyles } from '../utils/CommonStyles';
 
@@ -29,7 +28,7 @@ export default class WelcomeScreen extends BaseScreen {
   componentDidMount() {
     setTimeout(() => {
       SplashScreen.hide();
-      this.replace('MainScreen');
+      this.replace('LoginScreen');
     }, 1000);
   }
   
