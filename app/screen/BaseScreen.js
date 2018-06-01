@@ -3,11 +3,7 @@ import { View } from "react-native";
 import { NavigationActions } from 'react-navigation';
 
 export default class BaseScreen extends React.Component {
-  static navigationOptions = {
-    headerLeft: (<View />),
-    header: null
-  };
-
+  
   navigate(screen, params) {
     const { navigate } = this.props.navigation;
     navigate(screen, params);
