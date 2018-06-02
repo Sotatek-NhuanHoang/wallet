@@ -33,7 +33,7 @@ class SendScreen extends BaseScreen {
       alertVisibility: false,
       coin: 'WWW',
       address: '0x4cb1ca7cd5fd7dcb3',
-      amount: '123.1234 WWW',
+      amount: '123.1234',
       secretCode: ''
     };
     this.focusNextField = this._focusNextField.bind(this);
@@ -125,7 +125,7 @@ class SendScreen extends BaseScreen {
         </View>
       );
     }
-    return (<View style={{ flex: 1 }} />);
+    return null;
   }
 
   render() {
@@ -162,7 +162,6 @@ class SendScreen extends BaseScreen {
                       //title={'Coin?'}
                       options={listCoin}
                       cancelButtonIndex={0}
-                      destructiveButtonIndex={3}
                       onPress={(index) => {
                         if (index != 0)
                           this.setState({ coin: listCoin[index] })
@@ -238,6 +237,9 @@ class SendScreen extends BaseScreen {
                     {I18n.t('common.cancel').toUpperCase()}
                   </Text>
                 </TouchableOpacity>
+
+                <View style = {{ width: 10 }} />
+
                 <TouchableOpacity
                   onPress={this._onPressSend.bind(this)}
                   style={styles.buttonSend} >
@@ -261,30 +263,23 @@ const styles = StyleSheet.create({
   scrollView: {
   },
   screen: CommonStyles.screen,
-  containerLogo: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   containerButton: {
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     flexDirection: 'row',
-    alignSelf: 'stretch',
-    alignItems: 'flex-start',
-    flex: 5
+    alignSelf: 'center',
+    alignItems: 'center',
+    marginStart: 50,
+    marginEnd: 50
   },
   containerInput: {
-    flex: 4,
-    alignSelf: 'stretch',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: (Platform.OS == 'ios') ? 20 : 0
+    marginStart: 50,
+    marginEnd: 50
   },
   inputRow: {
     flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 0,
-    height: 20,
+    alignItems: 'center'
   },
   titleInput: {
     flex: 2,
@@ -300,7 +295,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     flex: 3,
     flexDirection: 'row',
-    height: 20,
+    height: 40,
   },
   buttonDropArrow: {
     flex: 1,
@@ -317,21 +312,22 @@ const styles = StyleSheet.create({
     marginEnd: 5
   },
   input: {
-    height: 20,
-    flex: 3,
+    height: 40,
     textAlign: 'right',
     color: 'white',
-    fontSize: 15,
-    paddingLeft: 6,
+    fontSize: 14,
+    paddingLeft: 10,
+    marginTop: 5,
+    backgroundColor: 'transparent',
+    width: '60%'
   },
 
   inputAddress: {
-    height: 20,
-    flex: 3,
+    height: 40,
     textAlign: 'left',
     color: 'white',
     fontSize: 15,
-    paddingLeft: 6,
+    paddingLeft: 10,
   },
   line: {
     width: '100%',
@@ -343,7 +339,6 @@ const styles = StyleSheet.create({
     height: 40,
     justifyContent: 'center',
     borderRadius: 5,
-    marginRight: 3,
     backgroundColor: 'gray'
   },
   buttonText: {
@@ -357,7 +352,6 @@ const styles = StyleSheet.create({
     height: 40,
     justifyContent: 'center',
     borderRadius: 5,
-    marginLeft: 3,
     backgroundColor: CommonColors.bgSendColor,
   },
   seperatorInput: {
@@ -374,7 +368,7 @@ const styles = StyleSheet.create({
     width: 70
   },
   inputScretCode: {
-    height: 15,
+    height: 40,
     width: 70,
     textAlign: 'left',
     color: 'black',
