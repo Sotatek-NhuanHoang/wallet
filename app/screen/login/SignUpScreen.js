@@ -117,7 +117,7 @@ export default class SignUpScreen extends BaseScreen {
                   <Text style={styles.noticeText}>{I18n.t('alert.notice').toUpperCase()}</Text>
 
                 </View>
-                <View style={{ marginTop: 5 }}>
+                <View style={{ marginTop: 20 }}>
                   <Text style={styles.modalText}>{I18n.t('alert.notice_msg')}</Text>
 
                 </View>
@@ -160,11 +160,10 @@ export default class SignUpScreen extends BaseScreen {
         behavior='position'
         keyboardVerticalOffset={Platform.select({ ios: 0, android: 25 })}
         style={ styles.screen }>
-        <StatusBar barStyle='light-content' />
         <ImageBackground
           style = { styles.background }
           source = { Background }/>
-
+        <StatusBar barStyle='light-content' />
         <TouchableWithoutFeedback
           style={{ flex: 1 }}
           onPress={Keyboard.dismiss}
@@ -186,13 +185,16 @@ export default class SignUpScreen extends BaseScreen {
                 <Text style = {{ fontSize: 24 }}>{ 'coin wallet' }</Text>
               </Text>
             </View>
+
             <View style={{ flex: 1 }} />
+
             <Text style={styles.title}>
               {I18n.t('common.sign_up').toUpperCase()}
             </Text>
-            <View style={{ flex: 1 }} />
-            <View style={styles.containerInput}>
 
+            <View style={{ flex: 1 }} />
+
+            <View style={styles.containerInput}>
               <View style={styles.inputRow}>
                 <Text style={styles.titleInput}>
                   {I18n.t('login.id').toUpperCase()}
@@ -232,8 +234,10 @@ export default class SignUpScreen extends BaseScreen {
                   onChangeText={(text) => this.setState({ password: text })}
                   ref={input => this.inputs.two = input} />
               </View>
+
               <View style={styles.line} />
               <View style={styles.seperatorInput} />
+              
               <View style={styles.inputRow}>
                 <Text style={styles.titleInput}>
                   {I18n.t('sign_up.confirm_password').toUpperCase()}
@@ -373,10 +377,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   containerInput: {
-    alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: (Platform.OS == 'ios') ? 20 : 0,
     marginStart: 30,
     marginEnd: 30
   },
@@ -431,7 +433,7 @@ const styles = StyleSheet.create({
   inputRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    height: 40,
+    justifyContent: 'space-between'
   },
   buttonLogin: {
     flex: 1,
@@ -441,15 +443,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'gray',
   },
   buttonGetCode: {
-    flex: 1,
     height: 30,
     justifyContent: 'center',
     borderRadius: 5,
     backgroundColor: '#f99b20',
     marginEnd: 5,
-    paddingStart: 5,
-    paddingEnd: 5,
-    alignSelf: 'flex-start'
+    paddingStart: 15,
+    paddingEnd: 15
   },
   buttonGetCodeText: {
     color: 'white',
@@ -472,19 +472,20 @@ const styles = StyleSheet.create({
     backgroundColor: CommonColors.bgSignUpColor
   },
   input: {
-    height: 30,
-    width: '60%',
+    height: 40,
     textAlign: 'right',
     color: 'white',
     fontSize: 14,
+    marginTop: 5,
     paddingLeft: 10,
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    width: '60%'
   },
   dropdown: {
     justifyContent: 'flex-end',
     flex: 1,
     flexDirection: 'row',
-    height: 20,
+    height: 40,
   },
   dropdownText: {
     textAlign: 'right',
@@ -506,8 +507,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'gray',
-    height: 15,
-    width: '60%'
+    height: 40,
+    paddingStart: 15,
+    paddingEnd: 15
   },
 
   modalContent: {

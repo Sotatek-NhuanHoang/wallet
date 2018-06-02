@@ -215,6 +215,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 14,
     paddingLeft: 10,
+    marginTop: 5,
     backgroundColor: 'transparent',
     width: '60%'
   },

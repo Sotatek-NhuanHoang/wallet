@@ -77,7 +77,7 @@ class CreateWalletScreen extends BaseScreen {
   }
 
   _onBack() {
-
+    this.replace('Start');
   }
 
   _onMakeAccount() {

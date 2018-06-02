@@ -340,7 +340,7 @@ const styles = StyleSheet.create({
   },
   buttonCancel: {
     flex: 1,
-    height: 20,
+    height: 40,
     justifyContent: 'center',
     borderRadius: 5,
     marginRight: 3,
@@ -348,13 +348,13 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: 'white',
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: '300',
     textAlign: 'center',
   },
   buttonSend: {
     flex: 1,
-    height: 20,
+    height: 40,
     justifyContent: 'center',
     borderRadius: 5,
     marginLeft: 3,
@@ -370,8 +370,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#92D050',
-    borderColor: '#92D050',
-    borderWidth: 1,
     height: 15,
     width: 70
   },
@@ -381,16 +379,13 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     color: 'black',
     fontSize: 15,
-    borderWidth: 1,
     paddingLeft: 6,
     backgroundColor: 'white',
     borderRadius: 5
   },
   modalContent: {
     backgroundColor: '#2b2a2a',
-    borderWidth: 1,
     borderRadius: 2,
-    borderColor: '#2b2a2a',
     width: 2 * (width / 3),
     height: width / 2 + 30,
     alignItems: 'center',
@@ -411,8 +406,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#474545',
-    borderColor: '#474545',
-    borderWidth: 1,
     height: 15,
     width: '100%',
     alignSelf: 'stretch'
