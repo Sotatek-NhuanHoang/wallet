@@ -109,7 +109,7 @@ export default class LoginScreen extends BaseScreen {
                   value={this.state.email}
                   keyboardType='email-address'
                   placeholderTextColor='gray'
-                  placeholder={'enter id'}
+                  placeholder={I18n.t('placeholder.enter_id')}
                   blurOnSubmit={false}
                   underlineColorAndroid='transparent'
                   onSubmitEditing={() => this.focusNextField('two')}
@@ -132,7 +132,7 @@ export default class LoginScreen extends BaseScreen {
                   autoCorrect={false}
                   secureTextEntry={true}
                   placeholderTextColor='gray'
-                  placeholder={'enter password'}
+                  placeholder={I18n.t('placeholder.enter_password')}
                   underlineColorAndroid='transparent'
                   onChangeText = {password => this.setState({ password })}
                   ref={input => this.inputs.two = input} />

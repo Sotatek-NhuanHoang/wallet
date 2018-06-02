@@ -203,7 +203,7 @@ export default class SignUpScreen extends BaseScreen {
                   value={this.state.email}
                   keyboardType='email-address'
                   placeholderTextColor='gray'
-                  placeholder={I18n.t('sign_up.placeholder.enter_id')}
+                  placeholder={I18n.t('common.placeholder.enter_id')}
                   blurOnSubmit={false}
                   underlineColorAndroid='transparent'
                   onSubmitEditing={() => this.focusNextField('two')}
@@ -224,7 +224,7 @@ export default class SignUpScreen extends BaseScreen {
                   value={this.state.password}
                   secureTextEntry={true}
                   placeholderTextColor='gray'
-                  placeholder={I18n.t('sign_up.placeholder.enter_password')}
+                  placeholder={I18n.t('common.placeholder.enter_password')}
                   underlineColorAndroid='transparent'
                   returnKeyType={"next"}
                   blurOnSubmit={false}
@@ -244,7 +244,7 @@ export default class SignUpScreen extends BaseScreen {
                   value={this.state.confirmPassword}
                   secureTextEntry={true}
                   placeholderTextColor='gray'
-                  placeholder={I18n.t('sign_up.placeholder.enter_password_again')}
+                  placeholder={I18n.t('common.placeholder.enter_password_again')}
                   underlineColorAndroid='transparent'
                   returnKeyType={"next"}
                   blurOnSubmit={false}
@@ -296,7 +296,7 @@ export default class SignUpScreen extends BaseScreen {
                   value={this.state.phone}
                   secureTextEntry={false}
                   placeholderTextColor='gray'
-                  placeholder={I18n.t('sign_up.placeholder.enter_phone_number')}
+                  placeholder={I18n.t('common.placeholder.enter_phone_number')}
                   underlineColorAndroid='transparent'
                   returnKeyType={"next"}
                   keyboardType='numeric'
@@ -321,7 +321,7 @@ export default class SignUpScreen extends BaseScreen {
                   value={this.state.code}
                   secureTextEntry={false}
                   placeholderTextColor='gray'
-                  placeholder={I18n.t('sign_up.placeholder.enter_code')}
+                  placeholder={I18n.t('common.placeholder.enter_code')}
                   keyboardType='numeric'
                   underlineColorAndroid='transparent'
                   onChangeText={(text) => this.setState({ code: text })}
@@ -356,9 +356,7 @@ export default class SignUpScreen extends BaseScreen {
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     );
-
   }
-
 }
 const width = Dimensions.get('window').width;
 

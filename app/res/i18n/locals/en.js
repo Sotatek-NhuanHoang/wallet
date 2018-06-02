@@ -9,13 +9,6 @@ export default {
     password: 'password'
   },
   sign_up: {
-    placeholder: {
-      enter_id: 'enter id',
-      enter_password: 'enter password',
-      enter_password_again: 'enter password again',
-      enter_phone_number: 'enter phone number',
-      enter_code: 'enter code'
-    },
     confirm_password: 'confirm password',
     country: 'country',
     phone: 'phone #',
@@ -40,6 +33,17 @@ export default {
 
     login: 'login',
     sign_up: 'sign up',
+
+    placeholder: {
+      enter_id: 'enter id',
+      enter_password: 'enter password',
+      enter_password_again: 'enter password again',
+      enter_phone_number: 'enter phone number',
+      enter_code: 'enter code',
+      enter_secret_code: 'enter secret code',
+      enter_address: 'enter address',
+      enter_amount: 'enter amount'
+    }
   },
   menu: {
     export_private_key: 'Export private key',

@@ -23,6 +23,7 @@ import I18n from '../../../res/i18n/i18n';
 import BaseScreen from '../../BaseScreen';
 import ActionSheet from 'react-native-actionsheet';
 import { CommonStyles, CommonSize, CommonColors } from '../../../utils/CommonStyles';
+import _ from 'lodash';
 
 class SendScreen extends BaseScreen {
   constructor(props) {
@@ -45,7 +46,7 @@ class SendScreen extends BaseScreen {
 
 
   _showActionSheet = () => {
-    this.ActionSheet.show()
+    this._actionSheet.show()
   }
 
   _onPressCancel() {
@@ -78,7 +79,7 @@ class SendScreen extends BaseScreen {
           justifyContent: 'center',
         }}>
           <Modal
-            animationType={"fade"}
+            animationType= 'fade'
             transparent={true}
             visible={this.state.alertVisibility}
             onRequestClose={() => {
@@ -100,7 +101,7 @@ class SendScreen extends BaseScreen {
                     value={this.state.scretCode}
                     keyboardType='default'
                     placeholderTextColor='gray'
-                    placeholder={'enter scret code'}
+                    placeholder={I18n.t('send.placeholder.enter_secret_code')}
                     blurOnSubmit={false}
                     underlineColorAndroid='transparent'
                     returnKeyType={"done"}
@@ -128,22 +129,23 @@ class SendScreen extends BaseScreen {
   }
 
   render() {
-    const listCoin = ['Cancel', 'WWW', 'WW', 'W'];
+    const listCoin = [
+      _.capitalize(I18n.t('common.cancel')),
+      'WWW',
+      'WW',
+      'W'
+    ];
     return (
-      <SafeAreaView style={styles.screen}>
-        <StatusBar barStyle='light-content' />
         <KeyboardAvoidingView
-          behavior={'padding'}
+          behavior = 'position'
           keyboardVerticalOffset={Platform.select({ ios: 0, android: 25 })}
-          style={{ flex: 1, }}>
+          style={ styles.screen }>
           <TouchableWithoutFeedback
-            style={{ flex: 1, }}
+            style={{ flex: 1 }}
             onPress={Keyboard.dismiss}
             accessible={false}>
 
             <View style={{ flex: 1, }}>
-
-
               <View style={{ flex: 1, }} />
 
               {this.renderModal()}
@@ -156,7 +158,7 @@ class SendScreen extends BaseScreen {
                   <View style={styles.dropdown}>
 
                     <ActionSheet
-                      ref={o => this.ActionSheet = o}
+                      ref={ref => this._actionSheet = ref}
                       //title={'Coin?'}
                       options={listCoin}
                       cancelButtonIndex={0}
@@ -193,13 +195,13 @@ class SendScreen extends BaseScreen {
                     value={this.state.address}
                     keyboardType='default'
                     placeholderTextColor='gray'
-                    placeholder={'enter address'}
+                    placeholder={I18n.t('send.placeholder.enter_address')}
                     blurOnSubmit={false}
                     underlineColorAndroid='transparent'
                     onSubmitEditing={() => this.focusNextField('two')}
                     returnKeyType={"next"}
                     onChangeText={(text) => this.setState({ address: text })}
-                    ref={input => this.inputs['one'] = input}
+                    ref={input => this.inputs.one = input}
                   />
                 </View>
 
@@ -216,11 +218,11 @@ class SendScreen extends BaseScreen {
                     value={this.state.amount}
                     secureTextEntry={false}
                     placeholderTextColor='gray'
-                    placeholder={'enter amount'}
+                    placeholder={I18n.t('send.placeholder.enter_amount')}
                     keyboardType='default'
                     underlineColorAndroid='transparent'
                     onChangeText={(text) => this.setState({ amount: text })}
-                    ref={input => this.inputs['two'] = input} />
+                    ref={input => this.inputs.two = input} />
                 </View>
 
                 <View style={styles.line} />
@@ -249,8 +251,6 @@ class SendScreen extends BaseScreen {
             </View>
           </TouchableWithoutFeedback>
         </KeyboardAvoidingView>
-      </SafeAreaView>
-
     );
   }
 }
@@ -260,12 +260,7 @@ const width = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   scrollView: {
   },
-  screen: {
-    flex: 1,
-    ...CommonStyles.screen,
-    paddingLeft: CommonSize.contentPadding,
-    paddingRight: CommonSize.contentPadding
-  },
+  screen: CommonStyles.screen,
   containerLogo: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -289,7 +284,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 0,
-    height: PixelRatio.getPixelSizeForLayoutSize(20),
+    height: 20,
   },
   titleInput: {
     flex: 2,
@@ -305,46 +300,38 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     flex: 3,
     flexDirection: 'row',
-    height: PixelRatio.getPixelSizeForLayoutSize(20),
+    height: 20,
   },
   buttonDropArrow: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    marginEnd: PixelRatio.getPixelSizeForLayoutSize(1)
+    marginEnd: 1
   },
   coinText: {
     flex: 1,
     color: 'white',
     textAlign: 'right',
     alignItems: 'center',
-    marginEnd: PixelRatio.getPixelSizeForLayoutSize(5)
+    marginEnd: 5
   },
   input: {
-    height: PixelRatio.getPixelSizeForLayoutSize(20),
+    height: 20,
     flex: 3,
     textAlign: 'right',
     color: 'white',
-    fontSize: 15 * PixelRatio.getFontScale(),
-    borderWidth: 1,
-    paddingLeft: PixelRatio.getPixelSizeForLayoutSize(6),
-    borderColor: CommonColors.screenBgColor,
-    backgroundColor: CommonColors.screenBgColor,
-
+    fontSize: 15,
+    paddingLeft: 6,
   },
 
   inputAddress: {
-    height: PixelRatio.getPixelSizeForLayoutSize(20),
+    height: 20,
     flex: 3,
     textAlign: 'left',
     color: 'white',
-    fontSize: 15 * PixelRatio.getFontScale(),
-    borderWidth: 1,
-    paddingLeft: PixelRatio.getPixelSizeForLayoutSize(6),
-    borderColor: CommonColors.screenBgColor,
-    backgroundColor: CommonColors.screenBgColor,
-
+    fontSize: 15,
+    paddingLeft: 6,
   },
   line: {
     width: '100%',
@@ -353,35 +340,30 @@ const styles = StyleSheet.create({
   },
   buttonCancel: {
     flex: 1,
-    height: PixelRatio.getPixelSizeForLayoutSize(20),
+    height: 20,
     justifyContent: 'center',
     borderRadius: 5,
-    marginRight: PixelRatio.getPixelSizeForLayoutSize(3),
-    backgroundColor: 'gray',
-    borderWidth: 1,
-    borderColor: 'gray',
-
+    marginRight: 3,
+    backgroundColor: 'gray'
   },
   buttonText: {
     color: 'white',
-    fontSize: 15 * PixelRatio.getFontScale(),
+    fontSize: 15,
     fontWeight: '300',
     textAlign: 'center',
   },
   buttonSend: {
     flex: 1,
-    height: PixelRatio.getPixelSizeForLayoutSize(20),
+    height: 20,
     justifyContent: 'center',
     borderRadius: 5,
-    marginLeft: PixelRatio.getPixelSizeForLayoutSize(3),
+    marginLeft: 3,
     backgroundColor: CommonColors.bgSendColor,
-    borderWidth: 1,
-    borderColor: CommonColors.bgSendColor,
   },
   seperatorInput: {
     alignSelf: 'stretch',
-    marginTop: PixelRatio.getPixelSizeForLayoutSize(7),
-    marginBottom: PixelRatio.getPixelSizeForLayoutSize(2),
+    marginTop: 7,
+    marginBottom: 2,
   },
   modalButton: {
     borderRadius: 5,
@@ -390,24 +372,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#92D050',
     borderColor: '#92D050',
     borderWidth: 1,
-    height: PixelRatio.getPixelSizeForLayoutSize(15),
-    width: PixelRatio.getPixelSizeForLayoutSize(70)
-
+    height: 15,
+    width: 70
   },
   inputScretCode: {
-    height: PixelRatio.getPixelSizeForLayoutSize(15),
-    width: PixelRatio.getPixelSizeForLayoutSize(70),
+    height: 15,
+    width: 70,
     textAlign: 'left',
     color: 'black',
-    fontSize: 15 * PixelRatio.getFontScale(),
+    fontSize: 15,
     borderWidth: 1,
-    paddingLeft: PixelRatio.getPixelSizeForLayoutSize(6),
-    borderColor: 'white',
+    paddingLeft: 6,
     backgroundColor: 'white',
-    borderRadius: 5,
-    borderWidth: 1,
-
-
+    borderRadius: 5
   },
   modalContent: {
     backgroundColor: '#2b2a2a',
@@ -420,13 +397,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   modalText: {
-    fontSize: 15 * PixelRatio.getFontScale(),
+    fontSize: 14,
     color: 'white',
     textAlign: 'center'
   },
   secretCodeText: {
     color: 'white',
-    fontSize: 15 * PixelRatio.getFontScale(),
+    fontSize: 14,
     fontWeight: '300',
     textAlign: 'center',
   },
@@ -436,7 +413,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#474545',
     borderColor: '#474545',
     borderWidth: 1,
-    height: PixelRatio.getPixelSizeForLayoutSize(15),
+    height: 15,
     width: '100%',
     alignSelf: 'stretch'
   }
