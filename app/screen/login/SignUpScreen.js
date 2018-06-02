@@ -319,7 +319,7 @@ export default class SignUpScreen extends BaseScreen {
                     {I18n.t('sign_up.code').toUpperCase()}
                   </Text>
                 </TouchableOpacity>
-
+                <View style = {{ flex: 1 }} />
                 <TextInput
                   style={styles.input}
                   value={this.state.code}
