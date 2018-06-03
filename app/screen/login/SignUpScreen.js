@@ -519,7 +519,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   modalText: {
-    fontSize: 15,
+    fontSize: 14,
     color: 'white',
     textAlign: 'center'
   },

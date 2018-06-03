@@ -92,12 +92,15 @@ class SendScreen extends BaseScreen {
               alignItems: 'center',
               justifyContent: 'center',
             }} >
-              <View style={styles.modalContent}>
-                <View style={styles.secretCodeContainer}>
-                  <Text style={styles.secretCodeText}>{I18n.t('common.secret_code').toUpperCase()}</Text>
-                </View>
-                <View style={{ flex: 1 }} />
-                <View style={{ marginTop: 20 }}>
+              <TouchableWithoutFeedback
+                style={{ flex: 1 }}
+                onPress={Keyboard.dismiss}
+                accessible={false}>
+                <View style={styles.modalContent}>
+                  <View style={styles.secretCodeContainer}>
+                    <Text style={styles.secretCodeText}>{I18n.t('common.secret_code').toUpperCase()}</Text>
+                  </View>
+                  <View style={{ flex: 1 }} />
                   <TextInput
                     style={styles.inputScretCode}
                     value={this.state.scretCode}
@@ -107,21 +110,16 @@ class SendScreen extends BaseScreen {
                     blurOnSubmit={false}
                     underlineColorAndroid='transparent'
                     returnKeyType={"done"}
-                    onChangeText={(text) => this.setState({ secretCode: text })}
-                  />
-                </View>
-                <View style={styles.seperatorInput} />
-                <View>
+                    onChangeText={(text) => this.setState({ secretCode: text })}/>
+                  <View style={{ height: 10 }} />
                   <TouchableOpacity
                     style={styles.modalButton}
-                    onPress={() => {
-                      this._onPressOk();
-                    }}>
+                    onPress={this._onPressOk.bind(this)}>
                     <Text style={styles.buttonText}>{I18n.t('common.ok').toUpperCase()}</Text>
                   </TouchableOpacity>
+                  <View style={{ flex: 1 }} />
                 </View>
-                <View style={{ flex: 1 }} />
-              </View>
+              </TouchableWithoutFeedback>
             </View>
           </Modal>
         </View>
@@ -383,7 +381,7 @@ const styles = StyleSheet.create({
     width: 2 * (width / 3),
     height: width / 2 + 30,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   modalText: {
     fontSize: 14,
@@ -400,7 +398,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#474545',
-    height: 15,
+    height: 30,
     width: '100%',
     alignSelf: 'stretch'
   }
