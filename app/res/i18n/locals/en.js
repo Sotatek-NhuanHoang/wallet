@@ -1,4 +1,6 @@
 export default {
+  app_name: 'www coin wallet',
+
   welcome: {
     w_w_w: 'www',
     coin_wallet: 'coin wallet',
@@ -15,6 +17,7 @@ export default {
     code: 'get code'
   },
   alert: {
+    done: 'Done',
     notice: 'notice',
     notice_msg: 'A verification code has been sent to your email. Please check your email and enter your verification code.'
   },
@@ -30,6 +33,8 @@ export default {
     make_account: 'Make account',
     submit: 'submit',
     cancel: 'cancel',
+    private_key: 'private key',
+    copy: 'copy',
 
     login: 'login',
     sign_up: 'sign up',
