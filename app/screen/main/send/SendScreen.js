@@ -76,7 +76,9 @@ class SendScreen extends BaseScreen {
     if (this.state.showModal) {
       return (
         <View style={{
-          flex: 1,
+          width: '100%',
+          height: '100%',
+          position: 'absolute',
           alignItems: 'center',
           justifyContent: 'center',
         }}>
@@ -101,22 +103,29 @@ class SendScreen extends BaseScreen {
                     <Text style={styles.secretCodeText}>{I18n.t('common.secret_code').toUpperCase()}</Text>
                   </View>
                   <View style={{ flex: 1 }} />
-                  <TextInput
-                    style={styles.inputScretCode}
-                    value={this.state.scretCode}
-                    keyboardType='default'
-                    placeholderTextColor='gray'
-                    placeholder={I18n.t('common.placeholder.enter_secret_code')}
-                    blurOnSubmit={false}
-                    underlineColorAndroid='transparent'
-                    returnKeyType={"done"}
-                    onChangeText={(text) => this.setState({ secretCode: text })}/>
-                  <View style={{ height: 10 }} />
-                  <TouchableOpacity
-                    style={styles.modalButton}
-                    onPress={this._onPressOk.bind(this)}>
-                    <Text style={styles.buttonText}>{I18n.t('common.ok').toUpperCase()}</Text>
-                  </TouchableOpacity>
+                  <View style = {{
+                      flex: 1,
+                      marginStart: 20,
+                      marginEnd: 20
+                    }}>
+                    <TextInput
+                      style={styles.inputScretCode}
+                      value={this.state.scretCode}
+                      keyboardType='default'
+                      placeholderTextColor='gray'
+                      placeholder={I18n.t('common.placeholder.enter_secret_code')}
+                      blurOnSubmit={false}
+                      underlineColorAndroid='transparent'
+                      returnKeyType={"done"}
+                      onChangeText={(text) => this.setState({ secretCode: text })}/>
+                    <View style={{ height: 10 }} />
+                    <TouchableOpacity
+                      style={styles.modalButton}
+                      onPress={this._onPressOk.bind(this)}>
+                      <Text style={styles.buttonText}>{I18n.t('common.ok').toUpperCase()}</Text>
+                    </TouchableOpacity>
+                  </View>
+                  
                   <View style={{ flex: 1 }} />
                 </View>
               </TouchableWithoutFeedback>
