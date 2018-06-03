@@ -12,7 +12,7 @@ import {
   PixelRatio,
   ImageBackground
 } from 'react-native';
-import SplashScreen from 'react-native-splash-screen';
+import {SplashScreen} from 'react-native-splash-screen';
 import LoginScreen from './login/LoginScreen';
 import BaseScreen from './BaseScreen';
 import { CommonStyles } from '../utils/CommonStyles';
@@ -23,7 +23,7 @@ const Logo = require('../../assets/common/logo.png');
 export default class WelcomeScreen extends BaseScreen {
   componentDidMount() {
     setTimeout(() => {
-      SplashScreen.hide();
+      // SplashScreen.hide();
       this.replace('LoginScreen');
     }, 1000);
   }

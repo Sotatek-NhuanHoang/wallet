@@ -1,4 +1,8 @@
 {
-  "name": "wallet_mobile",
-  "displayName": "wallet_mobile"
+  "expo": {
+    "name": "wallet-mobile",
+    "slug": "wallet-mobile",
+    "sdkVersion": "27.0.0",
+    "privacy": "public"
+  }
 }

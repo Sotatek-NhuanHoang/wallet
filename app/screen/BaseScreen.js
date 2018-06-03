@@ -15,7 +15,7 @@ export default class BaseScreen extends React.Component {
   }
 
   goBack(params) {
-    const { goBack } = this.props.goBack;
+    const { goBack } = this.props.navigation;
     goBack(params);
   }
 

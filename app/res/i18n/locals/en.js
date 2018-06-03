@@ -1,4 +1,6 @@
 export default {
+  app_name: 'www coin wallet',
+
   welcome: {
     w_w_w: 'www',
     coin_wallet: 'coin wallet',
@@ -6,15 +8,16 @@ export default {
   },
   login: {
     id: 'id',
-    password: 'password',
-    login: 'login',
-    sign_up: 'sign up',
-    confirm_password: 'confirm\\npassword',
+    password: 'password'
+  },
+  sign_up: {
+    confirm_password: 'confirm password',
     country: 'country',
     phone: 'phone #',
     code: 'get code'
   },
   alert: {
+    done: 'Done',
     notice: 'notice',
     notice_msg: 'A verification code has been sent to your email. Please check your email and enter your verification code.'
   },
@@ -29,7 +32,23 @@ export default {
     back: 'back',
     make_account: 'Make account',
     submit: 'submit',
-    cancel: 'cancel'
+    cancel: 'cancel',
+    private_key: 'private key',
+    copy: 'copy',
+
+    login: 'login',
+    sign_up: 'sign up',
+
+    placeholder: {
+      enter_id: 'enter id',
+      enter_password: 'enter password',
+      enter_password_again: 'enter password again',
+      enter_phone_number: 'enter phone number',
+      enter_code: 'enter code',
+      enter_secret_code: 'enter secret code',
+      enter_address: 'enter address',
+      enter_amount: 'enter amount'
+    }
   },
   menu: {
     export_private_key: 'Export private key',
@@ -52,5 +71,15 @@ export default {
   },
   export_private_key: {
     input_description: 'Input the secret code to export your private key.'
+  },
+  send: {
+    coin: 'coin',
+    address: 'address',
+    amount: 'amount'
+  },
+  history:{
+    time:'time',
+    txid: 'txid',
+    amount: 'amount'
   }
 };

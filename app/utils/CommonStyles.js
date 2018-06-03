@@ -8,18 +8,20 @@ class CommonColors {
   static bgLoginColor = '#43d8e0';
   static bgSignUpColor = '#42f459';
   static bgAlertColor = '#262523';
-
+  static bgSendColor = '#FF3300'
 };
 
 class CommonSize {
-  static contentPadding = PixelRatio.getPixelSizeForLayoutSize(10);
-  static contentPadding15px = PixelRatio.getPixelSizeForLayoutSize(15);
+  static contentPadding = 10;
+  static contentPadding15px = 15;
 };
 
 const CommonStyles = {
   screen: {
     flex: 1,
-    backgroundColor: CommonColors.screenBgColor,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'transparent'
   },
 
   background: {

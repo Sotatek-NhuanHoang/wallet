@@ -11,6 +11,7 @@ import ExportPrivateKeyScreen from './ExportPrivateKeyScreen';
 import BaseScreen from '../../BaseScreen';
 
 import I18n from '../../../res/i18n/i18n';
+import ShowPrivateKeyScreen from './ShowPrivateKeyScreen';
 
 export default StackNavigator({
   Start: {
@@ -21,6 +22,9 @@ export default StackNavigator({
   },
   ExportPrivateKey: {
     screen: ExportPrivateKeyScreen
+  },
+  ShowPrivateKey: {
+    screen: ShowPrivateKeyScreen
   }
 }, {
   headerMode: 'none',

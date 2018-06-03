@@ -23,7 +23,6 @@ import HistoryScreen from './history/HistoryScreen';
 import { CommonStyles } from '../../utils/CommonStyles';
 const MenuIcon = require('../../../assets/common/ic_menu.png');
 const LogoIcon = require('../../../assets/common/ic_logo.png');
-// import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 import Header from './Header';
 
 const Background = require('../../../assets/common/background.png');
@@ -92,7 +91,7 @@ class MainScreen extends BaseScreen {
           userEmail = { this.state.userEmail }
           onExportPrivateKey = { this._onExportPrivateKey.bind(this) }
           onLogout = { this._onLogout.bind(this) }/>
-        <AppTabNavigator/>
+        <AppTabNavigator onNavigationStateChange = { this._onTabChange.bind(this) }/>
       </View>
     );
   }
@@ -128,6 +127,15 @@ class MainScreen extends BaseScreen {
         backBehavior: 'none'
       }
     )
+  }
+
+  _onTabChange(prevState, currentState, action) {
+    let headerTitle = '';
+    if (currentState.index < titles.length) {
+      headerTitle = titles[currentState.index];
+    }
+
+    this.setState({ headerTitle });
   }
 
   // _renderHeaderLeft() {
@@ -177,6 +185,7 @@ class MainScreen extends BaseScreen {
   }
 
   _onLogout() {
+    this.replace('LoginScreen');
     // this._menu.hide();
   }
 
