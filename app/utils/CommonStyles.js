@@ -8,6 +8,7 @@ class CommonColors {
   static bgLoginColor = '#43d8e0';
   static bgSignUpColor = '#42f459';
   static bgAlertColor = '#262523';
+  static bgSendColor = '#FF3300'
 };
 
 class CommonSize {

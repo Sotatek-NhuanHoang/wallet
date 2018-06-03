@@ -25,6 +25,8 @@ import ActionSheet from 'react-native-actionsheet';
 import { CommonStyles, CommonSize, CommonColors } from '../../../utils/CommonStyles';
 import _ from 'lodash';
 
+const DropDownIcon = require('../../../../assets/common/ic_down_arrow.png');
+
 class SendScreen extends BaseScreen {
   constructor(props) {
     super(props);
@@ -92,16 +94,16 @@ class SendScreen extends BaseScreen {
             }} >
               <View style={styles.modalContent}>
                 <View style={styles.secretCodeContainer}>
-                  <Text style={styles.secretCodeText}>{I18n.t('alert.secret_code').toUpperCase()}</Text>
+                  <Text style={styles.secretCodeText}>{I18n.t('common.secret_code').toUpperCase()}</Text>
                 </View>
                 <View style={{ flex: 1 }} />
-                <View style={{ marginTop: PixelRatio.getPixelSizeForLayoutSize(5), }}>
+                <View style={{ marginTop: 20 }}>
                   <TextInput
                     style={styles.inputScretCode}
                     value={this.state.scretCode}
                     keyboardType='default'
                     placeholderTextColor='gray'
-                    placeholder={I18n.t('send.placeholder.enter_secret_code')}
+                    placeholder={I18n.t('common.placeholder.enter_secret_code')}
                     blurOnSubmit={false}
                     underlineColorAndroid='transparent'
                     returnKeyType={"done"}
@@ -115,7 +117,7 @@ class SendScreen extends BaseScreen {
                     onPress={() => {
                       this._onPressOk();
                     }}>
-                    <Text style={styles.buttonText}>{I18n.t('alert.ok').toUpperCase()}</Text>
+                    <Text style={styles.buttonText}>{I18n.t('common.ok').toUpperCase()}</Text>
                   </TouchableOpacity>
                 </View>
                 <View style={{ flex: 1 }} />
@@ -148,8 +150,6 @@ class SendScreen extends BaseScreen {
             <View style={{ flex: 1, }}>
               <View style={{ flex: 1, }} />
 
-              {this.renderModal()}
-
               <View style={styles.containerInput}>
                 <View style={styles.inputRow}>
                   <Text style={styles.titleInput}>
@@ -175,7 +175,7 @@ class SendScreen extends BaseScreen {
                       </Text>
                       <Image
                         style={styles.downArrow}
-                        source={require('../../../../assets/common/ic_down_arrow.png')}
+                        source={ DropDownIcon }
                       />
                     </TouchableOpacity>
 
@@ -252,6 +252,8 @@ class SendScreen extends BaseScreen {
               <View style={{ flex: 1 }} />
             </View>
           </TouchableWithoutFeedback>
+
+          {this.renderModal()}
         </KeyboardAvoidingView>
     );
   }
@@ -269,7 +271,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     marginStart: 50,
-    marginEnd: 50
+    marginEnd: 50,
+    marginTop: 20
   },
   containerInput: {
     justifyContent: 'center',
@@ -282,7 +285,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   titleInput: {
-    flex: 2,
+    width: '40%',
     color: 'white',
     fontWeight: 'bold',
   },
@@ -364,16 +367,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#92D050',
-    height: 15,
-    width: 70
+    height: 40
   },
   inputScretCode: {
     height: 40,
-    width: 70,
     textAlign: 'left',
     color: 'black',
     fontSize: 15,
-    paddingLeft: 6,
     backgroundColor: 'white',
     borderRadius: 5
   },

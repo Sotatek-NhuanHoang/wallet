@@ -171,8 +171,6 @@ export default class SignUpScreen extends BaseScreen {
           <View style={{ flex: 1, }}>
             <View style={{ flex: 1 }} />
 
-            {this.renderModal()}
-
             <View style={styles.containerLogo}>
               <Image
                 style={styles.imageView}
