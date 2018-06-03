@@ -146,7 +146,7 @@ class SendScreen extends BaseScreen {
     ];
     return (
         <KeyboardAvoidingView
-          behavior = 'position'
+          behavior = {this.state.alertVisibility ? null : 'position'}
           keyboardVerticalOffset={Platform.select({ ios: 0, android: 25 })}
           style={ styles.screen }>
           <TouchableWithoutFeedback
