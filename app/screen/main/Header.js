@@ -1,4 +1,8 @@
-import React, { Component } from 'react';
+import React, {
+  Component,
+  PropTypes
+} from 'react';
+import { connect } from 'react-redux';
 import {
   StyleSheet,
   View,
@@ -13,6 +17,7 @@ import I18n from '../../res/i18n/i18n';
 const MenuIcon = require('../../../assets/common/ic_menu.png');
 const LogoIcon = require('../../../assets/common/ic_logo.png');
 import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
+import { exportPrivateKey, logOut } from '../../../redux/actions/Actions';
 
 class Header extends Component {
   render() {
@@ -88,6 +93,18 @@ class Header extends Component {
   }
 }
 
+// Header.propTypes = {
+//   title: PropTypes.string.isRequired,
+//   userEmail: PropTypes.string.isRequired,
+//   onExportPrivateKey: PropTypes.func,
+//   onLogout: PropTypes.func
+// }
+
+Header.defaultProps = {
+  title: I18n.t('common.wallet').toUpperCase(),
+  userEmail: 'bitkoex@bitkoex.com'
+}
+
 const styles = StyleSheet.create({
   innerContainer: {
     flex: 1,
@@ -160,4 +177,21 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Header;
+function mapStateToProps (state) {
+  return {
+    title: state.mainScreenReducer.title,
+    userEmail: state.userEmail
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    onExportPrivateKey: () => dispatch(exportPrivateKey()),
+    onLogout: () => dispatch(logOut())
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Header);

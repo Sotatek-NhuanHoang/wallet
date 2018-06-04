@@ -59,7 +59,6 @@ export default class LoginScreen extends BaseScreen {
   }
 
   _onPressLogin() {
-    console.log(this.state.email, this.state.password);
     this.replace('MainScreen');
   }
 
