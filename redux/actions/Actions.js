@@ -1,8 +1,18 @@
 import ActionType from './ActionType';
+import { NavigationActions } from 'react-navigation';
 
 export function exportPrivateKey() {
   return {
-    type: ActionType.exportPrivateKey
+    type: ActionType.exportPrivateKey,
+    navigationAction: NavigationActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({
+          routeName: 'ExportPrivateKey',
+          params: {}
+        })
+      ]
+    })
   }
 }
 
@@ -14,7 +24,11 @@ export function logOut() {
 
 export function showHistory() {
   return {
-    type: ActionType.showHistory
+    type: ActionType.showHistory,
+    navigationAction: NavigationActions.navigate({
+      routeName: 'History',
+      params: {},
+    })
   }
 }
 

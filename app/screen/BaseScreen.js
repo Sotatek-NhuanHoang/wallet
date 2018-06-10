@@ -1,22 +1,27 @@
 import React from 'react';
 import { View } from "react-native";
-import { NavigationActions } from 'react-navigation';
 
 export default class BaseScreen extends React.Component {
-  
+
   navigate(screen, params) {
-    const { navigate } = this.props.navigation;
-    navigate(screen, params);
+    if (this.props.navigation) {
+      const { navigate } = this.props.navigation;
+      navigate(screen, params);
+    }
   }
 
   push(screen, params) {
-    const { push } = this.props.navigation;
-    push(screen, params);
+    if (this.props.navigation) {
+      const { push } = this.props.navigation;
+      push(screen, params);
+    }
   }
 
   goBack(params) {
-    const { goBack } = this.props.navigation;
-    goBack(params);
+    if (this.props.navigation) {
+      const { goBack } = this.props.navigation;
+      goBack(params);
+    }
   }
 
   replace(screen, params) {
@@ -27,8 +32,10 @@ export default class BaseScreen extends React.Component {
     //     NavigationActions.navigate({ routeName: screen, params })
     //   ]
     // }))
-
-    const { replace } = this.props.navigation;
-    replace(screen, params);
+    if (this.props.navigation) {
+      const { replace } = this.props.navigation;
+      replace(screen, params);
+    }
   }
+
 }

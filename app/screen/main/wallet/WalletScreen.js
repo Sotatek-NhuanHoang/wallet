@@ -16,6 +16,7 @@ import { connect } from 'react-redux';
 
 import I18n from '../../../res/i18n/i18n';
 import ShowPrivateKeyScreen from './ShowPrivateKeyScreen';
+import BaseNavigatorWrapperScreen, { mapStateToProps } from '../../BaseNavigatorWrapperScreen';
 
 const WalletStackNavigator = StackNavigator({
   Start: {
@@ -42,26 +43,11 @@ const WalletStackNavigator = StackNavigator({
   }
 });
 
-class WalletScreen extends Component {
+class WalletScreen extends BaseNavigatorWrapperScreen {
   render() {
     return (
-      <WalletStackNavigator />
+      <WalletStackNavigator ref = { this.navigationRef } />
     )
-  }
-
-  shouldComponentUpdate(nextProps, nextStates) {
-    if (nextProps.exportPrivateKey) {
-      WalletStackNavigator.replace('ExportPrivateKey');
-      return false;
-    }
-
-    return true;
-  }
-}
-
-function mapStateToProps (state) {
-  return {
-    exportPrivateKey: state.navigation.exportPrivateKey 
   }
 }
 

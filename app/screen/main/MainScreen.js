@@ -29,6 +29,7 @@ const MenuIcon = require('../../../assets/common/ic_menu.png');
 const LogoIcon = require('../../../assets/common/ic_logo.png');
 import Header from './Header';
 import { changeHeaderTitle } from '../../../redux/actions/Actions';
+import BaseNavigatorWrapperScreen, { mapStateToProps } from '../BaseNavigatorWrapperScreen';
 
 const Background = require('../../../assets/common/background.png');
 
@@ -95,7 +96,7 @@ const AppTabNavigator = TabNavigator(
   }
 );
 
-class MainScreen extends BaseScreen {
+class MainScreen extends BaseNavigatorWrapperScreen {
 
   render() {
     return (
@@ -105,19 +106,9 @@ class MainScreen extends BaseScreen {
           source = { Background }/>
         <StatusBar barStyle = 'light-content'/>
         <Header />
-        <AppTabNavigator onNavigationStateChange = { this._onTabChange.bind(this) }/>
+        <AppTabNavigator ref = { this.navigationRef } onNavigationStateChange = { this._onTabChange.bind(this) }/>
       </View>
     );
-  }
-
-  shouldComponentUpdate(nextProps, nextStates) {
-    if (nextProps.showHistory) {
-      AppTabNavigator.navigate('History');
-      
-      return false;
-    }
-
-    return true;
   }
 
   _onTabChange(prevState, currentState, action) {
@@ -137,12 +128,6 @@ const styles = StyleSheet.create({
     flex: 1
   },
 });
-
-function mapStateToProps (state) {
-  return {
-    showHistory: state.navigation.showHistory
-  }
-}
 
 function mapDispatchToProps (dispatch) {
   return {
