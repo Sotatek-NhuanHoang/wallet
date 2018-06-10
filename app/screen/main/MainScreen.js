@@ -31,8 +31,6 @@ import Header from './Header';
 import { changeHeaderTitle } from '../../../redux/actions/Actions';
 import BaseNavigatorWrapperScreen, { mapStateToProps } from '../BaseNavigatorWrapperScreen';
 
-const Background = require('../../../assets/common/background.png');
-
 const titles = [
   I18n.t('common.wallet').toUpperCase(),
   I18n.t('common.deposit').toUpperCase(),
@@ -101,9 +99,6 @@ class MainScreen extends BaseNavigatorWrapperScreen {
   render() {
     return (
       <View style = { styles.container }>
-        <ImageBackground
-          style = { styles.background }
-          source = { Background }/>
         <StatusBar barStyle = 'light-content'/>
         <Header />
         <AppTabNavigator ref = { this.navigationRef } onNavigationStateChange = { this._onTabChange.bind(this) }/>
@@ -122,8 +117,6 @@ class MainScreen extends BaseNavigatorWrapperScreen {
 }
 
 const styles = StyleSheet.create({
-  background: CommonStyles.background,
-
   container: {
     flex: 1
   },

@@ -1,10 +1,10 @@
 import ActionType from './ActionType';
-import { NavigationActions, StackActions } from 'react-navigation';
+import { NavigationActions } from 'react-navigation';
 
 export function exportPrivateKey() {
   return {
     type: ActionType.navigate,
-    navigationAction: StackActions.replace({
+    navigationAction: NavigationActions.navigate({
       routeName: 'ExportPrivateKey',
       params: {}
     })

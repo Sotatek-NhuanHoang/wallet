@@ -9,6 +9,9 @@ import {
 } from 'react-native'
 import I18n from '../../../res/i18n/i18n';
 import BaseScreen from '../../BaseScreen';
+import { CommonStyles } from '../../../utils/CommonStyles';
+
+const Background = require('../../../../assets/common/background.png');
 
 class StartGetWalletScreen extends BaseScreen {
   static navigationOptions = {
@@ -25,6 +28,9 @@ class StartGetWalletScreen extends BaseScreen {
   render() {
     return (
       <View style = { styles.container }>
+        <ImageBackground
+          style = { styles.background }
+          source = { Background }/>
         <Text style = { styles.email }>
           { this.state.userEmail }
         </Text>
@@ -43,17 +49,14 @@ class StartGetWalletScreen extends BaseScreen {
   }
 
   _onGetStarted() {
-    this.replace('CreateWallet');
+    this.navigate('CreateWallet');
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'transparent'
-  },
+  background: CommonStyles.background,
+
+  container: CommonStyles.screen,
 
   email: {
     fontSize: 24,

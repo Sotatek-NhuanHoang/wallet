@@ -6,11 +6,15 @@ import {
   TouchableOpacity,
   TextInput,
   KeyboardAvoidingView,
+  ImageBackground,
   Clipboard,
   Alert
 } from 'react-native'
 import I18n from '../../../res/i18n/i18n';
 import BaseScreen from '../../BaseScreen';
+import { CommonStyles } from '../../../utils/CommonStyles';
+
+const Background = require('../../../../assets/common/background.png');
 
 class ShowPrivateKeyScreen extends BaseScreen {
   static navigationOptions = {
@@ -28,6 +32,9 @@ class ShowPrivateKeyScreen extends BaseScreen {
   render() {
     return (
       <View style = { styles.container } >
+        <ImageBackground
+          style = { styles.background }
+          source = { Background }/>
         <Text style = { styles.email }>
           { this.state.userEmail }
         </Text>
@@ -62,12 +69,9 @@ class ShowPrivateKeyScreen extends BaseScreen {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'transparent'
-  },
+  background: CommonStyles.background,
+
+  container: CommonStyles.screen,
 
   email: {
     fontSize: 24,

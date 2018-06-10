@@ -5,10 +5,16 @@ import {
   StyleSheet,
   TouchableOpacity,
   TextInput,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Keyboard,
+  TouchableWithoutFeedback,
+  ImageBackground
 } from 'react-native'
 import I18n from '../../../res/i18n/i18n';
 import BaseScreen from '../../BaseScreen';
+import { CommonStyles } from '../../../utils/CommonStyles';
+
+const Background = require('../../../../assets/common/background.png');
 
 class ExportPrivateKeyScreen extends BaseScreen {
   static navigationOptions = {
@@ -24,44 +30,54 @@ class ExportPrivateKeyScreen extends BaseScreen {
 
   render() {
     return (
-      <KeyboardAvoidingView behavior = 'height' style = { styles.container } >
-        <Text style = { styles.email }>
-          { this.state.userEmail }
-        </Text>
-        <Text style = { styles.subTitle }>
-          { I18n.t('export_private_key.input_description') }
-        </Text>
+      <KeyboardAvoidingView behavior = 'position' style = { styles.container } >
+        <ImageBackground
+          style = { styles.background }
+          source = { Background }/>
+        <TouchableWithoutFeedback
+            style={{ flex: 1 }}
+            onPress={Keyboard.dismiss}
+            accessible={false}>
+            <View style={ styles.container }>
+              <Text style = { styles.email }>
+                { this.state.userEmail }
+              </Text>
+              <Text style = { styles.subTitle }>
+                { I18n.t('export_private_key.input_description') }
+              </Text>
 
-        <View style = { styles.inputContainer }>
-          <Text style = {{ color: 'white', fontSize: 11, marginEnd: 10, width: 40, textAlign: 'center' }}>
-            { I18n.t('common.secret_code').toUpperCase() }
-          </Text>
+              <View style = { styles.inputContainer }>
+                <Text style = {{ color: 'white', fontSize: 11, marginEnd: 10, width: 40, textAlign: 'center' }}>
+                  { I18n.t('common.secret_code').toUpperCase() }
+                </Text>
 
-          <TextInput 
-            ref = { ref => this._codeTextInput = ref }
-            style = { styles.input }
-            keyboard
-            multiline = { false }
-            value = { this.state.secretCode } />
-        </View>
+                <TextInput 
+                  ref = { ref => this._codeTextInput = ref }
+                  style = { styles.input }
+                  keyboard
+                  multiline = { false }
+                  value = { this.state.secretCode } />
+              </View>
 
-        <View style = { styles.bottomButtonContainer }>
-          <TouchableOpacity
-            style = { styles.buttonSubmit }
-            onPress = { this._onSubmit.bind(this) }>
-            <Text style = { styles.buttonTitle }>
-              { I18n.t('common.submit').toUpperCase() }
-            </Text>
-          </TouchableOpacity>
-          <View style = { styles.spaceView } ></View>
-          <TouchableOpacity
-            style = { styles.buttonCancel }
-            onPress = { this._onCancel.bind(this) }>
-            <Text style = { styles.buttonTitle }>
-              { I18n.t('common.cancel').toUpperCase() }
-            </Text>
-          </TouchableOpacity>
-        </View>
+              <View style = { styles.bottomButtonContainer }>
+                <TouchableOpacity
+                  style = { styles.buttonSubmit }
+                  onPress = { this._onSubmit.bind(this) }>
+                  <Text style = { styles.buttonTitle }>
+                    { I18n.t('common.submit').toUpperCase() }
+                  </Text>
+                </TouchableOpacity>
+                <View style = { styles.spaceView } ></View>
+                <TouchableOpacity
+                  style = { styles.buttonCancel }
+                  onPress = { this._onCancel.bind(this) }>
+                  <Text style = { styles.buttonTitle }>
+                    { I18n.t('common.cancel').toUpperCase() }
+                  </Text>
+                </TouchableOpacity>
+              </View>
+          </View>
+        </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     )
   }
@@ -71,17 +87,14 @@ class ExportPrivateKeyScreen extends BaseScreen {
   }
 
   _onCancel() {
-
+    this.goBack();
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'transparent'
-  },
+  container: CommonStyles.screen,
+
+  background: CommonStyles.background,
 
   email: {
     fontSize: 24,

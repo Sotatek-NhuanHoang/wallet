@@ -37,10 +37,7 @@ const WalletStackNavigator = StackNavigator({
   navigationOptions: {
     gesturesEnabled: false,
   },
-  transitionConfig: Transitions.opacityTransition,
-  cardStyle: {
-    backgroundColor: 'transparent'
-  }
+  transitionConfig: Transitions.opacityTransition
 });
 
 class WalletScreen extends BaseNavigatorWrapperScreen {
