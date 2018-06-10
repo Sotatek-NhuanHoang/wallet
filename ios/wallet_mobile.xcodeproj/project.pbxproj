@@ -7,16 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		005E404094C94553B6B301C8 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47AA74DCDACF4A18976DA12C /* EvilIcons.ttf */; };
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
 		00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302C01ABCB91800DB3ED1 /* libRCTImage.a */; };
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* wallet_mobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* wallet_mobileTests.m */; };
-		01BBF7E0F0814A78B6BDBC24 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC43D28C88C140A8B93EE784 /* Feather.ttf */; };
 		0504BD9C9A054C7E8FAADBEF /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78FF848D7C654258A5E6C6E9 /* libSplashScreen.a */; };
-		107087AC11FB43F4837A577B /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 951D1F11E9CA4D52990231E5 /* Zocial.ttf */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -41,17 +38,9 @@
 		2DCD954D1E0B4F2C00145EB5 /* wallet_mobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* wallet_mobileTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		35999FC6A4014D838DD5A1DB /* libRNI18n.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B1A21C4F474FB5BD526538 /* libRNI18n.a */; };
-		39EF5AFA5A284E6AABB83AEB /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF3629E5C574436E953021E1 /* Entypo.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		9EE93D6210714995831A9D16 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36765FB3FBAE418AB3B1A72D /* MaterialCommunityIcons.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
-		C27543AE44A44030B6860BF5 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DE1662740AC940C6A6191371 /* Octicons.ttf */; };
-		D4582DCAFD12480AB1E475D2 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A999DF07960144829C34B6B3 /* SimpleLineIcons.ttf */; };
-		DCA21F3A1293465D9938DA99 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 676EFD588009408791D9E60F /* FontAwesome.ttf */; };
-		DCEF8A0A24314FA2B4E2BAF7 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DEE6FF3BFDB4682844EF9E9 /* Foundation.ttf */; };
-		DFC68FDB59A94BDBAEA8FA9F /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F00F2BDD26E4E59A2DAACBF /* Ionicons.ttf */; };
-		EC44FAA5077447009C7759C9 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB483329708940B4914769E4 /* MaterialIcons.ttf */; };
 		FC8DEEAE07BE4221A8FEF9F7 /* libRCTRestart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D042E64539649FCB02C5604 /* libRCTRestart.a */; };
 /* End PBXBuildFile section */
 
@@ -1247,17 +1236,6 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				39EF5AFA5A284E6AABB83AEB /* Entypo.ttf in Resources */,
-				005E404094C94553B6B301C8 /* EvilIcons.ttf in Resources */,
-				01BBF7E0F0814A78B6BDBC24 /* Feather.ttf in Resources */,
-				DCA21F3A1293465D9938DA99 /* FontAwesome.ttf in Resources */,
-				DCEF8A0A24314FA2B4E2BAF7 /* Foundation.ttf in Resources */,
-				DFC68FDB59A94BDBAEA8FA9F /* Ionicons.ttf in Resources */,
-				9EE93D6210714995831A9D16 /* MaterialCommunityIcons.ttf in Resources */,
-				EC44FAA5077447009C7759C9 /* MaterialIcons.ttf in Resources */,
-				C27543AE44A44030B6860BF5 /* Octicons.ttf in Resources */,
-				D4582DCAFD12480AB1E475D2 /* SimpleLineIcons.ttf in Resources */,
-				107087AC11FB43F4837A577B /* Zocial.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
