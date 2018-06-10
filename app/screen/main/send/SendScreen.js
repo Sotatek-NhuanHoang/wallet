@@ -34,8 +34,8 @@ class SendScreen extends BaseScreen {
       showModal: false,
       alertVisibility: false,
       coin: 'WWW',
-      address: '0x4cb1ca7cd5fd7dcb3',
-      amount: '123.1234',
+      address: '',
+      amount: '',
       secretCode: ''
     };
     this.focusNextField = this._focusNextField.bind(this);
@@ -78,10 +78,16 @@ class SendScreen extends BaseScreen {
         <View style={{
           width: '100%',
           height: '100%',
+          backgroundColor: '4D000000',
           position: 'absolute',
           alignItems: 'center',
-          justifyContent: 'center',
+          justifyContent: 'center'
         }}>
+          <TouchableWithoutFeedback
+          style={{ width: '100%', height: '100%', position: 'absolute' }}
+          onPress={Keyboard.dismiss}>
+            <View/>
+          </TouchableWithoutFeedback>
           <Modal
             animationType= 'fade'
             transparent={true}
@@ -92,7 +98,7 @@ class SendScreen extends BaseScreen {
             <View style={{
               flex: 1,
               alignItems: 'center',
-              justifyContent: 'center',
+              justifyContent: 'center'
             }} >
               <TouchableWithoutFeedback
                 style={{ flex: 1 }}
@@ -102,31 +108,33 @@ class SendScreen extends BaseScreen {
                   <View style={styles.secretCodeContainer}>
                     <Text style={styles.secretCodeText}>{I18n.t('common.secret_code').toUpperCase()}</Text>
                   </View>
-                  <View style={{ flex: 1 }} />
                   <View style = {{
-                      flex: 1,
+                    flex: 1,
+                    justifyContent: 'center'
+                  }}>
+                    <View style = {{
                       marginStart: 20,
-                      marginEnd: 20
-                    }}>
-                    <TextInput
-                      style={styles.inputScretCode}
-                      value={this.state.scretCode}
-                      keyboardType='default'
-                      placeholderTextColor='gray'
-                      placeholder={I18n.t('common.placeholder.enter_secret_code')}
-                      blurOnSubmit={false}
-                      underlineColorAndroid='transparent'
-                      returnKeyType={"done"}
-                      onChangeText={(text) => this.setState({ secretCode: text })}/>
-                    <View style={{ height: 10 }} />
-                    <TouchableOpacity
-                      style={styles.modalButton}
-                      onPress={this._onPressOk.bind(this)}>
-                      <Text style={styles.buttonText}>{I18n.t('common.ok').toUpperCase()}</Text>
-                    </TouchableOpacity>
+                      marginEnd: 20,
+                      alignSelf: 'center'
+                    }} >
+                      <TextInput
+                        style={styles.inputScretCode}
+                        value={this.state.secretCode}
+                        keyboardType='default'
+                        placeholderTextColor='gray'
+                        placeholder={I18n.t('common.placeholder.enter_secret_code')}
+                        blurOnSubmit={false}
+                        underlineColorAndroid='transparent'
+                        returnKeyType={"done"}
+                        onChangeText={(text) => this.setState({ secretCode: text })}/>
+                      <View style={{ height: 10 }} />
+                      <TouchableOpacity
+                        style={styles.modalButton}
+                        onPress={this._onPressOk.bind(this)}>
+                        <Text style={styles.buttonText}>{I18n.t('common.ok').toUpperCase()}</Text>
+                      </TouchableOpacity>
+                    </View>
                   </View>
-                  
-                  <View style={{ flex: 1 }} />
                 </View>
               </TouchableWithoutFeedback>
             </View>
@@ -197,11 +205,11 @@ class SendScreen extends BaseScreen {
                   </Text>
 
                   <TextInput
-                    style={styles.inputAddress}
+                    style={styles.input}
                     value={this.state.address}
                     keyboardType='default'
                     placeholderTextColor='gray'
-                    placeholder={I18n.t('send.placeholder.enter_address')}
+                    placeholder={I18n.t('common.placeholder.enter_address')}
                     blurOnSubmit={false}
                     underlineColorAndroid='transparent'
                     onSubmitEditing={() => this.focusNextField('two')}
@@ -214,7 +222,6 @@ class SendScreen extends BaseScreen {
                 <View style={styles.line} />
 
                 <View style={styles.inputRow}>
-
                   <Text style={styles.titleInput}>
                     {I18n.t('send.amount').toUpperCase()}
                   </Text>
@@ -224,7 +231,7 @@ class SendScreen extends BaseScreen {
                     value={this.state.amount}
                     secureTextEntry={false}
                     placeholderTextColor='gray'
-                    placeholder={I18n.t('send.placeholder.enter_amount')}
+                    placeholder={I18n.t('common.placeholder.enter_amount')}
                     keyboardType='default'
                     underlineColorAndroid='transparent'
                     onChangeText={(text) => this.setState({ amount: text })}
@@ -330,14 +337,6 @@ const styles = StyleSheet.create({
     marginTop: 5,
     backgroundColor: 'transparent',
     width: '60%'
-  },
-
-  inputAddress: {
-    height: 40,
-    textAlign: 'left',
-    color: 'white',
-    fontSize: 15,
-    paddingLeft: 10,
   },
   line: {
     width: '100%',

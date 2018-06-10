@@ -30,8 +30,8 @@ export default class LoginScreen extends BaseScreen {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'bitkoex@bitkoex.com',
-      password: '123123',
+      email: '',
+      password: '',
       errEmail: {
         isShow: false,
         message: ''
@@ -108,7 +108,7 @@ export default class LoginScreen extends BaseScreen {
                   value={this.state.email}
                   keyboardType='email-address'
                   placeholderTextColor='gray'
-                  placeholder={I18n.t('placeholder.enter_id')}
+                  placeholder={I18n.t('common.placeholder.enter_id')}
                   blurOnSubmit={false}
                   underlineColorAndroid='transparent'
                   onSubmitEditing={() => this.focusNextField('two')}
@@ -131,7 +131,7 @@ export default class LoginScreen extends BaseScreen {
                   autoCorrect={false}
                   secureTextEntry={true}
                   placeholderTextColor='gray'
-                  placeholder={I18n.t('placeholder.enter_password')}
+                  placeholder={I18n.t('common.placeholder.enter_password')}
                   underlineColorAndroid='transparent'
                   onChangeText = {password => this.setState({ password })}
                   ref={input => this.inputs.two = input} />

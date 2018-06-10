@@ -51,11 +51,11 @@ class WalletScreen extends Component {
 
   shouldComponentUpdate(nextProps, nextStates) {
     if (nextProps.exportPrivateKey) {
-      WalletStackNavigator.navigation.replace('ExportPrivateKey');
+      WalletStackNavigator.replace('ExportPrivateKey');
       return false;
     }
 
-    return super.shouldComponentUpdate(nextProps, nextStates);
+    return true;
   }
 }
 

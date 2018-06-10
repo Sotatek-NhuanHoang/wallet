@@ -39,8 +39,8 @@ export default class SignUpScreen extends BaseScreen {
     this.state = {
       showModal: false,
       alertVisibility: false,
-      email: 'bitkoex@bitkoex.com',
-      password: '123123',
+      email: '',
+      password: '',
       confirmPassword: '',
       country: '',
       phone: '',
