@@ -110,6 +110,16 @@ class MainScreen extends BaseScreen {
     );
   }
 
+  shouldComponentUpdate(nextProps, nextStates) {
+    if (nextProps.isLogOut) {
+      this.replace('LoginScreen');
+      
+      return false;
+    }
+
+    return super.shouldComponentUpdate(nextProps, nextStates);
+  }
+
   _onTabChange(prevState, currentState, action) {
     let headerTitle = '';
     if (currentState.index < titles.length) {
@@ -120,10 +130,6 @@ class MainScreen extends BaseScreen {
   }
 }
 
-// MainScreen.propTypes = {
-//   onTabChange: PropTypes.func
-// }
-
 const styles = StyleSheet.create({
   background: CommonStyles.background,
 
@@ -132,10 +138,6 @@ const styles = StyleSheet.create({
   },
 });
 
-function mapStateToProps (state) {
-  return {};
-}
-
 function mapDispatchToProps (dispatch) {
   return {
     onTabChange: (title) => dispatch(changeHeaderTitle(title))
@@ -143,6 +145,6 @@ function mapDispatchToProps (dispatch) {
 }
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps,
 )(MainScreen);

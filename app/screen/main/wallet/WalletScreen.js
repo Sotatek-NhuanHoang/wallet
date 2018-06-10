@@ -3,17 +3,21 @@ import {
   SafeAreaView,
   StyleSheet
 } from 'react-native'
-import { StackNavigator } from 'react-navigation';
+import {
+  StackNavigator,
+  NavigationActions
+} from 'react-navigation';
 import StartGetWalletScreen from './StartGetWalletScreen';
 import CreateWalletScreen from './CreateWalletScreen';
 import Transitions from '../../../utils/Transitions';
 import ExportPrivateKeyScreen from './ExportPrivateKeyScreen';
 import BaseScreen from '../../BaseScreen';
+import { connect } from 'react-redux';
 
 import I18n from '../../../res/i18n/i18n';
 import ShowPrivateKeyScreen from './ShowPrivateKeyScreen';
 
-export default StackNavigator({
+const WalletStackNavigator = StackNavigator({
   Start: {
     screen: StartGetWalletScreen
   },
@@ -38,23 +42,27 @@ export default StackNavigator({
   }
 });
 
-// class WalletScreen extends BaseScreen {
-//   render() {
-//     return (
-//       <SafeAreaView style = { styles.container } >
-//         <WalletNavigator/>
-//       </SafeAreaView>
-//     )
-//   }
-// }
+class WalletScreen extends Component {
+  render() {
+    return (
+      <WalletStackNavigator />
+    )
+  }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     flexDirection: 'column'
-//   },
-// });
+  shouldComponentUpdate(nextProps, nextStates) {
+    if (nextProps.exportPrivateKey) {
+      WalletStackNavigator.navigation.replace('ExportPrivateKey');
+      return false;
+    }
 
-// export default WalletScreen;
+    return super.shouldComponentUpdate(nextProps, nextStates);
+  }
+}
 
-// export const WalletNavigator;
+function mapStateToProps (state) {
+  return {
+    exportPrivateKey: state.navigation.exportPrivateKey 
+  }
+}
+
+export default connect(mapStateToProps)(WalletScreen);

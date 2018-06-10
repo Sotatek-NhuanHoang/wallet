@@ -23,7 +23,6 @@ import BaseScreen from '../BaseScreen';
 import I18n from '../../res/i18n/i18n';
 import { CommonStyles, CommonSize, CommonColors } from '../../utils/CommonStyles';
 import ActionSheet from 'react-native-actionsheet';
-import Icon from 'react-native-vector-icons';
 import _ from 'lodash';
 
 const Background = require('../../../assets/common/background.png');

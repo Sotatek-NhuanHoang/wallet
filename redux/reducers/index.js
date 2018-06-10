@@ -1,12 +1,12 @@
 // reducers/index.js
 
 import { combineReducers } from 'redux'
-import headerReducer from './HeaderReducer'
-import mainScreenReducer from './MainScreenReducer'
+import navigationReducer from './NavigationReducer'
+import globalReducer from './GlobalReducer'
 
 const rootReducer = combineReducers({
-    headerReducer,
-    mainScreenReducer
+    navigation: navigationReducer,
+    global: globalReducer
 })
 
 export default rootReducer;

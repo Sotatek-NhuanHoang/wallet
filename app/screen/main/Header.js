@@ -18,6 +18,7 @@ const MenuIcon = require('../../../assets/common/ic_menu.png');
 const LogoIcon = require('../../../assets/common/ic_logo.png');
 import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 import { exportPrivateKey, logOut } from '../../../redux/actions/Actions';
+import RNRestart from 'react-native-restart';
 
 class Header extends Component {
   render() {
@@ -88,17 +89,9 @@ class Header extends Component {
   }
 
   _onLogout() {
-    this.props.onLogout();
-    this._menu.hide();
+    RNRestart.Restart();
   }
 }
-
-// Header.propTypes = {
-//   title: PropTypes.string.isRequired,
-//   userEmail: PropTypes.string.isRequired,
-//   onExportPrivateKey: PropTypes.func,
-//   onLogout: PropTypes.func
-// }
 
 Header.defaultProps = {
   title: I18n.t('common.wallet').toUpperCase(),
@@ -179,15 +172,14 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (state) {
   return {
-    title: state.mainScreenReducer.title,
-    userEmail: state.userEmail
+    title: state.navigation.headerTitle,
+    userEmail: state.global.userEmail
   }
 }
 
 function mapDispatchToProps (dispatch) {
   return {
-    onExportPrivateKey: () => dispatch(exportPrivateKey()),
-    onLogout: () => dispatch(logOut())
+    onExportPrivateKey: () => dispatch(exportPrivateKey())
   }
 }
 
