@@ -518,14 +518,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1325844A20CD0DC100DB2035 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1325845120CD0DC200DB2035 /* libRNVectorIcons.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		139105B71AF99BAD00B5F7CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -612,24 +604,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		20604B7304D64D7691B972A9 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				FF3629E5C574436E953021E1 /* Entypo.ttf */,
-				47AA74DCDACF4A18976DA12C /* EvilIcons.ttf */,
-				FC43D28C88C140A8B93EE784 /* Feather.ttf */,
-				676EFD588009408791D9E60F /* FontAwesome.ttf */,
-				2DEE6FF3BFDB4682844EF9E9 /* Foundation.ttf */,
-				2F00F2BDD26E4E59A2DAACBF /* Ionicons.ttf */,
-				36765FB3FBAE418AB3B1A72D /* MaterialCommunityIcons.ttf */,
-				FB483329708940B4914769E4 /* MaterialIcons.ttf */,
-				DE1662740AC940C6A6191371 /* Octicons.ttf */,
-				A999DF07960144829C34B6B3 /* SimpleLineIcons.ttf */,
-				951D1F11E9CA4D52990231E5 /* Zocial.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -674,7 +648,6 @@
 				BFC239F025554B53972E1EDF /* SplashScreen.xcodeproj */,
 				79695A7EE5EC435E9E17B99C /* RNI18n.xcodeproj */,
 				B2411F7092374F78A96E5D62 /* RCTRestart.xcodeproj */,
-				9DA625C8BF7049E389DAAF9B /* RNVectorIcons.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -895,10 +868,6 @@
 					ProjectRef = 79695A7EE5EC435E9E17B99C /* RNI18n.xcodeproj */;
 				},
 				{
-					ProductGroup = 1325844A20CD0DC100DB2035 /* Products */;
-					ProjectRef = 9DA625C8BF7049E389DAAF9B /* RNVectorIcons.xcodeproj */;
-				},
-				{
 					ProductGroup = 13BAD99020BBDD2200BD24CB /* Products */;
 					ProjectRef = BFC239F025554B53972E1EDF /* SplashScreen.xcodeproj */;
 				},
@@ -954,13 +923,6 @@
 			fileType = archive.ar;
 			path = libRCTRestart.a;
 			remoteRef = 1325844D20CD0DC200DB2035 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1325845120CD0DC200DB2035 /* libRNVectorIcons.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNVectorIcons.a;
-			remoteRef = 1325845020CD0DC200DB2035 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		139105C11AF99BAD00B5F7CC /* libRCTSettings.a */ = {
@@ -1392,7 +1354,6 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1478,7 +1439,6 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1557,7 +1517,6 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1592,7 +1551,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
