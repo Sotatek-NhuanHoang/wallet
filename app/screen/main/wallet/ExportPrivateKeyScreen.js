@@ -8,7 +8,8 @@ import {
   KeyboardAvoidingView,
   Keyboard,
   TouchableWithoutFeedback,
-  ImageBackground
+  ImageBackground,
+  Platform
 } from 'react-native'
 import I18n from '../../../res/i18n/i18n';
 import BaseScreen from '../../BaseScreen';
@@ -30,7 +31,10 @@ class ExportPrivateKeyScreen extends BaseScreen {
 
   render() {
     return (
-      <KeyboardAvoidingView behavior = 'position' style = { styles.container } >
+      <KeyboardAvoidingView
+        behavior = 'position'
+        style = { styles.container }
+        keyboardVerticalOffset={Platform.select({ ios: 0, android: 25 })}>
         <ImageBackground
           style = { styles.background }
           source = { Background }/>

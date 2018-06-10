@@ -8,7 +8,8 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
-  ImageBackground
+  ImageBackground,
+  Platform
 } from 'react-native'
 
 import HTMLView from 'react-native-htmlview';
@@ -34,46 +35,49 @@ class CreateWalletScreen extends BaseScreen {
 
   render() {
     return (
-      <KeyboardAvoidingView behavior = 'position' style = { styles.container } >
+      <KeyboardAvoidingView
+        behavior = 'position'
+        style = { styles.container }
+        keyboardVerticalOffset={Platform.select({ ios: 0, android: 25 })}>
         <ImageBackground
           style = { styles.background }
           source = { Background }/>
         <TouchableWithoutFeedback
-          style = {{ flex: 1 }}
-          onPress = {Keyboard.dismiss}
-          accessible = { false }>
-          <View style = { styles.container }>
-            <Text style = { styles.email }>
-              { this.state.userEmail }
-            </Text>
-            <Text style = { styles.subTitle }>
-              { I18n.t('start.no_account').toUpperCase() }
-            </Text>
-
-            <HTMLView
-              style = { styles.description }
-              value = { I18n.t('create_wallet.description_html') }
-              stylesheet = { htmlStyles }/>
-
-            <View style = { styles.inputContainer }>
-              <Text style = {{ color: 'white', fontSize: 11, marginEnd: 10, width: 40, textAlign: 'center' }}>
-                { I18n.t('common.secret_code').toUpperCase() }
+            style = {{ flex: 1 }}
+            onPress = {Keyboard.dismiss}
+            accessible = { false }>
+            <View style = { styles.container }>
+              <Text style = { styles.email }>
+                { this.state.userEmail }
+              </Text>
+              <Text style = { styles.subTitle }>
+                { I18n.t('start.no_account').toUpperCase() }
               </Text>
 
-              {this._renderInputCode()}
-              
-              <TouchableOpacity
-                style = { styles.buttonOk }
-                onPress = { this._onOkPress.bind(this) }>
-                <Text style = { styles.buttonTitle }>
-                  { this.state.editable ? I18n.t('common.ok').toUpperCase() : I18n.t('common.edit').toUpperCase() }
+              <HTMLView
+                style = { styles.description }
+                value = { I18n.t('create_wallet.description_html') }
+                stylesheet = { htmlStyles }/>
+
+              <View style = { styles.inputContainer }>
+                <Text style = {{ color: 'white', fontSize: 11, marginEnd: 10, width: 40, textAlign: 'center' }}>
+                  { I18n.t('common.secret_code').toUpperCase() }
                 </Text>
-              </TouchableOpacity>
+
+                {this._renderInputCode()}
+                
+                <TouchableOpacity
+                  style = { styles.buttonOk }
+                  onPress = { this._onOkPress.bind(this) }>
+                  <Text style = { styles.buttonTitle }>
+                    { this.state.editable ? I18n.t('common.ok').toUpperCase() : I18n.t('common.edit').toUpperCase() }
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              
+              {this._renderMakeAccountButton()}
             </View>
-            
-            {this._renderMakeAccountButton()}
-          </View>
-        </TouchableWithoutFeedback>
+          </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     )
   }

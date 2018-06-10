@@ -16,8 +16,8 @@ import {
   StatusBar,
   Keyboard,
   KeyboardAvoidingView,
-  TouchableWithoutFeedback
-
+  TouchableWithoutFeedback,
+  ImageBackground
 } from 'react-native'
 import { connect } from 'react-redux';
 import I18n from '../../../res/i18n/i18n';
@@ -26,6 +26,8 @@ import ActionSheet from 'react-native-actionsheet';
 import { CommonStyles, CommonSize, CommonColors } from '../../../utils/CommonStyles';
 import _ from 'lodash';
 import { showHistory } from '../../../../redux/actions/Actions';
+
+const Background = require('../../../../assets/common/background.png');
 
 const DropDownIcon = require('../../../../assets/common/ic_down_arrow.png');
 
@@ -158,6 +160,9 @@ class SendScreen extends BaseScreen {
           behavior = {this.state.alertVisibility ? null : 'position'}
           keyboardVerticalOffset={Platform.select({ ios: 0, android: 25 })}
           style={ styles.screen }>
+          <ImageBackground
+            style = { styles.background }
+            source = { Background }/>
           <TouchableWithoutFeedback
             style={{ flex: 1 }}
             onPress={Keyboard.dismiss}
@@ -280,6 +285,8 @@ const styles = StyleSheet.create({
   scrollView: {
   },
   screen: CommonStyles.screen,
+  background: CommonStyles.background,
+
   containerButton: {
     justifyContent: 'center',
     flexDirection: 'row',
