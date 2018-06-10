@@ -20,6 +20,7 @@ import {
   TabNavigator,
   TabBarBottom
 } from 'react-navigation';
+import { NavigationActions } from 'react-navigation';
 import WalletScreen from './wallet/WalletScreen';
 import DepositScreen from './deposit/DepositScreen';
 import SendScreen from './send/SendScreen';
@@ -95,6 +96,16 @@ const AppTabNavigator = TabNavigator(
 );
 
 class MainScreen extends BaseNavigatorWrapperScreen {
+
+  shouldComponentUpdate(nextProps, nextStates) {
+    if (nextProps.navigationAction) {
+      this.navigator.dispatch(NavigationActions.navigate({
+        routeName: 'Wallet',
+        params: {}
+      }))
+      return super.shouldComponentUpdate(nextProps, nextStates);
+    }
+  }
 
   render() {
     return (
