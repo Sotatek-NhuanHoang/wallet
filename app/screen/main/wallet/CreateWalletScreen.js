@@ -40,7 +40,8 @@ class CreateWalletScreen extends BaseScreen {
           source = { Background }/>
         <TouchableWithoutFeedback
           style = {{ flex: 1 }}
-          onPress = {Keyboard.dismiss}>
+          onPress = {Keyboard.dismiss}
+          accessible = { false }>
           <View style = { styles.container }>
             <Text style = { styles.email }>
               { this.state.userEmail }

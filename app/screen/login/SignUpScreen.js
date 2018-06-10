@@ -118,7 +118,6 @@ export default class SignUpScreen extends BaseScreen {
                 </View>
                 <View style={{ marginTop: 20 }}>
                   <Text style={styles.modalText}>{I18n.t('alert.notice_msg')}</Text>
-
                 </View>
                 <View style={{ flex: 2 }} />
 
@@ -518,6 +517,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   modalText: {
+    marginStart: 10,
+    marginEnd: 10,
     fontSize: 14,
     color: 'white',
     textAlign: 'center'
