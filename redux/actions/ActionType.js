@@ -1,6 +1,5 @@
 export default Object.freeze({
-  exportPrivateKey: 'exportPrivateKey',
+  navigate: 'navigate',
   logOut: 'logOut',
-  changeHeaderTitle: 'changeHeaderTitle',
-  showHistory: 'showHistory'
+  changeHeaderTitle: 'changeHeaderTitle'
 });

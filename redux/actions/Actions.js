@@ -1,17 +1,12 @@
 import ActionType from './ActionType';
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 
 export function exportPrivateKey() {
   return {
-    type: ActionType.exportPrivateKey,
-    navigationAction: NavigationActions.reset({
-      index: 0,
-      actions: [
-        NavigationActions.navigate({
-          routeName: 'ExportPrivateKey',
-          params: {}
-        })
-      ]
+    type: ActionType.navigate,
+    navigationAction: StackActions.replace({
+      routeName: 'ExportPrivateKey',
+      params: {}
     })
   }
 }
@@ -24,7 +19,7 @@ export function logOut() {
 
 export function showHistory() {
   return {
-    type: ActionType.showHistory,
+    type: ActionType.navigate,
     navigationAction: NavigationActions.navigate({
       routeName: 'History',
       params: {},

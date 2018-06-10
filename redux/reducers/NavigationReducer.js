@@ -2,8 +2,7 @@ import ActionType from '../actions/ActionType';
 
 export default function reduce(state, action) {
   switch (action.type) {
-    case ActionType.exportPrivateKey:
-    case ActionType.showHistory:
+    case ActionType.navigate:
       return {
         navigationAction: action.navigationAction
       }

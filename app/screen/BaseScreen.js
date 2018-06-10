@@ -25,16 +25,10 @@ export default class BaseScreen extends React.Component {
   }
 
   replace(screen, params) {
-    // const { dispatch } = this.props.navigation;
-    // dispatch(NavigationActions.reset({
-    //   index: 0,
-    //   actions: [
-    //     NavigationActions.navigate({ routeName: screen, params })
-    //   ]
-    // }))
     if (this.props.navigation) {
       const { replace } = this.props.navigation;
-      replace(screen, params);
+      if (replace)
+        replace(screen, params);
     }
   }
 
