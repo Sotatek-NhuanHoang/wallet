@@ -12,6 +12,12 @@ export function logOut() {
   }
 }
 
+export function showHistory() {
+  return {
+    type: ActionType.showHistory
+  }
+}
+
 export function changeHeaderTitle(title) {
   return {
     type: ActionType.changeHeaderTitle,

@@ -111,13 +111,13 @@ class MainScreen extends BaseScreen {
   }
 
   shouldComponentUpdate(nextProps, nextStates) {
-    if (nextProps.isLogOut) {
-      this.replace('LoginScreen');
+    if (nextProps.showHistory) {
+      AppTabNavigator.navigate('History');
       
       return false;
     }
 
-    return super.shouldComponentUpdate(nextProps, nextStates);
+    return true;
   }
 
   _onTabChange(prevState, currentState, action) {
@@ -138,6 +138,12 @@ const styles = StyleSheet.create({
   },
 });
 
+function mapStateToProps (state) {
+  return {
+    showHistory: state.navigation.showHistory
+  }
+}
+
 function mapDispatchToProps (dispatch) {
   return {
     onTabChange: (title) => dispatch(changeHeaderTitle(title))
@@ -145,6 +151,6 @@ function mapDispatchToProps (dispatch) {
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(MainScreen);

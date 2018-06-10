@@ -19,11 +19,13 @@ import {
   TouchableWithoutFeedback
 
 } from 'react-native'
+import { connect } from 'react-redux';
 import I18n from '../../../res/i18n/i18n';
 import BaseScreen from '../../BaseScreen';
 import ActionSheet from 'react-native-actionsheet';
 import { CommonStyles, CommonSize, CommonColors } from '../../../utils/CommonStyles';
 import _ from 'lodash';
+import { showHistory } from '../../../../redux/actions/Actions';
 
 const DropDownIcon = require('../../../../assets/common/ic_down_arrow.png');
 
@@ -59,8 +61,7 @@ class SendScreen extends BaseScreen {
   _onPressOk() {
     this.setState({ showModal: false });
     this._showAlert(false);
-    //TODO: click ok -> move to HistoryScreen
-
+    this.props.onShowHistory();
   }
 
   _onPressSend() {
@@ -85,7 +86,8 @@ class SendScreen extends BaseScreen {
         }}>
           <TouchableWithoutFeedback
           style={{ width: '100%', height: '100%', position: 'absolute' }}
-          onPress={Keyboard.dismiss}>
+          onPress={Keyboard.dismiss}
+          accessible={false}>
             <View/>
           </TouchableWithoutFeedback>
           <Modal
@@ -114,8 +116,7 @@ class SendScreen extends BaseScreen {
                   }}>
                     <View style = {{
                       marginStart: 20,
-                      marginEnd: 20,
-                      alignSelf: 'center'
+                      marginEnd: 20
                     }} >
                       <TextInput
                         style={styles.inputScretCode}
@@ -379,9 +380,10 @@ const styles = StyleSheet.create({
     height: 40,
     textAlign: 'left',
     color: 'black',
-    fontSize: 15,
+    fontSize: 14,
     backgroundColor: 'white',
-    borderRadius: 5
+    borderRadius: 5,
+    alignSelf: 'stretch'
   },
   modalContent: {
     backgroundColor: '#2b2a2a',
@@ -411,4 +413,11 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch'
   }
 });
-export default SendScreen;
+
+function mapDispatchToProps (dispatch) {
+  return {
+    onShowHistory: () => dispatch(showHistory())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(SendScreen);

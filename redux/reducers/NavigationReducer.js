@@ -10,6 +10,10 @@ export default function reduce(state, action) {
       return {
         logOut: true
       }
+    case ActionType.showHistory:
+      return {
+        showHistory: true
+      }
     case ActionType.changeHeaderTitle:
       return {
         headerTitle: action.title
