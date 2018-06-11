@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  ImageView,
   ImageBackground,
   TouchableOpacity
 } from 'react-native'
@@ -27,24 +26,26 @@ class StartGetWalletScreen extends BaseScreen {
 
   render() {
     return (
-      <View style = { styles.container }>
-        <ImageBackground
-          style = { styles.background }
-          source = { Background }/>
-        <Text style = { styles.email }>
-          { this.state.userEmail }
-        </Text>
-        <Text style = { styles.subTitle }>
-          { I18n.t('start.no_account').toUpperCase() }
-        </Text>
-        <TouchableOpacity
-          style = { styles.button }
-          onPress = { this._onGetStarted.bind(this) }>
-          <Text style = { styles.buttonTitle }>
-            { I18n.t('start.get_address').toUpperCase() }
+      <ImageBackground
+        style = {{ flex: 1 }}
+        source = { Background }>
+        <View style = { styles.container }>
+          <Text style = { styles.email }>
+            { this.state.userEmail }
           </Text>
-        </TouchableOpacity>
-      </View>
+          <Text style = { styles.subTitle }>
+            { I18n.t('start.no_account').toUpperCase() }
+          </Text>
+          <TouchableOpacity
+            style = { styles.button }
+            onPress = { this._onGetStarted.bind(this) }>
+            <Text style = { styles.buttonTitle }>
+              { I18n.t('start.get_address').toUpperCase() }
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </ImageBackground>
+      
     )
   }
 
@@ -54,8 +55,6 @@ class StartGetWalletScreen extends BaseScreen {
 }
 
 const styles = StyleSheet.create({
-  background: CommonStyles.background,
-
   container: CommonStyles.screen,
 
   email: {

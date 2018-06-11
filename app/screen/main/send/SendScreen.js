@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   Platform,
   StyleSheet,
@@ -7,13 +7,8 @@ import {
   TextInput,
   Image,
   TouchableOpacity,
-  Alert,
-  Button,
-  PixelRatio,
   Modal,
   Dimensions,
-  SafeAreaView,
-  StatusBar,
   Keyboard,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
@@ -23,7 +18,7 @@ import { connect } from 'react-redux';
 import I18n from '../../../res/i18n/i18n';
 import BaseScreen from '../../BaseScreen';
 import ActionSheet from 'react-native-actionsheet';
-import { CommonStyles, CommonSize, CommonColors } from '../../../utils/CommonStyles';
+import { CommonStyles, CommonColors } from '../../../utils/CommonStyles';
 import _ from 'lodash';
 import { showHistory } from '../../../../redux/actions/Actions';
 
@@ -156,21 +151,19 @@ class SendScreen extends BaseScreen {
       'W'
     ];
     return (
+      <ImageBackground
+        style = {{ flex: 1 }}
+        source = { Background }>
         <KeyboardAvoidingView
           behavior = {this.state.alertVisibility ? null : 'position'}
           keyboardVerticalOffset={Platform.select({ ios: 0, android: 25 })}
           style={ styles.screen }>
-          <ImageBackground
-            style = { styles.background }
-            source = { Background }/>
           <TouchableWithoutFeedback
             style={{ flex: 1 }}
             onPress={Keyboard.dismiss}
             accessible={false}>
 
-            <View style={{ flex: 1, }}>
-              <View style={{ flex: 1, }} />
-
+            <View style={ styles.screen }>
               <View style={styles.containerInput}>
                 <View style={styles.inputRow}>
                   <Text style={styles.titleInput}>
@@ -268,13 +261,12 @@ class SendScreen extends BaseScreen {
                   </Text>
                 </TouchableOpacity>
               </View>
-
-              <View style={{ flex: 1 }} />
             </View>
           </TouchableWithoutFeedback>
 
           {this.renderModal()}
         </KeyboardAvoidingView>
+      </ImageBackground>
     );
   }
 }
@@ -282,10 +274,7 @@ class SendScreen extends BaseScreen {
 const width = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
-  scrollView: {
-  },
   screen: CommonStyles.screen,
-  background: CommonStyles.background,
 
   containerButton: {
     justifyContent: 'center',

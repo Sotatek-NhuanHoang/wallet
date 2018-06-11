@@ -1,22 +1,12 @@
-import React, {
-  Component,
-  PropTypes
-} from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import {
   StyleSheet,
   View,
-  Text,
-  Image,
-  TouchableOpacity,
-  ImageBackground,
-  SafeAreaView,
   StatusBar
 } from 'react-native'
 import I18n from '../../res/i18n/i18n';
-import BaseScreen from '../BaseScreen';
 import {
-  TabRoute,
   TabNavigator,
   TabBarBottom
 } from 'react-navigation';
@@ -25,9 +15,6 @@ import WalletScreen from './wallet/WalletScreen';
 import DepositScreen from './deposit/DepositScreen';
 import SendScreen from './send/SendScreen';
 import HistoryScreen from './history/HistoryScreen';
-import { CommonStyles } from '../../utils/CommonStyles';
-const MenuIcon = require('../../../assets/common/ic_menu.png');
-const LogoIcon = require('../../../assets/common/ic_logo.png');
 import Header from './Header';
 import { changeHeaderTitle } from '../../../redux/actions/Actions';
 import BaseNavigatorWrapperScreen, { mapStateToProps } from '../BaseNavigatorWrapperScreen';

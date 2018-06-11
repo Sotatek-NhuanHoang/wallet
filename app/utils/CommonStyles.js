@@ -20,14 +20,7 @@ const CommonStyles = {
   screen: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'transparent'
-  },
-
-  background: {
-    width: '100%',
-    height: '100%',
-    position: 'absolute'
+    alignItems: 'center'
   }
 };
 

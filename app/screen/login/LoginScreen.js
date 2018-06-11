@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   Platform,
   StyleSheet,
@@ -7,9 +7,6 @@ import {
   TextInput,
   Image,
   TouchableOpacity,
-  Alert,
-  PixelRatio,
-  SafeAreaView,
   StatusBar,
   Keyboard,
   KeyboardAvoidingView,
@@ -68,113 +65,111 @@ export default class LoginScreen extends BaseScreen {
 
   render() {
     return (
-      <KeyboardAvoidingView
-        behavior = 'position'
-        keyboardVerticalOffset={Platform.select({ ios: 0, android: 25 })}
-        style={ styles.screen }>
-        <ImageBackground
-          style = { styles.background }
-          source = { Background }/>
-        <StatusBar barStyle='light-content' />
-        <TouchableWithoutFeedback
-          style={{ position: 'absolute', width: '100%', height: '100%' }}
-          onPress={ Keyboard.dismiss }
-          accessible={false}>
-          <View style={{ flex: 1, }}>
-            <View style={{ flex: 1 }} />
+      <ImageBackground
+          style = {{ flex: 1 }}
+          source = { Background }>
+        <KeyboardAvoidingView
+          behavior = 'position'
+          keyboardVerticalOffset={Platform.select({ ios: 0, android: 25 })}
+          style={ styles.screen }>
+          <StatusBar barStyle='light-content' />
+          <TouchableWithoutFeedback
+            style={{ position: 'absolute', width: '100%', height: '100%' }}
+            onPress={ Keyboard.dismiss }
+            accessible={false}>
+            <View style={{ flex: 1, }}>
+              <View style={{ flex: 1 }} />
 
-            <View style={styles.containerLogo}>
-              <Image
-                style={styles.imageView}
-                source={ Logo }/>
-              <Text
-                style = { styles.welcome } >
-                <Text style = {{ fontSize: 44, fontWeight: 'bold' }}>{ 'WWW' }</Text>
-                <Text>{'\n'}</Text>
-                <Text style = {{ fontSize: 24 }}>{ 'coin wallet' }</Text>
-              </Text>
-            </View>
-
-            <View style={{ flex: 1 }} />
-
-            <View style={styles.containerInput}>
-              <View style={styles.inputRow}>
-                <Text style={styles.titleInput}>
-                  {I18n.t('login.id').toUpperCase()}
+              <View style={styles.containerLogo}>
+                <Image
+                  style={styles.imageView}
+                  source={ Logo }/>
+                <Text
+                  style = { styles.welcome } >
+                  <Text style = {{ fontSize: 44, fontWeight: 'bold' }}>{ 'WWW' }</Text>
+                  <Text>{'\n'}</Text>
+                  <Text style = {{ fontSize: 24 }}>{ 'coin wallet' }</Text>
                 </Text>
-
-                <TextInput
-                  style={styles.input}
-                  value={this.state.email}
-                  keyboardType='email-address'
-                  placeholderTextColor='gray'
-                  placeholder={I18n.t('common.placeholder.enter_id')}
-                  blurOnSubmit={false}
-                  underlineColorAndroid='transparent'
-                  onSubmitEditing={() => this.focusNextField('two')}
-                  returnKeyType={"next"}
-                  autoCorrect={false}
-                  onChangeText = {email => this.setState({ email })}
-                  ref={input => this.inputs.one = input}
-                />
               </View>
-              <View style={styles.line} />
-              <View style={styles.seperatorInput} />
-              <View style={styles.inputRow}>
-                <Text style={styles.titleInput}>
-                  {I18n.t('login.password').toUpperCase()}
-                </Text>
 
-                <TextInput
-                  style={styles.input}
-                  value={this.state.password}
-                  autoCorrect={false}
-                  secureTextEntry={true}
-                  placeholderTextColor='gray'
-                  placeholder={I18n.t('common.placeholder.enter_password')}
-                  underlineColorAndroid='transparent'
-                  onChangeText = {password => this.setState({ password })}
-                  ref={input => this.inputs.two = input} />
+              <View style={{ flex: 1 }} />
+
+              <View style={styles.containerInput}>
+                <View style={styles.inputRow}>
+                  <Text style={styles.titleInput}>
+                    {I18n.t('login.id').toUpperCase()}
+                  </Text>
+
+                  <TextInput
+                    style={styles.input}
+                    value={this.state.email}
+                    keyboardType='email-address'
+                    placeholderTextColor='gray'
+                    placeholder={I18n.t('common.placeholder.enter_id')}
+                    blurOnSubmit={false}
+                    underlineColorAndroid='transparent'
+                    onSubmitEditing={() => this.focusNextField('two')}
+                    returnKeyType={"next"}
+                    autoCorrect={false}
+                    onChangeText = {email => this.setState({ email })}
+                    ref={input => this.inputs.one = input}
+                  />
+                </View>
+                <View style={styles.line} />
+                <View style={styles.seperatorInput} />
+                <View style={styles.inputRow}>
+                  <Text style={styles.titleInput}>
+                    {I18n.t('login.password').toUpperCase()}
+                  </Text>
+
+                  <TextInput
+                    style={styles.input}
+                    value={this.state.password}
+                    autoCorrect={false}
+                    secureTextEntry={true}
+                    placeholderTextColor='gray'
+                    placeholder={I18n.t('common.placeholder.enter_password')}
+                    underlineColorAndroid='transparent'
+                    onChangeText = {password => this.setState({ password })}
+                    ref={input => this.inputs.two = input} />
+                </View>
+                <View style={styles.line} />
+
               </View>
-              <View style={styles.line} />
 
+              <View style={{ flex: 1 }} />
+
+              <View style={styles.containerButton}>
+                <TouchableOpacity
+                  onPress={this._onPressLogin.bind(this)}
+                  style={styles.buttonLogin} >
+                  <Text style={styles.buttonText}>
+                    {I18n.t('common.login').toUpperCase()}
+                  </Text>
+                </TouchableOpacity>
+                <View style = {{ width: 10 }} />
+                <TouchableOpacity
+                  onPress={this._onPressSignUp.bind(this)}
+                  style={styles.buttonSignup} >
+                  <Text style={styles.buttonText}>
+                    {I18n.t('common.sign_up').toUpperCase()}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+
+              <View style={{ flex: 1 }} />
             </View>
+          </TouchableWithoutFeedback>
 
-            <View style={{ flex: 1 }} />
-
-            <View style={styles.containerButton}>
-              <TouchableOpacity
-                onPress={this._onPressLogin.bind(this)}
-                style={styles.buttonLogin} >
-                <Text style={styles.buttonText}>
-                  {I18n.t('common.login').toUpperCase()}
-                </Text>
-              </TouchableOpacity>
-              <View style = {{ width: 10 }} />
-              <TouchableOpacity
-                onPress={this._onPressSignUp.bind(this)}
-                style={styles.buttonSignup} >
-                <Text style={styles.buttonText}>
-                  {I18n.t('common.sign_up').toUpperCase()}
-                </Text>
-              </TouchableOpacity>
-            </View>
-
-            <View style={{ flex: 1 }} />
-          </View>
-        </TouchableWithoutFeedback>
-
-      </KeyboardAvoidingView>
+        </KeyboardAvoidingView>
+      </ImageBackground>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  background: CommonStyles.background,
-
-  scrollView: {
-  },
   screen: CommonStyles.screen,
+  
   containerInput: {
     justifyContent: 'center',
     alignItems: 'center',

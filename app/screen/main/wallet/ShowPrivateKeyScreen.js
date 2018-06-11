@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
-  TextInput,
-  KeyboardAvoidingView,
   ImageBackground,
   Clipboard,
   Alert
@@ -31,34 +29,35 @@ class ShowPrivateKeyScreen extends BaseScreen {
 
   render() {
     return (
-      <View style = { styles.container } >
-        <ImageBackground
-          style = { styles.background }
-          source = { Background }/>
-        <Text style = { styles.email }>
-          { this.state.userEmail }
-        </Text>
-        <Text style = { styles.subTitle }>
-          { I18n.t('common.private_key').toUpperCase() }
-        </Text>
-
-        <View style = { styles.privateKeyContainer }>
-          <Text
-            style = { styles.privateKeyText }
-            numberOfLines = {1}
-            ellipsizeMode = 'tail'>
-            { this.state.privateKey }
+      <ImageBackground
+        style = {{ flex: 1 }}
+        source = { Background }>
+        <View style = { styles.container } >
+          <Text style = { styles.email }>
+            { this.state.userEmail }
+          </Text>
+          <Text style = { styles.subTitle }>
+            { I18n.t('common.private_key').toUpperCase() }
           </Text>
 
-          <TouchableOpacity
-            style = { styles.buttonCopy }
-            onPress = { this._onCopy.bind(this) }>
-            <Text style = { styles.buttonTitle }>
-              { I18n.t('common.copy').toUpperCase() }
+          <View style = { styles.privateKeyContainer }>
+            <Text
+              style = { styles.privateKeyText }
+              numberOfLines = {1}
+              ellipsizeMode = 'tail'>
+              { this.state.privateKey }
             </Text>
-          </TouchableOpacity>
+
+            <TouchableOpacity
+              style = { styles.buttonCopy }
+              onPress = { this._onCopy.bind(this) }>
+              <Text style = { styles.buttonTitle }>
+                { I18n.t('common.copy').toUpperCase() }
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
+      </ImageBackground>
     )
   }
 
@@ -69,8 +68,6 @@ class ShowPrivateKeyScreen extends BaseScreen {
 }
 
 const styles = StyleSheet.create({
-  background: CommonStyles.background,
-
   container: CommonStyles.screen,
 
   email: {

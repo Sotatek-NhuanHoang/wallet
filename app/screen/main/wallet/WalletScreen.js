@@ -1,20 +1,13 @@
-import React, { Component } from 'react';
-import {
-  SafeAreaView,
-  StyleSheet
-} from 'react-native'
+import React from 'react';
 import {
   StackNavigator,
-  NavigationActions
 } from 'react-navigation';
 import StartGetWalletScreen from './StartGetWalletScreen';
 import CreateWalletScreen from './CreateWalletScreen';
 import Transitions from '../../../utils/Transitions';
 import ExportPrivateKeyScreen from './ExportPrivateKeyScreen';
-import BaseScreen from '../../BaseScreen';
 import { connect } from 'react-redux';
 
-import I18n from '../../../res/i18n/i18n';
 import ShowPrivateKeyScreen from './ShowPrivateKeyScreen';
 import BaseNavigatorWrapperScreen, { mapStateToProps } from '../../BaseNavigatorWrapperScreen';
 

@@ -1,19 +1,11 @@
-import React, {
-  Component
-} from 'react';
+import React from 'react';
 import {
-  Platform,
   StyleSheet,
   View,
   Text,
   Image,
-  TouchableOpacity,
-  Alert,
-  PixelRatio,
   ImageBackground
 } from 'react-native';
-import {SplashScreen} from 'react-native-splash-screen';
-import LoginScreen from './login/LoginScreen';
 import BaseScreen from './BaseScreen';
 import { CommonStyles } from '../utils/CommonStyles';
 
@@ -30,10 +22,9 @@ export default class WelcomeScreen extends BaseScreen {
   
   render() {
     return (
-      <View style = { styles.rootView }>
-        <ImageBackground
-          style = { styles.background }
-          source = { Background }/>
+      <ImageBackground
+        style = { styles.rootView }
+        source = { Background }>
         <View style = { styles.container }>
           <Image
             style = { styles.imageView }
@@ -45,13 +36,11 @@ export default class WelcomeScreen extends BaseScreen {
             <Text style = {{ fontSize: 24 }}>{ 'coin wallet' }</Text>
           </Text>
         </View>
-      </View>
+      </ImageBackground>
     );
   }
 }
 const styles = StyleSheet.create({
-  background: CommonStyles.background,
-
   container: {
     flex: 1,
     justifyContent: 'center',

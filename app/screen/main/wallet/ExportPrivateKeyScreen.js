@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -31,14 +31,14 @@ class ExportPrivateKeyScreen extends BaseScreen {
 
   render() {
     return (
-      <KeyboardAvoidingView
-        behavior = 'position'
-        style = { styles.container }
-        keyboardVerticalOffset={Platform.select({ ios: 0, android: 25 })}>
-        <ImageBackground
-          style = { styles.background }
-          source = { Background }/>
-        <TouchableWithoutFeedback
+      <ImageBackground
+        style = {{ flex: 1 }}
+        source = { Background }>
+        <KeyboardAvoidingView
+          behavior = 'position'
+          style = { styles.container }
+          keyboardVerticalOffset = {Platform.select({ ios: 0, android: 25 })}>
+          <TouchableWithoutFeedback
             style={{ flex: 1 }}
             onPress={Keyboard.dismiss}
             accessible={false}>
@@ -80,9 +80,10 @@ class ExportPrivateKeyScreen extends BaseScreen {
                   </Text>
                 </TouchableOpacity>
               </View>
-          </View>
-        </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
+            </View>
+          </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
+      </ImageBackground>
     )
   }
 
@@ -97,8 +98,6 @@ class ExportPrivateKeyScreen extends BaseScreen {
 
 const styles = StyleSheet.create({
   container: CommonStyles.screen,
-
-  background: CommonStyles.background,
 
   email: {
     fontSize: 24,
