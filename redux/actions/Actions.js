@@ -4,10 +4,13 @@ import { NavigationActions } from 'react-navigation';
 export function exportPrivateKey() {
   return {
     type: ActionType.navigate,
-    navigationAction: NavigationActions.navigate({
+    navigationAction: {
+      action: NavigationActions.navigate({
+        routeName: 'ExportPrivateKey',
+        params: {}
+      }),
       routeName: 'ExportPrivateKey',
-      params: {}
-    })
+    }
   }
 }
 
@@ -20,10 +23,13 @@ export function logOut() {
 export function showHistory() {
   return {
     type: ActionType.navigate,
-    navigationAction: NavigationActions.navigate({
-      routeName: 'History',
-      params: {},
-    })
+    navigationAction: {
+      action:  NavigationActions.navigate({
+        routeName: 'History',
+        params: {},
+      }),
+      routeName: 'History'
+    }
   }
 }
 

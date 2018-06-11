@@ -8,10 +8,12 @@ class BaseNavigatorWrapperScreen extends BaseScreen {
   shouldComponentUpdate(nextProps, nextStates) {
     const navigationAction = nextProps.navigationAction;
     if (navigationAction) {
-      this.navigator.dispatch(navigationAction);
+      this.navigator.dispatch(navigationAction.action);
       
       return false;
     }
+
+    return true;
   }
 }
 
@@ -19,6 +21,6 @@ export default BaseNavigatorWrapperScreen;
 
 export function mapStateToProps (state) {
   return {
-    navigationAction: state.navigation.navigationAction 
+    navigationAction: state.navigation.navigationAction
   }
 }

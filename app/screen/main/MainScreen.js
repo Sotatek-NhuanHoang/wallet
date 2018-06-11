@@ -105,6 +105,8 @@ class MainScreen extends BaseNavigatorWrapperScreen {
       }))
       return super.shouldComponentUpdate(nextProps, nextStates);
     }
+
+    return true;
   }
 
   render() {

@@ -13,14 +13,16 @@ export default class BaseScreen extends React.Component {
   push(screen, params) {
     if (this.props.navigation) {
       const { push } = this.props.navigation;
-      push(screen, params);
+      if (push)
+        push(screen, params);
     }
   }
 
   goBack(params) {
     if (this.props.navigation) {
       const { goBack } = this.props.navigation;
-      goBack(params);
+      if (goBack)
+        goBack(params);
     }
   }
 
