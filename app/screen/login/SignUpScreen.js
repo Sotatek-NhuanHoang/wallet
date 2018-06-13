@@ -484,8 +484,8 @@ const styles = StyleSheet.create({
   },
   line: {
     width: '100%',
-    borderBottomColor: 'white',
-    borderBottomWidth: 1,
+    height: 1,
+    backgroundColor: 'white',
   },
   seperatorInput: {
     alignSelf: 'stretch',

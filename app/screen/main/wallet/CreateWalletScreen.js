@@ -94,7 +94,7 @@ class CreateWalletScreen extends BaseScreen {
   }
 
   _onMakeAccount() {
-
+    this.navigate('WalletInfo');
   }
 
   _onTextChanged(text) {

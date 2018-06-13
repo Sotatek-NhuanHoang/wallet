@@ -88,7 +88,7 @@ class ExportPrivateKeyScreen extends BaseScreen {
   }
 
   _onSubmit() {
-
+    this.navigate('ShowPrivateKey');
   }
 
   _onCancel() {

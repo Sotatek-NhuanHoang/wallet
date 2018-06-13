@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 
 import ShowPrivateKeyScreen from './ShowPrivateKeyScreen';
 import BaseNavigatorWrapperScreen, { mapStateToProps } from '../../BaseNavigatorWrapperScreen';
+import WalletInfoScreen from './WalletInfoScreen';
 
 const WalletStackNavigator = StackNavigator({
   Start: {
@@ -23,6 +24,9 @@ const WalletStackNavigator = StackNavigator({
   },
   ShowPrivateKey: {
     screen: ShowPrivateKeyScreen
+  },
+  WalletInfo: {
+    screen: WalletInfoScreen
   }
 }, {
   headerMode: 'none',

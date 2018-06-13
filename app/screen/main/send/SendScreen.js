@@ -41,6 +41,133 @@ class SendScreen extends BaseScreen {
     this.inputs = {};
   }
 
+  render() {
+    const listCoin = [
+      _.capitalize(I18n.t('common.cancel')),
+      'WWW',
+      'WW',
+      'W'
+    ];
+    return (
+      <ImageBackground
+        style = {{ flex: 1 }}
+        source = { Background }>
+        <KeyboardAvoidingView
+          behavior = {this.state.alertVisibility ? null : 'position'}
+          keyboardVerticalOffset={Platform.select({ ios: 0, android: 25 })}
+          style={ styles.container }>
+          <TouchableWithoutFeedback
+            style={{ flex: 1 }}
+            onPress={Keyboard.dismiss}
+            accessible={false}>
+
+            <View style={ styles.container }>
+              <View style={styles.containerInput}>
+                <View style={styles.inputRow}>
+                  <Text style={styles.titleInput}>
+                    {I18n.t('send.coin').toUpperCase()}
+                  </Text>
+                  <View style={styles.dropdown}>
+
+                    <ActionSheet
+                      ref={ref => this._actionSheet = ref}
+                      //title={'Coin?'}
+                      options={listCoin}
+                      cancelButtonIndex={0}
+                      onPress={(index) => {
+                        if (index != 0)
+                          this.setState({ coin: listCoin[index] })
+                      }}
+                    />
+                    <TouchableOpacity
+                      onPress={this._showActionSheet.bind(this)}
+                      style={styles.buttonDropArrow}>
+                      <Text style={styles.coinText}>
+                        {this.state.coin}
+                      </Text>
+                      <Image
+                        style={styles.downArrow}
+                        source={ DropDownIcon }
+                      />
+                    </TouchableOpacity>
+
+                  </View>
+                </View>
+
+                <View style={styles.line} />
+
+                <View style={styles.inputRow}>
+                  <Text style={styles.titleInput}>
+                    {I18n.t('send.address').toUpperCase()}
+                  </Text>
+
+                  <TextInput
+                    style={styles.input}
+                    value={this.state.address}
+                    keyboardType='default'
+                    placeholderTextColor='gray'
+                    placeholder={I18n.t('common.placeholder.enter_address')}
+                    blurOnSubmit={false}
+                    underlineColorAndroid='transparent'
+                    onSubmitEditing={() => this.focusNextField('two')}
+                    returnKeyType={"next"}
+                    onChangeText={(text) => this.setState({ address: text })}
+                    ref={input => this.inputs.one = input}
+                  />
+                </View>
+
+                <View style={styles.line} />
+
+                <View style={styles.inputRow}>
+                  <Text style={styles.titleInput}>
+                    {I18n.t('send.amount').toUpperCase()}
+                  </Text>
+
+                  <TextInput
+                    style={styles.input}
+                    value={this.state.amount}
+                    secureTextEntry={false}
+                    placeholderTextColor='gray'
+                    placeholder={I18n.t('common.placeholder.enter_amount')}
+                    keyboardType='default'
+                    underlineColorAndroid='transparent'
+                    onChangeText={(text) => this.setState({ amount: text })}
+                    ref={input => this.inputs.two = input} />
+                </View>
+
+                <View style={styles.line} />
+              </View>
+
+              <View style={styles.seperatorInput} />
+
+              <View style={styles.containerButton}>
+                <TouchableOpacity
+                  onPress={() => { this._onPressCancel.bind(this) }}
+                  style={styles.buttonCancel} >
+                  <Text style={styles.buttonText}>
+                    {I18n.t('common.cancel').toUpperCase()}
+                  </Text>
+                </TouchableOpacity>
+
+                <View style = {{ width: 10 }} />
+
+                <TouchableOpacity
+                  onPress={this._onPressSend.bind(this)}
+                  style={styles.buttonSend} >
+                  <Text style={styles.buttonText}>
+                    {I18n.t('common.send').toUpperCase()}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </TouchableWithoutFeedback>
+
+          {this.renderModal()}
+        </KeyboardAvoidingView>
+      </ImageBackground>
+    );
+  }
+
   _focusNextField(id) {
     this.inputs[id].focus();
   }
@@ -142,139 +269,12 @@ class SendScreen extends BaseScreen {
     }
     return null;
   }
-
-  render() {
-    const listCoin = [
-      _.capitalize(I18n.t('common.cancel')),
-      'WWW',
-      'WW',
-      'W'
-    ];
-    return (
-      <ImageBackground
-        style = {{ flex: 1 }}
-        source = { Background }>
-        <KeyboardAvoidingView
-          behavior = {this.state.alertVisibility ? null : 'position'}
-          keyboardVerticalOffset={Platform.select({ ios: 0, android: 25 })}
-          style={ styles.screen }>
-          <TouchableWithoutFeedback
-            style={{ flex: 1 }}
-            onPress={Keyboard.dismiss}
-            accessible={false}>
-
-            <View style={ styles.screen }>
-              <View style={styles.containerInput}>
-                <View style={styles.inputRow}>
-                  <Text style={styles.titleInput}>
-                    {I18n.t('send.coin').toUpperCase()}
-                  </Text>
-                  <View style={styles.dropdown}>
-
-                    <ActionSheet
-                      ref={ref => this._actionSheet = ref}
-                      //title={'Coin?'}
-                      options={listCoin}
-                      cancelButtonIndex={0}
-                      onPress={(index) => {
-                        if (index != 0)
-                          this.setState({ coin: listCoin[index] })
-                      }}
-                    />
-                    <TouchableOpacity
-                      onPress={this._showActionSheet}
-                      style={styles.buttonDropArrow}>
-                      <Text style={styles.coinText}>
-                        {this.state.coin}
-                      </Text>
-                      <Image
-                        style={styles.downArrow}
-                        source={ DropDownIcon }
-                      />
-                    </TouchableOpacity>
-
-                  </View>
-                </View>
-
-                <View style={styles.line} />
-
-                <View style={styles.inputRow}>
-                  <Text style={styles.titleInput}>
-                    {I18n.t('send.address').toUpperCase()}
-                  </Text>
-
-                  <TextInput
-                    style={styles.input}
-                    value={this.state.address}
-                    keyboardType='default'
-                    placeholderTextColor='gray'
-                    placeholder={I18n.t('common.placeholder.enter_address')}
-                    blurOnSubmit={false}
-                    underlineColorAndroid='transparent'
-                    onSubmitEditing={() => this.focusNextField('two')}
-                    returnKeyType={"next"}
-                    onChangeText={(text) => this.setState({ address: text })}
-                    ref={input => this.inputs.one = input}
-                  />
-                </View>
-
-                <View style={styles.line} />
-
-                <View style={styles.inputRow}>
-                  <Text style={styles.titleInput}>
-                    {I18n.t('send.amount').toUpperCase()}
-                  </Text>
-
-                  <TextInput
-                    style={styles.input}
-                    value={this.state.amount}
-                    secureTextEntry={false}
-                    placeholderTextColor='gray'
-                    placeholder={I18n.t('common.placeholder.enter_amount')}
-                    keyboardType='default'
-                    underlineColorAndroid='transparent'
-                    onChangeText={(text) => this.setState({ amount: text })}
-                    ref={input => this.inputs.two = input} />
-                </View>
-
-                <View style={styles.line} />
-              </View>
-
-              <View style={styles.seperatorInput} />
-
-              <View style={styles.containerButton}>
-                <TouchableOpacity
-                  onPress={() => { this._onPressCancel.bind(this) }}
-                  style={styles.buttonCancel} >
-                  <Text style={styles.buttonText}>
-                    {I18n.t('common.cancel').toUpperCase()}
-                  </Text>
-                </TouchableOpacity>
-
-                <View style = {{ width: 10 }} />
-
-                <TouchableOpacity
-                  onPress={this._onPressSend.bind(this)}
-                  style={styles.buttonSend} >
-                  <Text style={styles.buttonText}>
-                    {I18n.t('common.send').toUpperCase()}
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </TouchableWithoutFeedback>
-
-          {this.renderModal()}
-        </KeyboardAvoidingView>
-      </ImageBackground>
-    );
-  }
 }
 
 const width = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
-  screen: CommonStyles.screen,
+  container: CommonStyles.screen,
 
   containerButton: {
     justifyContent: 'center',
@@ -292,6 +292,7 @@ const styles = StyleSheet.create({
     marginEnd: 50
   },
   inputRow: {
+    height: 45,
     flexDirection: 'row',
     alignItems: 'center'
   },
@@ -307,7 +308,7 @@ const styles = StyleSheet.create({
   },
   dropdown: {
     justifyContent: 'flex-end',
-    flex: 3,
+    flex: 1,
     flexDirection: 'row',
     height: 40,
   },
