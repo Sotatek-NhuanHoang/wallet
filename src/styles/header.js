@@ -1,4 +1,4 @@
-import { Colors, FontSize } from './variables';
+import { Colors, FontSizes } from './variables';
 
 export default {
     headerStyle: {
@@ -11,6 +11,6 @@ export default {
         fontWeight: 'bold',
         textAlign: 'center',
         flex: 1,
-        fontSize: FontSize.h3,
+        fontSize: FontSizes.h3,
     },
 };

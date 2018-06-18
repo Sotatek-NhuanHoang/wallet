@@ -13,18 +13,19 @@ export const Colors = {
 };
 
 
-export const FontSize = {
-    h1: moderateScale(20),
-    h2: moderateScale(18),
-    h3: moderateScale(16),
-    h4: moderateScale(14),
-    p: moderateScale(12),
-    small: moderateScale(10),
-    extraSmall: moderateScale(8),
+export const FontSizes = {
+    h1: moderateScale(26),
+    h2: moderateScale(24),
+    h3: moderateScale(22),
+    h4: moderateScale(20),
+    h5: moderateScale(18),
+    p: moderateScale(16),
+    small: moderateScale(14),
+    extraSmall: moderateScale(12),
 };
 
 
-export const Size = {
+export const Sizes = {
     s1: moderateScale(4),
     s2: moderateScale(6),
     s3: moderateScale(10),
