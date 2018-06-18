@@ -25,7 +25,7 @@
                 <ul id="sidebar" class="nav nav-stacked">
                     <li class="active">
                         <a href="#Styles">Styles</a>
-    
+
                         <ul id="sidebar" class="nav nav-stacked">
                             <li>
                                 <a href="#Colors">Colors</a>
@@ -38,27 +38,27 @@
                             </li>
                         </ul>
                     </li>
-    
+
                     <li>
                         <a href="#Components">Components</a>
-    
+
                         <ul id="sidebar" class="nav nav-stacked">
                             <li>
-                                <a href="#GlobalHeaderTitleComponent">GlobalHeaderTitleComponent</a>
+                                <a href="#GlobalContainer">GlobalContainer</a>
                             </li>
                             <li>
-                                <a href="">Buttons</a>
+                                <a href="#GlobalHeaderTitleComponent">GlobalHeaderTitle</a>
                             </li>
                             <li>
-                                <a href="">Form input</a>
+                                <a href="#GlobalButton">GlobalButton</a>
                             </li>
                         </ul>
                     </li>
-    
+
                     <li>
                         <a href="#FolderStructure">Folder structure</a>
                     </li>
-    
+
                     <li>
                         <a href="#CodingStyleGuide">Coding style guide</a>
                     </li>
@@ -73,10 +73,10 @@
             <!-- Colors guide -->
             <section id="Styles" class="container">
                 <h3>Styles</h3>
-                
+
                 <section id="Colors" class="container">
                     <h5>Colors</h5>
-                    
+
                     <div class="row">
                         <div class="col-md-2">
                             <div style="width: 100px; height: 100px; background-color: #4472c2"></div>
@@ -160,46 +160,80 @@
 
                 <section id="FontSizes" class="container">
                     <h5>Font sizes</h5>
-
                     <img src="images/fontsizes.png" alt="" srcset="">
                 </section>
 
                 <section id="Sizes" class="container">
                     <h5>Sizes</h5>
-                    <p>s1 -> s10</p>
+                    <img src="images/sizes.png" alt="" srcset="">
                 </section>
-            </section> 
+            </section>
             <!-- /.Colors guide -->
 
 
             <!-- Components guide -->
             <section id="Components" class="container">
                 <h3>Components</h3>
-                
+
+                <section id="GlobalContainer" class="container">
+                    <h5>GlobalContainer</h5>
+                    <p>How to use:</p>
+                    <img src="images/GlobalContainerCode.png" alt="" srcset="">
+                </section>
+
                 <section id="GlobalHeaderTitleComponent" class="container">
-                    <h5>GlobalHeaderTitleComponent</h5>
+                    <h5>GlobalHeaderTitle</h5>
                     <p>How to use:</p>
                     <img src="images/GlobalHeaderTitleComponentCode.png" alt="" srcset="">
                     <p>Result:</p>
                     <img src="images/GlobalHeaderTitleComponent.png" alt="">
                 </section>
-            </section> 
+
+                <section id="GlobalButton" class="container">
+                    <h5>GlobalButton</h5>
+                    <p>How to use:</p>
+                    <img src="images/GlobalButtonCode.png" alt="" srcset="">
+                    <p>Result:</p>
+                    <img src="images/GlobalButtonResult.png" alt="">
+                </section>
+            </section>
             <!-- /.Components guide -->
 
 
             <!-- Folder structure guide -->
             <section id="FolderStructure" class="container">
-                <h3>Folder structure guide</h3>
-                
-            </section> 
+                <h3>Folder structure</h3>
+
+                <pre>
+                    src/
+                     |
+                     |------ api                Request to server
+                     |
+                     |------ components         Reusable components
+                     |
+                     |------ configs
+                     |
+                     |------ i18n               Multi language
+                     |
+                     |------ libs
+                     |
+                     |------ screens
+                     |
+                     |------ store              Redux
+                     |
+                     |------ styles             Header, screens, components style ...
+                     |
+                     |------ utils
+                </pre>
+            </section>
             <!-- /.Folder structure guide -->
 
 
             <!-- Coding style guide -->
             <section id="CodingStyleGuide" class="container">
                 <h3>Coding style guide</h3>
-                
-            </section> 
+
+            </section>
             <!-- /.Coding style guide -->
 
         </div>

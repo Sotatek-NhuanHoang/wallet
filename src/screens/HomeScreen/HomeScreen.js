@@ -22,9 +22,15 @@ export class HomeScreen extends Component {
         return (
             <GlobalContainer>
                 <GlobalButton
+                    type="primary"
+                    onPress={() => { console.log('nhuan'); }}
+                    title="Primary button"
+                />
+
+                <GlobalButton
                     type="basic"
                     onPress={() => { console.log('nhuan'); }}
-                    title="Haha"
+                    title="Basic button"
                 />
             </GlobalContainer>
         );

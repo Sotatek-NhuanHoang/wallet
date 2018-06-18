@@ -22,6 +22,7 @@ export class GlobalButton extends Component {
 
     render() {
         const { type, title } = this.props;
+
         let containerStyle = null;
         let buttonTextStyle = null;
 

@@ -10,6 +10,7 @@ export default ScaledSheet.create({
         backgroundColor: Colors.mainBlue,
         height: moderateScale(38),
         borderRadius: Sizes.s1,
+        marginBottom: Sizes.s2,
     },
     container__basic: {
         backgroundColor: Colors.darkGray,
