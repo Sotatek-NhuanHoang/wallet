@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
-import { HomeScreen } from '@screens/HomeScreen/HomeScreen';
+import HomeScreen from '@screens/HomeScreen/HomeScreen';
 
 import HeaderStyle from '@styles/header';
 

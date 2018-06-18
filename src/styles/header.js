@@ -4,7 +4,7 @@ import { moderateScale } from '@react-native-size-matters';
 export default {
     headerStyle: {
         backgroundColor: Colors.mainBlue,
-        height: moderateScale(45),
+        height: moderateScale(50),
     },
 
     headerTintColor: Colors.white,

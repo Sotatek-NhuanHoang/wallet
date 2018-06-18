@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { Loc } from 'react-native-redux-i18n';
 
-import { GlobalHeaderTitle } from '@components/GlobalHeaderTitle';
-import { GlobalButton } from '@components/GlobalButton';
+import GlobalContainer from '@components/GlobalContainer';
+import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
+import GlobalButton from '@components/GlobalButton';
 
 
 export class HomeScreen extends Component {
@@ -19,11 +20,16 @@ export class HomeScreen extends Component {
 
     render() {
         return (
-            <View>
-                <Text>Nhuan</Text>
-            </View>
+            <GlobalContainer>
+                <GlobalButton
+                    type="basic"
+                    onPress={() => { console.log('nhuan'); }}
+                    title="Haha"
+                />
+            </GlobalContainer>
         );
     }
 }
+
 
 export default HomeScreen;
