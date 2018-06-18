@@ -2,13 +2,14 @@ import { moderateScale } from 'react-native-size-matters';
 
 
 export const Colors = {
-    yellow: 'yellow',
-    black: 'black',
-    darkGray: '#192024',
-    gray: '#232C36',
-    lightGray: '#828a98',
-    white: '#FFF',
-    red: '#e50370',
+    mainBlue: '#4472c2',
+    secondaryBlue: '#5b9bd5',
+    darkGray: '#808080',
+    lightGray: '#e7e6e6',
+    green: '#70ad4a',
+    red: '#ff0000',
+    orange: '#ed7d31',
+    black: '#404040',
 };
 
 
