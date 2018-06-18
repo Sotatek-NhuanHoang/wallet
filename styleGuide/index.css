@@ -2,6 +2,10 @@ body {
     padding: 50px;
 }
 
+img {
+    margin-bottom: 20px;
+}
+
 /* sidebar */
 .bs-docs-sidebar {
     position: fixed;

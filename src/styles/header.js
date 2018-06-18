@@ -2,10 +2,10 @@ import { Colors, FontSizes } from './variables';
 
 export default {
     headerStyle: {
-        backgroundColor: Colors.gray,
+        backgroundColor: Colors.mainBlue,
     },
 
-    headerTintColor: 'white',
+    headerTintColor: Colors.white,
 
     headerTitleStyle: {
         fontWeight: 'bold',

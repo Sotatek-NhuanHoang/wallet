@@ -10,6 +10,7 @@ export const Colors = {
     red: '#ff0000',
     orange: '#ed7d31',
     black: '#404040',
+    white: '#ffffff',
 };
 
 
