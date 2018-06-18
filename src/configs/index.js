@@ -4,4 +4,4 @@ export const Urls = {
     
     MASTER_DATA_ENDPOINT: 'masterdata',
     MARKET_PRICES_ENDPOINT: 'prices',
-}
+};
