@@ -1,20 +1,16 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
 
-import { StackNavigator } from 'react-navigation';
-import { YellowBox } from 'react-native';
-import Screens from './app/screen/Screens';
-import Transitions from './app/utils/Transitions';
+import Routes from './src/routes';
+import store from './src/store/store';
 
-console.disableYellowBox = true;
 
-export default App = StackNavigator(Screens, {
-  headerMode: 'none',
-  navigationOptions: {
-    gesturesEnabled: false,
-  },
-  transitionConfig: Transitions.opacityTransition
-});
+export default class App extends Component {
+    render() {
+        return (
+            <Provider store={ store }>
+                <Routes />
+            </Provider>
+        );
+    }
+}

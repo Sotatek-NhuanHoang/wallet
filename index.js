@@ -1,15 +1,10 @@
-import React from 'react';
 import { AppRegistry } from 'react-native';
+import { YellowBox } from 'react-native';
+
 import App from './App';
-import { Provider } from 'react-redux';
-import configureStore from './redux/configureStore'
 
-const store = configureStore()
+console.ignoredYellowBox = ['Remote debugger'];
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
 
-const RNRedux = () => (
-  <Provider store={store}>
-    <App />
-  </Provider>
-)
 
-AppRegistry.registerComponent('wallet_mobile',  () => RNRedux);
+AppRegistry.registerComponent('fake', () => App);
