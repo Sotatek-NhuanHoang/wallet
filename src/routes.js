@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
-import { HomeScreen } from './screenLoader';
+import { HomeScreen } from '@screens/HomeScreen/HomeScreen';
 
-import { HeaderStyle } from './styleLoader';
+import HeaderStyle from '@styles/header';
 
 
 const Routes = createStackNavigator(

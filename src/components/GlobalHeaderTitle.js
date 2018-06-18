@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-import { GlobalHeaderTitleComponentStyle as style } from 'fake/src/styleLoader';
+import style from '@styles/components/GlobalHeaderTitle';
 
 
-export const GlobalHeaderTitleComponent = (props) => {
+export const GlobalHeaderTitle = (props) => {
     return (
         <View style={ style.container }>
             <Text style={ style.titleText }>
@@ -15,4 +15,4 @@ export const GlobalHeaderTitleComponent = (props) => {
 };
 
 
-export default GlobalHeaderTitleComponent;
+export default GlobalHeaderTitle;

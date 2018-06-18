@@ -1,8 +1,10 @@
 import { Colors, FontSizes } from './variables';
+import { moderateScale } from '@react-native-size-matters';
 
 export default {
     headerStyle: {
         backgroundColor: Colors.mainBlue,
+        height: moderateScale(45),
     },
 
     headerTintColor: Colors.white,
@@ -11,6 +13,6 @@ export default {
         fontWeight: 'bold',
         textAlign: 'center',
         flex: 1,
-        fontSize: FontSizes.h3,
+        fontSize: FontSizes.h4,
     },
 };

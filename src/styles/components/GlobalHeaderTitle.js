@@ -1,4 +1,4 @@
-import { ScaledSheet } from 'react-native-size-matters';
+import { ScaledSheet } from '@react-native-size-matters';
 import { Colors, FontSizes } from '../variables';
 
 
@@ -9,7 +9,7 @@ export default ScaledSheet.create({
 
     titleText: {
         textAlign: 'center',
-        fontSize: FontSizes.h4,
+        fontSize: FontSizes.h5,
         color: Colors.white,
     },
 });
