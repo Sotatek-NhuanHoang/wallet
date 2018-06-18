@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
-import { HomeScreen } from './screens/Home/HomeScreen';
+import { HomeScreen } from './screenLoader';
 
-import headerStyles from './styles/header';
+import { HeaderStyle } from './styleLoader';
 
 
 const Routes = createStackNavigator(
@@ -14,9 +14,9 @@ const Routes = createStackNavigator(
     {
         initialRouteName: 'HomeScreen',
         navigationOptions: {
-            headerStyle: headerStyles.headerStyle,
-            headerTintColor: headerStyles.headerTintColor,
-            headerTitleStyle: headerStyles.headerTitleStyle,
+            headerStyle: HeaderStyle.headerStyle,
+            headerTintColor: HeaderStyle.headerTintColor,
+            headerTitleStyle: HeaderStyle.headerTitleStyle,
 
             headerLeft: (<View />),
             headerRight: (<View />),
