@@ -3,6 +3,10 @@
     "Setting": {
         "LanguageScreen": {
             "title": "Language"
+        },
+        "SettingScreen": {
+            "title": "Setting",
+            "language": "Language"
         }
     }
 }
