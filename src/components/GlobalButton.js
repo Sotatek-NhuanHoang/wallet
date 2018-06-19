@@ -8,18 +8,6 @@ import style from '@styles/components/GlobalButton';
 
 export class GlobalButton extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.onPress = this.onPress.bind(this);
-    }
-
-
-    onPress() {
-        this.props.onPress();
-    }
-
-
     render() {
         const { type, title } = this.props;
 
@@ -44,7 +32,7 @@ export class GlobalButton extends Component {
 
 
         return (
-            <TouchableWithoutFeedback onPress={ this.onPress }>
+            <TouchableWithoutFeedback { ...this.props }>
                 <View style={ containerStyle }>
                     <Text style={ buttonTextStyle }>
                         { title }
