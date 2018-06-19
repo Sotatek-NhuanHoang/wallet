@@ -5,6 +5,7 @@ import GlobalLoc from '@components/GlobalLoc';
 import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
 import GlobalContainer from '@components/GlobalContainer';
 import GlobalButton from '@components/GlobalButton';
+import GlobalCoinIcon from '@components/GlobalCoinIcon';
 
 import { navigate } from '@utils/NavigationService';
 
