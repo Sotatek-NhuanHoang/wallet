@@ -7,12 +7,12 @@ import GlobalContainer from '@components/GlobalContainer';
 import GlobalButton from '@components/GlobalButton';
 
 
-export class HomeScreen extends Component {
+export class WalletInitialSettingScreen extends Component {
 
     static navigationOptions = {
         headerTitle: (
             <GlobalHeaderTitle>
-                <GlobalLoc locKey="HomeScreen.title" />
+                <GlobalLoc locKey="WalletInitialSettingScreen.title" />
             </GlobalHeaderTitle>
         ),
     };
@@ -21,21 +21,21 @@ export class HomeScreen extends Component {
     render() {
         return (
             <GlobalContainer>
-                <Text>Home Screen</Text>
+                <Text>WalletInitialSettingScreen</Text>
 
                 <GlobalButton
-                    title="Setting"
-                    onPress={() => this.props.navigation.navigate('Setting')}
+                    title="Home"
+                    onPress={() => this.props.navigation.navigate('HomeScreen')}
                 />
 
                 <GlobalButton
-                    title="Wallet initial setting"
-                    onPress={() => this.props.navigation.navigate('WalletInitialSettingScreen')}
+                    title="WalletInitialPasswordScreen"
+                    onPress={() => this.props.navigation.navigate('WalletInitialPasswordScreen')}
                 />
 
-                 <GlobalButton
-                    title="Wallet"
-                    onPress={() => this.props.navigation.navigate('Wallet')}
+                <GlobalButton
+                    title="WalletInitialImportScreen"
+                    onPress={() => this.props.navigation.navigate('WalletInitialImportScreen')}
                 />
             </GlobalContainer>
         );
@@ -43,4 +43,4 @@ export class HomeScreen extends Component {
 }
 
 
-export default HomeScreen;
+export default WalletInitialSettingScreen;
