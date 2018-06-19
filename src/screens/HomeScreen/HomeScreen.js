@@ -6,6 +6,8 @@ import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
 import GlobalContainer from '@components/GlobalContainer';
 import GlobalButton from '@components/GlobalButton';
 
+import { navigate } from '@utils/NavigationService';
+
 
 export class HomeScreen extends Component {
 
@@ -25,17 +27,17 @@ export class HomeScreen extends Component {
 
                 <GlobalButton
                     title="Setting"
-                    onPress={() => this.props.navigation.navigate('Setting')}
+                    onPress={() => navigate('Setting')}
                 />
 
                 <GlobalButton
                     title="Wallet initial setting"
-                    onPress={() => this.props.navigation.navigate('WalletInitialSettingScreen')}
+                    onPress={() => navigate('WalletInitialSettingScreen')}
                 />
 
                  <GlobalButton
                     title="Wallet"
-                    onPress={() => this.props.navigation.navigate('Wallet')}
+                    onPress={() => navigate('Wallet')}
                 />
             </GlobalContainer>
         );
