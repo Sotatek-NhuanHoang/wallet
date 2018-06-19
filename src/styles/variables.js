@@ -36,5 +36,7 @@ export const Sizes = {
     s6: moderateScale(16),
     s7: moderateScale(18),
     s8: moderateScale(20),
+    s9: moderateScale(22),
+    s10: moderateScale(24),
 };
 

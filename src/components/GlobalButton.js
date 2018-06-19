@@ -9,7 +9,7 @@ import style from '@styles/components/GlobalButton';
 export class GlobalButton extends Component {
 
     render() {
-        const { type, title } = this.props;
+        const { type, title, children } = this.props;
 
         let containerStyle = null;
         let buttonTextStyle = null;
@@ -38,9 +38,9 @@ export class GlobalButton extends Component {
 
         return (
             <TouchableWithoutFeedback { ...this.props }>
-                <View style={ containerStyle }>
+                <View style={ [containerStyle, this.props.style || {}] }>
                     <Text style={ buttonTextStyle }>
-                        { title }
+                        { title || children }
                     </Text>
                 </View>
             </TouchableWithoutFeedback>
