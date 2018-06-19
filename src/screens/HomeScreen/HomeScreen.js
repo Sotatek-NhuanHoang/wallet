@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { Loc } from 'react-native-redux-i18n';
+import { Text } from 'react-native';
 
+import GlobalLoc from '@components/GlobalLoc';
 import GlobalContainer from '@components/GlobalContainer';
 import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
-import GlobalButton from '@components/GlobalButton';
+import GlobalTextInput from '@components/GlobalTextInput';
 
 
 export class HomeScreen extends Component {
@@ -12,7 +12,7 @@ export class HomeScreen extends Component {
     static navigationOptions = {
         headerTitle: (
             <GlobalHeaderTitle>
-                <Loc locKey="HomeScreen.title" />
+                <GlobalLoc locKey="HomeScreen.title" />
             </GlobalHeaderTitle>
         ),
     };
@@ -21,17 +21,14 @@ export class HomeScreen extends Component {
     render() {
         return (
             <GlobalContainer>
-                <GlobalButton
-                    type="primary"
-                    onPress={() => { console.log('nhuan'); }}
-                    title="Primary button"
-                />
+                <Text>Text input primary</Text>
+                <GlobalTextInput type="primary" style={{ marginBottom: 30 }} />
 
-                <GlobalButton
-                    type="basic"
-                    onPress={() => { console.log('nhuan'); }}
-                    title="Basic button"
-                />
+                <Text>Text input basic</Text>
+                <GlobalTextInput type="basic" style={{ marginBottom: 30 }} />
+
+                <Text>Text input basic - multiline </Text>
+                <GlobalTextInput type="basic" multiline={true} />
             </GlobalContainer>
         );
     }

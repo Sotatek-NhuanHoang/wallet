@@ -1,5 +1,5 @@
 import { ScaledSheet, moderateScale } from '@react-native-size-matters';
-import { Colors, FontSizes, Sizes } from '@styles/variables';
+import { Colors, FontSizes, Sizes } from '../variables';
 
 
 export default ScaledSheet.create({
@@ -13,7 +13,7 @@ export default ScaledSheet.create({
         marginBottom: Sizes.s2,
     },
     container__basic: {
-        backgroundColor: Colors.darkGray,
+        backgroundColor: Colors.gray,
     },
 
     buttonText: {
