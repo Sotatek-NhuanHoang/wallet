@@ -20,6 +20,11 @@ export class GlobalButton extends Component {
                 buttonTextStyle = [style.buttonText];
                 break;
 
+            case 'secondary':
+                containerStyle = [style.container, style.container__secondary];
+                buttonTextStyle = [style.buttonText, style.buttonText__secondary];
+                break;
+
             case 'basic':
                 containerStyle = [style.container, style.container__basic];
                 buttonTextStyle = [style.buttonText, style.buttonText__basic];

@@ -26,6 +26,7 @@ export class HomeScreen extends Component {
                 <Text>Home Screen</Text>
 
                 <GlobalButton
+                    type="secondary"
                     title="Setting"
                     onPress={() => navigate('Setting')}
                 />

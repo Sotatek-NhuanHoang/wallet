@@ -12,13 +12,22 @@ export default ScaledSheet.create({
         borderRadius: Sizes.s1,
         marginBottom: Sizes.s2,
     },
-    container__basic: {
-        backgroundColor: Colors.gray,
-    },
-
     buttonText: {
         color: Colors.white,
         fontSize: FontSizes.p,
+    },
+
+    container__secondary: {
+        backgroundColor: 'transparent',
+        borderWidth: 2,
+        borderColor: Colors.secondaryBlue,
+    },
+    buttonText__secondary: {
+        color: Colors.secondaryBlue,
+    },
+
+    container__basic: {
+        backgroundColor: Colors.gray,
     },
     buttonText__basic: {
         color: Colors.white,
