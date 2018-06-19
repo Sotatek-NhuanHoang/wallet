@@ -1,5 +1,6 @@
 {
     "back_btn": "Back",
+
     "Setting": {
         "LanguageScreen": {
             "title": "Language"
@@ -7,6 +8,14 @@
         "SettingScreen": {
             "title": "Setting",
             "language": "Language"
+        }
+    },
+
+    "WalletInitialSetting": {
+        "WalletInitialSettingScreen": {
+            "title": "Wallet initial setting",
+            "createWallet_btn": "Create wallet",
+            "importWallet_btn": "Import wallet"
         }
     }
 }

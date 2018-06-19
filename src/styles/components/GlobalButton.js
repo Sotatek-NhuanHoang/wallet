@@ -8,13 +8,13 @@ export default ScaledSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: Colors.mainBlue,
-        height: moderateScale(38),
+        height: moderateScale(40),
         borderRadius: Sizes.s1,
         marginBottom: Sizes.s2,
     },
     buttonText: {
         color: Colors.white,
-        fontSize: FontSizes.p,
+        fontSize: FontSizes.small,
     },
 
     container__secondary: {

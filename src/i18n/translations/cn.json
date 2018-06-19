@@ -1,5 +1,6 @@
 {
     "back_btn": "Back cn",
+
     "Setting": {
         "LanguageScreen": {
             "title": "Language cn"
@@ -7,6 +8,14 @@
         "SettingScreen": {
             "title": "Setting cn",
             "language": "Language ja"
+        }
+    },
+
+    "WalletInitialSetting": {
+        "WalletInitialSettingScreen": {
+            "title": "Wallet initial setting cn",
+            "createWallet_btn": "Create wallet cn",
+            "importWallet_btn": "Import wallet cn"
         }
     }
 }
