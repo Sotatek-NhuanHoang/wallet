@@ -1,6 +1,7 @@
 {
-    "greetings": "Hello {{name}}",
-    "HomeScreen": {
-        "title": "Currency list"
+    "Setting": {
+        "LanguageScreen": {
+            "title": "Language ja"
+        }
     }
 }

@@ -1,12 +1,13 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native';
 
-import style from '@styles/components/GlobalContainer';
+import containerStyle from '@styles/components/GlobalContainer';
 
 
 export const GlobalContainer = (props) => {
+    const { style } = props;
     return (
-        <SafeAreaView style={ style.container }>
+        <SafeAreaView style={ [containerStyle.container, style || {}] }>
             { props.children }
         </SafeAreaView>
     );
