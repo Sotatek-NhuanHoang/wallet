@@ -3,6 +3,10 @@
     "Setting": {
         "LanguageScreen": {
             "title": "Language cn"
+        },
+        "SettingScreen": {
+            "title": "Setting cn",
+            "language": "Language ja"
         }
     }
 }
