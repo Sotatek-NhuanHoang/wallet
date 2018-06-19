@@ -7,6 +7,7 @@ import { setLocale } from 'react-native-redux-i18n';
 import GlobalLoc from '@components/GlobalLoc';
 import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
 import GlobalContainer from '@components/GlobalContainer';
+import GlobalHeaderBackButton from '@components/GlobalHeaderBackButton';
 
 import style from '@styles/screens/Setting/LanguageScreen/LanguageScreen';
 
@@ -33,6 +34,9 @@ const LanguageItem = (props) => {
 export class LanguageScreen extends Component {
 
     static navigationOptions = {
+        headerLeft: (
+            <GlobalHeaderBackButton />
+        ),
         headerTitle: (
             <GlobalHeaderTitle>
                 <GlobalLoc locKey="Setting.LanguageScreen.title" />

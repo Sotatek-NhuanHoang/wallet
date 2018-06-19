@@ -38,7 +38,7 @@ export const Routes = createStackNavigator(
                 LanguageScreen: LanguageScreen,
             },
             {
-                initialRouteName: 'LanguageScreen',
+                initialRouteName: 'SettingScreen',
                 navigationOptions: { ...defaultNavigationOptions },
             }
         ),
@@ -68,7 +68,7 @@ export const Routes = createStackNavigator(
         ),
     },
     {
-        initialRouteName: 'Setting',
+        initialRouteName: 'HomeScreen',
         navigationOptions: ({ navigation }) => {
             const options = { ...defaultNavigationOptions };
 
