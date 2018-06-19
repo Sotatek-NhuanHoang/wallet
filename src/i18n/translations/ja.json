@@ -1,6 +1,8 @@
 {
-    "greetings": "Hello {{name}}",
-    "HomeScreen": {
-        "title": "Currency list"
+    "back_btn": "Back ja",
+    "Setting": {
+        "LanguageScreen": {
+            "title": "Language ja"
+        }
     }
 }

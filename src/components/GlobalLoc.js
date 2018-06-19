@@ -6,8 +6,10 @@ import { Text } from 'react-native';
 
 
 class GlobalLoc extends Component {
-    shouldComponentUpdate({ locKey, version }) {
-        return this.props.locKey != locKey || this.props.version != version
+    shouldComponentUpdate({ locKey, version, locale }) {
+        return this.props.locKey != locKey ||
+            this.props.version != version ||
+            this.props.locale !== locale;
     }
 
     render() {
