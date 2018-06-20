@@ -9,6 +9,7 @@ import _ from 'lodash';
  * =====================================================
  */
 
+export const GLOBAL_SELECT_COIN = createAction('GLOBAL_SELECT_COIN');
 
 
 /**
@@ -27,8 +28,12 @@ import _ from 'lodash';
 
 const defaultState = {
     selectedCoin: {
-        coin: 'btc',
-        coinName: 'Bitcoin (BTC)',
+        coin: 'eth',
+        coinName: 'Ethereum (ETH)',
+        balance: 0,
+        change: 0,
+        wallet: null,
+        privateKey: '38f23cdd30fe4fb29f5dba4b940a8ae9f8ae2d7117e10665846e1a18fd9d731b',
     },
     coins: [
         {
@@ -39,6 +44,7 @@ const defaultState = {
             wallet: {
                 address: '',
             },
+            privateKey: '38f23cdd30fe4fb29f5dba4b940a8ae9f8ae2d7117e10665846e1a18fd9d731b',
         },
         {
             coin: 'eth',
@@ -46,6 +52,7 @@ const defaultState = {
             balance: 0,
             change: 0,
             wallet: null,
+            privateKey: '38f23cdd30fe4fb29f5dba4b940a8ae9f8ae2d7117e10665846e1a18fd9d731b',
         },
         {
             coin: 'drc',
@@ -55,12 +62,15 @@ const defaultState = {
             wallet: {
                 address: '',
             },
+            privateKey: '38f23cdd30fe4fb29f5dba4b940a8ae9f8ae2d7117e10665846e1a18fd9d731b',
         }
     ],
 };
 
 export const globalReducer = handleActions({
-
+    GLOBAL_SELECT_COIN: (state, action) => {
+        return { ...state, selectedCoin: action.payload };
+    },
 }, defaultState);
 
 

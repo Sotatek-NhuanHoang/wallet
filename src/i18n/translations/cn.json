@@ -21,6 +21,12 @@
             "title": "Wallet initial setting cn",
             "createWallet_btn": "Create wallet cn",
             "importWallet_btn": "Import wallet cn"
+        },
+        "WalletInitialPrivateKeyScreen": {
+            "title": "Private key cn",
+            "copy_btn": "Copy cn",
+            "next_btn": "Next cn",
+            "walletCreated": "Wallet has been created cn"
         }
     }
 }

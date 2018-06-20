@@ -8,6 +8,7 @@ import GlobalContainer from '@components/GlobalContainer';
 import GlobalHeaderBackButton from '@components/GlobalHeaderBackButton';
 import GlobalCoinIcon from '@components/GlobalCoinIcon';
 import GlobalButton from '@components/GlobalButton';
+import { WINI_INIT_STATE } from '@store/walletInitialSetting';
 import { navigate } from '@utils/NavigationService';
 
 import style from '@styles/screens/WalletInitialSetting/WalletInitialSettingScreen/WalletInitialSettingScreen';
@@ -26,9 +27,13 @@ export class WalletInitialSettingScreen extends Component {
         ),
     };
 
+    componentDidMount() {
+        const { privateKey } = this.props.selectedCoin;
+        this.props.setupWalletInitialSettingState(privateKey);
+    }
 
     goToCreateWalletScreen() {
-        navigate('WalletInitialPasswordScreen');
+        navigate('WalletInitialPrivateKeyScreen');
     }
 
     goToImportWalletScreen() {
@@ -67,4 +72,10 @@ const mapStateToProps = ({ global }) => ({
     selectedCoin: global.selectedCoin,
 });
 
-export default connect(mapStateToProps)(WalletInitialSettingScreen);
+const mapDispatchToProps = (dispatch) => ({
+    setupWalletInitialSettingState: (privateKey) => {
+        dispatch(WINI_INIT_STATE(privateKey));
+    },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(WalletInitialSettingScreen);
