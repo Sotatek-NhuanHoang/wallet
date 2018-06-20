@@ -36,5 +36,9 @@
             "sent": "Sent ja",
             "received": "Received ja"
         }
+    },
+
+    "ReceiveScreen": {
+        "title": "Receive ja"
     }
 }

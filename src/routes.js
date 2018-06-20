@@ -19,6 +19,8 @@ import DepositScreen from '@screens/Wallet/DepositScreen/DepositScreen';
 import WithdrawScreen from '@screens/Wallet/WithdrawScreen/WithdrawScreen';
 import TransactionScreen from '@screens/Wallet/TransactionScreen/TransactionScreen';
 
+import ReceiveScreen from '@screens/ReceiveScreen/ReceiveScreen';
+
 import HeaderStyle from '@styles/header';
 
 
@@ -69,10 +71,11 @@ export const Routes = createStackNavigator(
                 navigationOptions: { ...defaultNavigationOptions },
             }
         ),
-        WebViewScreen: WebViewScreen
+        WebViewScreen: WebViewScreen,
+        ReceiveScreen: ReceiveScreen
     },
     {
-        initialRouteName: 'SplashScreen',
+        initialRouteName: 'ReceiveScreen',
         navigationOptions: ({ navigation }) => {
             const options = { ...defaultNavigationOptions };
 

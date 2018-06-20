@@ -36,6 +36,10 @@
             "sent": "Sent",
             "received": "Received"
         }
+    },
+
+    "ReceiveScreen": {
+        "title": "Receive"
     }
 
 }
