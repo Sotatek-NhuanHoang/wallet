@@ -62,13 +62,13 @@ export const Routes = createStackNavigator(
                 TransactionScreen: TransactionScreen,
             },
             {
-                initialRouteName: 'WalletScreen',
+                initialRouteName: 'TransactionScreen',
                 navigationOptions: { ...defaultNavigationOptions },
             }
         ),
     },
     {
-        initialRouteName: 'HomeScreen',
+        initialRouteName: 'Wallet',
         navigationOptions: ({ navigation }) => {
             const options = { ...defaultNavigationOptions };
 

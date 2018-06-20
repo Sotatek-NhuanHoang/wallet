@@ -22,5 +22,12 @@
             "createWallet_btn": "Create wallet",
             "importWallet_btn": "Import wallet"
         }
+    },
+
+    "Wallet":{
+        "TransactionScreen":{
+            "title":"Transaction list"
+        }
     }
+
 }
