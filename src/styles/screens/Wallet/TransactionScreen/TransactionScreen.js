@@ -2,50 +2,54 @@ import { ScaledSheet } from '@react-native-size-matters';
 import { Colors, FontSizes, Sizes } from '../../../variables';
 
 export default ScaledSheet.create({
-  contain:{
-    flex:1
+  contain: {
+    flex: 1
   },
-  itemContain:{
-    flex:1, 
-    paddingTop:'10@ms', 
-    paddingBottom:'10@ms'
+  itemContain: {
+    flex: 1, 
+    paddingTop: Sizes.s3, 
+    paddingBottom: Sizes.s3
   },
-  itemHeader:{
+  itemHeader: {
     flex: 1, 
     flexDirection: 'row' ,
-    alignItems:'center',
+    alignItems: 'center',
   },
-  itemStatus:{
+  itemStatus: {
     flex: 1, 
     textAlign: 'left',
     fontSize: FontSizes.p,
+    color: Colors.darkGray
   },
-  itemMount:{
+  itemMount: {
     flex: 1, 
     textAlign: 'right',
-    fontSize: FontSizes.p
-  },
-  itemAddress:{
     fontSize: FontSizes.p,
+    color: Colors.darkGray
   },
-  seperator:{
+  itemAddress: {
+    fontSize: FontSizes.p,
+    color: Colors.darkGray
+  },
+  seperator: {
      flex: 1, 
      height: 1, 
-     backgroundColor: Colors.black,
-     alignItems:'center',
+     backgroundColor: Colors.gray,
+     alignItems: 'center',
   },
-  dateTrans:{
-    flex: 1, 
-    flexWrap: 'wrap',
+  dateTrans: {
+    paddingLeft: Sizes.s5,
+    paddingRight: Sizes.s5, 
     fontSize: FontSizes.p,
-    textAlign:'center',
+    textAlign: 'center',
+    color: Colors.gray
   },
   coinContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop:  '10@ms',
-    marginBottom:  '35@ms',
+    marginTop: Sizes.s3,
+    marginBottom:'35@ms',
   },
   coinName: {
     fontSize: FontSizes.h2,
