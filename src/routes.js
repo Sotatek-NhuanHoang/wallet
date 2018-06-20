@@ -52,7 +52,7 @@ export const Routes = createStackNavigator(
                 WalletInitialImportScreen: WalletInitialImportScreen,
             },
             {
-                initialRouteName: 'WalletInitialPrivateKeyScreen',
+                initialRouteName: 'WalletInitialSettingScreen',
                 navigationOptions: { ...defaultNavigationOptions },
             }
         ),
@@ -70,7 +70,7 @@ export const Routes = createStackNavigator(
         ),
     },
     {
-        initialRouteName: 'WalletInitialSetting',
+        initialRouteName: 'CurrencyListScreen',
         navigationOptions: ({ navigation }) => {
             const options = { ...defaultNavigationOptions };
 

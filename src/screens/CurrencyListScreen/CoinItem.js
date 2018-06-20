@@ -7,7 +7,7 @@ import GlobalLoc from '@components/GlobalLoc';
 import style from '@styles/screens/CurrencyListScreen/CoinItem';
 
 
-export const CoinItem = ({ item, ethCoin, goWalletInitialSettingScreen, goWalletScreen }) => {
+export const CoinItem = ({ item, ethCoin, onCoinSelected}) => {
     let coinChangeTextStyle = {};
     if (item.wallet) {
         if (item.change > 0) {
@@ -30,7 +30,7 @@ export const CoinItem = ({ item, ethCoin, goWalletInitialSettingScreen, goWallet
             </TouchableWithoutFeedback>
         );
     } else if (item.coin === 'drc' && ethCoin.wallet) {
-        return <TouchableWithoutFeedback onPress={ goWalletScreen }>
+        return <TouchableWithoutFeedback onPress={() => onCoinSelected(item)}>
             <View style={ style.coinContainer }>
                 <View style={ style.coinInfoContainer }>
                     <GlobalCoinIcon coin={ item.coin } size="small" />
@@ -45,7 +45,7 @@ export const CoinItem = ({ item, ethCoin, goWalletInitialSettingScreen, goWallet
         </TouchableWithoutFeedback>
     } else {
         return (
-            <TouchableWithoutFeedback onPress={ item.wallet ? goWalletScreen : goWalletInitialSettingScreen }>
+            <TouchableWithoutFeedback onPress={() => onCoinSelected(item)}>
                 <View style={ style.coinContainer }>
                     <View style={ style.coinInfoContainer }>
                         <GlobalCoinIcon coin={ item.coin } size="small" />

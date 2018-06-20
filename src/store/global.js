@@ -9,6 +9,7 @@ import _ from 'lodash';
  * =====================================================
  */
 
+export const GLOBAL_SELECT_COIN = createAction('GLOBAL_SELECT_COIN');
 
 
 /**
@@ -60,7 +61,9 @@ const defaultState = {
 };
 
 export const globalReducer = handleActions({
-
+    GLOBAL_SELECT_COIN: (state, action) => {
+        return { ...state, selectedCoin: action.payload };
+    },
 }, defaultState);
 
 
