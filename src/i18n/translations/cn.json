@@ -21,6 +21,9 @@
             "title": "Wallet initial setting cn",
             "createWallet_btn": "Create wallet cn",
             "importWallet_btn": "Import wallet cn"
+        },
+        "WalletInitialPrivateKeyScreen": {
+            "title": "Private key cn"
         }
     }
 }

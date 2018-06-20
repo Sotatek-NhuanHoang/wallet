@@ -7,12 +7,12 @@ import GlobalContainer from '@components/GlobalContainer';
 import GlobalButton from '@components/GlobalButton';
 
 
-export class WalletInitialKeystoreScreen extends Component {
+export class WalletInitialPrivateKeyScreen extends Component {
 
     static navigationOptions = {
         headerTitle: (
             <GlobalHeaderTitle>
-                <GlobalLoc locKey="WalletInitialKeystoreScreen.title" />
+                <GlobalLoc locKey="WalletInitialSetting.WalletInitialPrivateKeyScreen.title" />
             </GlobalHeaderTitle>
         ),
     };
@@ -21,7 +21,7 @@ export class WalletInitialKeystoreScreen extends Component {
     render() {
         return (
             <GlobalContainer>
-                <Text>WalletInitialKeystoreScreen</Text>
+                <Text>WalletInitialPrivateKeyScreen</Text>
 
                 <GlobalButton
                     title="Home"
@@ -33,4 +33,4 @@ export class WalletInitialKeystoreScreen extends Component {
 }
 
 
-export default WalletInitialKeystoreScreen;
+export default WalletInitialPrivateKeyScreen;
