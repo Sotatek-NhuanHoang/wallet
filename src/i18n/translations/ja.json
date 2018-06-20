@@ -23,7 +23,10 @@
             "importWallet_btn": "Import wallet ja"
         },
         "WalletInitialPrivateKeyScreen": {
-            "title": "Private key ja"
+            "title": "Private key ja",
+            "copy_btn": "Copy ja",
+            "next_btn": "Next ja",
+            "walletCreated": "Wallet has been created ja"
         }
     }
 }

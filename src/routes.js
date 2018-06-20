@@ -70,7 +70,7 @@ export const Routes = createStackNavigator(
         ),
     },
     {
-        initialRouteName: 'CurrencyListScreen',
+        initialRouteName: 'SplashScreen',
         navigationOptions: ({ navigation }) => {
             const options = { ...defaultNavigationOptions };
 

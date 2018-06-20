@@ -23,7 +23,10 @@
             "importWallet_btn": "Import wallet"
         },
         "WalletInitialPrivateKeyScreen": {
-            "title": "Private key"
+            "title": "Private key",
+            "copy_btn": "Copy",
+            "next_btn": "Next",
+            "walletCreated": "Wallet has been created"
         }
     }
 }
