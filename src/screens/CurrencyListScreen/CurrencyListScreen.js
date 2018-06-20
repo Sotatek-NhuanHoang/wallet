@@ -8,7 +8,7 @@ import GlobalContainer from '@components/GlobalContainer';
 import SettingButton from './SettingButton';
 import CoinItem from './CoinItem';
 import { navigate } from '@utils/NavigationService';
-import { globalEthCoinSelector } from '@store/global';
+import { globalEthCoinSelector, GLOBAL_SELECT_COIN } from '@store/global';
 
 import style from '@styles/screens/CurrencyListScreen/CurrencyListScreen';
 
@@ -30,6 +30,7 @@ export class CurrencyListScreen extends Component {
     constructor(props) {
         super(props);
         this.renderCoin = this.renderCoin.bind(this);
+        this.onCoinSelected = this.onCoinSelected.bind(this);
     }
 
 
@@ -41,13 +42,24 @@ export class CurrencyListScreen extends Component {
         navigate('Wallet');
     };
 
+    onCoinSelected(coin) {
+        this.props.selectCoin(coin);
+
+        if (coin.coin === 'drc' && this.props.ethCoin.wallet) {
+            this.goWalletScreen();
+        } else if (coin.wallet) {
+            this.goWalletScreen();
+        } else {
+            this.goWalletInitialSettingScreen();
+        }
+    }
+
     renderCoin({ item }) {
         return (
             <CoinItem
                 item={ item }
                 ethCoin={ this.props.ethCoin }
-                goWalletInitialSettingScreen={ this.goWalletInitialSettingScreen }
-                goWalletScreen={ this.goWalletScreen }
+                onCoinSelected={ this.onCoinSelected }
             />
         );
     }
@@ -73,4 +85,10 @@ const mapStateToProps = ({ global }) => ({
     ethCoin: globalEthCoinSelector(global),
 });
 
-export default connect(mapStateToProps)(CurrencyListScreen);
+const mapDispatchToProps = (dispatch) => ({
+    selectCoin: (coin) => {
+        dispatch(GLOBAL_SELECT_COIN(coin));
+    },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CurrencyListScreen);

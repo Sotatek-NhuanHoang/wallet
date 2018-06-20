@@ -10,7 +10,7 @@ import LanguageScreen from './screens/Setting/LanguageScreen/LanguageScreen';
 
 import WalletInitialSettingScreen from '@screens/WalletInitialSetting/WalletInitialSettingScreen/WalletInitialSettingScreen';
 import WalletInitialPasswordScreen from '@screens/WalletInitialSetting/WalletInitialPasswordScreen/WalletInitialPasswordScreen';
-import WalletInitialKeystoreScreen from '@screens/WalletInitialSetting/WalletInitialKeystoreScreen/WalletInitialKeystoreScreen';
+import WalletInitialPrivateKeyScreen from '@screens/WalletInitialSetting/WalletInitialPrivateKeyScreen/WalletInitialPrivateKeyScreen';
 import WalletInitialImportScreen from '@screens/WalletInitialSetting/WalletInitialImportScreen/WalletInitialImportScreen';
 
 import WalletScreen from '@screens/Wallet/WalletScreen/WalletScreen';
@@ -48,7 +48,7 @@ export const Routes = createStackNavigator(
             {
                 WalletInitialSettingScreen: WalletInitialSettingScreen,
                 WalletInitialPasswordScreen: WalletInitialPasswordScreen,
-                WalletInitialKeystoreScreen: WalletInitialKeystoreScreen,
+                WalletInitialPrivateKeyScreen: WalletInitialPrivateKeyScreen,
                 WalletInitialImportScreen: WalletInitialImportScreen,
             },
             {
