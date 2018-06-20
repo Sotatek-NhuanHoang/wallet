@@ -25,7 +25,7 @@ export class WalletInitialImportScreen extends Component {
 
                 <GlobalButton
                     title="Home"
-                    onPress={() => this.props.navigation.navigate('HomeScreen')}
+                    onPress={() => this.props.navigation.navigate('CurrencyListScreen')}
                 />
             </GlobalContainer>
         );

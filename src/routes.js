@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
-import HomeScreen from '@screens/HomeScreen/HomeScreen';
+import SplashScreen from '@screens/SplashScreen/SplashScreen';
+import CurrencyListScreen from '@screens/CurrencyListScreen/CurrencyListScreen';
 
 import SettingScreen from './screens/Setting/SettingScreen/SettingScreen';
 import LanguageScreen from './screens/Setting/LanguageScreen/LanguageScreen';
@@ -31,7 +32,8 @@ const defaultNavigationOptions = {
 
 export const Routes = createStackNavigator(
     {
-        HomeScreen: HomeScreen,
+        SplashScreen: SplashScreen,
+        CurrencyListScreen: CurrencyListScreen,
         Setting: createStackNavigator(
             {
                 SettingScreen: SettingScreen,
@@ -73,6 +75,7 @@ export const Routes = createStackNavigator(
             const options = { ...defaultNavigationOptions };
 
             switch (navigation.state.routeName) {
+                case 'SplashScreen':
                 case 'Setting':
                 case 'WalletInitialSetting':
                 case 'Wallet':

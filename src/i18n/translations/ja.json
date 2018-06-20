@@ -1,7 +1,7 @@
 {
     "back_btn": "Back ja",
 
-    "HomeScreen": {
+    "CurrencyListScreen": {
         "title": "Currency list ja",
         "unregisted": "Unregisted ja"
     },
