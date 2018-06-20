@@ -28,5 +28,14 @@
             "next_btn": "Next cn",
             "walletCreated": "Wallet has been created cn"
         }
+    },
+
+    "Wallet": {
+        "TransactionScreen": {
+            "title": "Transaction list cn",
+            "sent": "Sent cn",
+            "received": "Received cn"
+        }
     }
+    
 }

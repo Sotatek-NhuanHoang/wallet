@@ -28,5 +28,14 @@
             "next_btn": "Next",
             "walletCreated": "Wallet has been created"
         }
+    },
+
+    "Wallet": {
+        "TransactionScreen": {
+            "title": "Transaction list",
+            "sent": "Sent",
+            "received": "Received"
+        }
     }
+
 }
