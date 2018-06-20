@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { navigate } from '@utils/NavigationService';
 
-import style from '../../styles/screens/HomeScreen/SettingButton';
+import style from '@styles/screens/CurrencyListScreen/SettingButton';
 
 
 export const SettingButton = (props) => {
