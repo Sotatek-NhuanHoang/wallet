@@ -1,6 +1,11 @@
 {
     "back_btn": "Back",
 
+    "HomeScreen": {
+        "title": "Currency list",
+        "unregisted": "Unregisted"
+    },
+
     "Setting": {
         "LanguageScreen": {
             "title": "Language"

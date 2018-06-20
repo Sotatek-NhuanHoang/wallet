@@ -1,6 +1,11 @@
 {
     "back_btn": "Back cn",
 
+    "HomeScreen": {
+        "title": "Currency list cn",
+        "unregisted": "Unregisted cn"
+    },
+
     "Setting": {
         "LanguageScreen": {
             "title": "Language cn"

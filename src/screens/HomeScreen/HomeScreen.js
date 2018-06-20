@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, FlatList } from 'react-native';
+import { connect } from 'react-redux';
 
 import GlobalLoc from '@components/GlobalLoc';
 import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
 import GlobalContainer from '@components/GlobalContainer';
-import GlobalButton from '@components/GlobalButton';
-import GlobalCoinIcon from '@components/GlobalCoinIcon';
-
+import SettingButton from './SettingButton';
+import CoinItem from './CoinItem';
 import { navigate } from '@utils/NavigationService';
+import { globalEthCoinSelector } from '@store/global';
+
+import style from '../../styles/screens/HomeScreen/HomeScreen';
 
 
 export class HomeScreen extends Component {
@@ -18,33 +21,56 @@ export class HomeScreen extends Component {
                 <GlobalLoc locKey="HomeScreen.title" />
             </GlobalHeaderTitle>
         ),
+        headerRight: (
+            <SettingButton />
+        ),
     };
 
 
-    render() {
+    constructor(props) {
+        super(props);
+        this.renderCoin = this.renderCoin.bind(this);
+    }
+
+
+    goWalletInitialSettingScreen() {
+        navigate('WalletInitialSetting');
+    };
+
+    goWalletScreen() {
+        navigate('Wallet');
+    };
+
+    renderCoin({ item }) {
         return (
-            <GlobalContainer>
-                <Text>Home Screen</Text>
+            <CoinItem
+                item={ item }
+                ethCoin={ this.props.ethCoin }
+                goWalletInitialSettingScreen={ this.goWalletInitialSettingScreen }
+                goWalletScreen={ this.goWalletScreen }
+            />
+        );
+    }
 
-                <GlobalButton
-                    type="secondary"
-                    title="Setting"
-                    onPress={() => navigate('Setting')}
-                />
+    render() {
+        const { coins } = this.props;
 
-                <GlobalButton
-                    title="Wallet initial setting"
-                    onPress={() => navigate('WalletInitialSettingScreen')}
-                />
-
-                 <GlobalButton
-                    title="Wallet"
-                    onPress={() => navigate('Wallet')}
+        return (
+            <GlobalContainer style={ style.container }>
+                <FlatList
+                    style={{ flex: 1 }}
+                    data={ coins }
+                    renderItem={ this.renderCoin }
+                    keyExtractor={({ coin }) => coin}
                 />
             </GlobalContainer>
         );
     }
 }
 
+const mapStateToProps = ({ global }) => ({
+    coins: global.coins,
+    ethCoin: globalEthCoinSelector(global),
+});
 
-export default HomeScreen;
+export default connect(mapStateToProps)(HomeScreen);

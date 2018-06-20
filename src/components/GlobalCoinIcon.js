@@ -11,7 +11,7 @@ import style from '@styles/components/GlobalCoinIcon';
 export class GlobalCoinIcon extends Component {
 
     render() {
-        const coinImageSource = Images.coinIcon(this.props.coin);
+        const coinImageSource = Images.coins[this.props.coin];
         const { size } = this.props;
 
         let iconStyle = null;
