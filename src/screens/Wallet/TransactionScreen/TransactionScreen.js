@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, SectionList, TouchableWithoutFeedback } from 'react-native';
+import { Text, View, SectionList, TouchableWithoutFeedback, WebView } from 'react-native';
 import { connect } from 'react-redux';
 
 import GlobalLoc from '@components/GlobalLoc';
@@ -8,6 +8,7 @@ import GlobalContainer from '@components/GlobalContainer';
 import GlobalButton from '@components/GlobalButton';
 import GlobalHeaderBackButton from '@components/GlobalHeaderBackButton';
 import GlobalCoinIcon from '@components/GlobalCoinIcon';
+import { navigate } from '@utils/NavigationService';
 
 import style from '@styles/screens/Wallet/TransactionScreen/TransactionScreen';
 
@@ -31,7 +32,8 @@ export class TransactionScreen extends Component {
     }
 
     onPressItem() {
-    // open web
+    // open webview
+        navigate('WebViewScreen', { url: 'https://blockchain.info' });
     }
 
     renderItem({ item, sectionID }) {
@@ -48,7 +50,7 @@ export class TransactionScreen extends Component {
                         ) : (
                             <GlobalLoc style={ style.itemStatus } locKey="Wallet.TransactionScreen.received" />
                         )}
-                        <Text style={ [style.itemMount, item.statusId === '0' ? { color: 'red' } : { color: 'green' }] }>{ item.mount }</Text>
+                        <Text style={ [style.itemMount, item.statusId === '0' ? style.textRed : style.textGreen] }>{ item.mount }</Text>
                     </View>
                     <Text style={ style.itemAddress }>{ item.address }</Text>
                 </View>

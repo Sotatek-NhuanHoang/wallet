@@ -30,11 +30,12 @@
         }
     },
 
-    "Wallet":{
-        "TransactionScreen":{
-            "title":"Transaction list cn"
+    "Wallet": {
+        "TransactionScreen": {
+            "title": "Transaction list cn",
+            "sent": "Sent cn",
+            "received": "Received cn"
         }
     }
-    
     
 }

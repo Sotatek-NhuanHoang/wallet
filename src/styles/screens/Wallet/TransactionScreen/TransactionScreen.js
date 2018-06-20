@@ -55,6 +55,13 @@ export default ScaledSheet.create({
     fontSize: FontSizes.h2,
     color: Colors.darkGray,
     marginLeft: Sizes.s4,
+  },
+  textRed: {
+    color: Colors.red
+  },
+  textGreen: {
+    color: Colors.green
   }
+ 
  
 });
