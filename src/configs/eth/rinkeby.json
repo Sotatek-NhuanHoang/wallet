@@ -1,0 +1,19 @@
+{
+  "chainName": "Rinkeby",
+  "chainId": 4,
+  "defaultGasPrice": 3,
+  "defaultGasLimit": 150000,
+  "explorerEndpoint": "https://rinkeby.etherscan.io",
+  "eventTopics": {
+    "erc20Transfer": "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"
+  },
+  "tokens": [
+    {
+      "symbol": "drc",
+      "name": "DRC Token",
+      "decimal": 18,
+      "address": "0xf3CaDf8478f3bb853d460fc1c6689c0e085Bf795",
+      "cmcId": "drc"
+    }
+  ]
+}
