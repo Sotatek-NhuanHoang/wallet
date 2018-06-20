@@ -10,15 +10,15 @@ import CoinItem from './CoinItem';
 import { navigate } from '@utils/NavigationService';
 import { globalEthCoinSelector } from '@store/global';
 
-import style from '../../styles/screens/HomeScreen/HomeScreen';
+import style from '@styles/screens/CurrencyListScreen/CurrencyListScreen';
 
 
-export class HomeScreen extends Component {
+export class CurrencyListScreen extends Component {
 
     static navigationOptions = {
         headerTitle: (
             <GlobalHeaderTitle>
-                <GlobalLoc locKey="HomeScreen.title" />
+                <GlobalLoc locKey="CurrencyListScreen.title" />
             </GlobalHeaderTitle>
         ),
         headerRight: (
@@ -73,4 +73,4 @@ const mapStateToProps = ({ global }) => ({
     ethCoin: globalEthCoinSelector(global),
 });
 
-export default connect(mapStateToProps)(HomeScreen);
+export default connect(mapStateToProps)(CurrencyListScreen);

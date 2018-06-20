@@ -4,7 +4,7 @@ import { TouchableWithoutFeedback, Text, View } from 'react-native';
 import GlobalCoinIcon from '@components/GlobalCoinIcon';
 import GlobalLoc from '@components/GlobalLoc';
 
-import style from '../../styles/screens/HomeScreen/CoinItem';
+import style from '@styles/screens/CurrencyListScreen/CoinItem';
 
 
 export const CoinItem = ({ item, ethCoin, goWalletInitialSettingScreen, goWalletScreen }) => {
@@ -58,7 +58,7 @@ export const CoinItem = ({ item, ethCoin, goWalletInitialSettingScreen, goWallet
                             <Text style={ [style.coinChangeText, coinChangeTextStyle] }>{ item.change }%</Text>
                         </View>
                     ) : (
-                        <GlobalLoc locKey="HomeScreen.unregisted" style={ style.unregistedText } />
+                        <GlobalLoc locKey="CurrencyListScreen.unregisted" style={ style.unregistedText } />
                     )}
                 </View>
             </TouchableWithoutFeedback>
