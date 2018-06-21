@@ -59,7 +59,7 @@ export default ScaledSheet.create({
     walletChange: {
         textAlign: 'right',
         fontSize: FontSizes.p,
-        color: Colors.green,
+        color: Colors.darkGray,
         fontWeight: 'bold',
     },
 
@@ -70,5 +70,13 @@ export default ScaledSheet.create({
 
     marginBottom: {
         marginBottom: Sizes.s9,
+    },
+
+    textRed: {
+        color: Colors.red,
+    },
+
+    textGreen: {
+        color: Colors.green,
     },
 });

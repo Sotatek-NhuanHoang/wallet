@@ -69,7 +69,11 @@ export class WalletScreen extends Component {
                     <Text style={ style.currency }>
                         <GlobalLoc locKey="Wallet.WalletScreen.currency" />
                     </Text>
-                    <Text style={ style.walletChange }>{ selectedCoin.change }%</Text>
+
+                    {/* Change value */}
+                    {selectedCoin.change > 0 && <Text style={ [style.walletChange, style.textGreen ] }>+{ selectedCoin.change }%</Text>}
+                    {selectedCoin.change === 0 && <Text style={ style.walletChange }>{ selectedCoin.change }%</Text>}
+                    {selectedCoin.change < 0 && <Text style={ [style.walletChange, style.textRed ] }>{ selectedCoin.change }%</Text>}
                 </View>
 
                 {/* Action button */}

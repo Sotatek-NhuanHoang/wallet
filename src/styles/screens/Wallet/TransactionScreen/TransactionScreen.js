@@ -62,6 +62,4 @@ export default ScaledSheet.create({
   textGreen: {
     color: Colors.green
   }
- 
- 
 });
