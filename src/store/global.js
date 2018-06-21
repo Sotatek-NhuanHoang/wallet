@@ -32,7 +32,9 @@ const defaultState = {
         coinName: 'Ethereum (ETH)',
         balance: 0,
         change: 0,
-        wallet: null,
+        wallet: {
+            address: 'mnbshfgjdsghjfgdygbfdgrh',
+        },
         privateKey: '38f23cdd30fe4fb29f5dba4b940a8ae9f8ae2d7117e10665846e1a18fd9d731b',
     },
     coins: [

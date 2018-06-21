@@ -39,7 +39,8 @@
     },
 
     "ReceiveScreen": {
-        "title": "Receive"
+        "title": "Receive",
+        "copy": "Copy address"
     }
 
 }

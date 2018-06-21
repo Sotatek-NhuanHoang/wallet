@@ -39,6 +39,7 @@
     },
 
     "ReceiveScreen": {
-        "title": "Receive ja"
+        "title": "Receive ja",
+        "copy": "Copy address ja"
     }
 }

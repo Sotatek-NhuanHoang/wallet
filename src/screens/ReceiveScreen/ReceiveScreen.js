@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Clipboard, ToastAndroid } from 'react-native';
 import { connect } from 'react-redux';
 import QRCode from 'react-native-qrcode';
 
@@ -25,8 +25,13 @@ export class ReceiveScreen extends Component {
         ),
     };
 
-    state = {
-        text: 'http://facebook.github.io/react-native/',
+    copyToClipboard = (address) => {
+        Clipboard.setString(address);
+        ToastAndroid.showWithGravity(
+            'Clipboard',
+            ToastAndroid.SHORT,
+            ToastAndroid.BOTTOM
+        );
     };
 
     render() {
@@ -34,16 +39,27 @@ export class ReceiveScreen extends Component {
         return (
             <GlobalContainer>
                 {/* Icon and coin name */}
-                <View style={style.coinContainer}>
-                    <GlobalCoinIcon coin={selectedCoin.coin} size="large" />
-                    <Text style={style.coinName}>{selectedCoin.coinName}</Text>
+                <View style={ style.coinContainer }>
+                    <GlobalCoinIcon coin={ selectedCoin.coin } size="large" />
+                    <Text style={ style.coinName }>{ selectedCoin.coinName }</Text>
                 </View>
-                {/* QR code*/}
-                <QRCode
-                    value={this.state.text}
-                    size={200}
-                    bgColor='black'
-                    fgColor='white' />
+                {/* QR code and address*/}
+                <View style={ style.qrContainer }
+                >
+                    <QRCode
+                        value={ selectedCoin.wallet.address }
+                        size={ 200 }
+                        bgColor='black'
+                        fgColor='white'
+                    />
+                    <Text style={ style.address }>{ selectedCoin.wallet.address }</Text>
+                </View>
+                {/* copy address button*/}
+                <View style={ style.copyButton }>
+                    <GlobalButton onPress={ () => this.copyToClipboard(selectedCoin.wallet.address) }>
+                        <GlobalLoc locKey="ReceiveScreen.copy" />
+                    </GlobalButton>
+                </View>
             </GlobalContainer>
         );
     }
