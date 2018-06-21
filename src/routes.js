@@ -4,6 +4,7 @@ import { createStackNavigator } from 'react-navigation';
 
 import SplashScreen from '@screens/SplashScreen/SplashScreen';
 import CurrencyListScreen from '@screens/CurrencyListScreen/CurrencyListScreen';
+import WebViewScreen from '@screens/WebViewScreen/WebViewScreen';
 
 import SettingScreen from './screens/Setting/SettingScreen/SettingScreen';
 import LanguageScreen from './screens/Setting/LanguageScreen/LanguageScreen';
@@ -68,9 +69,10 @@ export const Routes = createStackNavigator(
                 navigationOptions: { ...defaultNavigationOptions },
             }
         ),
+        WebViewScreen: WebViewScreen
     },
     {
-        initialRouteName: 'CurrencyListScreen',
+        initialRouteName: 'SplashScreen',
         navigationOptions: ({ navigation }) => {
             const options = { ...defaultNavigationOptions };
 
