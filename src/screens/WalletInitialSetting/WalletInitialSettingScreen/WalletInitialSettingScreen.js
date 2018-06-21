@@ -27,10 +27,12 @@ export class WalletInitialSettingScreen extends Component {
         ),
     };
 
+
     componentDidMount() {
-        const { privateKey } = this.props.selectedCoin;
+        const privateKey = '5Kb8kLf9zgWQnogidDA76MzPL6TsZZY36hWXMssSzNydYXYB9KF';
         this.props.setupWalletInitialSettingState(privateKey);
     }
+
 
     goToCreateWalletScreen() {
         navigate('WalletInitialPrivateKeyScreen');
@@ -40,7 +42,6 @@ export class WalletInitialSettingScreen extends Component {
         navigate('WalletInitialImportScreen');
     }
 
-
     render() {
         const { selectedCoin } = this.props;
 
@@ -48,8 +49,8 @@ export class WalletInitialSettingScreen extends Component {
             <GlobalContainer>
                 {/* Icon and coin name */}
                 <View style={ style.coinContainer }>
-                    <GlobalCoinIcon coin={ selectedCoin.coin } size="large" />
-                    <Text style={ style.coinName }>{ selectedCoin.coinName }</Text>
+                    <GlobalCoinIcon coin={ selectedCoin.symbol } size="large" />
+                    <Text style={ style.coinName }>{ selectedCoin.name }</Text>
                 </View>
 
                 {/* Actions */}

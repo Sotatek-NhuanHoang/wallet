@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Animated, Easing } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
 import SplashScreen from '@screens/SplashScreen/SplashScreen';
@@ -31,6 +31,28 @@ const defaultNavigationOptions = {
     headerRight: (<View />),
 };
 
+const transitionConfig = () => {
+    return {
+        transitionSpec: {
+            duration: 0,
+            easing: Easing.out(Easing.poly(4)),
+            timing: Animated.timing,
+            useNativeDriver: true,
+        },
+        screenInterpolator: sceneProps => {
+            const { layout, position, scene } = sceneProps
+            const thisSceneIndex = scene.index
+            const width = layout.initWidth
+            const translateX = position.interpolate({
+            inputRange: [thisSceneIndex - 1, thisSceneIndex],
+            outputRange: [width, 0],
+            });
+
+            return { transform: [ { translateX } ] }
+        },
+    };
+};
+
 export const Routes = createStackNavigator(
     {
         SplashScreen: SplashScreen,
@@ -43,6 +65,7 @@ export const Routes = createStackNavigator(
             {
                 initialRouteName: 'SettingScreen',
                 navigationOptions: { ...defaultNavigationOptions },
+                transitionConfig,
             }
         ),
         WalletInitialSetting: createStackNavigator(
@@ -55,6 +78,7 @@ export const Routes = createStackNavigator(
             {
                 initialRouteName: 'WalletInitialSettingScreen',
                 navigationOptions: { ...defaultNavigationOptions },
+                transitionConfig,
             }
         ),
         Wallet: createStackNavigator(
@@ -67,12 +91,13 @@ export const Routes = createStackNavigator(
             {
                 initialRouteName: 'WalletScreen',
                 navigationOptions: { ...defaultNavigationOptions },
+                transitionConfig,
             }
         ),
         WebViewScreen: WebViewScreen,
     },
     {
-        initialRouteName: 'SplashScreen',
+        initialRouteName: 'CurrencyListScreen',
         navigationOptions: ({ navigation }) => {
             const options = { ...defaultNavigationOptions };
 
@@ -87,6 +112,7 @@ export const Routes = createStackNavigator(
 
             return options;
         },
+        transitionConfig,
     }
 );
 

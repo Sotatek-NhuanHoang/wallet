@@ -9,7 +9,7 @@ import GlobalHeaderBackButton from '@components/GlobalHeaderBackButton';
 import GlobalCoinIcon from '@components/GlobalCoinIcon';
 import GlobalButton from '@components/GlobalButton';
 import GlobalTextInput from '@components/GlobalTextInput';
-import { WINI_COPY_PRIVATE_KEY } from '@store/walletInitialSetting';
+import { WINI_COPY_PRIVATE_KEY, WINI_NEW_WALLET_REQUESTED } from '@store/walletInitialSetting';
 import I18n from '@i18n';
 import { navigate } from '@utils/NavigationService';
 
@@ -33,7 +33,16 @@ export class WalletInitialPrivateKeyScreen extends Component {
     constructor(props) {
         super(props);
         this.onCopyButtonClicked = this.onCopyButtonClicked.bind(this);
+        this.onNextButtonClicked = this.onNextButtonClicked.bind(this);
     }
+
+    componentWillReceiveProps(nextProps) {
+        const { newWallet } = nextProps;
+        if (newWallet.created) {
+            navigate('CurrencyListScreen');
+        }
+    }
+
 
     onCopyButtonClicked() {
         this.props.copyPrivateKey();
@@ -42,7 +51,9 @@ export class WalletInitialPrivateKeyScreen extends Component {
     }
 
     onNextButtonClicked() {
-        navigate('CurrencyListScreen');
+        // Create new wallet
+        const { selectedCoin, privateKey, createNewWallet } = this.props;
+        createNewWallet(selectedCoin.symbol, privateKey);
     }
 
     render() {
@@ -52,8 +63,8 @@ export class WalletInitialPrivateKeyScreen extends Component {
             <GlobalContainer>
                 {/* Icon and coin name */}
                 <View style={ style.coinContainer }>
-                    <GlobalCoinIcon coin={ selectedCoin.coin } size="large" />
-                    <Text style={ style.coinName }>{ selectedCoin.coinName }</Text>
+                    <GlobalCoinIcon coin={ selectedCoin.symbol } size="large" />
+                    <Text style={ style.coinName }>{ selectedCoin.name }</Text>
                 </View>
 
                 <View style={ style.actionContainer }>
@@ -89,10 +100,14 @@ const mapStateToProps = ({ global, walletInitialSetting }) => ({
     selectedCoin: global.selectedCoin,
     privateKey: walletInitialSetting.privateKey,
     isPrivateKeyCoppied: walletInitialSetting.isPrivateKeyCoppied,
+    newWallet: walletInitialSetting.newWallet,
 });
 
 const mapDispatchToProps = (dispatch) => ({
     copyPrivateKey: () => dispatch(WINI_COPY_PRIVATE_KEY()),
+    createNewWallet: (coin, privateKey) => {
+        dispatch(WINI_NEW_WALLET_REQUESTED(coin, privateKey));
+    },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WalletInitialPrivateKeyScreen);
