@@ -19,6 +19,8 @@ import ReceiveScreen from '@screens/Wallet/ReceiveScreen/ReceiveScreen';
 import WithdrawScreen from '@screens/Wallet/WithdrawScreen/WithdrawScreen';
 import TransactionScreen from '@screens/Wallet/TransactionScreen/TransactionScreen';
 
+import PasswordSettingScreen from '@screens/Setting/PasswordSettingScreen/PasswordSettingScreen';
+
 import HeaderStyle from '@styles/header';
 
 
@@ -70,9 +72,10 @@ export const Routes = createStackNavigator(
             }
         ),
         WebViewScreen: WebViewScreen,
+        PasswordSettingScreen: PasswordSettingScreen,
     },
     {
-        initialRouteName: 'SplashScreen',
+        initialRouteName: 'PasswordSettingScreen',
         navigationOptions: ({ navigation }) => {
             const options = { ...defaultNavigationOptions };
 
