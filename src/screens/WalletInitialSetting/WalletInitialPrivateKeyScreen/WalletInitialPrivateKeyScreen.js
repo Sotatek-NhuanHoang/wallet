@@ -57,7 +57,13 @@ export class WalletInitialPrivateKeyScreen extends Component {
                 </View>
 
                 <View style={ style.actionContainer }>
-                    <GlobalTextInput type="basic" multiline={ true } style={ style.marginBottom } value={ privateKey } />
+                    <GlobalTextInput
+                        type="basic"
+                        multiline={ true }
+                        editable={ false }
+                        style={ style.marginBottom }
+                        value={ privateKey }
+                    />
 
                     <GlobalButton type="primary" style={ style.marginBottom } onPress={ this.onCopyButtonClicked }>
                         <GlobalLoc locKey="WalletInitialSetting.WalletInitialPrivateKeyScreen.copy_btn" />
