@@ -23,16 +23,21 @@ export class PasswordSettingScreen extends Component {
 
     constructor(props) {
         super(props);
+        state ={
+            password:'',
+            confirm:''
+        }
         this.onShowDialog = this.onShowDialog.bind(this);
         this.goToCurrencyListScreen = this.goToCurrencyListScreen.bind(this);
+        this.onClearText = this.onClearText.bind(this);
+        this.checkConfirmPassword = this.checkConfirmPassword.bind(this);
+        this.checkEmptyPassword = this.checkEmptyPassword.bind(this);
+        this.checkSyntaxPassword = this.checkSyntaxPassword.bind(this);
+        this.checkLengthPassword = this.checkLengthPassword.bind(this);
     }
 
     goToCurrencyListScreen() {
         navigate('CurrencyListScreen');
-    }
-
-    onClearText() {
-
     }
 
     checkEmptyPassword(password) {
@@ -40,16 +45,21 @@ export class PasswordSettingScreen extends Component {
     }
 
     checkSyntaxPassword(password) {
-        let reg = /^([a-z0-9])+$/;
+        let reg =  new RegExp("^([a-zA-Z0-9])+$");
         return reg.test(password.trim());
     }
 
     checkConfirmPassword(password, confirm) {
-        return password.trim() === confirm.trim();
+        return password.trim() === confirm;
     }
 
     checkLengthPassword(password) {
         return password.length >= 9 && password.length <= 50;
+    }
+
+    onClearText() {
+       this.setState({password:'', confirm:''});
+
     }
 
     onShowDialog() {
@@ -59,35 +69,58 @@ export class PasswordSettingScreen extends Component {
         err3: 9 <= length <= 50
         err4: psw = confirm
         */
+        let password = this.state.password;
+        let confirm = this.state.confirm;
         let message = '';
-        if(this.checkEmptyPassword(password)){
+        let isError = false;
+        // console.log('pwd '+password);
+        // console.log('confirm '+confirm);
+        // console.log('err1 '+this.checkEmptyPassword(password));
+        // console.log('err2 '+this.checkSyntaxPassword(password));
+        // console.log('err3 '+this.checkLengthPassword(password));
+        // console.log('err4 '+this.checkConfirmPassword(password, confirm));
+
+        if(this.checkEmptyPassword(password)) {
             message = I18n.t('Setting.PasswordSettingScreen.error_01');
-        }else if(this.checkSyntaxPassword(password))
-        if (!this.checkEmptyPassword(password) &&
-            this.checkSyntaxPassword(password) &&
-            this.checkConfirmPassword(password, confirm) &&
-            this.checkLengthPassword(password)) {
-            Alert.alert(
+            isError = true;
+            // console.log('stop 1');
+        }else if(!this.checkSyntaxPassword(password)) {
+            message = I18n.t('Setting.PasswordSettingScreen.error_02');    
+            isError = true;        
+            // console.log('stop 2');
+        }else if(!this.checkLengthPassword(password)) {
+            message = I18n.t('Setting.PasswordSettingScreen.error_03');   
+            isError = true;    
+            // console.log('stop 3');     
+       }else if(this.checkConfirmPassword(password, confirm)) {
+           message = I18n.t('Setting.PasswordSettingScreen.error_04');
+           isError = true;
+        //    console.log('stop 4');
+        }else {
+            message = I18n.t('Setting.PasswordSettingScreen.message');
+            isError = false;
+            // console.log('stop 5');
+        }
+    
+        if(isError) {
+            Alert.alert (
                 null,
-                I18n.t('Setting.PasswordSettingScreen.message'),
-                [
-                    { text: 'OK', onPress: this.goToCurrencyListScreen },
-                ],
-                { cancelable: false }//dismissed by tapping outside of the alert box 
-            )
-        } else {
-            Alert.alert(
-                null,
-                I18n.t('Setting.PasswordSettingScreen.message'),
+                message,
                 [
                     { text: 'OK', onPress: this.onClearText },
                 ],
                 { cancelable: false }//dismissed by tapping outside of the alert box 
             )
+        }else {
+            Alert.alert (
+                null,
+                message,
+                [
+                    { text: 'OK', onPress: this.goToCurrencyListScreen },
+                ],
+                { cancelable: false }//dismissed by tapping outside of the alert box 
+            )
         }
-
-
-
     }
 
     render() {
@@ -96,23 +129,30 @@ export class PasswordSettingScreen extends Component {
                 {/*input password*/}
                 <GlobalTextInput
                     type="basic"
-                    multiline={false}
-                    style={style.passwordInput}
+                    autoFocus = { true }
+                    multiline={ false }
+                    style={ style.passwordInput }
+                    placeholder ={ I18n.t('Setting.PasswordSettingScreen.password') }
+                    onChangeText={ (text) => this.setState({ password: text }) }
+                    secureTextEntry ={ true }
                 />
                 {/*confirm password*/}
                 <GlobalTextInput
                     type="basic"
-                    multiline={false}
-                    style={style.confirmInput}
+                    multiline={ false }
+                    style={ style.confirmInput }
+                    placeholder ={ I18n.t('Setting.PasswordSettingScreen.confirm') }
+                    onChangeText={ (text) => this.setState({ confirm: text }) }
+                    secureTextEntry ={ true }
                 />
                 {/*notes*/}
                 <GlobalLoc
-                    style={style.notes}
+                    style={ style.notes }
                     locKey="Setting.PasswordSettingScreen.notes" />
                 {/*button next*/}
                 <GlobalButton
-                    style={style.nextButton}
-                    onPress={this.onShowDialog}>
+                    style={ style.nextButton }
+                    onPress={ this.onShowDialog }>
                     <GlobalLoc locKey="Setting.PasswordSettingScreen.next_btn" />
                 </GlobalButton>
             </GlobalContainer>

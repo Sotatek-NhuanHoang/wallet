@@ -12,13 +12,19 @@
         },
         "SettingScreen": {
             "title": "Setting",
-            "language": "Language"
+            "language": "Language",
+            "term_service": "Term of service"
+        },
+        "TermOfServiceScreen": {
+            "title": "Term of service"
         },
         "PasswordSettingScreen": {
             "title": "Password setting",
             "notes": "※ウォレットの一部の機能を使用する際にパスワードの入力が必要です。",
             "next_btn": "Next",
             "message": "パスワードが登録されました。",
+            "password": "Password input",
+            "confirm": "Password confirmation",
             "error_01": "Please enter your password",
             "error_02": "Please enter your password with half-width letters annd number",
             "error_03": "Password should be more than 9 characters but less than 51",

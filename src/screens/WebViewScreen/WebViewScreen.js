@@ -6,15 +6,18 @@ import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
 import GlobalContainer from '@components/GlobalContainer';
 import GlobalButton from '@components/GlobalButton';
 import GlobalHeaderBackButton from '@components/GlobalHeaderBackButton';
-
+import WebViewHeaderTitle from './WebViewHeaderTitle';
 
 export class WebViewScreen extends Component {
 
-    static navigationOptions = {
+    static navigationOptions = ({ navigation }) => ({
         headerLeft: (
             <GlobalHeaderBackButton />
         ),
-    };
+        headerTitle: (
+            <WebViewHeaderTitle navigation={ navigation } />
+        )
+    });
 
 
     render() {

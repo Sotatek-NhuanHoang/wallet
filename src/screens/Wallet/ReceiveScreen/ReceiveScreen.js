@@ -34,7 +34,7 @@ export class ReceiveScreen extends Component {
     }
 
     copyToClipboard() {
-        Clipboard.setString(this.props.selectedCoin.wallet.address);
+        Clipboard.setString(this.props.selectedCoin.address);
         Alert.alert(null, I18n.t('Wallet.ReceiveScreen.copy'));
     };
 
@@ -44,19 +44,19 @@ export class ReceiveScreen extends Component {
             <GlobalContainer>
                 {/* Icon and coin name */}
                 <View style={ style.coinContainer }>
-                    <GlobalCoinIcon coin={ selectedCoin.coin } size="large" />
-                    <Text style={ style.coinName }>{ selectedCoin.coinName }</Text>
+                    <GlobalCoinIcon coin={ selectedCoin.symbol } size="large" />
+                    <Text style={ style.coinName }>{ selectedCoin.name }</Text>
                 </View>
 
                 {/* QR code and address*/}
                 <View style={ style.qrContainer }>
                     <QRCode
-                        value={ selectedCoin.wallet.address }
+                        value={ selectedCoin.address }
                         size={ scale(220) }
                         bgColor='black'
                         fgColor='white'
                     />
-                    <Text style={ style.address }>{ selectedCoin.wallet.address }</Text>
+                    <Text style={ style.address }>{ selectedCoin.address }</Text>
                 </View>
 
                 {/* copy address button*/}

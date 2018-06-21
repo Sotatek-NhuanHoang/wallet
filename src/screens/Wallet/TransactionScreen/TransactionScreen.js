@@ -32,7 +32,7 @@ export class TransactionScreen extends Component {
     }
 
     onPressItem() {
-    // open webview
+        // open webview
         navigate('WebViewScreen', { url: 'https://blockchain.info' });
     }
 
