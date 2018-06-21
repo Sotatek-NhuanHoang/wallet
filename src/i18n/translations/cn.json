@@ -31,16 +31,20 @@
     },
 
     "Wallet": {
+        "WalletScreen": {
+            "deposit_btn": "Receive cn",
+            "withdraw_btn": "Send cn",
+            "transaction_btn": "Transaction cn",
+            "currency": "USD"
+        },
         "TransactionScreen": {
             "title": "Transaction list cn",
             "sent": "Sent cn",
             "received": "Received cn"
+        },
+        "ReceiveScreen": {
+            "title": "Receive cn",
+            "copy": "Copy address cn"
         }
-    },
-
-    "ReceiveScreen": {
-        "title": "Receive cn",
-        "copy": "Copy address cn"
     }
-    
 }

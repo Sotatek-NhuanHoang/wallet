@@ -28,13 +28,14 @@ export const GLOBAL_SELECT_COIN = createAction('GLOBAL_SELECT_COIN');
 
 const defaultState = {
     selectedCoin: {
-        coin: 'eth',
-        coinName: 'Ethereum (ETH)',
-        balance: 0,
-        change: 0,
+        coin: 'btc',
+        coinName: 'Bitcoin (BTC)',
+        balance: 12.012312,
+        change: 3.2348,
         wallet: {
             address: 'mnbshfgjdsghjfgdygbfdgrh',
         },
+        price: 12.234,
         privateKey: '38f23cdd30fe4fb29f5dba4b940a8ae9f8ae2d7117e10665846e1a18fd9d731b',
     },
     coins: [
@@ -43,8 +44,9 @@ const defaultState = {
             coinName: 'Bitcoin (BTC)',
             balance: 12.012312,
             change: 3.2348,
+            price: 12.234,
             wallet: {
-                address: '',
+                address: 'mnbshfgjdsghjfgdygbfdgrh',
             },
             privateKey: '38f23cdd30fe4fb29f5dba4b940a8ae9f8ae2d7117e10665846e1a18fd9d731b',
         },

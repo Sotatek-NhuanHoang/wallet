@@ -31,15 +31,20 @@
     },
 
     "Wallet": {
+        "WalletScreen": {
+            "deposit_btn": "Receive ja",
+            "withdraw_btn": "Send ja",
+            "transaction_btn": "Transaction ja",
+            "currency": "JPY"
+        },
         "TransactionScreen": {
             "title": "Transaction list ja",
             "sent": "Sent ja",
             "received": "Received ja"
+        },
+        "ReceiveScreen": {
+            "title": "Receive ja",
+            "copy": "Copy address ja"
         }
-    },
-
-    "ReceiveScreen": {
-        "title": "Receive ja",
-        "copy": "Copy address ja"
     }
 }

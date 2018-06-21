@@ -1,5 +1,5 @@
 import { ScaledSheet } from '@react-native-size-matters';
-import { Colors, FontSizes, Sizes } from '../../variables';
+import { Colors, FontSizes, Sizes } from '@styles/variables';
 
 export default ScaledSheet.create({
   coinContainer: {
@@ -15,20 +15,19 @@ export default ScaledSheet.create({
     marginLeft: Sizes.s4,
   },
   qrContainer: {
-    flex: 1, 
     paddingTop: Sizes.s3, 
     alignItems: 'center'
   },
   address: {
-    paddingTop: '30@ms',
-    color: Colors.darkGray 
+    paddingTop: Sizes.s8,
+    color: Colors.darkGray,
+    fontSize: FontSizes.p 
   },
   copyButton: {
-    flex: 1,
-    paddingStart: Sizes.s8, 
-    paddingEnd: Sizes.s8,
-    alignItems: 'center',
-    justifyContent:'center', 
+    paddingTop: '50@ms',
+    paddingStart: Sizes.s10, 
+    paddingEnd: Sizes.s10,
+    
   }
 
 
