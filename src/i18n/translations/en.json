@@ -12,7 +12,11 @@
         },
         "SettingScreen": {
             "title": "Setting",
-            "language": "Language"
+            "language": "Language",
+            "term_service": "Term of service"
+        },
+        "TermOfServiceScreen": {
+            "title": "Term of service"
         }
     },
 

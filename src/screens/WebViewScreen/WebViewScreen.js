@@ -7,13 +7,12 @@ import GlobalContainer from '@components/GlobalContainer';
 import GlobalButton from '@components/GlobalButton';
 import GlobalHeaderBackButton from '@components/GlobalHeaderBackButton';
 
-
 export class WebViewScreen extends Component {
 
     static navigationOptions = {
         headerLeft: (
             <GlobalHeaderBackButton />
-        ),
+        )
     };
 
 

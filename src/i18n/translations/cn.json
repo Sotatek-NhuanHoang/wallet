@@ -12,7 +12,11 @@
         },
         "SettingScreen": {
             "title": "Setting cn",
-            "language": "Language ja"
+            "language": "Language cn",
+            "term_service": "Term of service cn"
+        },
+        "TermOfServiceScreen": {
+            "title": "Term of service cn"
         }
     },
 
