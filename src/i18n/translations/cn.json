@@ -28,5 +28,14 @@
             "next_btn": "Next cn",
             "walletCreated": "Wallet has been created cn"
         }
+    },
+
+    "Wallet": {
+        "WalletScreen": {
+            "deposit_btn": "Receive cn",
+            "withdraw_btn": "Send cn",
+            "transaction_btn": "Transaction cn",
+            "currency": "USD"
+        }
     }
 }

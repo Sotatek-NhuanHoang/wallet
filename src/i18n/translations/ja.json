@@ -28,5 +28,14 @@
             "next_btn": "Next ja",
             "walletCreated": "Wallet has been created ja"
         }
+    },
+
+    "Wallet": {
+        "WalletScreen": {
+            "deposit_btn": "Receive ja",
+            "withdraw_btn": "Send ja",
+            "transaction_btn": "Transaction ja",
+            "currency": "JPY"
+        }
     }
 }
