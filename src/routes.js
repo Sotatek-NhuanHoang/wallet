@@ -97,7 +97,7 @@ export const Routes = createStackNavigator(
         WebViewScreen: WebViewScreen,
     },
     {
-        initialRouteName: 'SplashScreen',
+        initialRouteName: 'CurrencyListScreen',
         navigationOptions: ({ navigation }) => {
             const options = { ...defaultNavigationOptions };
 
