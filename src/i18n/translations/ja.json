@@ -41,6 +41,10 @@
             "title": "Transaction list ja",
             "sent": "Sent ja",
             "received": "Received ja"
+        },
+        "ReceiveScreen": {
+            "title": "Receive ja",
+            "copy": "Copy address ja"
         }
     }
 }

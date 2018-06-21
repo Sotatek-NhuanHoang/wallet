@@ -33,7 +33,7 @@ const defaultState = {
         balance: 12.012312,
         change: 3.2348,
         wallet: {
-            address: '',
+            address: 'mnbshfgjdsghjfgdygbfdgrh',
         },
         price: 12.234,
         privateKey: '38f23cdd30fe4fb29f5dba4b940a8ae9f8ae2d7117e10665846e1a18fd9d731b',
@@ -46,7 +46,7 @@ const defaultState = {
             change: 3.2348,
             price: 12.234,
             wallet: {
-                address: '',
+                address: 'mnbshfgjdsghjfgdygbfdgrh',
             },
             privateKey: '38f23cdd30fe4fb29f5dba4b940a8ae9f8ae2d7117e10665846e1a18fd9d731b',
         },

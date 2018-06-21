@@ -15,7 +15,7 @@ import WalletInitialPrivateKeyScreen from '@screens/WalletInitialSetting/WalletI
 import WalletInitialImportScreen from '@screens/WalletInitialSetting/WalletInitialImportScreen/WalletInitialImportScreen';
 
 import WalletScreen from '@screens/Wallet/WalletScreen/WalletScreen';
-import DepositScreen from '@screens/Wallet/DepositScreen/DepositScreen';
+import ReceiveScreen from '@screens/Wallet/ReceiveScreen/ReceiveScreen';
 import WithdrawScreen from '@screens/Wallet/WithdrawScreen/WithdrawScreen';
 import TransactionScreen from '@screens/Wallet/TransactionScreen/TransactionScreen';
 
@@ -60,7 +60,7 @@ export const Routes = createStackNavigator(
         Wallet: createStackNavigator(
             {
                 WalletScreen: WalletScreen,
-                DepositScreen: DepositScreen,
+                ReceiveScreen: ReceiveScreen,
                 WithdrawScreen: WithdrawScreen,
                 TransactionScreen: TransactionScreen,
             },
@@ -69,7 +69,7 @@ export const Routes = createStackNavigator(
                 navigationOptions: { ...defaultNavigationOptions },
             }
         ),
-        WebViewScreen: WebViewScreen
+        WebViewScreen: WebViewScreen,
     },
     {
         initialRouteName: 'SplashScreen',

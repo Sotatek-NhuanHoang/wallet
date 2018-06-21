@@ -35,7 +35,7 @@ export class WalletScreen extends Component {
 
 
     goDepositScreen() {
-        navigate('DepositScreen');
+        navigate('ReceiveScreen');
     }
 
     goWithdrawScreen() {
