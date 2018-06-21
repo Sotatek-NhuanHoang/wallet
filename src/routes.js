@@ -97,7 +97,7 @@ export const Routes = createStackNavigator(
         WebViewScreen: WebViewScreen,
     },
     {
-        initialRouteName: 'Setting',
+        initialRouteName: 'SplashScreen',
         navigationOptions: ({ navigation }) => {
             const options = { ...defaultNavigationOptions };
 
