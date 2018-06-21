@@ -31,11 +31,16 @@
     },
 
     "Wallet": {
+        "WalletScreen": {
+            "deposit_btn": "Receive",
+            "withdraw_btn": "Send",
+            "transaction_btn": "Transaction",
+            "currency": "USD"
+        },
         "TransactionScreen": {
             "title": "Transaction list",
             "sent": "Sent",
             "received": "Received"
         }
     }
-
 }

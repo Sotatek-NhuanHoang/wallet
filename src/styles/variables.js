@@ -16,6 +16,7 @@ export const Colors = {
 
 
 export const FontSizes = {
+    large: moderateScale(28),
     h1: moderateScale(26),
     h2: moderateScale(24),
     h3: moderateScale(22),
