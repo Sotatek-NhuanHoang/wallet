@@ -8,7 +8,8 @@ import GlobalContainer from '@components/GlobalContainer';
 import SettingButton from './SettingButton';
 import CoinItem from './CoinItem';
 import { navigate } from '@utils/NavigationService';
-import { globalCoinListSelector, GLOBAL_SELECT_COIN, GLOBAL_COIN_LIST_REQUESTED } from '@store/global';
+import { globalCoinListSelector, globalEthCoinSelector, GLOBAL_SELECT_COIN, GLOBAL_COIN_LIST_REQUESTED } from '@store/global';
+import { COIN_TYPES } from '@constants';
 
 import style from '@styles/screens/CurrencyListScreen/CurrencyListScreen';
 
@@ -46,12 +47,24 @@ export class CurrencyListScreen extends Component {
     };
 
     onCoinSelected(selectedCoin) {
+        const { type } = selectedCoin;
+        const { ethCoin } = this.props;
+
         this.props.selectCoin(selectedCoin);
 
-        if (selectedCoin.address) {
-            this.goWalletScreen();
-        } else {
-            this.goWalletInitialSettingScreen();
+        switch (type) {
+            case COIN_TYPES.COIN:
+                if (selectedCoin.address) {
+                    this.goWalletScreen();
+                } else {
+                    this.goWalletInitialSettingScreen();
+                }
+                break;
+
+            case COIN_TYPES.ERC_TOKEN:
+                if (ethCoin.address) {
+                    this.goWalletScreen();
+                }
         }
     }
 
@@ -59,6 +72,7 @@ export class CurrencyListScreen extends Component {
         return (
             <CoinItem
                 item={ item }
+                ethCoin={ this.props.ethCoin }
                 onCoinSelected={ this.onCoinSelected }
             />
         );
@@ -82,6 +96,7 @@ export class CurrencyListScreen extends Component {
 
 const mapStateToProps = ({ global }) => ({
     coins: globalCoinListSelector(global),
+    ethCoin: globalEthCoinSelector(global),
 });
 
 const mapDispatchToProps = (dispatch) => ({

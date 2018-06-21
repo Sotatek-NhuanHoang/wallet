@@ -47,7 +47,7 @@ export default ScaledSheet.create({
     },
 
     unregistedText: {
-        fontSize: FontSizes.h5,
+        fontSize: FontSizes.p,
         color: Colors.secondaryBlue,
     },
 });
