@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, ScrollView } from 'react-native';
+import { Alert, ScrollView, BackHandler } from 'react-native';
 import { connect } from 'react-redux';
 
 import GlobalLoc from '@components/GlobalLoc';
@@ -36,11 +36,38 @@ export class PasswordSettingScreen extends Component {
         this.onPasswordInputCreated = this.onPasswordInputCreated.bind(this);
         this.onConfirmPasswordInputCreated = this.onConfirmPasswordInputCreated.bind(this);
         this.onPasswordInputSubmitted = this.onPasswordInputSubmitted.bind(this); 
-        this.onConfirmPasswordInputSubmitted = this.onConfirmPasswordInputSubmitted.bind(this); 
+        this.onConfirmPasswordInputSubmitted = this.onConfirmPasswordInputSubmitted.bind(this);
+        this.onDeviceBackButtonPress = this.onDeviceBackButtonPress.bind(this);
+    }
+
+    componentDidMount() {
+        BackHandler.addEventListener('hardwareBackPress', this.onDeviceBackButtonPress);
+    }
+
+    componentWillUnmount () {
+        BackHandler.removeEventListener('hardwareBackPress', this.onDeviceBackButtonPress);
+    }
+
+
+    onDeviceBackButtonPress() {
+        Alert.alert(
+            'Exit App',
+            'Exiting the application?', [{
+                text: 'Cancel',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel'
+            }, {
+                text: 'OK',
+                onPress: () => BackHandler.exitApp(),
+            }, ], {
+                cancelable: false
+            }
+        )
+        return true;
     }
 
     goToCurrencyListScreen() {
-        navigate('CurrencyListScreen');
+        navigate('CurrencyListScreen', {}, true);
     }
 
     onClearText() {
