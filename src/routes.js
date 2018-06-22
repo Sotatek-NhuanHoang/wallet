@@ -19,6 +19,8 @@ import ReceiveScreen from '@screens/Wallet/ReceiveScreen/ReceiveScreen';
 import WithdrawScreen from '@screens/Wallet/WithdrawScreen/WithdrawScreen';
 import TransactionScreen from '@screens/Wallet/TransactionScreen/TransactionScreen';
 
+import PasswordSettingScreen from '@screens/Setting/PasswordSettingScreen/PasswordSettingScreen';
+
 import HeaderStyle from '@styles/header';
 
 
@@ -56,6 +58,7 @@ const transitionConfig = () => {
 export const Routes = createStackNavigator(
     {
         SplashScreen: SplashScreen,
+        PasswordSettingScreen: PasswordSettingScreen,
         CurrencyListScreen: CurrencyListScreen,
         Setting: createStackNavigator(
             {

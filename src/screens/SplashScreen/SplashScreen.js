@@ -23,7 +23,7 @@ export class SplashScreen extends Component {
     constructor() {
         super();
         setTimeout(() => {
-            navigate('CurrencyListScreen');
+            navigate('PasswordSettingScreen');
         }, 2000);
     }
 
