@@ -50,7 +50,7 @@ const defaultState = {
         balance: "747764.92940022",
         cmcId: "ethereum",
         name: "Ethereum",
-        percent_change_24h: "-8.71",
+        21: "-8.71",
         price_jpy: "1855629.72",
         price_usd: "7479.72",
         symbol: "eth",
@@ -119,7 +119,7 @@ export const globalReducer = handleActions({
  * =====================================================
  */
 
- // Convert object of coins to arrray
+// Convert object of coins to arrray
 export const globalCoinListSelector = createSelector(
     (globalState) => globalState.coins.data,
     (coins) => {
@@ -128,6 +128,12 @@ export const globalCoinListSelector = createSelector(
             return memo;
         }, []);
     },
+);
+
+// Select only eth coin from state
+export const globalEthCoinSelector = createSelector(
+    (globalState) => globalState.coins.data,
+    (coins) => coins.eth || { symbol: 'eth' },
 );
 
 
