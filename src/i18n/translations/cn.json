@@ -50,7 +50,8 @@
             "next_btn": "Next cn",
             "importWalletSucceed": "Wallet has been successfully imported cn",
             "importWalletFailed": "Wallet import failed cn",
-            "privateKeyRequired": "Private key required cn"
+            "privateKeyRequired": "Private key required cn",
+            "inputPrivateKey_placeholder": "Input private key cn"
         }
     },
 

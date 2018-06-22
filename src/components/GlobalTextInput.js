@@ -39,7 +39,7 @@ class GlobalTextInput extends Component {
         }
 
         if (multiline) {
-            finalStyle = [ ...finalStyle, textInputStyle.textInput__multiline ];
+            finalStyle = [ ...finalStyle, textInputStyle.textInput__multiline, style ];
         }
 
         return (

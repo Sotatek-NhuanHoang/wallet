@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Alert } from 'react-native';
+import { Text, View, Alert, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 
 import GlobalLoc from '@components/GlobalLoc';
@@ -84,24 +84,27 @@ export class WalletInitialImportScreen extends Component {
 
         return (
             <GlobalContainer>
-                {/* Icon and coin name */}
-                <View style={ style.coinContainer }>
-                    <GlobalCoinIcon coin={ selectedCoin.symbol } size="large" />
-                    <Text style={ style.coinName }>{ selectedCoin.name }</Text>
-                </View>
+                <ScrollView>
+                    {/* Icon and coin name */}
+                    <View style={ style.coinContainer }>
+                        <GlobalCoinIcon coin={ selectedCoin.symbol } size="large" />
+                        <Text style={ style.coinName }>{ selectedCoin.name }</Text>
+                    </View>
 
-                <View style={ style.actionContainer }>
-                    <GlobalTextInput
-                        type="basic"
-                        multiline={ true }
-                        onChangeText={ this.onInputChanged }
-                        style={ style.marginBottom }
-                    />
+                    <View style={ style.actionContainer }>
+                        <GlobalTextInput
+                            type="basic"
+                            multiline={ true }
+                            placeholder={ I18n.t('WalletInitialSetting.WalletInitialImportScreen.inputPrivateKey_placeholder') }
+                            onChangeText={ this.onInputChanged }
+                            style={ [style.textInput, style.marginBottom] }
+                        />
 
-                    <GlobalButton type="primary" onPress={ this.onImportButtonClicked }>
-                        <GlobalLoc locKey="WalletInitialSetting.WalletInitialImportScreen.next_btn" />
-                    </GlobalButton>
-                </View>
+                        <GlobalButton type="primary" onPress={ this.onImportButtonClicked }>
+                            <GlobalLoc locKey="WalletInitialSetting.WalletInitialImportScreen.next_btn" />
+                        </GlobalButton>
+                    </View>
+                </ScrollView>
             </GlobalContainer>
         );
     }

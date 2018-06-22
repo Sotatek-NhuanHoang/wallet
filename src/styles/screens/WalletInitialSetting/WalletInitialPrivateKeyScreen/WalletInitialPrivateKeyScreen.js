@@ -7,8 +7,8 @@ export default ScaledSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: '90@ms',
-        marginBottom: '70@ms',
+        marginTop: '70@vs',
+        marginBottom: '70@vs',
     },
 
     coinName: {
@@ -23,6 +23,6 @@ export default ScaledSheet.create({
     },
 
     marginBottom: {
-        marginBottom: '20@ms',
+        marginBottom: '30@vs',
     },
 });

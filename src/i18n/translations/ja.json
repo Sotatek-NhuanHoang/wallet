@@ -49,7 +49,8 @@
             "next_btn": "Next ja",
             "importWalletSucceed": "Wallet has been successfully imported ja",
             "importWalletFailed": "Wallet import failed ja",
-            "privateKeyRequired": "Private key required ja"
+            "privateKeyRequired": "Private key required ja",
+            "inputPrivateKey_placeholder": "Input private key ja"
         }
     },
 

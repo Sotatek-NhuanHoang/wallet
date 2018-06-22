@@ -7,8 +7,8 @@ export default ScaledSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: '90@ms',
-        marginBottom: '70@ms',
+        marginTop: '70@vs',
+        marginBottom: '70@vs',
     },
 
     coinName: {
@@ -17,12 +17,16 @@ export default ScaledSheet.create({
         marginLeft: Sizes.s4,
     },
 
+    textInput: {
+        textAlignVertical: 'center',
+    },
+
     actionContainer: {
         paddingLeft: Sizes.s10,
         paddingRight: Sizes.s10,
     },
 
     marginBottom: {
-        marginBottom: '50@ms',
+        marginBottom: '80@vs',
     },
 });
