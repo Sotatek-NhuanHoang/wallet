@@ -16,7 +16,14 @@ export const GLOBAL_SELECT_COIN = createAction('GLOBAL_SELECT_COIN');
 export const GLOBAL_COIN_LIST_LOADING = createAction('GLOBAL_COIN_LIST_LOADING');
 export const GLOBAL_COIN_LIST_SUCCEEDED = createAction('GLOBAL_COIN_LIST_SUCCEEDED');
 export const GLOBAL_COIN_LIST_FAILED = createAction('GLOBAL_COIN_LIST_FAILED');
-export const GLOBAL_COIN_LIST_REQUESTED = () => async (dispatch) => {
+export const GLOBAL_COIN_LIST_REQUESTED = () => async (dispatch, getState) => {
+    const { global } = getState();
+    const { coins } = global;
+
+    if (coins.loading || coins.isLoaded) {
+        return;
+    }
+
     dispatch(GLOBAL_COIN_LIST_LOADING());
 
     const coinList = await MockApi.getAllCoins();
@@ -67,6 +74,7 @@ const defaultState = {
         data: {},
         loading: false,
         error: null,
+        isLoaded: false,
     },
     password: '',
     confirmPassword: '',
@@ -99,6 +107,7 @@ export const globalReducer = handleActions({
                 data: coinList,
                 loading: false,
                 error: null,
+                isLoaded: true,
             },
         };
     },

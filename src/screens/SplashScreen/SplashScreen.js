@@ -6,7 +6,7 @@ import GlobalLoc from '@components/GlobalLoc';
 import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
 import GlobalContainer from '@components/GlobalContainer';
 import { navigate } from '@utils/NavigationService';
-import { GLOBAL_CHANGE_PASSWORD } from '@store/global';
+import { GLOBAL_CHANGE_PASSWORD, GLOBAL_COIN_LIST_REQUESTED } from '@store/global';
 
 import style from '@styles/screens/SplashScreen/SplashScreen';
 
@@ -32,6 +32,8 @@ export class SplashScreen extends Component {
 
         if (savedPassword) {
             this.props.changePassword(savedPassword);
+            this.props.getCoinList();
+
             setTimeout(() => {
                 navigate('CurrencyListScreen', {}, true);
             }, 400);
@@ -56,6 +58,9 @@ export class SplashScreen extends Component {
 const mapDispathToProps = (dispatch) => ({
     changePassword: (newPassword) => {
         dispatch(GLOBAL_CHANGE_PASSWORD(newPassword));
+    },
+    getCoinList: () => {
+        dispatch(GLOBAL_COIN_LIST_REQUESTED());
     },
 });
 
