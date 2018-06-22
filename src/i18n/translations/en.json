@@ -47,7 +47,9 @@
         "WalletInitialImportScreen": {
             "title": "Import",
             "next_btn": "Next",
-            "importSucceed": "Wallet has been successfully imported"
+            "importWalletSucceed": "Wallet has been successfully imported",
+            "importWalletFailed": "Wallet import failed",
+            "privateKeyRequired": "Private key required"
         }
     },
 

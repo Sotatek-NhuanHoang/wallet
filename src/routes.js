@@ -3,6 +3,7 @@ import { View, Animated, Easing } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
 import SplashScreen from '@screens/SplashScreen/SplashScreen';
+import PasswordSettingScreen from '@screens/Setting/PasswordSettingScreen/PasswordSettingScreen';
 import CurrencyListScreen from '@screens/CurrencyListScreen/CurrencyListScreen';
 import WebViewScreen from '@screens/WebViewScreen/WebViewScreen';
 
@@ -10,7 +11,6 @@ import SettingScreen from './screens/Setting/SettingScreen/SettingScreen';
 import LanguageScreen from './screens/Setting/LanguageScreen/LanguageScreen';
 
 import WalletInitialSettingScreen from '@screens/WalletInitialSetting/WalletInitialSettingScreen/WalletInitialSettingScreen';
-import WalletInitialPasswordScreen from '@screens/WalletInitialSetting/WalletInitialPasswordScreen/WalletInitialPasswordScreen';
 import WalletInitialPrivateKeyScreen from '@screens/WalletInitialSetting/WalletInitialPrivateKeyScreen/WalletInitialPrivateKeyScreen';
 import WalletInitialImportScreen from '@screens/WalletInitialSetting/WalletInitialImportScreen/WalletInitialImportScreen';
 
@@ -18,8 +18,6 @@ import WalletScreen from '@screens/Wallet/WalletScreen/WalletScreen';
 import ReceiveScreen from '@screens/Wallet/ReceiveScreen/ReceiveScreen';
 import WithdrawScreen from '@screens/Wallet/WithdrawScreen/WithdrawScreen';
 import TransactionScreen from '@screens/Wallet/TransactionScreen/TransactionScreen';
-
-import PasswordSettingScreen from '@screens/Setting/PasswordSettingScreen/PasswordSettingScreen';
 
 import HeaderStyle from '@styles/header';
 
@@ -74,7 +72,6 @@ export const Routes = createStackNavigator(
         WalletInitialSetting: createStackNavigator(
             {
                 WalletInitialSettingScreen: WalletInitialSettingScreen,
-                WalletInitialPasswordScreen: WalletInitialPasswordScreen,
                 WalletInitialPrivateKeyScreen: WalletInitialPrivateKeyScreen,
                 WalletInitialImportScreen: WalletInitialImportScreen,
             },
@@ -100,7 +97,7 @@ export const Routes = createStackNavigator(
         WebViewScreen: WebViewScreen,
     },
     {
-        initialRouteName: 'CurrencyListScreen',
+        initialRouteName: 'SplashScreen',
         navigationOptions: ({ navigation }) => {
             const options = { ...defaultNavigationOptions };
 

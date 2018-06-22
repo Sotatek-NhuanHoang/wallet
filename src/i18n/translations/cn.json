@@ -44,6 +44,13 @@
             "copy_btn": "Copy cn",
             "next_btn": "Next cn",
             "walletCreated": "Wallet has been created cn"
+        },
+        "WalletInitialImportScreen": {
+            "title": "Import cn",
+            "next_btn": "Next cn",
+            "importWalletSucceed": "Wallet has been successfully imported cn",
+            "importWalletFailed": "Wallet import failed cn",
+            "privateKeyRequired": "Private key required cn"
         }
     },
 

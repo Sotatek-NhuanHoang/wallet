@@ -13,7 +13,9 @@ import { WINI_IMPORT_WALLET_REQUESTED, WINI_CHANGE_USER_PRIVATE_KEY } from '@sto
 import I18n from '@i18n';
 import { navigate } from '@utils/NavigationService';
 
+
 import style from '@styles/screens/WalletInitialSetting/WalletInitialImportScreen/WalletInitialImportScreen';
+import { ERROR_TYPES } from '../../../configs/errorTypes';
 
 
 export class WalletInitialImportScreen extends Component {
@@ -38,12 +40,29 @@ export class WalletInitialImportScreen extends Component {
 
     componentWillReceiveProps(nextProps) {
         const { newWallet } = nextProps;
+
         if (newWallet.created) {
+            const message = I18n.t('WalletInitialSetting.WalletInitialImportScreen.importWalletSucceed');
             Alert.alert(
                 null,
-                'Success',
+                message,
                 [{ text: 'OK', onPress: this.onSuccessfulAlertClosed, style: 'cancel' }],
+                { cancelable: false }
             );
+        } else if (newWallet.error) {
+            let message = null;
+
+            switch (newWallet.error) {
+                case ERROR_TYPES.REQUEST_FAILED:
+                    message = I18n.t('WalletInitialSetting.WalletInitialImportScreen.importWalletFailed');
+                    break;
+
+                case ERROR_TYPES.FIELD_REQUIRED:
+                    message = I18n.t('WalletInitialSetting.WalletInitialImportScreen.privateKeyRequired');
+                    break;
+            }
+
+            Alert.alert(null, message);
         }
     }
 

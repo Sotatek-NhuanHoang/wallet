@@ -138,7 +138,6 @@ export class PasswordSettingScreen extends Component {
                 {/*input password*/}
                 <GlobalTextInput
                     type="basic"
-                    autoFocus={ true }
                     multiline={ false }
                     style={ style.passwordInput }
                     placeholder={ I18n.t('Setting.PasswordSettingScreen.password') }

@@ -4,6 +4,8 @@ import _ from 'lodash';
 
 import MockApi from '@api/mockApi';
 import { GLOBAL_UPDATE_WALLET } from './global';
+import ERROR_TYPES from '@configs/errorTypes';
+import validate, { privateKeyConstraint } from '@utils/validate';
 
 
 /**
@@ -35,12 +37,18 @@ export const WINI_IMPORT_WALLET_FAILED = createAction('WINI_IMPORT_WALLET_FAILED
 export const WINI_IMPORT_WALLET_REQUESTED = (coin, privateKey) => async (dispatch) => {
     dispatch(WINI_IMPORT_WALLET_LOADING());
 
+    const validationResult = validate({ privateKey }, { privateKey: privateKeyConstraint });
+    if (validationResult) {
+        const error = validationResult[0].error;
+        dispatch(WINI_IMPORT_WALLET_FAILED(error));
+        return;
+    }
+
     const newWallet = await MockApi.importPrivateKeyToAccount(coin, privateKey);
 
     dispatch(WINI_IMPORT_WALLET_SUCCEEDED());
     dispatch(GLOBAL_UPDATE_WALLET({ coin, newWallet }));
 };
-
 export const WINI_CHANGE_USER_PRIVATE_KEY = createAction('WINI_CHANGE_USER_PRIVATE_KEY');
 
 
@@ -124,11 +132,26 @@ export const walletInitialSettingReducer = handleActions({
             },
         };
     },
+    WINI_IMPORT_WALLET_FAILED: (state, { payload }) => {
+        return {
+            ...state,
+            newWallet: {
+                created: false,
+                loading: false,
+                error: payload,
+            },
+        };
+    },
 
     WINI_CHANGE_USER_PRIVATE_KEY: (state, { payload }) => {
         return {
             ...state,
             userPrivateKey: payload,
+            newWallet: {
+                created: false,
+                loading: false,
+                error: null,
+            },
         };
     },
 }, defaultState);
