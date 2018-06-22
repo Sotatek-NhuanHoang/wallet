@@ -34,11 +34,11 @@ export class SplashScreen extends Component {
             this.props.changePassword(savedPassword);
             setTimeout(() => {
                 navigate('CurrencyListScreen', {}, true);
-            }, 200);
+            }, 400);
         } else {
             setTimeout(() => {
                 navigate('PasswordSettingScreen', {}, true);
-            }, 200);
+            }, 400);
         }
     }
 
