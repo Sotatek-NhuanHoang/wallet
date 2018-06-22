@@ -43,6 +43,13 @@
             "copy_btn": "Copy ja",
             "next_btn": "Next ja",
             "walletCreated": "Wallet has been created ja"
+        },
+        "WalletInitialImportScreen": {
+            "title": "Import ja",
+            "next_btn": "Next ja",
+            "importWalletSucceed": "Wallet has been successfully imported ja",
+            "importWalletFailed": "Wallet import failed ja",
+            "privateKeyRequired": "Private key required ja"
         }
     },
 
