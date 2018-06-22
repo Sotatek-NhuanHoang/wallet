@@ -58,6 +58,7 @@ const transitionConfig = () => {
 export const Routes = createStackNavigator(
     {
         SplashScreen: SplashScreen,
+        PasswordSettingScreen: PasswordSettingScreen,
         CurrencyListScreen: CurrencyListScreen,
         Setting: createStackNavigator(
             {
@@ -97,10 +98,9 @@ export const Routes = createStackNavigator(
             }
         ),
         WebViewScreen: WebViewScreen,
-        PasswordSettingScreen: PasswordSettingScreen,
     },
     {
-        initialRouteName: 'PasswordSettingScreen',
+        initialRouteName: 'SplashScreen',
         navigationOptions: ({ navigation }) => {
             const options = { ...defaultNavigationOptions };
 

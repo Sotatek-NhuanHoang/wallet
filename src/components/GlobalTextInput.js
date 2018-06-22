@@ -6,6 +6,20 @@ import textInputStyle from '@styles/components/GlobalTextInput';
 
 class GlobalTextInput extends Component {
 
+    constructor(props) {
+        super(props);
+        this.onGlobalTextInputCreated = this.onGlobalTextInputCreated.bind(this);
+    }
+
+
+    // return a reference of this component
+    onGlobalTextInputCreated(textInput) {
+        if (this.props.onGlobalTextInputCreated) {
+            this.props.onGlobalTextInputCreated(textInput);
+        }
+    } 
+
+
     render() {
         const { style, type, multiline } = this.props;
 
@@ -33,6 +47,7 @@ class GlobalTextInput extends Component {
                 underlineColorAndroid={ 'rgba(0, 0, 0, 0)' }
                 { ...this.props }
                 style={ finalStyle }
+                ref={ this.onGlobalTextInputCreated }
             />
         );
     }

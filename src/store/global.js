@@ -38,6 +38,12 @@ export const GLOBAL_COIN_LIST_REQUESTED = () => async (dispatch) => {
 export const GLOBAL_UPDATE_WALLET = createAction('GLOBAL_UPDATE_WALLET');
 
 
+// Password actions
+export const GLOBAL_RESET_PASSWORD = createAction('GLOBAL_RESET_PASSWORD');
+export const GLOBAL_CHANGE_PASSWORD = createAction('GLOBAL_CHANGE_PASSWORD');
+export const GLOBAL_CHANGE_CONFIRM_PASSWORD = createAction('GLOBAL_CHANGE_CONFIRM_PASSWORD');
+
+
 
 /**
  * =====================================================
@@ -47,20 +53,22 @@ export const GLOBAL_UPDATE_WALLET = createAction('GLOBAL_UPDATE_WALLET');
 
 const defaultState = {
     selectedCoin: {
-        balance: "747764.92940022",
-        cmcId: "ethereum",
-        name: "Ethereum",
-        21: "-8.71",
-        price_jpy: "1855629.72",
-        price_usd: "7479.72",
-        symbol: "eth",
-        type: "coin",
+        balance: '747764.92940022',
+        cmcId: 'ethereum',
+        name: 'Ethereum',
+        percent_change_24h: '-8.71',
+        price_jpy: '1855629.72',
+        price_usd: '7479.72',
+        symbol: 'eth',
+        type: 'coin',
     },
     coins: {
         data: {},
         loading: false,
         error: null,
     },
+    password: '',
+    confirmPassword: '',
 };
 
 export const globalReducer = handleActions({
@@ -107,6 +115,28 @@ export const globalReducer = handleActions({
                 ...state.coins,
                 data: { ...newData },
             },
+        };
+    },
+
+
+    // Password actions
+    GLOBAL_RESET_PASSWORD: (state, { payload }) => {
+        return {
+            ...state,
+            password: '',
+            confirmPassword: '',
+        };
+    },
+    GLOBAL_CHANGE_PASSWORD: (state, { payload }) => {
+        return {
+            ...state,
+            password: payload,
+        };
+    },
+    GLOBAL_CHANGE_CONFIRM_PASSWORD: (state, { payload }) => {
+        return {
+            ...state,
+            confirmPassword: payload,
         };
     },
 }, defaultState);
