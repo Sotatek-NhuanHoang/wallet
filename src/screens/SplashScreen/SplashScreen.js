@@ -6,7 +6,7 @@ import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
 import GlobalContainer from '@components/GlobalContainer';
 import { navigate } from '@utils/NavigationService';
 
-import style from '../../styles/screens/SplashScreen/SplashScreen';
+import style from '@styles/screens/SplashScreen/SplashScreen';
 
 
 export class SplashScreen extends Component {
