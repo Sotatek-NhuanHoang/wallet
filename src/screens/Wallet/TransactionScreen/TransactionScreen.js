@@ -74,8 +74,8 @@ export class TransactionScreen extends Component {
             <GlobalContainer>
                 {/* Icon and coin name */}
                 <View style={ style.coinContainer }>
-                    <GlobalCoinIcon coin={ selectedCoin.coin } size="large" />
-                    <Text style={ style.coinName }>{ selectedCoin.coinName }</Text>
+                    <GlobalCoinIcon coin={ selectedCoin.symbol } size="large" />
+                    <Text style={ style.coinName }>{ selectedCoin.name }</Text>
                 </View>
                 {/* list transaction*/}
                 <SectionList
