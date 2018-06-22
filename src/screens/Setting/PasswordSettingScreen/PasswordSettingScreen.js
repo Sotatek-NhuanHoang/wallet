@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, Alert } from 'react-native';
+import { Alert, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 
 import GlobalLoc from '@components/GlobalLoc';
@@ -10,6 +10,8 @@ import GlobalTextInput from '@components/GlobalTextInput';
 import I18n from '@i18n';
 import { navigate } from '@utils/NavigationService';
 import { GLOBAL_RESET_PASSWORD, GLOBAL_CHANGE_PASSWORD, GLOBAL_CHANGE_CONFIRM_PASSWORD } from '@store/global';
+import ERROR_TYPES from '@configs/errorTypes';
+import validate, { passwordConstraint } from '@utils/validate';
 
 import style from '@styles/screens/Setting/PasswordSettingScreen/PasswordSettingScreen';
 
@@ -41,23 +43,6 @@ export class PasswordSettingScreen extends Component {
         navigate('CurrencyListScreen');
     }
 
-    checkEmptyPassword(password) {
-        return !password;
-    }
-
-    checkSyntaxPassword(password) {
-        let reg =  new RegExp("^([a-zA-Z0-9])+$");
-        return reg.test(password);
-    }
-
-    checkConfirmPassword(password, confirmPassword) {
-        return password === confirmPassword;
-    }
-
-    checkLengthPassword(password) {
-        return password.length >= 9 && password.length <= 50;
-    }
-
     onClearText() {
         this.props.resetPassword();
         this.passwordInput.clear();
@@ -66,45 +51,54 @@ export class PasswordSettingScreen extends Component {
 
     onNextButtonClicked() {
         const { password, confirmPassword } = this.props;
+        const validationResult = validate({ password }, { password: passwordConstraint });
 
-        let message = '';
-        let isError = false;
-       
-        if (this.checkEmptyPassword(password)) {
-            message = I18n.t('Setting.PasswordSettingScreen.error_01');
-            isError = true;
-        } else if (!this.checkSyntaxPassword(password)) {
-            message = I18n.t('Setting.PasswordSettingScreen.error_02');    
-            isError = true;        
-        } else if (!this.checkLengthPassword(password)) {
-            message = I18n.t('Setting.PasswordSettingScreen.error_03');   
-            isError = true;    
-       } else if (!this.checkConfirmPassword(password, confirmPassword)) {
-           message = I18n.t('Setting.PasswordSettingScreen.error_04');
-           isError = true;
-        } else {
-            message = I18n.t('Setting.PasswordSettingScreen.message');
-            isError = false;
-        }
-    
-        if (isError) {
+        if (validationResult) { // Error
+            const error = validationResult[0].error;
+            let message = '';
+
+            switch (error) {
+                case ERROR_TYPES.FIELD_REQUIRED:
+                    message = I18n.t('Setting.PasswordSettingScreen.error_01');
+                    break;
+
+                case ERROR_TYPES.INVALID_LENGTH:
+                    message = I18n.t('Setting.PasswordSettingScreen.error_03');
+                    break;
+
+                case ERROR_TYPES.INVALID_FORMAT:
+                    message = I18n.t('Setting.PasswordSettingScreen.error_02');
+                    break;
+            }
+
             Alert.alert (
                 null,
                 message,
                 [
                     { text: 'OK', onPress: this.onClearText },
                 ],
-                { cancelable: false }//dismissed by tapping outside of the alert box 
-            )
-        } else {
+                { cancelable: false } //dismissed by tapping outside of the alert box
+            );
+        } else if (password !== confirmPassword) { // Password not match
+            const message = I18n.t('Setting.PasswordSettingScreen.error_04');
+            Alert.alert (
+                null,
+                message,
+                [
+                    { text: 'OK', onPress: this.onClearText },
+                ],
+                { cancelable: false } //dismissed by tapping outside of the alert box
+            );
+        } else { // Success
+            const message = I18n.t('Setting.PasswordSettingScreen.message');
             Alert.alert (
                 null,
                 message,
                 [
                     { text: 'OK', onPress: this.goToCurrencyListScreen },
                 ],
-                { cancelable: false }//dismissed by tapping outside of the alert box 
-            )
+                { cancelable: false } //dismissed by tapping outside of the alert box
+            );
         }
     }
 
@@ -135,41 +129,43 @@ export class PasswordSettingScreen extends Component {
     render() {
         return (
             <GlobalContainer>
-                {/*input password*/}
-                <GlobalTextInput
-                    type="basic"
-                    multiline={ false }
-                    style={ style.passwordInput }
-                    placeholder={ I18n.t('Setting.PasswordSettingScreen.password') }
-                    onChangeText={ this.onPasswordChanged }
-                    secureTextEntry={ true }
-                    onGlobalTextInputCreated={ this.onPasswordInputCreated }
-                    onSubmitEditing={ this.onPasswordInputSubmitted }
-                />
+                <ScrollView>
+                    {/*input password*/}
+                    <GlobalTextInput
+                        type="basic"
+                        multiline={ false }
+                        style={ style.passwordInput }
+                        placeholder={ I18n.t('Setting.PasswordSettingScreen.password') }
+                        onChangeText={ this.onPasswordChanged }
+                        secureTextEntry={ true }
+                        onGlobalTextInputCreated={ this.onPasswordInputCreated }
+                        onSubmitEditing={ this.onPasswordInputSubmitted }
+                    />
 
-                {/*confirm password*/}
-                <GlobalTextInput
-                    type="basic"
-                    multiline={ false }
-                    style={ style.confirmInput }
-                    placeholder ={ I18n.t('Setting.PasswordSettingScreen.confirm') }
-                    onChangeText={ this.onConfirmPasswordChanged }
-                    secureTextEntry ={ true }
-                    onGlobalTextInputCreated={ this.onConfirmPasswordInputCreated }
-                    onSubmitEditing={ this.onConfirmPasswordInputSubmitted }
-                />
+                    {/*confirm password*/}
+                    <GlobalTextInput
+                        type="basic"
+                        multiline={ false }
+                        style={ style.confirmInput }
+                        placeholder ={ I18n.t('Setting.PasswordSettingScreen.confirm') }
+                        onChangeText={ this.onConfirmPasswordChanged }
+                        secureTextEntry ={ true }
+                        onGlobalTextInputCreated={ this.onConfirmPasswordInputCreated }
+                        onSubmitEditing={ this.onConfirmPasswordInputSubmitted }
+                    />
 
-                {/*notes*/}
-                <GlobalLoc
-                    style={ style.notes }
-                    locKey="Setting.PasswordSettingScreen.notes" />
+                    {/*notes*/}
+                    <GlobalLoc
+                        style={ style.notes }
+                        locKey="Setting.PasswordSettingScreen.notes" />
 
-                {/*button next*/}
-                <GlobalButton
-                    style={ style.nextButton }
-                    onPress={ this.onNextButtonClicked }>
-                    <GlobalLoc locKey="Setting.PasswordSettingScreen.next_btn" />
-                </GlobalButton>
+                    {/*button next*/}
+                    <GlobalButton
+                        style={ style.nextButton }
+                        onPress={ this.onNextButtonClicked }>
+                        <GlobalLoc locKey="Setting.PasswordSettingScreen.next_btn" />
+                    </GlobalButton>
+                </ScrollView>
             </GlobalContainer>
         );
     }

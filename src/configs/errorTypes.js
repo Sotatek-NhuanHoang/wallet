@@ -4,6 +4,8 @@ export const ERROR_TYPES = {
 
     // Validation
     FIELD_REQUIRED: 'FIELD_REQUIRED',
+    INVALID_LENGTH: 'INVALID_LENGTH',
+    INVALID_FORMAT: 'INVALID_FORMAT',
 };
 
 

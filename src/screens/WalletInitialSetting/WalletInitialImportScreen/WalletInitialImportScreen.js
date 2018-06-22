@@ -15,7 +15,7 @@ import { navigate } from '@utils/NavigationService';
 
 
 import style from '@styles/screens/WalletInitialSetting/WalletInitialImportScreen/WalletInitialImportScreen';
-import { ERROR_TYPES } from '../../../configs/errorTypes';
+import { ERROR_TYPES } from '@configs/errorTypes';
 
 
 export class WalletInitialImportScreen extends Component {
