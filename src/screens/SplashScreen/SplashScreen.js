@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, AsyncStorage } from 'react-native';
+import { connect } from 'react-redux';
 
 import GlobalLoc from '@components/GlobalLoc';
 import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
 import GlobalContainer from '@components/GlobalContainer';
 import { navigate } from '@utils/NavigationService';
+import { GLOBAL_CHANGE_PASSWORD } from '@store/global';
 
 import style from '@styles/screens/SplashScreen/SplashScreen';
 
@@ -22,9 +24,22 @@ export class SplashScreen extends Component {
 
     constructor() {
         super();
-        setTimeout(() => {
-            navigate('PasswordSettingScreen', {}, true);
-        }, 2000);
+    }
+
+    async componentDidMount() {
+        const savedPassword = await AsyncStorage.getItem('password');
+
+
+        if (savedPassword) {
+            this.props.changePassword(savedPassword);
+            setTimeout(() => {
+                navigate('CurrencyListScreen', {}, true);
+            }, 200);
+        } else {
+            setTimeout(() => {
+                navigate('PasswordSettingScreen', {}, true);
+            }, 200);
+        }
     }
 
 
@@ -38,4 +53,10 @@ export class SplashScreen extends Component {
 }
 
 
-export default SplashScreen;
+const mapDispathToProps = (dispatch) => ({
+    changePassword: (newPassword) => {
+        dispatch(GLOBAL_CHANGE_PASSWORD(newPassword));
+    },
+});
+
+export default connect(null, mapDispathToProps)(SplashScreen);

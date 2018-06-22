@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, ScrollView, BackHandler } from 'react-native';
+import { Alert, ScrollView, BackHandler, AsyncStorage } from 'react-native';
 import { connect } from 'react-redux';
 
 import GlobalLoc from '@components/GlobalLoc';
@@ -118,6 +118,7 @@ export class PasswordSettingScreen extends Component {
             );
         } else { // Success
             const message = I18n.t('Setting.PasswordSettingScreen.message');
+            AsyncStorage.setItem('password', password);
             Alert.alert (
                 null,
                 message,
