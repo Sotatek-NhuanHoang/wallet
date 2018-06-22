@@ -129,7 +129,7 @@ export class PasswordSettingScreen extends Component {
     render() {
         return (
             <GlobalContainer>
-                <ScrollView>
+                <ScrollView style={ style.container }>
                     {/*input password*/}
                     <GlobalTextInput
                         type="basic"

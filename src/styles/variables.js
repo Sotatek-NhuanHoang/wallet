@@ -1,4 +1,4 @@
-import { moderateScale } from '@react-native-size-matters';
+import { moderateScale, verticalScale } from '@react-native-size-matters';
 
 
 export const Colors = {
@@ -39,5 +39,16 @@ export const Sizes = {
     s8: moderateScale(20),
     s9: moderateScale(22),
     s10: moderateScale(24),
+
+    v1: verticalScale(4),
+    v2: verticalScale(6),
+    v3: verticalScale(10),
+    v4: verticalScale(12),
+    v5: verticalScale(14),
+    v6: verticalScale(16),
+    v7: verticalScale(18),
+    v8: verticalScale(20),
+    v9: verticalScale(22),
+    v10: verticalScale(24),
 };
 

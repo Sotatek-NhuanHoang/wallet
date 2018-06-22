@@ -9,7 +9,7 @@ import GlobalContainer from '@components/GlobalContainer';
 import GlobalButton from '@components/GlobalButton';
 import GlobalHeaderBackButton from '@components/GlobalHeaderBackButton';
 import GlobalCoinIcon from '@components/GlobalCoinIcon';
-import { scale } from '@react-native-size-matters';
+import { verticalScale } from '@react-native-size-matters';
 import I18n from '@i18n';
 
 import style from '@styles/screens/Wallet/ReceiveScreen/ReceiveScreen';
@@ -52,7 +52,7 @@ export class ReceiveScreen extends Component {
                 <View style={ style.qrContainer }>
                     <QRCode
                         value={ selectedCoin.address }
-                        size={ scale(220) }
+                        size={ verticalScale(230) }
                         bgColor='black'
                         fgColor='white'
                     />

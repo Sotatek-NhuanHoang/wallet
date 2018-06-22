@@ -61,6 +61,7 @@ const defaultState = {
         price_usd: '7479.72',
         symbol: 'eth',
         type: 'coin',
+        address: 'asfjoaisndfi3jik4j2l42'
     },
     coins: {
         data: {},
