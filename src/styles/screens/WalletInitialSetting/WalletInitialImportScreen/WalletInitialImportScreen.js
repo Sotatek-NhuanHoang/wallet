@@ -17,12 +17,16 @@ export default ScaledSheet.create({
         marginLeft: Sizes.s4,
     },
 
+    textInput: {
+        textAlignVertical: 'center',
+    },
+
     actionContainer: {
         paddingLeft: Sizes.s10,
         paddingRight: Sizes.s10,
     },
 
     marginBottom: {
-        marginBottom: '30@vs',
+        marginBottom: '80@vs',
     },
 });

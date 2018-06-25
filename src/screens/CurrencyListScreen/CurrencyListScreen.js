@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, BackHandler, Alert } from 'react-native';
 import { connect } from 'react-redux';
 
 import GlobalLoc from '@components/GlobalLoc';
@@ -32,11 +32,34 @@ export class CurrencyListScreen extends Component {
         super(props);
         this.renderCoin = this.renderCoin.bind(this);
         this.onCoinSelected = this.onCoinSelected.bind(this);
+        this.onDeviceBackButtonPress = this.onDeviceBackButtonPress.bind(this);
     }
 
     componentDidMount() {
         this.props.getCoinList();
+        BackHandler.addEventListener('hardwareBackPress', this.onDeviceBackButtonPress);
     };
+
+    componentWillUnmount () {
+        BackHandler.removeEventListener('hardwareBackPress', this.onDeviceBackButtonPress);
+    }
+
+    onDeviceBackButtonPress() {
+        Alert.alert(
+            'Exit App',
+            'Exiting the application?', [{
+                text: 'Cancel',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel'
+            }, {
+                text: 'OK',
+                onPress: () => BackHandler.exitApp(),
+            }, ], {
+                cancelable: false
+            }
+        )
+        return true;
+    }
 
     goWalletInitialSettingScreen() {
         navigate('WalletInitialSetting');

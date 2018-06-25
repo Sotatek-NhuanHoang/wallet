@@ -43,6 +43,14 @@
             "copy_btn": "Copy",
             "next_btn": "Next",
             "walletCreated": "Wallet has been created"
+        },
+        "WalletInitialImportScreen": {
+            "title": "Import",
+            "next_btn": "Next",
+            "importWalletSucceed": "Wallet has been successfully imported",
+            "importWalletFailed": "Wallet import failed",
+            "privateKeyRequired": "Private key required",
+            "inputPrivateKey_placeholder": "Input private key"
         }
     },
 

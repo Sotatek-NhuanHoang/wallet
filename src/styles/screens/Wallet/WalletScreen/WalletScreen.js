@@ -7,8 +7,8 @@ export default ScaledSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: '40@ms',
-        marginBottom: '60@ms',
+        marginTop: '50@vs',
+        marginBottom: '60@vs',
     },
 
     coinName: {
@@ -20,25 +20,25 @@ export default ScaledSheet.create({
     walletInfo: {
         paddingLeft: Sizes.s10,
         paddingRight: Sizes.s10,
-        marginBottom: Sizes.s5,
+        marginBottom: Sizes.v5,
     },
 
     walletBalanceContainer: {
         flexDirection: 'row',
         justifyContent: 'flex-end',
         alignItems: 'flex-end',
-        marginBottom: Sizes.s1,
+        marginBottom: Sizes.v1,
     },
 
     walletBalance_Text: {
-        fontSize: FontSizes.large,
+        fontSize: FontSizes.h1,
         marginRight: Sizes.s2,
         color: Colors.black,
     },
 
     walletBalance_Coin: {
-        fontSize: FontSizes.h5,
-        bottom: '2@ms',
+        fontSize: FontSizes.p,
+        bottom: '2@vs',
         position: 'relative',
         color: Colors.black,
     },
@@ -53,7 +53,7 @@ export default ScaledSheet.create({
         textAlign: 'right',
         fontSize: FontSizes.paddingLeft,
         color: Colors.darkGray,
-        marginBottom: Sizes.s1,
+        marginBottom: Sizes.v1,
     },
 
     walletChange: {
@@ -69,7 +69,7 @@ export default ScaledSheet.create({
     },
 
     marginBottom: {
-        marginBottom: Sizes.s9,
+        marginBottom: '25@vs',
     },
 
     textRed: {

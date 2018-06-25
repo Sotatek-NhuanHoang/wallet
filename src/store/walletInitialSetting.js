@@ -4,6 +4,8 @@ import _ from 'lodash';
 
 import MockApi from '@api/mockApi';
 import { GLOBAL_UPDATE_WALLET } from './global';
+import ERROR_TYPES from '@configs/errorTypes';
+import validate, { privateKeyConstraint } from '@utils/validate';
 
 
 /**
@@ -28,6 +30,28 @@ export const WINI_NEW_WALLET_REQUESTED = (coin, privateKey) => async (dispatch) 
     dispatch(GLOBAL_UPDATE_WALLET({ coin, newWallet }));
 };
 
+// Import new wallet
+export const WINI_IMPORT_WALLET_LOADING = createAction('WINI_IMPORT_WALLET_LOADING');
+export const WINI_IMPORT_WALLET_SUCCEEDED = createAction('WINI_IMPORT_WALLET_SUCCEEDED');
+export const WINI_IMPORT_WALLET_FAILED = createAction('WINI_IMPORT_WALLET_FAILED');
+export const WINI_IMPORT_WALLET_REQUESTED = (coin, privateKey) => async (dispatch) => {
+    dispatch(WINI_IMPORT_WALLET_LOADING());
+
+    const validationResult = validate({ privateKey }, { privateKey: privateKeyConstraint });
+    if (validationResult) {
+        const error = validationResult[0].error;
+        dispatch(WINI_IMPORT_WALLET_FAILED(error));
+        return;
+    }
+
+    const newWallet = await MockApi.importPrivateKeyToAccount(coin, privateKey);
+
+    dispatch(WINI_IMPORT_WALLET_SUCCEEDED());
+    dispatch(GLOBAL_UPDATE_WALLET({ coin, newWallet }));
+};
+export const WINI_CHANGE_USER_PRIVATE_KEY = createAction('WINI_CHANGE_USER_PRIVATE_KEY');
+
+
 
 /**
  * =====================================================
@@ -36,7 +60,8 @@ export const WINI_NEW_WALLET_REQUESTED = (coin, privateKey) => async (dispatch) 
  */
 
 const defaultState = {
-    privateKey: '5Kb8kLf9zgWQnogidDA76MzPL6TsZZY36hWXMssSzNydYXYB9KF',
+    privateKey: '5Kb8kLf9zgWQnogidDA76MzPL6TsZZY36hWXMssSzNydYXYB9KF', // Generated private key,
+    userPrivateKey: '',
     isPrivateKeyCoppied: false,
     newWallet: {
         created: false,
@@ -50,6 +75,7 @@ export const walletInitialSettingReducer = handleActions({
         return {
             ...state,
             privateKey: action.payload,
+            userPrivateKey: '',
             isPrivateKeyCoppied: false,
             newWallet: {
                 created: false,
@@ -63,6 +89,7 @@ export const walletInitialSettingReducer = handleActions({
         return { ...state, isPrivateKeyCoppied: true, };
     },
 
+    // Create new wallet
     WINI_NEW_WALLET_LOADING: (state) => {
         return {
             ...state,
@@ -73,12 +100,55 @@ export const walletInitialSettingReducer = handleActions({
             },
         };
     },
-
     WINI_NEW_WALLET_SUCCEEDED: (state) => {
         return {
             ...state,
             newWallet: {
                 created: true,
+                loading: false,
+                error: null,
+            },
+        };
+    },
+
+    // Import new wallet
+    WINI_IMPORT_WALLET_LOADING: (state) => {
+        return {
+            ...state,
+            newWallet: {
+                created: false,
+                loading: true,
+                error: null,
+            },
+        };
+    },
+    WINI_IMPORT_WALLET_SUCCEEDED: (state) => {
+        return {
+            ...state,
+            newWallet: {
+                created: true,
+                loading: false,
+                error: null,
+            },
+        };
+    },
+    WINI_IMPORT_WALLET_FAILED: (state, { payload }) => {
+        return {
+            ...state,
+            newWallet: {
+                created: false,
+                loading: false,
+                error: payload,
+            },
+        };
+    },
+
+    WINI_CHANGE_USER_PRIVATE_KEY: (state, { payload }) => {
+        return {
+            ...state,
+            userPrivateKey: payload,
+            newWallet: {
+                created: false,
                 loading: false,
                 error: null,
             },
