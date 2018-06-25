@@ -82,7 +82,7 @@
             "error_04": "Please enter the amount with half-width numbers"
         },
         "WithdrawConfirmScreen": {
-            "title": "Send(Confirmation)",
+            "title": "Send (Confirmation)",
             "address": "Recipient address",
             "amount": "Amount",
             "fee": "Fee",
