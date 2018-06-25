@@ -9,7 +9,7 @@ import { navigate } from '@utils/NavigationService';
 import { GLOBAL_CHANGE_PASSWORD, GLOBAL_COIN_LIST_REQUESTED } from '@store/global';
 
 import style from '@styles/screens/SplashScreen/SplashScreen';
-import web3 from 'web3';
+
 
 export class SplashScreen extends Component {
 
@@ -27,8 +27,7 @@ export class SplashScreen extends Component {
     }
 
     async componentDidMount() {
-        const savedPassword = 'haha';
-        console.log(web3.utils.toChecksumAddress('0xc1912fee45d61c87cc5ea59dae31190fffff2323'))
+        const savedPassword = await AsyncStorage.getItem('password');
 
 
         if (savedPassword) {
