@@ -12,7 +12,7 @@ import GlobalTextInput from '@components/GlobalTextInput';
 import { WINI_IMPORT_WALLET_REQUESTED, WINI_CHANGE_USER_PRIVATE_KEY } from '@store/walletInitialSetting';
 import I18n from '@i18n';
 import { navigate } from '@utils/NavigationService';
-
+import AddressStorage from '@utils/addressStorage';
 
 import style from '@styles/screens/WalletInitialSetting/WalletInitialImportScreen/WalletInitialImportScreen';
 import { ERROR_TYPES } from '@configs/errorTypes';
@@ -36,6 +36,7 @@ export class WalletInitialImportScreen extends Component {
         super(props);
         this.onImportButtonClicked = this.onImportButtonClicked.bind(this);
         this.onInputChanged = this.onInputChanged.bind(this);
+        this.onSuccessfulAlertClosed = this.onSuccessfulAlertClosed.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -67,6 +68,9 @@ export class WalletInitialImportScreen extends Component {
     }
 
     onSuccessfulAlertClosed() {
+        const { newWallet, selectedCoin } = this.props;
+
+        AddressStorage.saveWallet(selectedCoin.symbol, newWallet.data);
         navigate('CurrencyListScreen');
     }
 

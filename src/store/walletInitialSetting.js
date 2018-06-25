@@ -26,7 +26,7 @@ export const WINI_NEW_WALLET_REQUESTED = (coin, privateKey) => async (dispatch) 
 
     const newWallet = await MockApi.createNewAccount(coin, privateKey);
 
-    dispatch(WINI_NEW_WALLET_SUCCEEDED());
+    dispatch(WINI_NEW_WALLET_SUCCEEDED(newWallet));
     dispatch(GLOBAL_UPDATE_WALLET({ coin, newWallet }));
 };
 
@@ -46,7 +46,7 @@ export const WINI_IMPORT_WALLET_REQUESTED = (coin, privateKey) => async (dispatc
 
     const newWallet = await MockApi.importPrivateKeyToAccount(coin, privateKey);
 
-    dispatch(WINI_IMPORT_WALLET_SUCCEEDED());
+    dispatch(WINI_IMPORT_WALLET_SUCCEEDED(newWallet));
     dispatch(GLOBAL_UPDATE_WALLET({ coin, newWallet }));
 };
 export const WINI_CHANGE_USER_PRIVATE_KEY = createAction('WINI_CHANGE_USER_PRIVATE_KEY');
@@ -67,6 +67,7 @@ const defaultState = {
         created: false,
         loading: false,
         error: null,
+        data: {},
     },
 };
 
@@ -81,6 +82,7 @@ export const walletInitialSettingReducer = handleActions({
                 created: false,
                 loading: false,
                 error: null,
+                data: {},
             },
         };
     },
@@ -97,16 +99,18 @@ export const walletInitialSettingReducer = handleActions({
                 created: false,
                 loading: true,
                 error: null,
+                data: {},
             },
         };
     },
-    WINI_NEW_WALLET_SUCCEEDED: (state) => {
+    WINI_NEW_WALLET_SUCCEEDED: (state, { payload }) => {
         return {
             ...state,
             newWallet: {
                 created: true,
                 loading: false,
                 error: null,
+                data: { ...payload },
             },
         };
     },
@@ -119,16 +123,18 @@ export const walletInitialSettingReducer = handleActions({
                 created: false,
                 loading: true,
                 error: null,
+                data: {},
             },
         };
     },
-    WINI_IMPORT_WALLET_SUCCEEDED: (state) => {
+    WINI_IMPORT_WALLET_SUCCEEDED: (state, { payload }) => {
         return {
             ...state,
             newWallet: {
                 created: true,
                 loading: false,
                 error: null,
+                data: { ...payload }
             },
         };
     },

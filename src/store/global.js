@@ -2,6 +2,7 @@ import { handleActions, createAction } from 'redux-actions';
 import { createSelector } from 'reselect';
 import _ from 'lodash';
 import MockApi from '@api/mockApi';
+import AddressStorage from '@utils/addressStorage';
 
 
 /**
@@ -30,11 +31,14 @@ export const GLOBAL_COIN_LIST_REQUESTED = () => async (dispatch, getState) => {
     const moreInfoCoinList = await Promise.all(_.map(coinList, async (coin) => {
         const coinPrice = await MockApi.getPrice(coin.symbol);
         const coinBalance = await MockApi.getBalance(coin.symbol);
+        const wallet = await AddressStorage.getWallet(coin.symbol);
 
         coin.balance = coinBalance;
         coin.percent_change_24h = coinPrice.percent_change_24h;
         coin.price_jpy = coinPrice.price_jpy;
         coin.price_usd = coinPrice.price_usd;
+
+        _.merge(coin, wallet);
 
         return coin;
     }));

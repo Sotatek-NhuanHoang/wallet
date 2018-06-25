@@ -12,6 +12,7 @@ import GlobalTextInput from '@components/GlobalTextInput';
 import { WINI_COPY_PRIVATE_KEY, WINI_NEW_WALLET_REQUESTED } from '@store/walletInitialSetting';
 import I18n from '@i18n';
 import { navigate } from '@utils/NavigationService';
+import AddressStorage from '@utils/addressStorage';
 
 import style from '@styles/screens/WalletInitialSetting/WalletInitialPrivateKeyScreen/WalletInitialPrivateKeyScreen';
 
@@ -37,8 +38,9 @@ export class WalletInitialPrivateKeyScreen extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        const { newWallet } = nextProps;
+        const { newWallet, selectedCoin } = nextProps;
         if (newWallet.created) {
+            AddressStorage.saveWallet(selectedCoin.symbol, newWallet.data);
             navigate('CurrencyListScreen');
         }
     }
