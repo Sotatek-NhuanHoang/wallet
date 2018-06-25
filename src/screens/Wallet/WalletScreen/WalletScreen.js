@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
+import { withNavigationFocus } from 'react-navigation';
 
 import GlobalLoc from '@components/GlobalLoc';
 import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
@@ -10,6 +11,7 @@ import GlobalCoinIcon from '@components/GlobalCoinIcon';
 import GlobalButton from '@components/GlobalButton';
 import { currenyFormatFilter, coinPriceFormatFilter } from '@utils/filters';
 import { navigate } from '@utils/NavigationService';
+import { WALLET_WITHDRAW_RESET_STATE } from '@store/wallet';
 
 import style from '@styles/screens/Wallet/WalletScreen/WalletScreen';
 
@@ -24,7 +26,7 @@ export class WalletScreen extends Component {
 
     static navigationOptions = {
         headerLeft: (
-            <GlobalHeaderBackButton />
+            <GlobalHeaderBackButton routeName="CurrencyListScreen" />
         ),
         headerTitle: (
             <GlobalHeaderTitle>
@@ -32,6 +34,12 @@ export class WalletScreen extends Component {
             </GlobalHeaderTitle>
         ),
     };
+
+    componentDidUpdate() {
+        if (this.props.isFocused) {
+            this.props.clean();
+        }
+    }
 
 
     goDepositScreen() {
@@ -102,4 +110,10 @@ const mapStateToProps = ({ global, walletInitialSetting, i18n }) => ({
     locale: i18n.locale,
 });
 
-export default connect(mapStateToProps)(WalletScreen);
+const mapDispatchToProps = (dispatch) => ({
+    clean: () => {
+        dispatch(WALLET_WITHDRAW_RESET_STATE());
+    },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigationFocus(WalletScreen));

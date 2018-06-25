@@ -69,6 +69,28 @@
         "ReceiveScreen": {
             "title": "Receive ja",
             "copy": "Copy address ja"
+        },
+        "WithdrawScreen": {
+            "title": "Send (Input) ja",
+            "paste_btn": "Paste address ja",
+            "address": "Recipient address input ja",
+            "amount": "Amount ({{coin}}) ja",
+            "next": "Next ja",
+            "error_01": "Please enter the recipient address ja",
+            "error_02": "Invalid recipient address ja",
+            "error_03": "Please enter the amount ja",
+            "error_04": "Please enter the amount with half-width numbers ja"
+        },
+        "WithdrawConfirmScreen": {
+            "title": "Send (Confirmation) ja",
+            "address": "Recipient address ja",
+            "amount": "Amount ja",
+            "fee": "Fee ja",
+            "send": "Send ja",
+            "password": "Enter password ja",
+            "invalid_password": "Invalid password ja",
+            "transaction_send_succeeded": "Transaction has been sent ja",
+            "transaction_send_failed": "Unable to send transaction ja"
         }
     }
 }

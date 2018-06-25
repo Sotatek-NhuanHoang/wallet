@@ -17,6 +17,7 @@ import WalletInitialImportScreen from '@screens/WalletInitialSetting/WalletIniti
 import WalletScreen from '@screens/Wallet/WalletScreen/WalletScreen';
 import ReceiveScreen from '@screens/Wallet/ReceiveScreen/ReceiveScreen';
 import WithdrawScreen from '@screens/Wallet/WithdrawScreen/WithdrawScreen';
+import WithdrawConfirmScreen from '@screens/Wallet/WithdrawConfirmScreen/WithdrawConfirmScreen';
 import TransactionScreen from '@screens/Wallet/TransactionScreen/TransactionScreen';
 
 import HeaderStyle from '@styles/header';
@@ -86,6 +87,7 @@ export const Routes = createStackNavigator(
                 WalletScreen: WalletScreen,
                 ReceiveScreen: ReceiveScreen,
                 WithdrawScreen: WithdrawScreen,
+                WithdrawConfirmScreen: WithdrawConfirmScreen,
                 TransactionScreen: TransactionScreen,
             },
             {

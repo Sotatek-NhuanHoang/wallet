@@ -70,6 +70,28 @@
         "ReceiveScreen": {
             "title": "Receive cn",
             "copy": "Copy address cn"
+        },
+        "WithdrawScreen": {
+            "title": "Send (Input) cn",
+            "paste_btn": "Paste address cn",
+            "address": "Recipient address input cn",
+            "amount": "Amount ({{coin}}) cn",
+            "next": "Next cn",
+            "error_01": "Please enter the recipient address cn",
+            "error_02": "Invalid recipient address cn",
+            "error_03": "Please enter the amount cn",
+            "error_04": "Please enter the amount with half-width numbers cn"
+        },
+        "WithdrawConfirmScreen": {
+            "title": "Send (Confirmation) cn",
+            "address": "Recipient address cn",
+            "amount": "Amount cn",
+            "fee": "Fee cn",
+            "send": "Send cn",
+            "password": "Enter password cn",
+            "invalid_password": "Invalid password cn",
+            "transaction_send_succeeded": "Transaction has been sent cn",
+            "transaction_send_failed": "Unable to send transaction cn"
         }
     }
 }

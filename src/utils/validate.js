@@ -85,5 +85,13 @@ export const ethAddressConstraint = {
     walletAddress: 'ETH',
 };
 
+export const quantityConstraint = {
+    presence: { allowEmpty: false },
+    format: {
+        pattern: "^[0-9.]+$",
+        flag: 'g',
+    },
+};
+
 
 export default validate;
