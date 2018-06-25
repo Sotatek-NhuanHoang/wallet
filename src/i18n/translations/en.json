@@ -80,6 +80,17 @@
             "error_02": "Invalid recipient address",
             "error_03": "Please enter the amount",
             "error_04": "Please enter the amount with half-width numbers"
+        },
+        "WithdrawConfirmScreen": {
+            "title": "Send(Confirmation)",
+            "address": "Recipient address",
+            "amount": "Amount",
+            "fee": "Fee",
+            "send": "Send",
+            "password": "Enter password",
+            "invalid_password": "Invalid password",
+            "transaction_send_succeeded": "Transaction has been sent",
+            "transaction_send_failed": "Unable to send transaction"
         }
     }
 }

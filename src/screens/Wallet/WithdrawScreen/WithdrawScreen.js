@@ -13,7 +13,7 @@ import I18n from '@i18n';
 import Images from '@assets/images';
 import { navigate } from '@utils/NavigationService';
 import ERROR_TYPES from '@configs/errorTypes';
-import { WALLET_CHANGE_WITHDRAW_ADDRESS, WALLET_CHANGE_WITHDRAW_QUANTITY, WALLET_VERIFY_TRANSACTION_REQUESTED } from '@store/wallet';
+import { WALLET_WITHDRAW_CHANGE_ADDRESS, WALLET_WITHDRAW_CHANGE_QUANTITY, WALLET_WITHDRAW_VERIFY_REQUESTED } from '@store/wallet';
 
 import style from '@styles/screens/Wallet/WithdrawScreen/WithdrawScreen';
 
@@ -72,7 +72,7 @@ export class WithdrawScreen extends Component {
         }
 
         if (nextProps.isVerified) {
-            navigate('CurrencyListScreen');
+            navigate('WithdrawConfirmScreen');
         }
     }
 
@@ -87,10 +87,6 @@ export class WithdrawScreen extends Component {
 
     onQuanityInputChanged(newQuanity) {
         this.props.changeQuantity(newQuanity);
-    }
-
-    goToSendConfirmScreen() {
-
     }
 
     onQuantityInputCreated(quanityInput) {
@@ -191,13 +187,13 @@ const mapStateToProps = ({ global, wallet }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     changeAddress: (address) => {
-        dispatch(WALLET_CHANGE_WITHDRAW_ADDRESS(address));
+        dispatch(WALLET_WITHDRAW_CHANGE_ADDRESS(address));
     },
     changeQuantity: (quantity) => {
-        dispatch(WALLET_CHANGE_WITHDRAW_QUANTITY(quantity));
+        dispatch(WALLET_WITHDRAW_CHANGE_QUANTITY(quantity));
     },
     verifyTransaction: () => {
-        dispatch(WALLET_VERIFY_TRANSACTION_REQUESTED());
+        dispatch(WALLET_WITHDRAW_VERIFY_REQUESTED());
     },
 });
 
