@@ -13,7 +13,8 @@
         "SettingScreen": {
             "title": "Setting ja",
             "language": "Language ja",
-            "term_service": "Term of service ja"
+            "term_service": "Term of service ja",
+            "private_key": "Private key ja"
         },
         "TermOfServiceScreen": {
             "title": "Term of service ja"
@@ -29,6 +30,14 @@
             "error_02": "Please enter your password with half-width letters annd number ja",
             "error_03": "Password should be more than 9 characters but less than 51 ja",
             "error_04": "Input content does not match on confirmation form ja"
+        },
+        "PrivateKeyScreen": {
+            "title": "Private key ja",
+            "input_password": "Input password ja",
+            "show_private_key": "Show private key ja",
+            "invalid_password": "Invalid password ja",
+            "copy": "Copy ja",
+            "coppied": "Private key coppied ja"
         }
     },
 

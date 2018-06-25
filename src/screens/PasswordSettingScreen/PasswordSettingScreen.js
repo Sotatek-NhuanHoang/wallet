@@ -13,7 +13,7 @@ import { GLOBAL_RESET_PASSWORD, GLOBAL_CHANGE_PASSWORD, GLOBAL_CHANGE_CONFIRM_PA
 import ERROR_TYPES from '@configs/errorTypes';
 import validate, { passwordConstraint } from '@utils/validate';
 
-import style from '@styles/screens/Setting/PasswordSettingScreen/PasswordSettingScreen';
+import style from '@styles/screens/PasswordSettingScreen/PasswordSettingScreen';
 
 export class PasswordSettingScreen extends Component {
 
@@ -35,7 +35,7 @@ export class PasswordSettingScreen extends Component {
         this.onConfirmPasswordChanged = this.onConfirmPasswordChanged.bind(this);
         this.onPasswordInputCreated = this.onPasswordInputCreated.bind(this);
         this.onConfirmPasswordInputCreated = this.onConfirmPasswordInputCreated.bind(this);
-        this.onPasswordInputSubmitted = this.onPasswordInputSubmitted.bind(this); 
+        this.onPasswordInputSubmitted = this.onPasswordInputSubmitted.bind(this);
         this.onConfirmPasswordInputSubmitted = this.onConfirmPasswordInputSubmitted.bind(this);
         this.onDeviceBackButtonPress = this.onDeviceBackButtonPress.bind(this);
     }

@@ -180,6 +180,12 @@ export const globalEthCoinSelector = createSelector(
     (coins) => coins.eth || { symbol: 'eth' },
 );
 
+// Select coins having wallet address
+export const globalAddedWalletCoins = createSelector(
+    (globalState) => globalState.coins.data,
+    (coins) => _.filter(coins, (coin) => coin.privateKey)
+);
+
 
 
 export default globalReducer;

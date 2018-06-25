@@ -5,12 +5,14 @@ import { reducer as i18n } from 'react-native-redux-i18n';
 import globalReducer from './global';
 import walletInitialSettingReducer from './walletInitialSetting';
 import walletReducer from './wallet';
+import settingReducer from './setting';
 
 
 const reducers = combineReducers({
     global: globalReducer,
     walletInitialSetting: walletInitialSettingReducer,
     wallet: walletReducer,
+    setting: settingReducer,
     i18n,
 });
 
