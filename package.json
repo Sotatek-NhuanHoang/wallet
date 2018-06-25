@@ -6,7 +6,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "android": "cd ./android && ./gradlew clean && cd .. && react-native run-android",
     "test": "jest",
-    "postinstall": "./node_modules/.bin/rn-nodeify --hack --install"
+    "postinstall": "rn-nodeify --hack"
   },
   "dependencies": {
     "@tradle/react-native-http": "^2.0.1",

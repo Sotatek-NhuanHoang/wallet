@@ -21,6 +21,7 @@ export default ScaledSheet.create({
         backgroundColor: 'transparent',
         borderWidth: 2,
         borderColor: Colors.secondaryBlue,
+        height: moderateScale(35),
     },
     buttonText__secondary: {
         color: Colors.secondaryBlue,

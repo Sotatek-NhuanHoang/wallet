@@ -70,7 +70,7 @@
             "title": "Receive",
             "copy": "Copy address"
         },
-        "RemittanceScreen": {
+        "WithdrawScreen": {
             "title": "Send (Input)",
             "paste_btn": "Paste address",
             "address": "Recipient address input",

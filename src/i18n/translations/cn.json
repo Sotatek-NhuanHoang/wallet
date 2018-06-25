@@ -71,12 +71,16 @@
             "title": "Receive cn",
             "copy": "Copy address cn"
         },
-        "RemittanceScreen": {
+        "WithdrawScreen": {
             "title": "Send (Input) cn",
             "paste_btn": "Paste address cn",
             "address": "Recipient address input cn",
-            "amount": "Amount (BTC) cn",
-            "next": "Next cn"
+            "amount": "Amount ({{coin}}) cn",
+            "next": "Next cn",
+            "error_01": "Please enter the recipient address cn",
+            "error_02": "Invalid recipient address cn",
+            "error_03": "Please enter the amount cn",
+            "error_04": "Please enter the amount with half-width numbers cn"
         }
     }
 }

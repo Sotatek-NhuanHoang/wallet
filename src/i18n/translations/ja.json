@@ -70,12 +70,16 @@
             "title": "Receive ja",
             "copy": "Copy address ja"
         },
-        "RemittanceScreen": {
+        "WithdrawScreen": {
             "title": "Send (Input) ja",
             "paste_btn": "Paste address ja",
             "address": "Recipient address input ja",
-            "amount": "Amount (BTC) ja",
-            "next": "Next ja"
+            "amount": "Amount ({{coin}}) ja",
+            "next": "Next ja",
+            "error_01": "Please enter the recipient address ja",
+            "error_02": "Invalid recipient address ja",
+            "error_03": "Please enter the amount ja",
+            "error_04": "Please enter the amount with half-width numbers ja"
         }
     }
 }
