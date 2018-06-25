@@ -29,7 +29,7 @@ export default ScaledSheet.create({
     },
 
     coinBalanceText: {
-        fontSize: FontSizes.h5,
+        fontSize: FontSizes.p,
         color: Colors.darkGray,
         textAlign: 'right',
     },

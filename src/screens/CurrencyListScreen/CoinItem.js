@@ -11,17 +11,6 @@ import style from '@styles/screens/CurrencyListScreen/CoinItem';
 export const CoinItem = ({ item, ethCoin, onCoinSelected}) => {
     const { type } = item;
 
-    let coinChangeTextStyle = {};
-    if (item.address) {
-        if (item.percent_change_24h > 0) {
-            coinChangeTextStyle = style.coinChangeText__green;
-        }
-        if (item.percent_change_24h < 0) {
-            coinChangeTextStyle = style.coinChangeText__red;
-        }
-    }
-
-
     switch (type) {
         case COIN_TYPES.COIN:
             return (
@@ -35,7 +24,9 @@ export const CoinItem = ({ item, ethCoin, onCoinSelected}) => {
                         {item.address ? (
                             <View>
                                 <Text style={ style.coinBalanceText }>{ item.balance }</Text>
-                                <Text style={ [style.coinChangeText, coinChangeTextStyle] }>{ item.percent_change_24h }%</Text>
+                                {item.percent_change_24h > 0 && <Text style={ [style.coinChangeText, style.coinChangeText__green] }>+{ item.percent_change_24h }%</Text>}
+                                {item.percent_change_24h === 0 && <Text style={ [style.coinChangeText] }>+{ item.percent_change_24h }%</Text>}
+                                {item.percent_change_24h < 0 && <Text style={ [style.coinChangeText, style.coinChangeText__red] }>{ item.percent_change_24h }%</Text>}
                             </View>
                         ) : (
                             <GlobalLoc locKey="CurrencyListScreen.unregisted" style={ style.unregistedText } />
@@ -56,7 +47,10 @@ export const CoinItem = ({ item, ethCoin, onCoinSelected}) => {
 
                             <View>
                                 <Text style={ style.coinBalanceText }>{ item.balance }</Text>
-                                <Text style={ [style.coinChangeText, coinChangeTextStyle] }>{ item.percent_change_24h }%</Text>
+
+                                {item.percent_change_24h > 0 && <Text style={ [style.coinChangeText, style.coinChangeText__green] }>+{ item.percent_change_24h }%</Text>}
+                                {item.percent_change_24h === 0 && <Text style={ [style.coinChangeText] }>+{ item.percent_change_24h }%</Text>}
+                                {item.percent_change_24h < 0 && <Text style={ [style.coinChangeText, style.coinChangeText__red] }>{ item.percent_change_24h }%</Text>}
                             </View>
                         </View>
                     </TouchableWithoutFeedback>
