@@ -15,4 +15,5 @@ export default {
         xrp: require('./coins/xrp.png'),
         zcl: require('./coins/zcl.png'),
     },
+    qrcode: require('./qrcode.png')
 };

@@ -61,6 +61,17 @@
         "ReceiveScreen": {
             "title": "Receive",
             "copy": "Copy address"
+        },
+        "RemittanceScreen": {
+            "title": "Send (Input)",
+            "paste_btn": "Paste address",
+            "address": "Recipient address input",
+            "amount": "Amount ({{coin}})",
+            "next": "Next",
+            "error_01": "Please enter the recipient address",
+            "error_02": "Invalid recipient address",
+            "error_03": "Please enter the amount",
+            "error_04": "Please enter the amount with half-width numbers"
         }
     }
 }

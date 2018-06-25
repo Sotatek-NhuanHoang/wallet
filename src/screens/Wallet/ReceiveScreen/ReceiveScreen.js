@@ -40,6 +40,7 @@ export class ReceiveScreen extends Component {
 
     render() {
         const { selectedCoin } = this.props;
+        
         return (
             <GlobalContainer>
                 {/* Icon and coin name */}

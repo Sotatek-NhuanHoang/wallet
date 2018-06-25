@@ -62,6 +62,13 @@
         "ReceiveScreen": {
             "title": "Receive cn",
             "copy": "Copy address cn"
+        },
+        "RemittanceScreen": {
+            "title": "Send (Input) cn",
+            "paste_btn": "Paste address cn",
+            "address": "Recipient address input cn",
+            "amount": "Amount (BTC) cn",
+            "next": "Next cn"
         }
     }
 }

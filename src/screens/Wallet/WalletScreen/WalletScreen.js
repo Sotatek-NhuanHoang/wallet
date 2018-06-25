@@ -39,7 +39,7 @@ export class WalletScreen extends Component {
     }
 
     goWithdrawScreen() {
-        navigate('WithdrawScreen');
+        navigate('RemittanceScreen');
     }
 
     goTransactionScreen() {

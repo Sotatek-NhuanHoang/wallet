@@ -9,6 +9,11 @@ import _ from 'lodash';
  * =====================================================
  */
 
+// withdraw actions
+export const WALLET_RESET_WITHDRAW = createAction('WALLET_RESET_WITHDRAW');
+export const WALLET_CHANGE_WITHDRAW_ADDRESS = createAction('WALLET_CHANGE_WITHDRAW_ADDRESS');
+export const WALLET_CHANGE_WITHDRAW_QUANTITY = createAction('WALLET_CHANGE_WITHDRAW_QUANTITY');
+
 
 /**
  * =====================================================
@@ -104,11 +109,43 @@ const defaultState = {
                 ]
             }
         ]
+    },
+    withdraw: {
+        address: '',
+        quantity: ''
     }
 };
 
 export const walletReducer = handleActions({
-   
+    WALLET_RESET_WITHDRAW: (state) => {
+        return {
+            ...state,
+            withdraw: {
+                address: '',
+                quantity: '',
+            },
+        };
+    },
+
+    WALLET_CHANGE_WITHDRAW_ADDRESS: (state, { payload }) => {
+        return {
+            ...state,
+            withdraw: {
+                ...state.withdraw,
+                address: payload,
+            },
+        };
+    }, 
+
+    WALLET_CHANGE_WITHDRAW_QUANTITY: (state, { payload }) => {
+        return {
+            ...state,
+            withdraw: {
+                ...state.withdraw,
+                quantity: payload,
+            },
+        };
+    }, 
 }, defaultState);
 
 
