@@ -13,7 +13,8 @@
         "SettingScreen": {
             "title": "Setting",
             "language": "Language",
-            "term_service": "Term of service"
+            "term_service": "Term of service",
+            "private_key": "Private key"
         },
         "TermOfServiceScreen": {
             "title": "Term of service"
@@ -29,6 +30,14 @@
             "error_02": "Please enter your password with half-width letters annd number",
             "error_03": "Password should be more than 9 characters but less than 51",
             "error_04": "Input content does not match on confirmation form"
+        },
+        "PrivateKeyScreen": {
+            "title": "Private key",
+            "input_password": "Input password",
+            "show_private_key": "Show private key",
+            "invalid_password": "Invalid password",
+            "copy": "Copy",
+            "coppied": "Private key coppied"
         }
     },
 

@@ -9,6 +9,7 @@ import WebViewScreen from '@screens/WebViewScreen/WebViewScreen';
 
 import SettingScreen from './screens/Setting/SettingScreen/SettingScreen';
 import LanguageScreen from './screens/Setting/LanguageScreen/LanguageScreen';
+import PrivateKeyScreen from './screens/Setting/PrivateKeyScreen/PrivateKeyScreen';
 
 import WalletInitialSettingScreen from '@screens/WalletInitialSetting/WalletInitialSettingScreen/WalletInitialSettingScreen';
 import WalletInitialPrivateKeyScreen from '@screens/WalletInitialSetting/WalletInitialPrivateKeyScreen/WalletInitialPrivateKeyScreen';
@@ -63,6 +64,7 @@ export const Routes = createStackNavigator(
             {
                 SettingScreen: SettingScreen,
                 LanguageScreen: LanguageScreen,
+                PrivateKeyScreen: PrivateKeyScreen,
             },
             {
                 initialRouteName: 'SettingScreen',

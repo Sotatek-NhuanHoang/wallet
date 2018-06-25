@@ -13,7 +13,8 @@
         "SettingScreen": {
             "title": "Setting cn",
             "language": "Language cn",
-            "term_service": "Term of service cn"
+            "term_service": "Term of service cn",
+            "private_key": "Private key cn"
         },
         "TermOfServiceScreen": {
             "title": "Term of service cn"
@@ -30,6 +31,14 @@
             "error_03": "Password should be more than 9 characters but less than 51 cn",
             "error_04": "Input content does not match on confirmation form cn"
 
+        },
+        "PrivateKeyScreen": {
+            "title": "Private key cn",
+            "input_password": "Input password cn",
+            "show_private_key": "Show private key cn",
+            "invalid_password": "Invalid password cn",
+            "copy": "Copy cn",
+            "coppied": "Private key coppied cn"
         }
     },
 
