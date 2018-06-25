@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View, ScrollView, Alert } from 'react-native';
 import { connect } from 'react-redux';
-import Dialog from "react-native-dialog";
+import Dialog from 'react-native-dialog';
+import deepEqual from 'fast-deep-equal';
 
 import GlobalLoc from '@components/GlobalLoc';
 import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
@@ -13,6 +14,7 @@ import I18n from '@i18n';
 import { navigate } from '@utils/NavigationService';
 import ERROR_TYPES from '@configs/errorTypes';
 import {
+    WALLET_WITHDRAW_RESET_STATE,
     WALLET_WITHDRAW_CONFIRM_PASSWORD_SHOW_INPUT,
     WALLET_WITHDRAW_CONFIRM_PASSWORD_HIDE_INPUT,
     WALLET_WITHDRAW_CONFIRM_CHANGE_CONFIRM_PASSWORD,
@@ -21,6 +23,7 @@ import {
 } from '@store/wallet';
 
 import style from '@styles/screens/Wallet/WithdrawConfirmScreen/WithdrawConfirmScreen';
+import textInputStyle from '@styles/components/GlobalTextInput';
 
 
 export class WithdrawScreenConfirm extends Component {
@@ -46,17 +49,26 @@ export class WithdrawScreenConfirm extends Component {
         this.onTransactionAlertButtonClicked = this.onTransactionAlertButtonClicked.bind(this);
     }
 
+    shouldComponentUpdate(nextProps) {
+        return !deepEqual(this.props.selectedCoin, nextProps.selectedCoin) ||
+            !deepEqual(this.props.withdraw, nextProps.withdraw) ||
+            !deepEqual(this.props.withdrawConfirm, nextProps.withdrawConfirm) ||
+            !deepEqual(this.props.transaction, nextProps.transaction);
+    }
+
     componentWillReceiveProps(nextProps) {
         const { withdrawConfirm, transaction } = nextProps;
 
         if (transaction.loading) {
             return;
         } else if (transaction.error) {
+            this.props.clean();
             Alert.alert(null, I18n.t('Wallet.WithdrawConfirmScreen.transaction_send_failed'), [
                 { text: 'OK', onPress: this.onTransactionAlertButtonClicked }
             ], { cancelable: false });
             return;
         } else if (transaction.isSucceeded) {
+            this.props.clean();
             Alert.alert(null, I18n.t('Wallet.WithdrawConfirmScreen.transaction_send_succeeded'), [
                 { text: 'OK', onPress: this.onTransactionAlertButtonClicked }
             ], { cancelable: false });
@@ -78,6 +90,8 @@ export class WithdrawScreenConfirm extends Component {
         }
 
     }
+
+
 
     // Input password dialog
     onConfirmPasswordChanged(newConfirmPassword) {
@@ -152,6 +166,7 @@ export class WithdrawScreenConfirm extends Component {
                     </Dialog.Description>
 
                     <Dialog.Input
+                        style={ textInputStyle.textInput }
                         onChangeText={ this.onConfirmPasswordChanged }
                         value={ withdrawConfirm.confirmPassword }
                     />
@@ -187,6 +202,9 @@ const mapDispatchToProps = (dispatch) => ({
     },
     sendCoin: () => {
         dispatch(WALLET_TRANSACTION_MAKE_WITHDRAWAL_REQUESTED());
+    },
+    clean: () => {
+        dispatch(WALLET_WITHDRAW_RESET_STATE());
     },
 });
 

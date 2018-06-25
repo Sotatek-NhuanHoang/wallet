@@ -77,7 +77,6 @@ export const WALLET_WITHDRAW_CONFIRM_PASSWORD_REQUESTED = () => (dispatch, getSt
 };
 
 // Transaction - make withdrawal
-export const WALLET_TRANSACTION_MAKE_WITHDRAWAL_RESET_STATE = createAction('WALLET_TRANSACTION_MAKE_WITHDRAWAL_RESET_STATE');
 export const WALLET_TRANSACTION_MAKE_WITHDRAWAL_LOADING = createAction('WALLET_TRANSACTION_MAKE_WITHDRAWAL_LOADING');
 export const WALLET_TRANSACTION_MAKE_WITHDRAWAL_SUCCEEDED = createAction('WALLET_TRANSACTION_MAKE_WITHDRAWAL_SUCCEEDED');
 export const WALLET_TRANSACTION_MAKE_WITHDRAWAL_FAILED = createAction('WALLET_TRANSACTION_MAKE_WITHDRAWAL_FAILED');
@@ -88,7 +87,6 @@ export const WALLET_TRANSACTION_MAKE_WITHDRAWAL_REQUESTED = () => async (dispatc
         await MockApi.sendCoin();
         dispatch(WALLET_TRANSACTION_MAKE_WITHDRAWAL_SUCCEEDED());
     } catch (error) {
-        console.log(error);
         dispatch(WALLET_TRANSACTION_MAKE_WITHDRAWAL_FAILED(ERROR_TYPES.REQUEST_FAILED));
     }
 };
@@ -230,6 +228,7 @@ export const walletReducer = handleActions({
             withdraw: {
                 ...state.withdraw,
                 address: payload,
+                isVerified: false,
                 error: null,
             },
         };
@@ -241,6 +240,7 @@ export const walletReducer = handleActions({
             withdraw: {
                 ...state.withdraw,
                 quantity: payload,
+                isVerified: false,
                 error: null,
             },
         };

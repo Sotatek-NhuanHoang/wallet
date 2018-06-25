@@ -107,6 +107,12 @@ export class WithdrawScreen extends Component {
     }
 
     onNextButtonClicked() {
+        const { isVerified } = this.props;
+        if (isVerified) {
+            navigate('WithdrawConfirmScreen');
+            return;
+        }
+
         this.props.verifyTransaction();
     }
 

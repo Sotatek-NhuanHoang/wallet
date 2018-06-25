@@ -16,7 +16,7 @@ export class TransactionScreen extends Component {
 
     static navigationOptions = {
         headerLeft: (
-            <GlobalHeaderBackButton />
+            <GlobalHeaderBackButton routeName="WalletScreen" />
         ),
         headerTitle: (
             <GlobalHeaderTitle>
