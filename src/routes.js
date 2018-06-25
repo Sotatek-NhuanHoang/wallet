@@ -3,7 +3,7 @@ import { View, Animated, Easing } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
 import SplashScreen from '@screens/SplashScreen/SplashScreen';
-import PasswordSettingScreen from '@screens/Setting/PasswordSettingScreen/PasswordSettingScreen';
+import PasswordSettingScreen from '@screens/PasswordSettingScreen/PasswordSettingScreen';
 import CurrencyListScreen from '@screens/CurrencyListScreen/CurrencyListScreen';
 import WebViewScreen from '@screens/WebViewScreen/WebViewScreen';
 
