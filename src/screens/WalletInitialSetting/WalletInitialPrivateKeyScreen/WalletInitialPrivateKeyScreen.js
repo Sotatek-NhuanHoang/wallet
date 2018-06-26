@@ -35,13 +35,15 @@ export class WalletInitialPrivateKeyScreen extends Component {
         super(props);
         this.onCopyButtonClicked = this.onCopyButtonClicked.bind(this);
         this.onNextButtonClicked = this.onNextButtonClicked.bind(this);
+        this.completeCreatedNewWallet = this.completeCreatedNewWallet.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
-        const { newWallet, selectedCoin } = nextProps;
+        const { newWallet } = nextProps;
         if (newWallet.isApplied) {
-            AddressStorage.saveWallet(selectedCoin.symbol, newWallet.data);
-            navigate('CurrencyListScreen');
+            Alert.alert(null, I18n.t('WalletInitialSetting.WalletInitialPrivateKeyScreen.walletCreated'), [
+                { text: 'OK', style: 'cancel', onPress: this.completeCreatedNewWallet, }
+            ], { cancelable: false });
         }
     }
 
@@ -50,12 +52,18 @@ export class WalletInitialPrivateKeyScreen extends Component {
     }
 
 
+    completeCreatedNewWallet() {
+        const { newWallet, selectedCoin } = this.props;
+        AddressStorage.saveWallet(selectedCoin.symbol, newWallet.data);
+        navigate('CurrencyListScreen');
+    }
+
     onCopyButtonClicked() {
         const { newWallet } = this.props;
 
         this.props.copyPrivateKey();
         Clipboard.setString(newWallet.data.privateKey);
-        Alert.alert(null, I18n.t('WalletInitialSetting.WalletInitialPrivateKeyScreen.walletCreated'))
+        Alert.alert(null, I18n.t('WalletInitialSetting.WalletInitialPrivateKeyScreen.privateKeyCoppied'));
     }
 
     onNextButtonClicked() {

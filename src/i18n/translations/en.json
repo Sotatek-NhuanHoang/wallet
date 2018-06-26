@@ -51,7 +51,8 @@
             "title": "Private key",
             "copy_btn": "Copy",
             "next_btn": "Next",
-            "walletCreated": "Wallet has been created"
+            "walletCreated": "Wallet has been created",
+            "privateKeyCoppied": "Private key coppied"
         },
         "WalletInitialImportScreen": {
             "title": "Import",

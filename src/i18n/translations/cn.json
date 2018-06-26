@@ -52,7 +52,8 @@
             "title": "Private key cn",
             "copy_btn": "Copy cn",
             "next_btn": "Next cn",
-            "walletCreated": "Wallet has been created cn"
+            "walletCreated": "Wallet has been created cn",
+            "privateKeyCoppied": "Private key coppied cn"
         },
         "WalletInitialImportScreen": {
             "title": "Import cn",

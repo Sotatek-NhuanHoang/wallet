@@ -42,7 +42,7 @@ export class WalletInitialImportScreen extends Component {
     componentWillReceiveProps(nextProps) {
         const { newWallet } = nextProps;
 
-        if (newWallet.created) {
+        if (newWallet.isApplied) {
             const message = I18n.t('WalletInitialSetting.WalletInitialImportScreen.importWalletSucceed');
             Alert.alert(
                 null,
@@ -75,8 +75,7 @@ export class WalletInitialImportScreen extends Component {
     }
 
     onImportButtonClicked() {
-        const { importNewWallet, userPrivateKey, selectedCoin } = this.props;
-        importNewWallet(selectedCoin.symbol, userPrivateKey);
+        this.props.importNewWallet();
     }
 
     onInputChanged(privateKey) {
@@ -122,8 +121,8 @@ const mapStateToProps = ({ global, walletInitialSetting }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    importNewWallet: (coin, privateKey) => {
-        dispatch(WINI_IMPORT_WALLET_REQUESTED(coin, privateKey));
+    importNewWallet: () => {
+        dispatch(WINI_IMPORT_WALLET_REQUESTED());
     },
     changeUserPrivateKey: (privateKey) => {
         dispatch(WINI_CHANGE_USER_PRIVATE_KEY(privateKey));

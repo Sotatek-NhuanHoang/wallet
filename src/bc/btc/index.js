@@ -14,9 +14,9 @@ export function createNewAccountSync(passphrase) {
   const keystore = privateKey.toPublicKey();
 
   return {
-    address,
-    keystore,
-    privateKey: privateKey.toWIF(),
+    address: address.toString(),
+    keystore: keystore.toString(),
+    privateKey: privateKey.toString(),
   };
 }
 
@@ -26,9 +26,9 @@ export function privateKeyToAccountSync(userPrivateKey) {
   const keystore = privateKey.toPublicKey();
 
   return {
-    address,
-    keystore,
-    privateKey,
+    address: address.toString(),
+    keystore: keystore.toString(),
+    privateKey: privateKey.toString(),
   };
 }
 

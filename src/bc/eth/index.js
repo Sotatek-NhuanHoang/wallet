@@ -1,7 +1,11 @@
+import web3 from 'web3';
+
 import { ETH_NETWORKS } from '@constants'
 import { BLOCKCHAIN_NETWORK } from '@configs';
 import mainnetConfig from '@configs/eth/mainnet';
 import rinkebyConfig from '@configs/eth/rinkeby';
+
+const Web3 = new web3();
 
 export function getERCTokensSync () {
   let networkConfig;
@@ -29,21 +33,11 @@ export function createNewAccountSync(passphrase) {
     return null;
   }
 
-  return {
-    address: 'SAMPLE_ETH_ADDRESS',
-    keystore: 'SAMPLE_ETH_KEYSTORE',
-    privateKey: 'SAMPLE_ETH_PRIVATE_KEY'
-  };
+  return Web3.eth.accounts.create(passphrase);
 }
 
 export function privateKeyToAccountSync(privateKey) {
-  // Fake network status
-  // TODO: implement me
-  return {
-    address: 'SAMPLE_ETH_ADDRESS_FROM_PK',
-    keystore: 'SAMPLE_ETH_KEYSTORE_FROM_PK',
-    privateKey: 'SAMPLE_ETH_PRIVATE_KEY_FROM_PK'
-  };
+  return Web3.eth.accounts.privateKeyToAccount(privateKey);
 }
 
 export function dumpPrivateKeySync (keystore, password) {

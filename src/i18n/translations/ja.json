@@ -51,7 +51,8 @@
             "title": "Private key ja",
             "copy_btn": "Copy ja",
             "next_btn": "Next ja",
-            "walletCreated": "Wallet has been created ja"
+            "walletCreated": "Wallet has been created ja",
+            "privateKeyCoppied": "Private key coppied ja"
         },
         "WalletInitialImportScreen": {
             "title": "Import ja",
