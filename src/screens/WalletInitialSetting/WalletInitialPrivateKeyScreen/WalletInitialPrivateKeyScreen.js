@@ -9,7 +9,7 @@ import GlobalHeaderBackButton from '@components/GlobalHeaderBackButton';
 import GlobalCoinIcon from '@components/GlobalCoinIcon';
 import GlobalButton from '@components/GlobalButton';
 import GlobalTextInput from '@components/GlobalTextInput';
-import { WINI_COPY_PRIVATE_KEY, WINI_NEW_WALLET_REQUESTED } from '@store/walletInitialSetting';
+import { WINI_COPY_PRIVATE_KEY, WINI_NEW_WALLET_REQUESTED, WINI_NEW_WALLET_APPLY_REQUESTED } from '@store/walletInitialSetting';
 import I18n from '@i18n';
 import { navigate } from '@utils/NavigationService';
 import AddressStorage from '@utils/addressStorage';
@@ -35,31 +35,43 @@ export class WalletInitialPrivateKeyScreen extends Component {
         super(props);
         this.onCopyButtonClicked = this.onCopyButtonClicked.bind(this);
         this.onNextButtonClicked = this.onNextButtonClicked.bind(this);
+        this.completeCreatedNewWallet = this.completeCreatedNewWallet.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
-        const { newWallet, selectedCoin } = nextProps;
-        if (newWallet.created) {
-            AddressStorage.saveWallet(selectedCoin.symbol, newWallet.data);
-            navigate('CurrencyListScreen');
+        const { newWallet } = nextProps;
+        if (newWallet.isApplied) {
+            Alert.alert(null, I18n.t('WalletInitialSetting.WalletInitialPrivateKeyScreen.walletCreated'), [
+                { text: 'OK', style: 'cancel', onPress: this.completeCreatedNewWallet, }
+            ], { cancelable: false });
         }
     }
 
+    componentDidMount() {
+        this.props.createNewWallet();
+    }
+
+
+    completeCreatedNewWallet() {
+        const { newWallet, selectedCoin } = this.props;
+        AddressStorage.saveWallet(selectedCoin.symbol, newWallet.data);
+        navigate('CurrencyListScreen');
+    }
 
     onCopyButtonClicked() {
+        const { newWallet } = this.props;
+
         this.props.copyPrivateKey();
-        Clipboard.setString(this.props.selectedCoin.privateKey);
-        Alert.alert(null, I18n.t('WalletInitialSetting.WalletInitialPrivateKeyScreen.walletCreated'))
+        Clipboard.setString(newWallet.data.privateKey);
+        Alert.alert(null, I18n.t('WalletInitialSetting.WalletInitialPrivateKeyScreen.privateKeyCoppied'));
     }
 
     onNextButtonClicked() {
-        // Create new wallet
-        const { selectedCoin, privateKey, createNewWallet } = this.props;
-        createNewWallet(selectedCoin.symbol, privateKey);
+        this.props.applyNewWallet();
     }
 
     render() {
-        const { selectedCoin, privateKey, isPrivateKeyCoppied } = this.props;
+        const { selectedCoin, newWallet, isPrivateKeyCoppied } = this.props;
 
         return (
             <GlobalContainer>
@@ -75,7 +87,7 @@ export class WalletInitialPrivateKeyScreen extends Component {
                         multiline={ true }
                         editable={ false }
                         style={ style.marginBottom }
-                        value={ privateKey }
+                        value={ newWallet.data.privateKey }
                     />
 
                     <GlobalButton type="primary" style={ style.marginBottom } onPress={ this.onCopyButtonClicked }>
@@ -100,15 +112,17 @@ export class WalletInitialPrivateKeyScreen extends Component {
 
 const mapStateToProps = ({ global, walletInitialSetting }) => ({
     selectedCoin: global.selectedCoin,
-    privateKey: walletInitialSetting.privateKey,
     isPrivateKeyCoppied: walletInitialSetting.isPrivateKeyCoppied,
     newWallet: walletInitialSetting.newWallet,
 });
 
 const mapDispatchToProps = (dispatch) => ({
     copyPrivateKey: () => dispatch(WINI_COPY_PRIVATE_KEY()),
-    createNewWallet: (coin, privateKey) => {
-        dispatch(WINI_NEW_WALLET_REQUESTED(coin, privateKey));
+    createNewWallet: () => {
+        dispatch(WINI_NEW_WALLET_REQUESTED());
+    },
+    applyNewWallet: () => {
+        dispatch(WINI_NEW_WALLET_APPLY_REQUESTED());
     },
 });
 

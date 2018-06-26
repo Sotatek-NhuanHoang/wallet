@@ -29,8 +29,7 @@ export class WalletInitialSettingScreen extends Component {
 
 
     componentDidMount() {
-        const privateKey = '5Kb8kLf9zgWQnogidDA76MzPL6TsZZY36hWXMssSzNydYXYB9KF';
-        this.props.setupWalletInitialSettingState(privateKey);
+        this.props.setupWalletInitialSettingState();
     }
 
 
