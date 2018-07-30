@@ -1,11 +1,12 @@
-import web3 from 'web3';
+import Web3 from 'web3';
 
 import { ETH_NETWORKS } from '@constants'
 import { BLOCKCHAIN_NETWORK } from '@configs';
 import mainnetConfig from '@configs/eth/mainnet';
 import rinkebyConfig from '@configs/eth/rinkeby';
 
-const Web3 = new web3();
+const web3 = new Web3();
+
 
 export function getERCTokensSync () {
   let networkConfig;
@@ -33,11 +34,12 @@ export function createNewAccountSync(passphrase) {
     return null;
   }
 
-  return Web3.eth.accounts.create(passphrase);
+
+  return web3.eth.accounts.create(passphrase);
 }
 
 export function privateKeyToAccountSync(privateKey) {
-  return Web3.eth.accounts.privateKeyToAccount(privateKey);
+  return web3.eth.accounts.privateKeyToAccount(privateKey);
 }
 
 export function dumpPrivateKeySync (keystore, password) {
