@@ -1,7 +1,6 @@
 import { AppRegistry } from "react-native";
 import { YellowBox } from "react-native";
 
-import "./shim.js";
 
 import App from "./App";
 
@@ -11,4 +10,4 @@ YellowBox.ignoreWarnings([
   "Module RCTImageLoader"
 ]);
 
-AppRegistry.registerComponent("fake", () => App);
+AppRegistry.registerComponent("wallet", () => App);

@@ -1,8 +1,10 @@
 import validate from 'validate.js';
 
 // Coin libs
-import { Address } from 'bitcore-lib';
+import bitcore from 'bitcore-lib';
 import web3 from 'web3';
+
+const { Address } = bitcore;
 
 import ERROR_TYPES from '@configs/errorTypes';
 

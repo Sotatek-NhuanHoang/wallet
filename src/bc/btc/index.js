@@ -1,4 +1,6 @@
-import { PrivateKey } from 'bitcore-lib';
+import bitcore from 'bitcore-lib';
+
+const { PrivateKey } = bitcore;
 
 
 export function createNewAccountSync(passphrase) {
