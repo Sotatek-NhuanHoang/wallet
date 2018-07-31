@@ -1,7 +1,7 @@
 // Inject node globals into React Native global scope.
 global.Buffer = require('buffer').Buffer;
 global.process = require('process');
-global.randombytes = require('randombytes');
+global.process.browser = false;
 
 if (typeof btoa === 'undefined') {
     global.btoa = function(str) {

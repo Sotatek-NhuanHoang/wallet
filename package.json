@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "android": "node node_modules/react-native/local-cli/cli.js start run-android",
+    "android": "node node_modules/react-native/local-cli/cli.js run-android",
+    "build:android": "cd android && ./gradlew assembleRelease",
     "test": "jest"
   },
   "dependencies": {
@@ -32,9 +33,10 @@
     "prop-types": "^15.6.1",
     "punycode": "^1.4.1",
     "querystring-es3": "^0.2.1",
-    "randombytes": "^2.0.6",
+    "randombytes": "https://github.com/Sotatek-NhuanHoang/randombytes",
     "react": "16.3.1",
     "react-native": "^0.55.4",
+    "react-native-camera": "^1.1.4",
     "react-native-dialog": "^5.0.0",
     "react-native-level-fs": "^3.0.1",
     "react-native-os": "^1.2.1",
