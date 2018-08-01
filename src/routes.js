@@ -103,7 +103,7 @@ export const Routes = createStackNavigator(
         WebViewScreen: WebViewScreen,
     },
     {
-        initialRouteName: 'Wallet',
+        initialRouteName: 'SplashScreen',
         navigationOptions: ({ navigation }) => {
             const options = { ...defaultNavigationOptions };
 
