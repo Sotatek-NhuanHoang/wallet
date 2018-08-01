@@ -78,7 +78,7 @@ export class WithdrawScreen extends Component {
 
 
     goToQRCodeScreen() {
-        navigate('CurrencyListScreen');
+        navigate('QRScanScreen');
     }
 
     onAddressInputChanged(newAddress) {

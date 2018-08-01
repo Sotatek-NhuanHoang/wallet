@@ -20,6 +20,7 @@ import ReceiveScreen from '@screens/Wallet/ReceiveScreen/ReceiveScreen';
 import WithdrawScreen from '@screens/Wallet/WithdrawScreen/WithdrawScreen';
 import WithdrawConfirmScreen from '@screens/Wallet/WithdrawConfirmScreen/WithdrawConfirmScreen';
 import TransactionScreen from '@screens/Wallet/TransactionScreen/TransactionScreen';
+import QRScanScreen from '@screens/Wallet/QRScanScreen/QRScanScreen';
 
 import HeaderStyle from '@styles/header';
 
@@ -91,6 +92,7 @@ export const Routes = createStackNavigator(
                 WithdrawScreen: WithdrawScreen,
                 WithdrawConfirmScreen: WithdrawConfirmScreen,
                 TransactionScreen: TransactionScreen,
+                QRScanScreen: QRScanScreen,
             },
             {
                 initialRouteName: 'WalletScreen',
@@ -101,7 +103,7 @@ export const Routes = createStackNavigator(
         WebViewScreen: WebViewScreen,
     },
     {
-        initialRouteName: 'SplashScreen',
+        initialRouteName: 'Wallet',
         navigationOptions: ({ navigation }) => {
             const options = { ...defaultNavigationOptions };
 

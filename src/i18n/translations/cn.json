@@ -102,6 +102,9 @@
             "invalid_password": "Invalid password cn",
             "transaction_send_succeeded": "Transaction has been sent cn",
             "transaction_send_failed": "Unable to send transaction cn"
+        },
+        "QRScanScreen":{
+            "title": "QR scan cn"
         }
     }
 }
