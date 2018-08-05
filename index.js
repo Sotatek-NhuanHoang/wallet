@@ -1,3 +1,4 @@
+import 'node-libs-react-native/globals'
 import './global';
 
 import { AppRegistry } from "react-native";

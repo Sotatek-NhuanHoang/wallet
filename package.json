@@ -27,6 +27,7 @@
     "https-browserify": "0.0.1",
     "lodash": "^4.17.10",
     "node-libs-browser": "^2.1.0",
+    "node-libs-react-native": "github:abec/node-libs-react-native",
     "numeral": "^2.0.6",
     "path-browserify": "0.0.0",
     "process": "^0.11.10",
