@@ -37,21 +37,26 @@ const defaultNavigationOptions = {
 const transitionConfig = () => {
     return {
         transitionSpec: {
-            duration: 0,
+            duration: 200,
             easing: Easing.out(Easing.poly(4)),
             timing: Animated.timing,
             useNativeDriver: true,
         },
-        screenInterpolator: sceneProps => {
-            const { layout, position, scene } = sceneProps
-            const thisSceneIndex = scene.index
-            const width = layout.initWidth
+        screenInterpolator: ({ layout, position, scene }) => {
+            const { index } = scene;
+            const { initWidth } = layout;
+
             const translateX = position.interpolate({
-            inputRange: [thisSceneIndex - 1, thisSceneIndex],
-            outputRange: [width, 0],
+                inputRange: [index - 1, index, index + 1],
+                outputRange: [initWidth, 0, 0],
             });
 
-            return { transform: [ { translateX } ] }
+            const opacity = position.interpolate({
+                inputRange: [index - 1, index - 0.99, index],
+                outputRange: [0, 1, 1],
+            });
+
+            return { opacity, transform: [{ translateX }] };
         },
     };
 };
