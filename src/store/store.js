@@ -14,15 +14,17 @@ const reducers = combineReducers({
     i18n,
 });
 
+const middleWares = [thunk];
+
+if (__DEV__) {
+    const { logger } = require(`redux-logger`);
+    middleWares.push(logger);
+}
+
 const store = createStore(
     reducers,
-    applyMiddleware(thunk)
+    applyMiddleware(...middleWares)
 );
 
-let counter = 1;
-store.subscribe(() => {
-    console.log(`Store ${counter}: `, store.getState());
-    counter++;
-});
 
 export default store;

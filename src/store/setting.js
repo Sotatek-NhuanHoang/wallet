@@ -36,7 +36,7 @@ export const SETTING_SET_PASSWORD_REQUESTED = () => (dispatch, getState) => {
         return dispatch(SETTING_SET_PASSWORD_FAILED(error));
     }
 
-    dispatch(GLOBAL_UPDATE_PASSWORD());
+    dispatch(GLOBAL_UPDATE_PASSWORD(newPassword));
     dispatch(SETTING_SET_PASSWORD_SUCCEEDED());
 };
 
