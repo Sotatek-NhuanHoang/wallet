@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Alert, ScrollView, BackHandler, AsyncStorage } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -9,12 +9,12 @@ import GlobalButton from 'components/GlobalButton';
 import GlobalTextInput from 'components/GlobalTextInput';
 import I18n from 'i18n';
 import { navigate } from 'services/NavigationService';
+import { SETTING_RESET_PASSWORD, SETTING_UPDATE_NEW_PASSWORD, SETTING_UPDATE_CONFIRM_PASSWORD, SETTING_SET_PASSWORD_REQUESTED } from 'store/setting';
 import ERROR_TYPES from 'configs/errorTypes';
-import validate, { passwordConstraint } from 'utils/validate';
 
 import style from 'styles/screens/PasswordSettingScreen/PasswordSettingScreen';
 
-export class PasswordSettingScreen extends Component {
+export class PasswordSettingScreen extends PureComponent {
 
     static navigationOptions = {
         headerTitle: (
@@ -29,7 +29,7 @@ export class PasswordSettingScreen extends Component {
 
         this.onNextButtonClicked = this.onNextButtonClicked.bind(this);
         this.goToCurrencyListScreen = this.goToCurrencyListScreen.bind(this);
-        this.onClearText = this.onClearText.bind(this);
+        this.resetPassword = this.resetPassword.bind(this);
         this.onPasswordChanged = this.onPasswordChanged.bind(this);
         this.onConfirmPasswordChanged = this.onConfirmPasswordChanged.bind(this);
         this.onPasswordInputCreated = this.onPasswordInputCreated.bind(this);
@@ -47,13 +47,48 @@ export class PasswordSettingScreen extends Component {
         BackHandler.removeEventListener('hardwareBackPress', this.onDeviceBackButtonPress);
     }
 
+    componentWillReceiveProps(nextProps) {
+        const { setPasswordError, setPasswordSuccessfully } = nextProps;
+
+        if (setPasswordSuccessfully) {
+            Alert.alert (null, I18n.t('Setting.PasswordSettingScreen.message'), [
+                { text: 'OK', onPress: this.goToCurrencyListScreen },
+            ],  { cancelable: false });
+            return;
+        }
+
+        if (setPasswordError) {
+            switch (setPasswordError) {
+                case ERROR_TYPES.FIELD_REQUIRED:
+                    message = I18n.t('Setting.PasswordSettingScreen.error_01');
+                    break;
+
+                case ERROR_TYPES.INVALID_LENGTH:
+                    message = I18n.t('Setting.PasswordSettingScreen.error_03');
+                    break;
+
+                case ERROR_TYPES.INVALID_FORMAT:
+                    message = I18n.t('Setting.PasswordSettingScreen.error_02');
+                    break;
+
+                case ERROR_TYPES.PASSWORD_NOT_MATCH:
+                    message = I18n.t('Setting.PasswordSettingScreen.error_04');
+                    break;
+            }
+
+            Alert.alert (null, message, [
+                { text: 'OK', onPress: this.resetPassword },
+            ], { cancelable: false });
+        }
+    }
+
 
     onDeviceBackButtonPress() {
         Alert.alert(
             'Exit App',
             'Exiting the application?', [{
                 text: 'Cancel',
-                onPress: () => console.log('Cancel Pressed'),
+                onPress: () => {},
                 style: 'cancel'
             }, {
                 text: 'OK',
@@ -69,64 +104,12 @@ export class PasswordSettingScreen extends Component {
         navigate('CurrencyListScreen', {}, true);
     }
 
-    onClearText() {
+    resetPassword() {
         this.props.resetPassword();
-        this.passwordInput.clear();
-        this.confirmPasswordInput.clear();
     }
 
     onNextButtonClicked() {
-        const { password, confirmPassword } = this.props;
-        const validationResult = validate({ password }, { password: passwordConstraint });
-
-        if (validationResult) { // Error
-            const error = validationResult[0].error;
-            let message = '';
-
-            switch (error) {
-                case ERROR_TYPES.FIELD_REQUIRED:
-                    message = I18n.t('Setting.PasswordSettingScreen.error_01');
-                    break;
-
-                case ERROR_TYPES.INVALID_LENGTH:
-                    message = I18n.t('Setting.PasswordSettingScreen.error_03');
-                    break;
-
-                case ERROR_TYPES.INVALID_FORMAT:
-                    message = I18n.t('Setting.PasswordSettingScreen.error_02');
-                    break;
-            }
-
-            Alert.alert (
-                null,
-                message,
-                [
-                    { text: 'OK', onPress: this.onClearText },
-                ],
-                { cancelable: false } //dismissed by tapping outside of the alert box
-            );
-        } else if (password !== confirmPassword) { // Password not match
-            const message = I18n.t('Setting.PasswordSettingScreen.error_04');
-            Alert.alert (
-                null,
-                message,
-                [
-                    { text: 'OK', onPress: this.onClearText },
-                ],
-                { cancelable: false } //dismissed by tapping outside of the alert box
-            );
-        } else { // Success
-            const message = I18n.t('Setting.PasswordSettingScreen.message');
-            AsyncStorage.setItem('password', password);
-            Alert.alert (
-                null,
-                message,
-                [
-                    { text: 'OK', onPress: this.goToCurrencyListScreen },
-                ],
-                { cancelable: false } //dismissed by tapping outside of the alert box
-            );
-        }
+        this.props.setPassword();
     }
 
     onPasswordInputCreated(passwordInput) {
@@ -138,7 +121,7 @@ export class PasswordSettingScreen extends Component {
     }
 
     onPasswordChanged(newPassword) {
-        this.props.changePassword(newPassword);
+        this.props.changeNewPassword(newPassword);
     }
 
     onConfirmPasswordChanged(newConfirmPassword) {
@@ -154,6 +137,8 @@ export class PasswordSettingScreen extends Component {
     }
 
     render() {
+        const { newPassword, confirmPassword } = this.props;
+
         return (
             <GlobalContainer>
                 <ScrollView style={ style.container }>
@@ -167,6 +152,7 @@ export class PasswordSettingScreen extends Component {
                         secureTextEntry={ true }
                         onGlobalTextInputCreated={ this.onPasswordInputCreated }
                         onSubmitEditing={ this.onPasswordInputSubmitted }
+                        value={ newPassword }
                     />
 
                     {/*confirm password*/}
@@ -179,12 +165,11 @@ export class PasswordSettingScreen extends Component {
                         secureTextEntry ={ true }
                         onGlobalTextInputCreated={ this.onConfirmPasswordInputCreated }
                         onSubmitEditing={ this.onConfirmPasswordInputSubmitted }
+                        value={ confirmPassword }
                     />
 
                     {/*notes*/}
-                    <GlobalLoc
-                        style={ style.notes }
-                        locKey="Setting.PasswordSettingScreen.notes" />
+                    <GlobalLoc style={ style.notes } locKey="Setting.PasswordSettingScreen.notes" />
 
                     {/*button next*/}
                     <GlobalButton
@@ -199,20 +184,25 @@ export class PasswordSettingScreen extends Component {
 }
 
 
-const mapStateToProps = ({ global }) => ({
-    password: global.password,
-    confirmPassword: global.confirmPassword,
+const mapStateToProps = ({ setting }) => ({
+    newPassword: setting.newPassword,
+    confirmPassword: setting.confirmPassword,
+    setPasswordError: setting.setPasswordError,
+    setPasswordSuccessfully: setting.setPasswordSuccessfully,
 });
 
 const mapDispathToProps = (dispatch) => ({
     resetPassword: () => {
-        dispatch(GLOBAL_RESET_PASSWORD());
+        dispatch(SETTING_RESET_PASSWORD());
     },
-    changePassword: (newPassword) => {
-        dispatch(GLOBAL_CHANGE_PASSWORD(newPassword));
+    changeNewPassword: (newPassword) => {
+        dispatch(SETTING_UPDATE_NEW_PASSWORD(newPassword));
     },
     changeConfirmPassword: (newConfirmPassword) => {
-        dispatch(GLOBAL_CHANGE_CONFIRM_PASSWORD(newConfirmPassword));
+        dispatch(SETTING_UPDATE_CONFIRM_PASSWORD(newConfirmPassword));
+    },
+    setPassword: () => {
+        dispatch(SETTING_SET_PASSWORD_REQUESTED());
     },
 });
 
