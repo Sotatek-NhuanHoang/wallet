@@ -6,6 +6,7 @@ import storage from 'redux-persist/lib/storage';
 
 import globalReducer from './global';
 import walletReducer from './wallet';
+import newWalletReducer from './newWallet';
 import settingReducer from './setting';
 
 
@@ -15,6 +16,7 @@ const reducers = combineReducers({
         storage: storage,
     }, globalReducer),
     wallet: walletReducer,
+    newWallet: newWalletReducer,
     setting: settingReducer,
     i18n,
 });

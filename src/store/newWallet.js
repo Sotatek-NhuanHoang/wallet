@@ -1,8 +1,8 @@
 import { handleActions, createAction } from 'redux-actions';
+import { fromJS } from 'immutable';
 
-import MockApi from '@api/mockApi';
-import validate, { bitcoinAddressConstraint, ethAddressConstraint, quantityConstraint } from 'utils/validate';
-import { ERROR_TYPES } from '../configs/errorTypes';
+import { WALLET_UPDATE_WALLET } from 'store/wallet';
+import WalletService from 'services/wallet';
 
 
 
@@ -13,12 +13,29 @@ import { ERROR_TYPES } from '../configs/errorTypes';
  */
 
 // Create Wallet
-
-export const WALLET_GENERATE_NEW_WALLET_REQUESTED = () => (dispatch) => {
+export const NEW_WALLET_GENERATE_WALLET_SUCCEEDED = createAction('NEW_WALLET_GENERATE_WALLET_SUCCEEDED');
+export const NEW_WALLET_GENERATE_WALLET_REQUESTED = () => (dispatch, getState) => {
+    const { global } = getState();
+    const { selectedCoin } = global;
+    const newWallet = WalletService.generateWallet(selectedCoin);
     
+    dispatch(NEW_WALLET_GENERATE_WALLET_SUCCEEDED({
+        privateKey: newWallet.privateKey,
+        keyStore: newWallet.keyStore,
+        address: newWallet.address,
+    }))
 };
 
+export const NEW_WALLET_ADD_NEW_WALLET_REQUESTED = () => (dispatch, getState) => {
+    const { global, newWallet } = getState();
+    const { selectedCoin } = global;
+    const { privateKey, keyStore, address, } = newWallet;
 
+    return dispatch(WALLET_UPDATE_WALLET({
+        coin: selectedCoin,
+        data: { privateKey, keyStore, address, }
+    }));
+};
 
 /**
  * =====================================================
@@ -33,7 +50,13 @@ const defaultState = {
 };
 
 export const walletReducer = handleActions({
-    
+    NEW_WALLET_GENERATE_WALLET_SUCCEEDED: (state, { payload }) => {
+        const { privateKey, address, keyStore } = payload;
+        const newState = fromJS(state);
+        return newState
+            .mergeDeep({ privateKey, address, keyStore, })
+            .toJS();
+    },
 }, defaultState);
 
 

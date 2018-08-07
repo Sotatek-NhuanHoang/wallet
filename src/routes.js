@@ -12,7 +12,7 @@ import CurrencyListScreen from 'screens/CurrencyListScreen/CurrencyListScreen';
 // import PrivateKeyScreen from './screens/Setting/PrivateKeyScreen/PrivateKeyScreen';
 
 import WalletInitialSettingScreen from 'screens/WalletInitialSetting/WalletInitialSettingScreen/WalletInitialSettingScreen';
-// import WalletInitialPrivateKeyScreen from 'screens/WalletInitialSetting/WalletInitialPrivateKeyScreen/WalletInitialPrivateKeyScreen';
+import WalletInitialPrivateKeyScreen from 'screens/WalletInitialSetting/WalletInitialPrivateKeyScreen/WalletInitialPrivateKeyScreen';
 // import WalletInitialImportScreen from 'screens/WalletInitialSetting/WalletInitialImportScreen/WalletInitialImportScreen';
 
 // import WalletScreen from 'screens/Wallet/WalletScreen/WalletScreen';
@@ -81,7 +81,7 @@ export const Routes = createStackNavigator(
         WalletInitialSetting: createStackNavigator(
             {
                 WalletInitialSettingScreen: WalletInitialSettingScreen,
-                // WalletInitialPrivateKeyScreen: WalletInitialPrivateKeyScreen,
+                WalletInitialPrivateKeyScreen: WalletInitialPrivateKeyScreen,
                 // WalletInitialImportScreen: WalletInitialImportScreen,
             },
             {
@@ -108,7 +108,7 @@ export const Routes = createStackNavigator(
         // WebViewScreen: WebViewScreen,
     },
     {
-        initialRouteName: 'CurrencyListScreen',
+        initialRouteName: 'SplashScreen',
         navigationOptions: ({ navigation }) => {
             const options = { ...defaultNavigationOptions };
 

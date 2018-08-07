@@ -11,7 +11,8 @@ import GlobalButton from 'components/GlobalButton';
 import GlobalTextInput from 'components/GlobalTextInput';
 import I18n from 'i18n';
 import { navigate } from 'services/NavigationService';
-import AddressStorage from 'utils/addressStorage';
+import { coinSelector } from 'store/wallet';
+import { NEW_WALLET_GENERATE_WALLET_REQUESTED, NEW_WALLET_ADD_NEW_WALLET_REQUESTED } from 'store/newWallet';
 
 import style from 'styles/screens/WalletInitialSetting/WalletInitialPrivateKeyScreen/WalletInitialPrivateKeyScreen';
 
@@ -29,48 +30,40 @@ export class WalletInitialPrivateKeyScreen extends Component {
         ),
     };
 
+    state = {
+        isPrivateKeyCoppied: false,
+    }
 
     constructor(props) {
         super(props);
         this.onCopyButtonClicked = this.onCopyButtonClicked.bind(this);
         this.onNextButtonClicked = this.onNextButtonClicked.bind(this);
-        this.completeCreatedNewWallet = this.completeCreatedNewWallet.bind(this);
-    }
-
-    componentWillReceiveProps(nextProps) {
-        const { newWallet } = nextProps;
-        if (newWallet.isApplied) {
-            Alert.alert(null, I18n.t('WalletInitialSetting.WalletInitialPrivateKeyScreen.walletCreated'), [
-                { text: 'OK', style: 'cancel', onPress: this.completeCreatedNewWallet, }
-            ], { cancelable: false });
-        }
-    }
-
-    componentDidMount() {
-        this.props.createNewWallet();
     }
 
 
-    completeCreatedNewWallet() {
-        const { newWallet, selectedCoin } = this.props;
-        AddressStorage.saveWallet(selectedCoin.symbol, newWallet.data);
-        navigate('CurrencyListScreen');
+    componentWillMount() {
+        this.props.generateNewWallet();
     }
 
-    onCopyButtonClicked() {
-        const { newWallet } = this.props;
 
-        this.props.copyPrivateKey();
-        Clipboard.setString(newWallet.data.privateKey);
+    async onCopyButtonClicked() {
+        const { privateKey } = this.props;
+
+        await this.setState({ isPrivateKeyCoppied: true, });
+        Clipboard.setString(privateKey);
         Alert.alert(null, I18n.t('WalletInitialSetting.WalletInitialPrivateKeyScreen.privateKeyCoppied'));
     }
 
-    onNextButtonClicked() {
-        this.props.applyNewWallet();
+    async onNextButtonClicked() {
+        await this.props.addNewWallet();
+        Alert.alert(null, I18n.t('WalletInitialSetting.WalletInitialPrivateKeyScreen.walletCreated'), [
+            { text: 'OK', style: 'cancel', onPress: () => navigate('CurrencyListScreen'), }
+        ], { cancelable: false });
     }
 
     render() {
-        const { selectedCoin, newWallet, isPrivateKeyCoppied } = this.props;
+        const { selectedCoin, privateKey } = this.props;
+        const { isPrivateKeyCoppied } = this.state;
 
         return (
             <GlobalContainer>
@@ -86,7 +79,7 @@ export class WalletInitialPrivateKeyScreen extends Component {
                         multiline={ true }
                         editable={ false }
                         style={ style.marginBottom }
-                        value={ newWallet.data.privateKey }
+                        value={ privateKey }
                     />
 
                     <GlobalButton type="primary" style={ style.marginBottom } onPress={ this.onCopyButtonClicked }>
@@ -109,19 +102,17 @@ export class WalletInitialPrivateKeyScreen extends Component {
 }
 
 
-const mapStateToProps = ({ global, walletInitialSetting }) => ({
-    selectedCoin: global.selectedCoin,
-    isPrivateKeyCoppied: walletInitialSetting.isPrivateKeyCoppied,
-    newWallet: walletInitialSetting.newWallet,
+const mapStateToProps = ({ global, wallet, newWallet }) => ({
+    selectedCoin: coinSelector(wallet, { coin: global.selectedCoin }),
+    privateKey: newWallet.privateKey,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    copyPrivateKey: () => dispatch(WINI_COPY_PRIVATE_KEY()),
-    createNewWallet: () => {
-        dispatch(WINI_NEW_WALLET_REQUESTED());
+    generateNewWallet: () => {
+        return dispatch(NEW_WALLET_GENERATE_WALLET_REQUESTED());
     },
-    applyNewWallet: () => {
-        dispatch(WINI_NEW_WALLET_APPLY_REQUESTED());
+    addNewWallet: () => {
+        return dispatch(NEW_WALLET_ADD_NEW_WALLET_REQUESTED());
     },
 });
 

@@ -1,4 +1,5 @@
 import { handleActions, createAction } from 'redux-actions';
+import { fromJS } from 'immutable';
 import { createSelector } from 'reselect';
 
 
@@ -10,6 +11,7 @@ import { createSelector } from 'reselect';
  * =====================================================
  */
 
+export const WALLET_UPDATE_WALLET = createAction('WALLET_UPDATE_WALLET');
 
 
 
@@ -76,7 +78,13 @@ const defaultState = {
 };
 
 export const walletReducer = handleActions({
-    
+    WALLET_UPDATE_WALLET: (state, { payload }) => {
+        const { coin, data } = payload;
+        const newState = fromJS(state);
+        return newState
+            .mergeDeep({ [coin]: data, })
+            .toJS();
+    },
 }, defaultState);
 
 
