@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TextInput } from 'react-native';
 
-import textInputStyle from '@styles/components/GlobalTextInput';
+import textInputStyle from 'styles/components/GlobalTextInput';
 
 
 class GlobalTextInput extends Component {

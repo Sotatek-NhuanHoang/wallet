@@ -2,20 +2,20 @@ import React, { Component } from 'react';
 import { Text, View, Image, TouchableWithoutFeedback, Clipboard, Alert, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 
-import GlobalLoc from '@components/GlobalLoc';
-import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
-import GlobalContainer from '@components/GlobalContainer';
-import GlobalButton from '@components/GlobalButton';
-import GlobalHeaderBackButton from '@components/GlobalHeaderBackButton';
-import GlobalCoinIcon from '@components/GlobalCoinIcon';
-import GlobalTextInput from '@components/GlobalTextInput';
-import I18n from '@i18n';
+import GlobalLoc from 'components/GlobalLoc';
+import GlobalHeaderTitle from 'components/GlobalHeaderTitle';
+import GlobalContainer from 'components/GlobalContainer';
+import GlobalButton from 'components/GlobalButton';
+import GlobalHeaderBackButton from 'components/GlobalHeaderBackButton';
+import GlobalCoinIcon from 'components/GlobalCoinIcon';
+import GlobalTextInput from 'components/GlobalTextInput';
+import I18n from 'i18n';
 import Images from '@assets/images';
-import { navigate } from '@utils/NavigationService';
-import ERROR_TYPES from '@configs/errorTypes';
-import { WALLET_WITHDRAW_CHANGE_ADDRESS, WALLET_WITHDRAW_CHANGE_QUANTITY, WALLET_WITHDRAW_VERIFY_REQUESTED } from '@store/wallet';
+import { navigate } from 'services/NavigationService';
+import ERROR_TYPES from 'configs/errorTypes';
+import { WALLET_WITHDRAW_CHANGE_ADDRESS, WALLET_WITHDRAW_CHANGE_QUANTITY, WALLET_WITHDRAW_VERIFY_REQUESTED } from 'store/wallet';
 
-import style from '@styles/screens/Wallet/WithdrawScreen/WithdrawScreen';
+import style from 'styles/screens/Wallet/WithdrawScreen/WithdrawScreen';
 
 
 export class WithdrawScreen extends Component {

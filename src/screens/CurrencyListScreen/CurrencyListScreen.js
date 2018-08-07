@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import { FlatList, BackHandler, Alert } from 'react-native';
 import { connect } from 'react-redux';
 
-import GlobalLoc from '@components/GlobalLoc';
-import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
-import GlobalContainer from '@components/GlobalContainer';
+import GlobalLoc from 'components/GlobalLoc';
+import GlobalHeaderTitle from 'components/GlobalHeaderTitle';
+import GlobalContainer from 'components/GlobalContainer';
 import SettingButton from './SettingButton';
 import CoinItem from './CoinItem';
-import { navigate } from '@utils/NavigationService';
-import { globalCoinListSelector, globalEthCoinSelector, GLOBAL_SELECT_COIN, GLOBAL_COIN_LIST_REQUESTED } from '@store/global';
+import { navigate } from 'services/NavigationService';
+import { globalCoinListSelector, globalEthCoinSelector, GLOBAL_SELECT_COIN, GLOBAL_COIN_LIST_REQUESTED } from 'store/global';
 import { COIN_TYPES } from '@constants';
 
-import style from '@styles/screens/CurrencyListScreen/CurrencyListScreen';
+import style from 'styles/screens/CurrencyListScreen/CurrencyListScreen';
 
 
 export class CurrencyListScreen extends Component {

@@ -2,9 +2,9 @@ import React from 'react';
 import { TouchableWithoutFeedback, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import { navigate } from '@utils/NavigationService';
+import { navigate } from 'services/NavigationService';
 
-import style from '@styles/screens/CurrencyListScreen/SettingButton';
+import style from 'styles/screens/CurrencyListScreen/SettingButton';
 
 
 export const SettingButton = (props) => {

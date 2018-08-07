@@ -2,8 +2,8 @@ import React from 'react';
 import { TouchableWithoutFeedback, View, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import GlobalLoc from '@components/GlobalLoc';
-import { navigate } from '@utils/NavigationService';
+import GlobalLoc from 'components/GlobalLoc';
+import { navigate } from 'services/NavigationService';
 
 import style from '../styles/components/GlobalHeaderBackButton';
 

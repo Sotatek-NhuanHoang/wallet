@@ -1,8 +1,8 @@
 import { ScaledSheet } from '@react-native-size-matters';
-import { Colors, FontSizes, Sizes } from '@styles/variables';
+import { Colors, FontSizes, Sizes } from 'styles/variables';
 import { Dimensions } from 'react-native';
 
-import Header from '@styles/header'
+import Header from 'styles/header'
 
 const { width, height } = Dimensions.get('window');
 

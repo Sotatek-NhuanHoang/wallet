@@ -6,7 +6,7 @@ import web3 from 'web3';
 
 const { Address } = bitcore;
 
-import ERROR_TYPES from '@configs/errorTypes';
+import ERROR_TYPES from 'configs/errorTypes';
 
 
 

@@ -4,15 +4,15 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
 import { withNavigationFocus } from 'react-navigation';
 
-import GlobalLoc from '@components/GlobalLoc';
-import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
-import GlobalContainer from '@components/GlobalContainer';
-import GlobalHeaderBackButton from '@components/GlobalHeaderBackButton';
-import { navigate } from '@utils/NavigationService';
-import { SETTING_PRIVATE_SCREEN_RESET_STATE } from '@store/setting';
-import I18n from '@i18n';
+import GlobalLoc from 'components/GlobalLoc';
+import GlobalHeaderTitle from 'components/GlobalHeaderTitle';
+import GlobalContainer from 'components/GlobalContainer';
+import GlobalHeaderBackButton from 'components/GlobalHeaderBackButton';
+import { navigate } from 'services/NavigationService';
+import { SETTING_PRIVATE_SCREEN_RESET_STATE } from 'store/setting';
+import I18n from 'i18n';
 
-import style from '@styles/screens/Setting/SettingScreen/SettingScreen';
+import style from 'styles/screens/Setting/SettingScreen/SettingScreen';
 
 export class SettingScreen extends Component {
 

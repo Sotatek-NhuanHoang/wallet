@@ -4,12 +4,12 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
 import { setLocale } from 'react-native-redux-i18n';
 
-import GlobalLoc from '@components/GlobalLoc';
-import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
-import GlobalContainer from '@components/GlobalContainer';
-import GlobalHeaderBackButton from '@components/GlobalHeaderBackButton';
+import GlobalLoc from 'components/GlobalLoc';
+import GlobalHeaderTitle from 'components/GlobalHeaderTitle';
+import GlobalContainer from 'components/GlobalContainer';
+import GlobalHeaderBackButton from 'components/GlobalHeaderBackButton';
 
-import style from '@styles/screens/Setting/LanguageScreen/LanguageScreen';
+import style from 'styles/screens/Setting/LanguageScreen/LanguageScreen';
 
 
 const LanguageItem = (props) => {

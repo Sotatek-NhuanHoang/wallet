@@ -1,11 +1,11 @@
 import React from 'react';
 import { TouchableWithoutFeedback, Text, View } from 'react-native';
 
-import GlobalCoinIcon from '@components/GlobalCoinIcon';
-import GlobalLoc from '@components/GlobalLoc';
+import GlobalCoinIcon from 'components/GlobalCoinIcon';
+import GlobalLoc from 'components/GlobalLoc';
 import { COIN_TYPES } from '@constants';
 
-import style from '@styles/screens/CurrencyListScreen/CoinItem';
+import style from 'styles/screens/CurrencyListScreen/CoinItem';
 
 
 export const CoinItem = ({ item, ethCoin, onCoinSelected}) => {

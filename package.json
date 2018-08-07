@@ -9,6 +9,13 @@
     "test": "jest"
   },
   "dependencies": {
+    "utils": "./src/utils",
+    "configs": "./src/configs",
+    "services": "./src/services",
+    "styles": "./src/styles",
+    "i18n": "./src/i18n",
+    "store": "./src/store",
+    "components": "./src/components",
     "@tradle/react-native-http": "^2.0.1",
     "apisauce": "^0.15.1",
     "assert": "^1.4.1",
@@ -27,6 +34,7 @@
     "events": "^1.1.1",
     "fast-deep-equal": "^2.0.1",
     "https-browserify": "0.0.1",
+    "immutable": "^3.8.2",
     "lodash": "^4.17.10",
     "node-libs-browser": "^2.1.0",
     "node-libs-react-native": "https://github.com/Sotatek-NhuanHoang/node-libs-react-native",

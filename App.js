@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import Routes from './src/routes';
 import './src/i18n';
 import store from './src/store/store';
-import NavigationService from '@utils/NavigationService';
+import NavigationService from 'services/NavigationService';
 
 
 export default class App extends Component {

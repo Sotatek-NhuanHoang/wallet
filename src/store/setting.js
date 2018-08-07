@@ -1,11 +1,12 @@
 import { handleActions, createAction } from 'redux-actions';
 import { createSelector } from 'reselect';
 import _ from 'lodash';
+import { fromJS } from 'immutable';
 
 import MockApi from '@api/mockApi';
 import { GLOBAL_UPDATE_WALLET } from './global';
-import ERROR_TYPES from '@configs/errorTypes';
-import validate, { privateKeyConstraint } from '@utils/validate';
+import ERROR_TYPES from 'configs/errorTypes';
+import validate, { privateKeyConstraint } from 'utils/validate';
 
 
 /**
@@ -14,22 +15,9 @@ import validate, { privateKeyConstraint } from '@utils/validate';
  * =====================================================
  */
 
-// Private screen
-export const SETTING_PRIVATE_SCREEN_RESET_STATE = createAction('SETTING_PRIVATE_SCREEN_RESET_STATE');
-export const SETTING_PRIVATE_SCREEN_CHANGE_PASSWORD = createAction('SETTING_PRIVATE_SCREEN_CHANGE_PASSWORD');
-export const SETTING_PRIVATE_SCREEN_VERIFY_PASSWORD_SUCCEEDED = createAction('SETTING_PRIVATE_SCREEN_VERIFY_PASSWORD_SUCCEEDED');
-export const SETTING_PRIVATE_SCREEN_VERIFY_PASSWORD_FAILED = createAction('SETTING_PRIVATE_SCREEN_VERIFY_PASSWORD_FAILED');
-export const SETTING_PRIVATE_SCREEN_VERIFY_PASSWORD_REQUESTED = () => (dispatch, getState) => {
-    const { global, setting } = getState();
-    const { password } = global;
-    const { confirmPassword } = setting.privateScreen;
+export const SETTING_UPDATE_NEW_PASSWORD = createAction('SETTING_UPDATE_NEW_PASSWORD');
+export const SETTING_UPDATE_CONFIRM_PASSWORD = createAction('SETTING_UPDATE_CONFIRM_PASSWORD');
 
-    if (password !== confirmPassword) {
-        dispatch(SETTING_PRIVATE_SCREEN_VERIFY_PASSWORD_FAILED());
-    } else {
-        dispatch(SETTING_PRIVATE_SCREEN_VERIFY_PASSWORD_SUCCEEDED());
-    }
-};
 
 
 
@@ -40,53 +28,26 @@ export const SETTING_PRIVATE_SCREEN_VERIFY_PASSWORD_REQUESTED = () => (dispatch,
  */
 
 const defaultState = {
-    privateScreen: {
-        confirmPassword: '',
-        isPasswordConfirmed: false,
-        error: null,
-    },
+    newPassword: '',
+    confirmPassword: '',
+    passwordError: null,
 };
 
 export const settingReducer = handleActions({
-    SETTING_PRIVATE_SCREEN_RESET_STATE: (state) => {
-        return {
-            ...state,
-            privateScreen: {
-                confirmPassword: '',
-                isPasswordConfirmed: false,
-                error: null,
-            },
-        };
+    SETTING_UPDATE_NEW_PASSWORD: (state, { payload }) => {
+        const newPassword = payload;
+        const newState = fromJS(state);
+        return newState
+            .mergeDeep({ newPassword: newPassword, })
+            .toJS();
     },
-    SETTING_PRIVATE_SCREEN_CHANGE_PASSWORD: (state, { payload }) => {
-        return {
-            ...state,
-            privateScreen: {
-                confirmPassword: payload,
-                isPasswordConfirmed: false,
-                error: null,
-            },
-        };
-    },
-    SETTING_PRIVATE_SCREEN_VERIFY_PASSWORD_SUCCEEDED: (state, { payload }) => {
-        return {
-            ...state,
-            privateScreen: {
-                ...state.privateScreen,
-                isPasswordConfirmed: true,
-                error: null,
-            },
-        };
-    },
-    SETTING_PRIVATE_SCREEN_VERIFY_PASSWORD_FAILED: (state, { payload }) => {
-        return {
-            ...state,
-            privateScreen: {
-                ...state.privateScreen,
-                isPasswordConfirmed: false,
-                error: ERROR_TYPES.INVALID_PASSWORD,
-            },
-        };
+
+    SETTING_UPDATE_CONFIRM_PASSWORD: (state, { payload }) => {
+        const confirmPassword = payload;
+        const newState = fromJS(state);
+        return newState
+            .mergeDeep({ confirmPassword: confirmPassword, })
+            .toJS();
     },
 }, defaultState);
 

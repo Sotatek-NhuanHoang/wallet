@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { Text, AsyncStorage, Alert, View, Animated, Easing } from 'react-native';
 import { connect } from 'react-redux';
 
-import GlobalLoc from '@components/GlobalLoc';
-import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
-import GlobalContainer from '@components/GlobalContainer';
-import GlobalHeaderBackButton from '@components/GlobalHeaderBackButton';
-import { navigate } from '@utils/NavigationService';
-import { WALLET_WITHDRAW_CHANGE_ADDRESS} from '@store/wallet';
-import validate, { bitcoinAddressConstraint, ethAddressConstraint, quantityConstraint } from '@utils/validate';
+import GlobalLoc from 'components/GlobalLoc';
+import GlobalHeaderTitle from 'components/GlobalHeaderTitle';
+import GlobalContainer from 'components/GlobalContainer';
+import GlobalHeaderBackButton from 'components/GlobalHeaderBackButton';
+import { navigate } from 'services/NavigationService';
+import { WALLET_WITHDRAW_CHANGE_ADDRESS} from 'store/wallet';
+import validate, { bitcoinAddressConstraint, ethAddressConstraint, quantityConstraint } from 'utils/validate';
 
-import style from '@styles/screens/Wallet/QRScanScreen/QRScanScreen';
+import style from 'styles/screens/Wallet/QRScanScreen/QRScanScreen';
 
 import { RNCamera } from 'react-native-camera';
 

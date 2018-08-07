@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-import style from '@styles/components/GlobalHeaderTitle';
+import style from 'styles/components/GlobalHeaderTitle';
 
 
 export const GlobalHeaderTitle = (props) => {

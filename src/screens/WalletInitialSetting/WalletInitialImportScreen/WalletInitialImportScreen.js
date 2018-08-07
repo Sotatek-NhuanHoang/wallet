@@ -2,20 +2,19 @@ import React, { Component } from 'react';
 import { Text, View, Alert, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 
-import GlobalLoc from '@components/GlobalLoc';
-import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
-import GlobalContainer from '@components/GlobalContainer';
-import GlobalHeaderBackButton from '@components/GlobalHeaderBackButton';
-import GlobalCoinIcon from '@components/GlobalCoinIcon';
-import GlobalButton from '@components/GlobalButton';
-import GlobalTextInput from '@components/GlobalTextInput';
-import { WINI_IMPORT_WALLET_REQUESTED, WINI_CHANGE_USER_PRIVATE_KEY } from '@store/walletInitialSetting';
-import I18n from '@i18n';
-import { navigate } from '@utils/NavigationService';
-import AddressStorage from '@utils/addressStorage';
+import GlobalLoc from 'components/GlobalLoc';
+import GlobalHeaderTitle from 'components/GlobalHeaderTitle';
+import GlobalContainer from 'components/GlobalContainer';
+import GlobalHeaderBackButton from 'components/GlobalHeaderBackButton';
+import GlobalCoinIcon from 'components/GlobalCoinIcon';
+import GlobalButton from 'components/GlobalButton';
+import GlobalTextInput from 'components/GlobalTextInput';
+import I18n from 'i18n';
+import { navigate } from 'services/NavigationService';
+import AddressStorage from 'utils/addressStorage';
 
-import style from '@styles/screens/WalletInitialSetting/WalletInitialImportScreen/WalletInitialImportScreen';
-import { ERROR_TYPES } from '@configs/errorTypes';
+import style from 'styles/screens/WalletInitialSetting/WalletInitialImportScreen/WalletInitialImportScreen';
+import { ERROR_TYPES } from 'configs/errorTypes';
 
 
 export class WalletInitialImportScreen extends Component {

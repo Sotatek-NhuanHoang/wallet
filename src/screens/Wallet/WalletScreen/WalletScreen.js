@@ -3,17 +3,17 @@ import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { withNavigationFocus } from 'react-navigation';
 
-import GlobalLoc from '@components/GlobalLoc';
-import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
-import GlobalContainer from '@components/GlobalContainer';
-import GlobalHeaderBackButton from '@components/GlobalHeaderBackButton';
-import GlobalCoinIcon from '@components/GlobalCoinIcon';
-import GlobalButton from '@components/GlobalButton';
-import { currenyFormatFilter, coinPriceFormatFilter } from '@utils/filters';
-import { navigate } from '@utils/NavigationService';
-import { WALLET_WITHDRAW_RESET_STATE } from '@store/wallet';
+import GlobalLoc from 'components/GlobalLoc';
+import GlobalHeaderTitle from 'components/GlobalHeaderTitle';
+import GlobalContainer from 'components/GlobalContainer';
+import GlobalHeaderBackButton from 'components/GlobalHeaderBackButton';
+import GlobalCoinIcon from 'components/GlobalCoinIcon';
+import GlobalButton from 'components/GlobalButton';
+import { currenyFormatFilter, coinPriceFormatFilter } from 'utils/filters';
+import { navigate } from 'services/NavigationService';
+import { WALLET_WITHDRAW_RESET_STATE } from 'store/wallet';
 
-import style from '@styles/screens/Wallet/WalletScreen/WalletScreen';
+import style from 'styles/screens/Wallet/WalletScreen/WalletScreen';
 
 
 const CustomHeaderTitle = connect(

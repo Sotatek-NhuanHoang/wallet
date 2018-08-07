@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { Text, View, SectionList, TouchableWithoutFeedback, WebView } from 'react-native';
 import { connect } from 'react-redux';
 
-import GlobalLoc from '@components/GlobalLoc';
-import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
-import GlobalContainer from '@components/GlobalContainer';
-import GlobalButton from '@components/GlobalButton';
-import GlobalHeaderBackButton from '@components/GlobalHeaderBackButton';
-import GlobalCoinIcon from '@components/GlobalCoinIcon';
-import { navigate } from '@utils/NavigationService';
+import GlobalLoc from 'components/GlobalLoc';
+import GlobalHeaderTitle from 'components/GlobalHeaderTitle';
+import GlobalContainer from 'components/GlobalContainer';
+import GlobalButton from 'components/GlobalButton';
+import GlobalHeaderBackButton from 'components/GlobalHeaderBackButton';
+import GlobalCoinIcon from 'components/GlobalCoinIcon';
+import { navigate } from 'services/NavigationService';
 
-import style from '@styles/screens/Wallet/TransactionScreen/TransactionScreen';
+import style from 'styles/screens/Wallet/TransactionScreen/TransactionScreen';
 
 export class TransactionScreen extends Component {
 

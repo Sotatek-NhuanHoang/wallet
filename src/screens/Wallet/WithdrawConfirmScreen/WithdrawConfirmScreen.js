@@ -4,15 +4,15 @@ import { connect } from 'react-redux';
 import Dialog from 'react-native-dialog';
 import deepEqual from 'fast-deep-equal';
 
-import GlobalLoc from '@components/GlobalLoc';
-import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
-import GlobalContainer from '@components/GlobalContainer';
-import GlobalButton from '@components/GlobalButton';
-import GlobalHeaderBackButton from '@components/GlobalHeaderBackButton';
-import GlobalCoinIcon from '@components/GlobalCoinIcon';
-import I18n from '@i18n';
-import { navigate } from '@utils/NavigationService';
-import ERROR_TYPES from '@configs/errorTypes';
+import GlobalLoc from 'components/GlobalLoc';
+import GlobalHeaderTitle from 'components/GlobalHeaderTitle';
+import GlobalContainer from 'components/GlobalContainer';
+import GlobalButton from 'components/GlobalButton';
+import GlobalHeaderBackButton from 'components/GlobalHeaderBackButton';
+import GlobalCoinIcon from 'components/GlobalCoinIcon';
+import I18n from 'i18n';
+import { navigate } from 'services/NavigationService';
+import ERROR_TYPES from 'configs/errorTypes';
 import {
     WALLET_WITHDRAW_RESET_STATE,
     WALLET_WITHDRAW_CONFIRM_PASSWORD_SHOW_INPUT,
@@ -20,10 +20,10 @@ import {
     WALLET_WITHDRAW_CONFIRM_CHANGE_CONFIRM_PASSWORD,
     WALLET_WITHDRAW_CONFIRM_PASSWORD_REQUESTED,
     WALLET_TRANSACTION_MAKE_WITHDRAWAL_REQUESTED,
-} from '@store/wallet';
+} from 'store/wallet';
 
-import style from '@styles/screens/Wallet/WithdrawConfirmScreen/WithdrawConfirmScreen';
-import textInputStyle from '@styles/components/GlobalTextInput';
+import style from 'styles/screens/Wallet/WithdrawConfirmScreen/WithdrawConfirmScreen';
+import textInputStyle from 'styles/components/GlobalTextInput';
 
 
 export class WithdrawScreenConfirm extends Component {

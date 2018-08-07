@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import { ScrollView, View, Text, FlatList, Clipboard, Alert } from 'react-native';
 import { connect } from 'react-redux';
 
-import GlobalLoc from '@components/GlobalLoc';
-import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
-import GlobalContainer from '@components/GlobalContainer';
-import GlobalHeaderBackButton from '@components/GlobalHeaderBackButton';
-import GlobalTextInput from '@components/GlobalTextInput';
-import GlobalButton from '@components/GlobalButton';
-import { SETTING_PRIVATE_SCREEN_CHANGE_PASSWORD, SETTING_PRIVATE_SCREEN_VERIFY_PASSWORD_REQUESTED } from '@store/setting';
-import { globalAddedWalletCoins } from '@store/global';
-import I18n from '@i18n';
+import GlobalLoc from 'components/GlobalLoc';
+import GlobalHeaderTitle from 'components/GlobalHeaderTitle';
+import GlobalContainer from 'components/GlobalContainer';
+import GlobalHeaderBackButton from 'components/GlobalHeaderBackButton';
+import GlobalTextInput from 'components/GlobalTextInput';
+import GlobalButton from 'components/GlobalButton';
+import { SETTING_PRIVATE_SCREEN_CHANGE_PASSWORD, SETTING_PRIVATE_SCREEN_VERIFY_PASSWORD_REQUESTED } from 'store/setting';
+import { globalAddedWalletCoins } from 'store/global';
+import I18n from 'i18n';
 
-import style from '@styles/screens/Setting/PrivateKeyScreen/PrivateKeyScreen';
+import style from 'styles/screens/Setting/PrivateKeyScreen/PrivateKeyScreen';
 
 
 const CoinItem = ({ item, onCoinCopyButtonClicked }) => {

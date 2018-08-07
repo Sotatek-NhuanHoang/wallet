@@ -1,9 +1,9 @@
 import Web3 from 'web3';
 
 import { ETH_NETWORKS } from '@constants'
-import { BLOCKCHAIN_NETWORK } from '@configs';
-import mainnetConfig from '@configs/eth/mainnet';
-import rinkebyConfig from '@configs/eth/rinkeby';
+import { BLOCKCHAIN_NETWORK } from 'configs';
+import mainnetConfig from 'configs/eth/mainnet';
+import rinkebyConfig from 'configs/eth/rinkeby';
 
 const web3 = new Web3();
 

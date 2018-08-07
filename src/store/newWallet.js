@@ -12,6 +12,11 @@ import { ERROR_TYPES } from '../configs/errorTypes';
  * =====================================================
  */
 
+// Create Wallet
+
+export const WALLET_GENERATE_NEW_WALLET_REQUESTED = () => (dispatch) => {
+    
+};
 
 
 
@@ -22,23 +27,9 @@ import { ERROR_TYPES } from '../configs/errorTypes';
  */
 
 const defaultState = {
-    btc: {
-        symbol: 'btc',
-        name: 'Bitcoin',
-        type: 'coin',
-
-        privateKey: '',
-        address: '',
-        keyStore: '',
-
-        balance: 0,
-        priceUsd: 0,
-        priceJpy: 0,
-        percentChange24hUsd: 0,
-        percentChange24hJpy: 0,
-        balanceRequesting: false,
-        balanceRequestError: null,
-    },
+    privateKey: '',
+    address: '',
+    keyStore: '',
 };
 
 export const walletReducer = handleActions({

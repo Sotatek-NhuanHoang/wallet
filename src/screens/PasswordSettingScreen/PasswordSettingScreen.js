@@ -2,18 +2,17 @@ import React, { Component } from 'react';
 import { Alert, ScrollView, BackHandler, AsyncStorage } from 'react-native';
 import { connect } from 'react-redux';
 
-import GlobalLoc from '@components/GlobalLoc';
-import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
-import GlobalContainer from '@components/GlobalContainer';
-import GlobalButton from '@components/GlobalButton';
-import GlobalTextInput from '@components/GlobalTextInput';
-import I18n from '@i18n';
-import { navigate } from '@utils/NavigationService';
-import { GLOBAL_RESET_PASSWORD, GLOBAL_CHANGE_PASSWORD, GLOBAL_CHANGE_CONFIRM_PASSWORD } from '@store/global';
-import ERROR_TYPES from '@configs/errorTypes';
-import validate, { passwordConstraint } from '@utils/validate';
+import GlobalLoc from 'components/GlobalLoc';
+import GlobalHeaderTitle from 'components/GlobalHeaderTitle';
+import GlobalContainer from 'components/GlobalContainer';
+import GlobalButton from 'components/GlobalButton';
+import GlobalTextInput from 'components/GlobalTextInput';
+import I18n from 'i18n';
+import { navigate } from 'services/NavigationService';
+import ERROR_TYPES from 'configs/errorTypes';
+import validate, { passwordConstraint } from 'utils/validate';
 
-import style from '@styles/screens/PasswordSettingScreen/PasswordSettingScreen';
+import style from 'styles/screens/PasswordSettingScreen/PasswordSettingScreen';
 
 export class PasswordSettingScreen extends Component {
 

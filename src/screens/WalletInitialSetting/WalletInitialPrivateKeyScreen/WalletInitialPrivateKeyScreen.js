@@ -2,19 +2,18 @@ import React, { Component } from 'react';
 import { Text, View, Clipboard, Alert } from 'react-native';
 import { connect } from 'react-redux';
 
-import GlobalLoc from '@components/GlobalLoc';
-import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
-import GlobalContainer from '@components/GlobalContainer';
-import GlobalHeaderBackButton from '@components/GlobalHeaderBackButton';
-import GlobalCoinIcon from '@components/GlobalCoinIcon';
-import GlobalButton from '@components/GlobalButton';
-import GlobalTextInput from '@components/GlobalTextInput';
-import { WINI_COPY_PRIVATE_KEY, WINI_NEW_WALLET_REQUESTED, WINI_NEW_WALLET_APPLY_REQUESTED } from '@store/walletInitialSetting';
-import I18n from '@i18n';
-import { navigate } from '@utils/NavigationService';
-import AddressStorage from '@utils/addressStorage';
+import GlobalLoc from 'components/GlobalLoc';
+import GlobalHeaderTitle from 'components/GlobalHeaderTitle';
+import GlobalContainer from 'components/GlobalContainer';
+import GlobalHeaderBackButton from 'components/GlobalHeaderBackButton';
+import GlobalCoinIcon from 'components/GlobalCoinIcon';
+import GlobalButton from 'components/GlobalButton';
+import GlobalTextInput from 'components/GlobalTextInput';
+import I18n from 'i18n';
+import { navigate } from 'services/NavigationService';
+import AddressStorage from 'utils/addressStorage';
 
-import style from '@styles/screens/WalletInitialSetting/WalletInitialPrivateKeyScreen/WalletInitialPrivateKeyScreen';
+import style from 'styles/screens/WalletInitialSetting/WalletInitialPrivateKeyScreen/WalletInitialPrivateKeyScreen';
 
 
 export class WalletInitialPrivateKeyScreen extends Component {

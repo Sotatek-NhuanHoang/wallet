@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 
-import GlobalLoc from '@components/GlobalLoc';
-import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
-import GlobalContainer from '@components/GlobalContainer';
-import GlobalHeaderBackButton from '@components/GlobalHeaderBackButton';
-import GlobalCoinIcon from '@components/GlobalCoinIcon';
-import GlobalButton from '@components/GlobalButton';
-import { WINI_INIT_STATE } from '@store/walletInitialSetting';
-import { navigate } from '@utils/NavigationService';
+import GlobalLoc from 'components/GlobalLoc';
+import GlobalHeaderTitle from 'components/GlobalHeaderTitle';
+import GlobalContainer from 'components/GlobalContainer';
+import GlobalHeaderBackButton from 'components/GlobalHeaderBackButton';
+import GlobalCoinIcon from 'components/GlobalCoinIcon';
+import GlobalButton from 'components/GlobalButton';
+import { navigate } from 'services/NavigationService';
 
-import style from '@styles/screens/WalletInitialSetting/WalletInitialSettingScreen/WalletInitialSettingScreen';
+import style from 'styles/screens/WalletInitialSetting/WalletInitialSettingScreen/WalletInitialSettingScreen';
 
 
 export class WalletInitialSettingScreen extends Component {

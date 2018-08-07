@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, ScrollView } from 'react-native';
 
-import containerStyle from '@styles/components/GlobalContainer';
+import containerStyle from 'styles/components/GlobalContainer';
 
 
 export const GlobalContainer = (props) => {

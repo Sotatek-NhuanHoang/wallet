@@ -3,16 +3,16 @@ import { Text, View, Clipboard, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import QRCode from 'react-native-qrcode';
 
-import GlobalLoc from '@components/GlobalLoc';
-import GlobalHeaderTitle from '@components/GlobalHeaderTitle';
-import GlobalContainer from '@components/GlobalContainer';
-import GlobalButton from '@components/GlobalButton';
-import GlobalHeaderBackButton from '@components/GlobalHeaderBackButton';
-import GlobalCoinIcon from '@components/GlobalCoinIcon';
+import GlobalLoc from 'components/GlobalLoc';
+import GlobalHeaderTitle from 'components/GlobalHeaderTitle';
+import GlobalContainer from 'components/GlobalContainer';
+import GlobalButton from 'components/GlobalButton';
+import GlobalHeaderBackButton from 'components/GlobalHeaderBackButton';
+import GlobalCoinIcon from 'components/GlobalCoinIcon';
 import { verticalScale } from '@react-native-size-matters';
-import I18n from '@i18n';
+import I18n from 'i18n';
 
-import style from '@styles/screens/Wallet/ReceiveScreen/ReceiveScreen';
+import style from 'styles/screens/Wallet/ReceiveScreen/ReceiveScreen';
 
 export class ReceiveScreen extends Component {
 

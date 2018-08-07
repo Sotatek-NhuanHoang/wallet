@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import Images from '@assets/images';
 
-import style from '@styles/components/GlobalCoinIcon';
+import style from 'styles/components/GlobalCoinIcon';
 
 
 
