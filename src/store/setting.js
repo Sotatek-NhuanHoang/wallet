@@ -102,7 +102,6 @@ export const settingReducer = handleActions({
             .toJS();
     },
     SETTING_SET_PASSWORD_SUCCEEDED: (state, { payload }) => {
-        const error = payload;
         const newState = fromJS(state);
         return newState
             .mergeDeep({

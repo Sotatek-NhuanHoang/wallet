@@ -20,10 +20,32 @@ export class SplashScreen extends Component {
         ),
     };
 
-    async componentDidMount() {
-        setTimeout(() => {
-            navigate('PasswordSettingScreen', {}, true);
-        }, 400);
+    componentWillMount() {
+        if (this.props.globalStateLoaded) {
+            this.redirect(this.props.password);
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.globalStateLoaded) {
+            this.redirect(nextProps.password);
+        }
+    }
+
+    componentWillUpdate() {
+        return false;
+    }
+
+    redirect(password) {
+        if (password) {
+            setTimeout(() => {
+                navigate('CurrencyListScreen', {}, true);
+            }, 2000);
+        } else {
+            setTimeout(() => {
+                navigate('PasswordSettingScreen', {}, true);
+            }, 2000);
+        }
     }
 
 
@@ -37,4 +59,9 @@ export class SplashScreen extends Component {
 }
 
 
-export default connect()(SplashScreen);
+const mapStateToProps = ({ global }) => ({
+    password: global.password,
+    globalStateLoaded: global._persist.rehydrated,
+});
+
+export default connect(mapStateToProps)(SplashScreen);
