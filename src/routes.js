@@ -4,14 +4,14 @@ import { createStackNavigator } from 'react-navigation';
 
 import SplashScreen from 'screens/SplashScreen/SplashScreen';
 import PasswordSettingScreen from 'screens/PasswordSettingScreen/PasswordSettingScreen';
-// import CurrencyListScreen from 'screens/CurrencyListScreen/CurrencyListScreen';
+import CurrencyListScreen from 'screens/CurrencyListScreen/CurrencyListScreen';
 // import WebViewScreen from 'screens/WebViewScreen/WebViewScreen';
 
 // import SettingScreen from './screens/Setting/SettingScreen/SettingScreen';
 // import LanguageScreen from './screens/Setting/LanguageScreen/LanguageScreen';
 // import PrivateKeyScreen from './screens/Setting/PrivateKeyScreen/PrivateKeyScreen';
 
-// import WalletInitialSettingScreen from 'screens/WalletInitialSetting/WalletInitialSettingScreen/WalletInitialSettingScreen';
+import WalletInitialSettingScreen from 'screens/WalletInitialSetting/WalletInitialSettingScreen/WalletInitialSettingScreen';
 // import WalletInitialPrivateKeyScreen from 'screens/WalletInitialSetting/WalletInitialPrivateKeyScreen/WalletInitialPrivateKeyScreen';
 // import WalletInitialImportScreen from 'screens/WalletInitialSetting/WalletInitialImportScreen/WalletInitialImportScreen';
 
@@ -65,7 +65,7 @@ export const Routes = createStackNavigator(
     {
         SplashScreen: SplashScreen,
         PasswordSettingScreen: PasswordSettingScreen,
-        // CurrencyListScreen: CurrencyListScreen,
+        CurrencyListScreen: CurrencyListScreen,
         // Setting: createStackNavigator(
         //     {
         //         SettingScreen: SettingScreen,
@@ -78,18 +78,18 @@ export const Routes = createStackNavigator(
         //         transitionConfig,
         //     }
         // ),
-        // WalletInitialSetting: createStackNavigator(
-        //     {
-        //         WalletInitialSettingScreen: WalletInitialSettingScreen,
-        //         WalletInitialPrivateKeyScreen: WalletInitialPrivateKeyScreen,
-        //         WalletInitialImportScreen: WalletInitialImportScreen,
-        //     },
-        //     {
-        //         initialRouteName: 'WalletInitialSettingScreen',
-        //         navigationOptions: { ...defaultNavigationOptions },
-        //         transitionConfig,
-        //     }
-        // ),
+        WalletInitialSetting: createStackNavigator(
+            {
+                WalletInitialSettingScreen: WalletInitialSettingScreen,
+                // WalletInitialPrivateKeyScreen: WalletInitialPrivateKeyScreen,
+                // WalletInitialImportScreen: WalletInitialImportScreen,
+            },
+            {
+                initialRouteName: 'WalletInitialSettingScreen',
+                navigationOptions: { ...defaultNavigationOptions },
+                transitionConfig,
+            }
+        ),
         // Wallet: createStackNavigator(
         //     {
         //         WalletScreen: WalletScreen,
@@ -108,7 +108,7 @@ export const Routes = createStackNavigator(
         // WebViewScreen: WebViewScreen,
     },
     {
-        initialRouteName: 'SplashScreen',
+        initialRouteName: 'CurrencyListScreen',
         navigationOptions: ({ navigation }) => {
             const options = { ...defaultNavigationOptions };
 
