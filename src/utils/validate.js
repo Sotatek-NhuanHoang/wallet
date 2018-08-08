@@ -2,9 +2,9 @@ import validate from 'validate.js';
 
 // Coin libs
 import bitcore from 'bitcore-lib';
-import web3 from 'web3';
+import Web3 from 'web3';
 
-const { Address } = bitcore;
+const { Address, PrivateKey } = bitcore;
 
 import ERROR_TYPES from 'configs/errorTypes';
 
@@ -19,16 +19,40 @@ import ERROR_TYPES from 'configs/errorTypes';
 validate.validators.walletAddress = function(address, coin) {
     const errorType = ERROR_TYPES.INVALID_WALLET_ADDRESS;
 
-    switch (coin.toUpperCase()) {
-        case 'BTC':
+    switch (coin.toLowerCase()) {
+        case 'btc':
             if (!Address.isValid(address)) {
                 return errorType;
             }
             break;
 
-        case 'ETH':
-        case 'DRC':
-            if (!web3.utils.isAddress(address)) {
+        case 'eth':
+        case 'drc':
+            if (!Web3.utils.isAddress(address)) {
+                return errorType;
+            }
+            break;
+
+        default:
+            return errorType;
+    }
+
+    return null;
+};
+
+validate.validators.privateKey = function(privateKey, coin) {
+    const errorType = ERROR_TYPES.INVALID_PRIVATE_KEY;
+
+    switch (coin.toLowerCase()) {
+        case 'btc':
+            if (!PrivateKey.isValid(privateKey)) {
+                return errorType;
+            }
+            break;
+
+        case 'eth':
+        case 'drc':
+            if (!Web3.utils.isHex(privateKey)) {
                 return errorType;
             }
             break;
@@ -77,22 +101,35 @@ export const passwordConstraint = {
     },
 };
 
-export const bitcoinAddressConstraint = {
-    presence: { allowEmpty: false },
-    walletAddress: 'BTC',
-};
-
-export const ethAddressConstraint = {
-    presence: { allowEmpty: false },
-    walletAddress: 'ETH',
-};
-
 export const quantityConstraint = {
     presence: { allowEmpty: false },
     format: {
         pattern: "^[0-9.]+$",
         flag: 'g',
     },
+};
+
+// Address validation
+export const bitcoinAddressConstraint = {
+    presence: { allowEmpty: false },
+    walletAddress: 'btc',
+};
+
+export const ethAddressConstraint = {
+    presence: { allowEmpty: false },
+    walletAddress: 'eth',
+};
+
+
+// Private key validation
+export const bitcoinPrivateKeyConstraint = {
+    presence: { allowEmpty: false },
+    privateKey: 'btc',
+};
+
+export const ethPrivateKeyConstraint = {
+    presence: { allowEmpty: false },
+    privateKey: 'eth',
 };
 
 

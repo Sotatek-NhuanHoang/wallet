@@ -2,7 +2,7 @@ import { handleActions, createAction } from 'redux-actions';
 import { fromJS } from 'immutable';
 
 import ERROR_TYPES from 'configs/errorTypes';
-import validate, { privateKeyConstraint, passwordConstraint } from 'utils/validate';
+import validate, { passwordConstraint } from 'utils/validate';
 import { GLOBAL_UPDATE_PASSWORD } from 'store/global';
 
 

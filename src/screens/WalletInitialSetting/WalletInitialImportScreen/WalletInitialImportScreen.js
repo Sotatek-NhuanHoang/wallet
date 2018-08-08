@@ -11,7 +11,12 @@ import GlobalButton from 'components/GlobalButton';
 import GlobalTextInput from 'components/GlobalTextInput';
 import I18n from 'i18n';
 import { navigate } from 'services/NavigationService';
-import AddressStorage from 'utils/addressStorage';
+import { coinSelector } from 'store/wallet';
+import {
+    IMPORT_WALLET_RESET_STATE,
+    IMPORT_WALLET_UPDATE_PRIVATE_KEY,
+    IMPORT_WALLET_REQUESTED
+} from 'store/importWallet';
 
 import style from 'styles/screens/WalletInitialSetting/WalletInitialImportScreen/WalletInitialImportScreen';
 import { ERROR_TYPES } from 'configs/errorTypes';
@@ -35,25 +40,31 @@ export class WalletInitialImportScreen extends Component {
         super(props);
         this.onImportButtonClicked = this.onImportButtonClicked.bind(this);
         this.onInputChanged = this.onInputChanged.bind(this);
-        this.onSuccessfulAlertClosed = this.onSuccessfulAlertClosed.bind(this);
+    }
+
+    componentWillMount() {
+        this.props.resetState();
     }
 
     componentWillReceiveProps(nextProps) {
-        const { newWallet } = nextProps;
+        const { importWalletError, walletImported } = nextProps;
 
-        if (newWallet.isApplied) {
+        if (walletImported) {
             const message = I18n.t('WalletInitialSetting.WalletInitialImportScreen.importWalletSucceed');
             Alert.alert(
                 null,
                 message,
-                [{ text: 'OK', onPress: this.onSuccessfulAlertClosed, style: 'cancel' }],
+                [{ text: 'OK', onPress: () => navigate('CurrencyListScreen'), style: 'cancel' }],
                 { cancelable: false }
             );
-        } else if (newWallet.error) {
+            return;
+        }
+
+        if (importWalletError) {
             let message = null;
 
-            switch (newWallet.error) {
-                case ERROR_TYPES.REQUEST_FAILED:
+            switch (importWalletError) {
+                case ERROR_TYPES.INVALID_PRIVATE_KEY:
                     message = I18n.t('WalletInitialSetting.WalletInitialImportScreen.importWalletFailed');
                     break;
 
@@ -63,26 +74,22 @@ export class WalletInitialImportScreen extends Component {
             }
 
             Alert.alert(null, message);
+            this.props.resetState();
         }
     }
 
-    onSuccessfulAlertClosed() {
-        const { newWallet, selectedCoin } = this.props;
-
-        AddressStorage.saveWallet(selectedCoin.symbol, newWallet.data);
-        navigate('CurrencyListScreen');
-    }
 
     onImportButtonClicked() {
         this.props.importNewWallet();
     }
 
     onInputChanged(privateKey) {
-        this.props.changeUserPrivateKey(privateKey);
+        this.props.updatePrivateKey(privateKey);
     }
 
+
     render() {
-        const { selectedCoin } = this.props;
+        const { selectedCoin, privateKey } = this.props;
 
         return (
             <GlobalContainer>
@@ -100,6 +107,7 @@ export class WalletInitialImportScreen extends Component {
                             placeholder={ I18n.t('WalletInitialSetting.WalletInitialImportScreen.inputPrivateKey_placeholder') }
                             onChangeText={ this.onInputChanged }
                             style={ [style.textInput, style.marginBottom] }
+                            value={ privateKey }
                         />
 
                         <GlobalButton type="primary" onPress={ this.onImportButtonClicked }>
@@ -113,18 +121,22 @@ export class WalletInitialImportScreen extends Component {
 }
 
 
-const mapStateToProps = ({ global, walletInitialSetting }) => ({
-    selectedCoin: global.selectedCoin,
-    userPrivateKey: walletInitialSetting.userPrivateKey,
-    newWallet: walletInitialSetting.newWallet,
+const mapStateToProps = ({ global, wallet, importWallet }) => ({
+    selectedCoin: coinSelector(wallet, { coin: global.selectedCoin }),
+    privateKey: importWallet.privateKey,
+    importWalletError: importWallet.importWalletError,
+    walletImported: importWallet.walletImported,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    importNewWallet: () => {
-        dispatch(WINI_IMPORT_WALLET_REQUESTED());
+    resetState: () => {
+        return dispatch(IMPORT_WALLET_RESET_STATE());
     },
-    changeUserPrivateKey: (privateKey) => {
-        dispatch(WINI_CHANGE_USER_PRIVATE_KEY(privateKey));
+    updatePrivateKey: (privateKey) => {
+        return dispatch(IMPORT_WALLET_UPDATE_PRIVATE_KEY(privateKey));
+    },
+    importNewWallet: () => {
+        return dispatch(IMPORT_WALLET_REQUESTED());
     },
 });
 

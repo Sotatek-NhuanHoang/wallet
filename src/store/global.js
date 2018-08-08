@@ -21,7 +21,7 @@ export const GLOBAL_UPDATE_PASSWORD = createAction('GLOBAL_UPDATE_PASSWORD');
  */
 
 const defaultState = {
-    selectedCoin: '',
+    selectedCoin: 'btc',
     password: '',
 };
 
